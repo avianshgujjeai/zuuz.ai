@@ -14,11 +14,11 @@ interface HeroProps {
 }
 
 export function Hero({
-  badge = "Now generally available",
-  title = "The intelligent platform for enterprise automation",
-  description = "Deploy AI agents, orchestrate workflows, and search across every tool — all from one unified platform built for the enterprise.",
-  primaryCta = { label: "Request a demo", href: "/about/contact" },
-  secondaryCta = { label: "Explore products", href: "/products/agents" },
+  badge = "Badge placeholder",
+  title = "Headline placeholder",
+  description = "1–2 sentence hero description placeholder.",
+  primaryCta = { label: "Primary action", href: "/about/contact" },
+  secondaryCta = { label: "Secondary action", href: "/products/agents" },
 }: HeroProps) {
   return (
     <section className="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32">
@@ -32,10 +32,10 @@ export function Hero({
                 {badge}
               </Badge>
             )}
-            <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl text-balance leading-[1.1]">
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance leading-[1.1]">
               {title}
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-500 leading-relaxed text-balance">
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed text-balance">
               {description}
             </p>
             <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

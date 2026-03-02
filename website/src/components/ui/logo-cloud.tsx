@@ -7,16 +7,19 @@ interface LogoCloudProps {
 }
 
 const defaultLogos = [
-  "Salesforce", "Slack", "Jira", "Google Workspace",
-  "Microsoft 365", "Notion", "Confluence", "ServiceNow",
-  "Zendesk", "HubSpot", "SAP", "Workday",
+  "Logo A", "Logo B", "Logo C", "Logo D",
+  "Logo E", "Logo F", "Logo G", "Logo H",
 ];
 
-export function LogoCloud({ title = "Integrates with your stack", logos = defaultLogos, className }: LogoCloudProps) {
+export function LogoCloud({
+  title = "Trusted by leading teams",
+  logos = defaultLogos,
+  className,
+}: LogoCloudProps) {
   return (
     <div className={cn("text-center", className)}>
       {title && (
-        <p className="text-sm font-medium text-slate-400 uppercase tracking-wider mb-8">
+        <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-8">
           {title}
         </p>
       )}
@@ -24,7 +27,7 @@ export function LogoCloud({ title = "Integrates with your stack", logos = defaul
         {logos.map((logo) => (
           <div
             key={logo}
-            className="flex h-10 items-center justify-center rounded-md px-4 text-sm font-semibold text-slate-400 transition-colors hover:text-slate-600"
+            className="flex h-10 items-center justify-center rounded-md border border-dashed border-border px-5 text-xs font-medium text-muted-foreground"
           >
             {logo}
           </div>

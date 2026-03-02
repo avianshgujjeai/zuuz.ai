@@ -13,13 +13,13 @@ interface TestimonialsProps {
 
 export function Testimonials({
   badge = "Customers",
-  title = "Trusted by teams that ship",
-  description = "See how leading organizations use ZUUZ to automate operations and unlock new levels of productivity.",
+  title = "Testimonials section title",
+  description,
   limit = 3,
 }: TestimonialsProps) {
   const items = customers.slice(0, limit);
   return (
-    <section className="py-24 bg-slate-50/50">
+    <section className="py-24 bg-muted/30">
       <Container>
         <FadeIn>
           <SectionHeading badge={badge} title={title} description={description} />

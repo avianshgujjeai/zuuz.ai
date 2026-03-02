@@ -14,7 +14,7 @@ interface CaseStudyGridProps {
 
 export function CaseStudyGrid({
   badge = "Case studies",
-  title = "Real results from real teams",
+  title = "Case study grid section title",
   description,
   items = customers,
 }: CaseStudyGridProps) {
@@ -29,21 +29,13 @@ export function CaseStudyGrid({
             <FadeIn key={cs.slug} delay={i * 0.08}>
               <Card href={`/customers/${cs.slug}`}>
                 <div className="mb-3 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 text-sm font-bold text-slate-600">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted text-sm font-bold text-muted-foreground">
                     {cs.logo}
                   </div>
                   <Badge variant="outline">{cs.industry}</Badge>
                 </div>
                 <CardTitle>{cs.company}</CardTitle>
                 <CardDescription className="mt-2 line-clamp-2">{cs.quote}</CardDescription>
-                <div className="mt-4 flex gap-4">
-                  {cs.results.slice(0, 2).map((r) => (
-                    <div key={r.metric}>
-                      <p className="text-lg font-bold text-primary">{r.value}</p>
-                      <p className="text-xs text-slate-400">{r.metric}</p>
-                    </div>
-                  ))}
-                </div>
               </Card>
             </FadeIn>
           ))}

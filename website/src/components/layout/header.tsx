@@ -49,73 +49,93 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-200",
+        "sticky top-0 z-40 w-full transition-all duration-200",
         scrolled
-          ? "border-b border-border bg-white/95 backdrop-blur-md shadow-xs"
-          : "bg-white/80 backdrop-blur-sm",
+          ? "border-b border-border bg-background/95 backdrop-blur-lg shadow-xs"
+          : "bg-background/80 backdrop-blur-sm",
       )}
     >
       <Container>
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2 text-xl font-bold tracking-tight text-slate-900"
+            className="flex items-center gap-2 text-xl font-bold tracking-tight text-foreground"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-xs font-bold text-white">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
               Z
             </div>
             ZUUZ
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex lg:items-center lg:gap-1" aria-label="Main">
+          <nav
+            className="hidden lg:flex lg:items-center lg:gap-1"
+            aria-label="Main"
+          >
             {navItems.map((item) => (
               <div
                 key={item.label}
                 className="relative"
-                onMouseEnter={() => item.groups && handleMouseEnter(item.label)}
+                onMouseEnter={() =>
+                  item.groups && handleMouseEnter(item.label)
+                }
                 onMouseLeave={handleMouseLeave}
               >
                 <Link
                   href={item.href}
                   className={cn(
                     "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                     isActive(item.href)
                       ? "text-primary"
-                      : "text-slate-600 hover:text-slate-900",
+                      : "text-muted-foreground hover:text-foreground",
                   )}
+                  aria-current={isActive(item.href) ? "page" : undefined}
                 >
                   {item.label}
                 </Link>
                 {item.groups && openMenu === item.label && (
-                  <MegaMenu groups={item.groups} onMouseEnter={() => handleMouseEnter(item.label)} onMouseLeave={handleMouseLeave} />
+                  <MegaMenu
+                    groups={item.groups}
+                    onMouseEnter={() => handleMouseEnter(item.label)}
+                    onMouseLeave={handleMouseLeave}
+                  />
                 )}
               </div>
             ))}
           </nav>
 
-          {/* Right side */}
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm" className="hidden sm:inline-flex" asChild>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="hidden sm:inline-flex"
+              asChild
+            >
               <Link href="/about/contact">Sign in</Link>
             </Button>
             <Button size="sm" className="hidden sm:inline-flex" asChild>
               <Link href="/about/contact">Request demo</Link>
             </Button>
             <button
-              className="inline-flex items-center justify-center rounded-md p-2 text-slate-600 transition-colors hover:bg-slate-100 lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className={cn(
+                "inline-flex items-center justify-center rounded-md p-2 transition-colors lg:hidden",
+                "text-muted-foreground hover:bg-muted hover:text-foreground",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              )}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
       </Container>
 
-      {/* Mobile menu */}
       <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
     </header>
   );

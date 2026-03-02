@@ -5,6 +5,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        background: "rgb(var(--color-background) / <alpha-value>)",
+        foreground: "rgb(var(--color-foreground) / <alpha-value>)",
+        card: {
+          DEFAULT: "rgb(var(--color-card) / <alpha-value>)",
+          foreground: "rgb(var(--color-card-foreground) / <alpha-value>)",
+        },
         primary: {
           DEFAULT: "rgb(var(--color-primary) / <alpha-value>)",
           light: "rgb(var(--color-primary-light) / <alpha-value>)",
@@ -15,15 +21,12 @@ const config: Config = {
           DEFAULT: "rgb(var(--color-accent) / <alpha-value>)",
           foreground: "rgb(var(--color-accent-foreground) / <alpha-value>)",
         },
-        surface: {
-          DEFAULT: "rgb(var(--color-surface) / <alpha-value>)",
-          raised: "rgb(var(--color-surface-raised) / <alpha-value>)",
-        },
         muted: {
           DEFAULT: "rgb(var(--color-muted) / <alpha-value>)",
           foreground: "rgb(var(--color-muted-foreground) / <alpha-value>)",
         },
         border: "rgb(var(--color-border) / <alpha-value>)",
+        ring: "rgb(var(--color-ring) / <alpha-value>)",
       },
       borderRadius: {
         sm: "var(--radius-sm)",
@@ -31,6 +34,7 @@ const config: Config = {
         md: "var(--radius-md)",
         lg: "var(--radius-lg)",
         xl: "var(--radius-xl)",
+        "2xl": "var(--radius-2xl)",
       },
       boxShadow: {
         xs: "var(--shadow-xs)",
@@ -45,8 +49,11 @@ const config: Config = {
         mono: ["var(--font-mono)", "monospace"],
       },
       animation: {
-        "fade-in": "fadeIn 0.5s ease-out forwards",
-        "slide-up": "slideUp 0.5s ease-out forwards",
+        "fade-in": "fadeIn 0.2s ease-out forwards",
+        "slide-up": "slideUp 0.2s ease-out forwards",
+        "slide-down": "slideDown 0.2s ease-out forwards",
+        "drawer-in": "drawerIn 0.25s ease-out forwards",
+        "drawer-out": "drawerOut 0.2s ease-in forwards",
       },
       keyframes: {
         fadeIn: {
@@ -56,6 +63,18 @@ const config: Config = {
         slideUp: {
           from: { opacity: "0", transform: "translateY(12px)" },
           to: { opacity: "1", transform: "translateY(0)" },
+        },
+        slideDown: {
+          from: { opacity: "0", transform: "translateY(-8px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        drawerIn: {
+          from: { transform: "translateX(100%)" },
+          to: { transform: "translateX(0)" },
+        },
+        drawerOut: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(100%)" },
         },
       },
     },

@@ -15,12 +15,12 @@ interface CTAProps {
 }
 
 export function CTA({
-  title = "Ready to see ZUUZ in action?",
-  description = "Book a personalized demo and see how ZUUZ can transform your operations.",
-  primaryLabel = "Request a demo",
-  primaryHref = "#",
-  secondaryLabel = "Talk to sales",
-  secondaryHref = "#",
+  title = "CTA headline placeholder",
+  description = "1–2 sentence CTA description placeholder.",
+  primaryLabel = "Primary action",
+  primaryHref = "/about/contact",
+  secondaryLabel = "Secondary action",
+  secondaryHref = "/about/contact",
   className,
 }: CTAProps) {
   return (
@@ -45,7 +45,12 @@ export function CTA({
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </Button>
-              <Button variant="ghost" size="lg" className="text-slate-300 hover:text-white hover:bg-white/10" asChild>
+              <Button
+                variant="ghost"
+                size="lg"
+                className="text-slate-300 hover:text-white hover:bg-white/10"
+                asChild
+              >
                 <Link href={secondaryHref}>{secondaryLabel}</Link>
               </Button>
             </div>

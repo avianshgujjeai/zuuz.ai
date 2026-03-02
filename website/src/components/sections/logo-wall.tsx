@@ -7,14 +7,14 @@ export function LogoWall() {
     <section className="py-16 border-b border-border">
       <Container>
         <FadeIn>
-          <p className="text-center text-sm font-medium text-slate-400 uppercase tracking-wider mb-8">
-            Trusted by innovative teams
+          <p className="text-center text-sm font-medium text-muted-foreground uppercase tracking-wider mb-8">
+            Logo wall placeholder
           </p>
           <div className="flex flex-wrap items-center justify-center gap-8">
             {customers.map((c) => (
               <div
                 key={c.slug}
-                className="flex h-12 items-center justify-center rounded-lg bg-slate-50 px-6 text-sm font-bold text-slate-400"
+                className="flex h-12 items-center justify-center rounded-lg border border-dashed border-border px-6 text-sm font-bold text-muted-foreground"
               >
                 {c.company}
               </div>

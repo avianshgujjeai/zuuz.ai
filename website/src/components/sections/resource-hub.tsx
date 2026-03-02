@@ -17,8 +17,8 @@ export function ResourceHub() {
         <FadeIn>
           <SectionHeading
             badge="Resources"
-            title="Learn, build, and grow"
-            description="Everything you need to get the most out of ZUUZ — from quick-start guides to deep technical docs."
+            title="Resource hub section title"
+            description="1–2 sentence section description placeholder."
           />
         </FadeIn>
         <FadeIn delay={0.1}>
@@ -30,13 +30,9 @@ export function ResourceHub() {
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {type.items.map((item) => (
                     <Card key={item.slug} href={`/resources/${type.slug}/${item.slug}`}>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Badge variant="outline">{type.label}</Badge>
-                        {item.readTime && <span className="text-xs text-slate-400">{item.readTime}</span>}
-                      </div>
+                      <Badge variant="outline" className="mb-3">{type.label}</Badge>
                       <CardTitle className="text-base">{item.title}</CardTitle>
                       <CardDescription className="mt-1">{item.description}</CardDescription>
-                      <p className="mt-3 text-xs text-slate-400">{item.date}</p>
                     </Card>
                   ))}
                 </div>
