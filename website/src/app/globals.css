@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Brand colors (space-separated RGB for Tailwind alpha) */
+  --color-primary: 67 56 202;          /* indigo-700 */
+  --color-primary-light: 129 140 248;  /* indigo-400 */
+  --color-primary-dark: 49 46 129;     /* indigo-900 */
+  --color-primary-foreground: 255 255 255;
+
+  --color-accent: 234 88 12;           /* orange-600 */
+  --color-accent-foreground: 255 255 255;
+
+  --color-surface: 255 255 255;
+  --color-surface-raised: 248 250 252; /* slate-50 */
+
+  --color-muted: 241 245 249;          /* slate-100 */
+  --color-muted-foreground: 100 116 139; /* slate-500 */
+
+  --color-border: 226 232 240;         /* slate-200 */
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.06), 0 4px 6px -4px rgb(0 0 0 / 0.06);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.06), 0 8px 10px -6px rgb(0 0 0 / 0.06);
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: rgb(var(--color-border));
+  }
+
+  body {
+    color: theme("colors.slate.900");
+    background: rgb(var(--color-surface));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: rgb(var(--color-primary) / 0.12);
+  }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.7) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-dot {
+    background-image: radial-gradient(circle, rgb(var(--color-border)) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  .bg-hero-glow {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgb(var(--color-primary) / 0.07),
+      transparent
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
