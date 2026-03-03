@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 :root {
+  /* ── Brand: #0018FF ── */
   --color-primary: 0 24 255;
   --color-primary-light: 77 93 255;
   --color-primary-dark: 0 16 180;
   --color-primary-foreground: 255 255 255;
 
+  /* ── Semantic ── */
   --color-background: 255 255 255;
   --color-foreground: 10 10 20;
 
@@ -23,18 +25,20 @@
   --color-border: 228 232 240;
   --color-ring: 0 24 255;
 
+  /* ── Radius ── */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.25rem;
 
+  /* ── Shadows ── */
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.03);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.03);
   --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
   --shadow-lg: 0 12px 20px -4px rgb(0 0 0 / 0.06), 0 4px 8px -4px rgb(0 0 0 / 0.04);
   --shadow-xl: 0 24px 40px -8px rgb(0 0 0 / 0.08), 0 8px 16px -6px rgb(0 0 0 / 0.04);
-  --shadow-soft: 0 2px 8px -2px rgb(0 24 255 / 0.06);
+  --shadow-soft: 0 2px 8px -2px rgb(0 24 255 / 0.08);
   --shadow-elevated: 0 8px 24px -4px rgb(0 0 0 / 0.08), 0 0 0 1px rgb(0 0 0 / 0.02);
 }
 
@@ -48,31 +52,52 @@
   body {
     color: rgb(var(--color-foreground));
     background: rgb(var(--color-background));
-    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+
+    /* Enterprise rhythm */
+    font-size: 16px;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
   }
 
   ::selection {
-    background: rgb(var(--color-primary) / 0.1);
+    background: rgb(var(--color-primary) / 0.12);
     color: rgb(var(--color-primary-dark));
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
   }
 
-  h1 { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.12; font-weight: 700; }
-  h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.2; font-weight: 700; }
-  h3 { font-size: clamp(1.125rem, 1.8vw, 1.375rem); line-height: 1.35; font-weight: 600; }
-  p, li { line-height: 1.65; }
+  h1 {
+    font-size: clamp(2.1rem, 4.1vw, 3.25rem);
+    line-height: 1.06;
+    font-weight: 800;
+  }
+
+  h2 {
+    font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+    line-height: 1.12;
+    font-weight: 800;
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.25;
+    font-weight: 700;
+  }
+
+  p, li {
+    line-height: 1.62;
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -82,19 +107,70 @@
 }
 
 @layer utilities {
+  /* Calmer background patterns (less abstract) */
   .bg-grid {
-    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.15) 0.75px, transparent 0.75px);
-    background-size: 24px 24px;
+    background-image: radial-gradient(
+      circle,
+      rgb(var(--color-border) / 0.12) 0.75px,
+      transparent 0.75px
+    );
+    background-size: 32px 32px;
   }
 
   .bg-dot {
-    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.4) 0.5px, transparent 0.5px);
-    background-size: 16px 16px;
+    background-image: radial-gradient(
+      circle,
+      rgb(var(--color-border) / 0.18) 0.75px,
+      transparent 0.75px
+    );
+    background-size: 22px 22px;
   }
 
   .bg-hero-glow {
-    background: radial-gradient(ellipse 60% 35% at 50% -10%, rgb(var(--color-primary) / 0.025), transparent);
+    background: radial-gradient(
+      ellipse 70% 40% at 50% -15%,
+      rgb(var(--color-primary) / 0.022),
+      transparent
+    );
   }
 
-  .text-balance { text-wrap: balance; }
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* New spacing helpers to reduce giant gaps */
+  .section {
+    padding-top: 3.25rem;   /* 52px */
+    padding-bottom: 3.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .section {
+      padding-top: 4rem;    /* 64px */
+      padding-bottom: 4rem;
+    }
+  }
+
+  .section-tight {
+    padding-top: 2.5rem;    /* 40px */
+    padding-bottom: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-tight {
+      padding-top: 3rem;    /* 48px */
+      padding-bottom: 3rem;
+    }
+  }
+
+  /* Keep for backwards compatibility but make it subtle (avoid “cheap gradient”) */
+  .btn-gradient-primary {
+    background: rgb(var(--color-primary));
+    border: 1px solid rgb(var(--color-primary-light) / 0.28);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-gradient-primary:hover {
+    filter: brightness(0.96);
+  }
 }
