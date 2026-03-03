@@ -6,7 +6,6 @@ import {
   Lock, KeyRound, Users, FileCheck, Clock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Card, CardTitle, CardDescription } from "@/components/ui/card";
@@ -48,21 +47,26 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-12 pb-14 sm:pt-16 sm:pb-16">
+      <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18">
         <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
         <Container className="relative">
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
-              <Badge variant="primary" className="mb-4">Now generally available</Badge>
+              <span className="inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                DECISION &bull; EXECUTION &bull; AI WORKSPACE
+              </span>
               <h1 className="font-display text-foreground text-balance leading-tight">
-                The execution layer for enterprise work — across tools, teams, and approvals
+                An AI workspace for decisions and execution — across tools, teams, and approvals
               </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground leading-relaxed text-balance">
-                ZUUZ connects your email, documents, meetings, CRM, ERP, and ITSM. It assembles evidence automatically, routes approvals through policy, and safely writes back to systems of record — so work moves in minutes, not days.
+              <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground leading-relaxed text-balance">
+                ZUUZ assembles the full context from email, documents, meetings, CRM, ERP, and ITSM — then routes decisions through policy and safely writes back to systems of record. Every answer and action is permission-aware, identity-verified, and recorded with a complete audit trail.
               </p>
-              <div className="mt-7 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <p className="mt-4 text-[12px] text-muted-foreground/70 tracking-wide">
+                Permission-safe &bull; Identity-aware &bull; Evidence-backed &bull; Audit logged &bull; Safe write-back
+              </p>
+              <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <Button size="lg" asChild>
-                  <Link href="/about/contact">Request a demo <ArrowRight className="h-4 w-4" /></Link>
+                  <Link href="/about/contact">Request a demo <ArrowRight className="h-4 w-4 opacity-70" /></Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
                   <Link href="/products/ai-agents">See how it works</Link>
