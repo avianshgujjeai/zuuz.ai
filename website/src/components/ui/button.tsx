@@ -11,20 +11,35 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<Variant, string> = {
-  primary:
-    "bg-primary text-primary-foreground shadow-sm hover:bg-primary-dark focus-visible:ring-primary",
-  secondary:
-    "bg-slate-900 text-white shadow-sm hover:bg-slate-800 focus-visible:ring-slate-900",
-  ghost:
-    "text-slate-700 hover:bg-slate-100 hover:text-slate-900 focus-visible:ring-slate-400",
-  outline:
-    "border border-border bg-white text-slate-700 shadow-xs hover:bg-slate-50 focus-visible:ring-primary",
+  primary: [
+    "btn-gradient-primary text-white shadow-soft",
+    "hover:-translate-y-px hover:shadow-md",
+    "active:translate-y-0 active:shadow-sm",
+    "focus-visible:ring-primary/30",
+  ].join(" "),
+  secondary: [
+    "bg-foreground text-background shadow-sm",
+    "hover:bg-foreground/90 hover:-translate-y-px hover:shadow-md",
+    "active:translate-y-0",
+    "focus-visible:ring-foreground/30",
+  ].join(" "),
+  ghost: [
+    "text-muted-foreground",
+    "hover:bg-muted hover:text-foreground",
+    "focus-visible:ring-ring/20",
+  ].join(" "),
+  outline: [
+    "border border-border bg-background text-foreground shadow-xs",
+    "hover:bg-muted hover:border-border hover:-translate-y-px hover:shadow-sm",
+    "active:translate-y-0",
+    "focus-visible:ring-ring/20",
+  ].join(" "),
 };
 
 const sizeStyles: Record<Size, string> = {
-  sm: "h-8 px-3 text-sm gap-1.5",
-  md: "h-10 px-4 text-sm gap-2",
-  lg: "h-12 px-6 text-base gap-2",
+  sm: "h-9 px-3.5 text-[13px] gap-1.5",
+  md: "h-11 px-5 text-sm gap-2",
+  lg: "h-12 px-6 text-[15px] gap-2",
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -33,7 +48,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          "inline-flex items-center justify-center rounded-md font-medium transition-colors",
+          "inline-flex items-center justify-center font-semibold",
+          "rounded-xl transition-all duration-150 ease-out",
           "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
           "disabled:pointer-events-none disabled:opacity-50",
           variantStyles[variant],

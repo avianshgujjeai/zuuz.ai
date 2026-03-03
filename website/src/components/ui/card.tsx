@@ -6,14 +6,18 @@ interface CardProps {
   className?: string;
   href?: string;
   hover?: boolean;
+  variant?: "default" | "bento";
 }
 
-export function Card({ children, className, href, hover = true }: CardProps) {
+export function Card({ children, className, href, hover = true, variant = "default" }: CardProps) {
   const classes = cn(
-    "rounded-xl border border-border bg-white p-6",
+    "rounded-2xl border bg-card p-6",
+    variant === "bento"
+      ? "border-border/60 bg-gradient-to-br from-card to-muted/30 shadow-sm"
+      : "border-border shadow-xs",
     hover && "transition-all duration-200",
-    hover && !href && "hover:shadow-md",
-    href && "hover:shadow-md hover:border-primary/20 cursor-pointer",
+    hover && !href && "hover:shadow-md hover:border-border",
+    href && "hover:shadow-md hover:border-primary/20 hover:-translate-y-px cursor-pointer",
     className,
   );
 
@@ -32,9 +36,9 @@ export function CardHeader({ children, className }: { children: React.ReactNode;
 }
 
 export function CardTitle({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <h3 className={cn("text-lg font-semibold text-slate-900", className)}>{children}</h3>;
+  return <h3 className={cn("text-lg font-semibold text-foreground tracking-tight", className)}>{children}</h3>;
 }
 
 export function CardDescription({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <p className={cn("text-sm text-slate-500 leading-relaxed", className)}>{children}</p>;
+  return <p className={cn("text-sm text-muted-foreground leading-relaxed", className)}>{children}</p>;
 }

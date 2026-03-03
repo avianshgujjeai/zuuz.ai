@@ -43,9 +43,12 @@ const config: Config = {
         md: "var(--shadow-md)",
         lg: "var(--shadow-lg)",
         xl: "var(--shadow-xl)",
+        soft: "var(--shadow-soft)",
+        elevated: "var(--shadow-elevated)",
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       animation: {
@@ -54,6 +57,8 @@ const config: Config = {
         "slide-down": "slideDown 0.2s ease-out forwards",
         "drawer-in": "drawerIn 0.25s ease-out forwards",
         "drawer-out": "drawerOut 0.2s ease-in forwards",
+        "flow-dash": "flowDash 2s linear infinite",
+        "flow-dot": "flowDot 3s ease-in-out infinite",
       },
       keyframes: {
         fadeIn: {
@@ -75,6 +80,13 @@ const config: Config = {
         drawerOut: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(100%)" },
+        },
+        flowDash: {
+          to: { strokeDashoffset: "-20" },
+        },
+        flowDot: {
+          "0%": { offsetDistance: "0%" },
+          "100%": { offsetDistance: "100%" },
         },
       },
     },
