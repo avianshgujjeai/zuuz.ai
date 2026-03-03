@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -57,14 +58,15 @@ export function Header() {
     >
       <Container>
         <div className="flex h-16 items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-xl font-bold tracking-tight text-foreground"
-          >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
-              Z
-            </div>
-            ZUUZ
+          <Link href="/" className="flex items-center" aria-label="ZUUZ home">
+            <Image
+              src="/brand/zuuz-logo.png"
+              alt="ZUUZ"
+              width={100}
+              height={30}
+              className="h-7 w-auto"
+              priority
+            />
           </Link>
 
           <nav
