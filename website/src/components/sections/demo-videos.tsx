@@ -11,11 +11,11 @@ interface DemoClip {
 }
 
 const clips: DemoClip[] = [
-  { id: "email", label: "Email Copilot", src: "/media/0223-1.mov" },
-  { id: "docs", label: "Documents Copilot", src: "/media/0223-2.mov" },
-  { id: "meetings", label: "Meetings Copilot", src: "/media/0223-3.mov" },
-  { id: "search", label: "Evidence Search", src: "/media/0223-4.mov" },
-  { id: "insights", label: "Insights Dashboard", src: "/media/0223-8.mov" },
+  { id: "email", label: "Email Copilot", src: "/media/0223-2.mov" },
+  { id: "docs", label: "Document Copilot", src: "/media/0223-3.mov" },
+  { id: "meetings", label: "Meeting Copilot", src: "/media/0223-4.mov" },
+  { id: "search", label: "Evidence Search", src: "/media/0223-8.mov" },
+  { id: "insights", label: "Insight Dashboards", src: "/media/0223-8.mov" },
 ];
 
 export function DemoVideos() {
@@ -44,7 +44,7 @@ export function DemoVideos() {
               "rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-150",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               active === clip.id
-                ? "btn-gradient-primary text-white shadow-soft"
+                ? "bg-primary text-primary-foreground shadow-sm"
                 : "bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80",
             )}
           >
@@ -62,7 +62,7 @@ export function DemoVideos() {
         ) : (
           <video
             ref={videoRef}
-            key={activeClip.src}
+            key={activeClip.src + activeClip.id}
             autoPlay
             muted
             loop

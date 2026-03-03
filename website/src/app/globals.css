@@ -3,13 +3,11 @@
 @tailwind utilities;
 
 :root {
-  /* ── Brand: #0018FF ── */
   --color-primary: 0 24 255;
   --color-primary-light: 77 93 255;
   --color-primary-dark: 0 16 180;
   --color-primary-foreground: 255 255 255;
 
-  /* ── Semantic ── */
   --color-background: 255 255 255;
   --color-foreground: 10 10 20;
 
@@ -25,20 +23,18 @@
   --color-border: 228 232 240;
   --color-ring: 0 24 255;
 
-  /* ── Radius ── */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.25rem;
 
-  /* ── Shadows ── */
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.03);
   --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.03);
   --shadow-md: 0 4px 8px -2px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.04);
   --shadow-lg: 0 12px 20px -4px rgb(0 0 0 / 0.06), 0 4px 8px -4px rgb(0 0 0 / 0.04);
   --shadow-xl: 0 24px 40px -8px rgb(0 0 0 / 0.08), 0 8px 16px -6px rgb(0 0 0 / 0.04);
-  --shadow-soft: 0 2px 8px -2px rgb(0 24 255 / 0.08);
+  --shadow-soft: 0 2px 8px -2px rgb(0 24 255 / 0.06);
   --shadow-elevated: 0 8px 24px -4px rgb(0 0 0 / 0.08), 0 0 0 1px rgb(0 0 0 / 0.02);
 }
 
@@ -52,6 +48,9 @@
   body {
     color: rgb(var(--color-foreground));
     background: rgb(var(--color-background));
+    font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
@@ -64,35 +63,16 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 
-  h1 {
-    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
-    line-height: 1.1;
-    font-weight: 700;
-  }
-
-  h2 {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    line-height: 1.15;
-    font-weight: 700;
-  }
-
-  h3 {
-    font-size: clamp(1.25rem, 2vw, 1.5rem);
-    line-height: 1.3;
-    font-weight: 600;
-  }
-
-  p, li {
-    line-height: 1.7;
-  }
+  h1 { font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.12; font-weight: 700; }
+  h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.2; font-weight: 700; }
+  h3 { font-size: clamp(1.125rem, 1.8vw, 1.375rem); line-height: 1.35; font-weight: 600; }
+  p, li { line-height: 1.65; }
 
   @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -103,41 +83,18 @@
 
 @layer utilities {
   .bg-grid {
-    background-image: radial-gradient(
-      circle,
-      rgb(var(--color-border) / 0.25) 0.75px,
-      transparent 0.75px
-    );
+    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.15) 0.75px, transparent 0.75px);
     background-size: 24px 24px;
   }
 
   .bg-dot {
-    background-image: radial-gradient(
-      circle,
-      rgb(var(--color-border) / 0.6) 0.75px,
-      transparent 0.75px
-    );
+    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.4) 0.5px, transparent 0.5px);
     background-size: 16px 16px;
   }
 
   .bg-hero-glow {
-    background: radial-gradient(
-      ellipse 70% 40% at 50% -15%,
-      rgb(var(--color-primary) / 0.035),
-      transparent
-    );
+    background: radial-gradient(ellipse 60% 35% at 50% -10%, rgb(var(--color-primary) / 0.025), transparent);
   }
 
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .btn-gradient-primary {
-    background: linear-gradient(180deg, rgb(0 24 255), rgb(0 20 220));
-    border: 1px solid rgb(77 93 255 / 0.3);
-  }
-
-  .btn-gradient-primary:hover {
-    background: linear-gradient(180deg, rgb(20 44 255), rgb(0 24 255));
-  }
+  .text-balance { text-wrap: balance; }
 }

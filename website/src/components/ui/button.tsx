@@ -11,35 +11,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<Variant, string> = {
-  primary: [
-    "btn-gradient-primary text-white shadow-soft",
-    "hover:-translate-y-px hover:shadow-md",
-    "active:translate-y-0 active:shadow-sm",
-    "focus-visible:ring-primary/30",
-  ].join(" "),
-  secondary: [
-    "bg-foreground text-background shadow-sm",
-    "hover:bg-foreground/90 hover:-translate-y-px hover:shadow-md",
-    "active:translate-y-0",
-    "focus-visible:ring-foreground/30",
-  ].join(" "),
-  ghost: [
-    "text-muted-foreground",
-    "hover:bg-muted hover:text-foreground",
-    "focus-visible:ring-ring/20",
-  ].join(" "),
-  outline: [
-    "border border-border bg-background text-foreground shadow-xs",
-    "hover:bg-muted hover:border-border hover:-translate-y-px hover:shadow-sm",
-    "active:translate-y-0",
-    "focus-visible:ring-ring/20",
-  ].join(" "),
+  primary:
+    "bg-primary text-primary-foreground shadow-sm hover:brightness-90 focus-visible:ring-primary/30",
+  secondary:
+    "bg-foreground text-background shadow-sm hover:bg-foreground/90 focus-visible:ring-foreground/30",
+  ghost:
+    "text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:ring-ring/20",
+  outline:
+    "border border-border bg-background text-foreground shadow-xs hover:bg-muted focus-visible:ring-ring/20",
 };
 
 const sizeStyles: Record<Size, string> = {
   sm: "h-9 px-3.5 text-[13px] gap-1.5",
-  md: "h-11 px-5 text-sm gap-2",
-  lg: "h-12 px-6 text-[15px] gap-2",
+  md: "h-10 px-5 text-sm gap-2",
+  lg: "h-11 px-6 text-[15px] gap-2",
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(

@@ -32,20 +32,20 @@ export interface SolutionData {
 }
 
 const defaultAgentCategories: AgentCategory[] = [
-  { category: "Operations AI Agents", agents: [
-    { name: "Email AI Agent", slug: "email" },
-    { name: "Documents AI Agent", slug: "documents" },
-    { name: "Meetings AI Agent", slug: "meetings" },
+  { category: "Operations Copilots", agents: [
+    { name: "Email Copilot", slug: "email" },
+    { name: "Documents Copilot", slug: "documents" },
+    { name: "Meetings Copilot", slug: "meetings" },
   ]},
-  { category: "Approval AI Agents", agents: [
-    { name: "Procurement AI Agent", slug: "procurement" },
-    { name: "Legal AI Agent", slug: "legal" },
+  { category: "Approval Copilots", agents: [
+    { name: "Procurement Copilot", slug: "procurement" },
+    { name: "Legal Copilot", slug: "legal" },
   ]},
-  { category: "Sales AI Agents", agents: [
-    { name: "Sales AI Agent", slug: "sales" },
+  { category: "Sales Copilots", agents: [
+    { name: "Sales Copilot", slug: "sales" },
   ]},
-  { category: "HR AI Agents", agents: [
-    { name: "HR AI Agent", slug: "hr" },
+  { category: "HR Copilots", agents: [
+    { name: "HR Copilot", slug: "hr" },
   ]},
 ];
 
@@ -85,17 +85,17 @@ export const solutions: SolutionData[] = [
       { title: "Returns & credits approvals", description: "Return requests enriched with order history, warranty status, and cost impact. Route to the right authority level based on value and reason code.", icon: "RotateCcw" },
     ],
     agentCategories: [
-      { category: "Operations AI Agents", agents: [
-        { name: "Email AI Agent", slug: "email" },
-        { name: "Documents AI Agent", slug: "documents" },
-        { name: "Logistics AI Agent", slug: "logistics" },
+      { category: "Operations Copilots", agents: [
+        { name: "Email Copilot", slug: "email" },
+        { name: "Documents Copilot", slug: "documents" },
+        { name: "Logistics Copilot", slug: "logistics" },
       ]},
-      { category: "Approval AI Agents", agents: [
-        { name: "Procurement AI Agent", slug: "procurement" },
-        { name: "Legal AI Agent", slug: "legal" },
+      { category: "Approval Copilots", agents: [
+        { name: "Procurement Copilot", slug: "procurement" },
+        { name: "Legal Copilot", slug: "legal" },
       ]},
-      { category: "Sales AI Agents", agents: [{ name: "Sales AI Agent", slug: "sales" }]},
-      { category: "HR AI Agents", agents: [{ name: "HR AI Agent", slug: "hr" }]},
+      { category: "Sales Copilots", agents: [{ name: "Sales Copilot", slug: "sales" }]},
+      { category: "HR Copilots", agents: [{ name: "HR Copilot", slug: "hr" }]},
     ],
     contextPackChips: ["Inventory position", "OTIF risk", "Customer priority", "Margin impact", "Prior exceptions", "Demand forecast"],
     metrics: [],
@@ -141,17 +141,17 @@ export const solutions: SolutionData[] = [
       { title: "Equipment & maintenance approvals", description: "Capital and maintenance requests include asset lifecycle data, downtime risk, regulatory compliance status, and budget availability.", icon: "Wrench" },
     ],
     agentCategories: [
-      { category: "Operations AI Agents", agents: [
-        { name: "Email AI Agent", slug: "email" },
-        { name: "Documents AI Agent", slug: "documents" },
-        { name: "Meetings AI Agent", slug: "meetings" },
+      { category: "Operations Copilots", agents: [
+        { name: "Email Copilot", slug: "email" },
+        { name: "Documents Copilot", slug: "documents" },
+        { name: "Meetings Copilot", slug: "meetings" },
       ]},
-      { category: "Approval AI Agents", agents: [
-        { name: "Procurement AI Agent", slug: "procurement" },
-        { name: "Legal AI Agent", slug: "legal" },
+      { category: "Approval Copilots", agents: [
+        { name: "Procurement Copilot", slug: "procurement" },
+        { name: "Legal Copilot", slug: "legal" },
       ]},
-      { category: "Sales AI Agents", agents: [{ name: "Sales AI Agent", slug: "sales" }]},
-      { category: "HR AI Agents", agents: [{ name: "HR AI Agent", slug: "hr" }]},
+      { category: "Sales Copilots", agents: [{ name: "Sales Copilot", slug: "sales" }]},
+      { category: "HR Copilots", agents: [{ name: "HR Copilot", slug: "hr" }]},
     ],
     contextPackChips: ["Supplier compliance", "Urgency & usage history", "Budget & policy match", "Documentation checklist", "Regulatory requirements", "Prior approvals"],
     metrics: [
@@ -217,14 +217,14 @@ export const solutions: SolutionData[] = [
       { title: "Accessorial charge approvals", description: "Unexpected charges reviewed against contract terms, lane benchmarks, and prior accessorial patterns for the same carrier.", icon: "DollarSign" },
     ],
     agentCategories: [
-      { category: "Operations AI Agents", agents: [
-        { name: "Email AI Agent", slug: "email" },
-        { name: "Documents AI Agent", slug: "documents" },
-        { name: "Logistics AI Agent", slug: "logistics" },
+      { category: "Operations Copilots", agents: [
+        { name: "Email Copilot", slug: "email" },
+        { name: "Documents Copilot", slug: "documents" },
+        { name: "Logistics Copilot", slug: "logistics" },
       ]},
-      { category: "Approval AI Agents", agents: [{ name: "Procurement AI Agent", slug: "procurement" }]},
-      { category: "Sales AI Agents", agents: [{ name: "Sales AI Agent", slug: "sales" }]},
-      { category: "HR AI Agents", agents: [{ name: "HR AI Agent", slug: "hr" }]},
+      { category: "Approval Copilots", agents: [{ name: "Procurement Copilot", slug: "procurement" }]},
+      { category: "Sales Copilots", agents: [{ name: "Sales Copilot", slug: "sales" }]},
+      { category: "HR Copilots", agents: [{ name: "HR Copilot", slug: "hr" }]},
     ],
     contextPackChips: ["ETA variance", "Lane history", "Customer priority", "Cost impact", "Carrier scorecards", "Compliance docs"],
     metrics: [],
@@ -246,17 +246,17 @@ export const solutions: SolutionData[] = [
       { title: "Capital expenditure approvals", description: "CapEx requests enriched with ROI projections, asset lifecycle data, capacity utilization, and budget availability for informed authorization.", icon: "TrendingUp" },
     ],
     agentCategories: [
-      { category: "Operations AI Agents", agents: [
-        { name: "Email AI Agent", slug: "email" },
-        { name: "Documents AI Agent", slug: "documents" },
-        { name: "Meetings AI Agent", slug: "meetings" },
+      { category: "Operations Copilots", agents: [
+        { name: "Email Copilot", slug: "email" },
+        { name: "Documents Copilot", slug: "documents" },
+        { name: "Meetings Copilot", slug: "meetings" },
       ]},
-      { category: "Approval AI Agents", agents: [
-        { name: "Procurement AI Agent", slug: "procurement" },
-        { name: "Legal AI Agent", slug: "legal" },
+      { category: "Approval Copilots", agents: [
+        { name: "Procurement Copilot", slug: "procurement" },
+        { name: "Legal Copilot", slug: "legal" },
       ]},
-      { category: "Sales AI Agents", agents: [{ name: "Sales AI Agent", slug: "sales" }]},
-      { category: "HR AI Agents", agents: [{ name: "HR AI Agent", slug: "hr" }]},
+      { category: "Sales Copilots", agents: [{ name: "Sales Copilot", slug: "sales" }]},
+      { category: "HR Copilots", agents: [{ name: "HR Copilot", slug: "hr" }]},
     ],
     contextPackChips: ["Supplier compliance docs", "Lead time & quality history", "BOM impact & downtime risk", "Budget & spend analysis", "Safety certifications", "Prior approvals"],
     metrics: [

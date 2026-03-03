@@ -111,9 +111,9 @@ export default async function IndustryPage({ params }: Props) {
         <Container>
           <FadeIn>
             <SectionHeading
-              badge="AI Agents"
-              title="Recommended agents"
-              description="Pre-configured for this industry. Each agent handles a complete job — not just a chat response."
+              badge="Persona Copilots"
+              title="Recommended Copilots"
+              description="Pre-configured for this industry. Each copilot handles a complete job — not just a chat response."
             />
           </FadeIn>
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

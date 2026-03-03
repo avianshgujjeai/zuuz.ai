@@ -1,62 +1,59 @@
 import {
-  BarChart3, Globe, Building2,
-  Database, Server, Gauge,
-  Ticket, Share2,
-  Users2, MessageSquare, Video, Mail,
-  GitBranch, Code2, AlertTriangle, Cloud,
-} from "lucide-react";
+  SiSalesforce, SiHubspot,
+  SiSap, SiOracle,
+  SiJirasoftware, SiZendesk,
+  SiSlack, SiZoom, SiGooglecloud,
+  SiGithub, SiGitlab,
+} from "react-icons/si";
+import { Mail, Users2, FileSpreadsheet, Database, Ticket, Cloud, Building2 } from "lucide-react";
 import { FadeIn } from "@/components/ui/fade-in";
 
-interface IntegrationItem {
-  label: string;
-  icon: typeof Mail;
-}
+interface IconItem { label: string; icon: React.ReactNode; }
+interface Group { category: string; items: IconItem[]; }
 
-interface IntegrationGroup {
-  category: string;
-  items: IntegrationItem[];
-}
-
-const groups: IntegrationGroup[] = [
+const groups: Group[] = [
+  {
+    category: "Collaboration",
+    items: [
+      { label: "Microsoft 365", icon: <Mail className="h-4 w-4" /> },
+      { label: "Teams", icon: <Users2 className="h-4 w-4" /> },
+      { label: "Outlook", icon: <Mail className="h-4 w-4" /> },
+      { label: "SharePoint", icon: <FileSpreadsheet className="h-4 w-4" /> },
+      { label: "Slack", icon: <SiSlack className="h-4 w-4" /> },
+      { label: "Zoom", icon: <SiZoom className="h-4 w-4" /> },
+      { label: "Google Workspace", icon: <SiGooglecloud className="h-4 w-4" /> },
+    ],
+  },
   {
     category: "CRM",
     items: [
-      { label: "Salesforce", icon: BarChart3 },
-      { label: "HubSpot", icon: Globe },
-      { label: "Zoho", icon: Building2 },
+      { label: "Salesforce", icon: <SiSalesforce className="h-4 w-4" /> },
+      { label: "HubSpot", icon: <SiHubspot className="h-4 w-4" /> },
+      { label: "Zoho", icon: <Building2 className="h-4 w-4" /> },
     ],
   },
   {
     category: "ERP",
     items: [
-      { label: "SAP", icon: Database },
-      { label: "Oracle", icon: Server },
-      { label: "MS Dynamics", icon: Gauge },
+      { label: "SAP", icon: <SiSap className="h-4 w-4" /> },
+      { label: "Oracle", icon: <SiOracle className="h-4 w-4" /> },
+      { label: "NetSuite", icon: <Database className="h-4 w-4" /> },
     ],
   },
   {
-    category: "ITSM / Tickets",
+    category: "ITSM",
     items: [
-      { label: "ServiceNow", icon: Ticket },
-      { label: "Jira", icon: Share2 },
-    ],
-  },
-  {
-    category: "Comms",
-    items: [
-      { label: "Teams", icon: Users2 },
-      { label: "Slack", icon: MessageSquare },
-      { label: "Zoom", icon: Video },
-      { label: "Outlook", icon: Mail },
+      { label: "ServiceNow", icon: <Ticket className="h-4 w-4" /> },
+      { label: "Jira", icon: <SiJirasoftware className="h-4 w-4" /> },
+      { label: "Zendesk", icon: <SiZendesk className="h-4 w-4" /> },
     ],
   },
   {
     category: "Dev Tools",
     items: [
-      { label: "GitHub", icon: GitBranch },
-      { label: "GitLab", icon: Code2 },
-      { label: "Azure DevOps", icon: Cloud },
-      { label: "PagerDuty", icon: AlertTriangle },
+      { label: "GitHub", icon: <SiGithub className="h-4 w-4" /> },
+      { label: "GitLab", icon: <SiGitlab className="h-4 w-4" /> },
+      { label: "Azure DevOps", icon: <Cloud className="h-4 w-4" /> },
     ],
   },
 ];
@@ -64,24 +61,19 @@ const groups: IntegrationGroup[] = [
 export function IntegrationsWall() {
   return (
     <div>
-      <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-8 text-center">
+      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-6 text-center">
         Connects with the tools your teams already use
       </p>
-      <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="grid gap-5 sm:grid-cols-3 lg:grid-cols-5">
         {groups.map((group, gi) => (
-          <FadeIn key={group.category} delay={gi * 0.06}>
+          <FadeIn key={group.category} delay={gi * 0.05}>
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/60 mb-2">
-                {group.category}
-              </p>
-              <div className="space-y-1.5">
-                {group.items.map(({ label, icon: Icon }) => (
-                  <div
-                    key={label}
-                    className="flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-2 transition-colors hover:border-primary/20"
-                  >
-                    <Icon className="h-3.5 w-3.5 text-muted-foreground shrink-0" />
-                    <span className="text-xs font-medium text-foreground">{label}</span>
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/60 mb-1.5">{group.category}</p>
+              <div className="space-y-1">
+                {group.items.map(({ label, icon }) => (
+                  <div key={label} className="flex items-center gap-2 rounded-lg border border-border bg-card px-2.5 py-1.5 transition-colors hover:border-primary/20">
+                    <span className="text-muted-foreground shrink-0">{icon}</span>
+                    <span className="text-[11px] font-medium text-foreground">{label}</span>
                   </div>
                 ))}
               </div>
