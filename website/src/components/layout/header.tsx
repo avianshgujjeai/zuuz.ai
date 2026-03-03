@@ -10,6 +10,7 @@ import { navItems } from "@/config/nav";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { MegaMenu } from "./mega-menu";
+import { ProductsMegaMenu } from "./products-mega-menu";
 import { MobileMenu } from "./mobile-menu";
 
 export function Header() {
@@ -96,11 +97,19 @@ export function Header() {
                   {item.label}
                 </Link>
                 {item.groups && openMenu === item.label && (
-                  <MegaMenu
-                    groups={item.groups}
-                    onMouseEnter={() => handleMouseEnter(item.label)}
-                    onMouseLeave={handleMouseLeave}
-                  />
+                  item.customMega === "products" ? (
+                    <ProductsMegaMenu
+                      groups={item.groups}
+                      onMouseEnter={() => handleMouseEnter(item.label)}
+                      onMouseLeave={handleMouseLeave}
+                    />
+                  ) : (
+                    <MegaMenu
+                      groups={item.groups}
+                      onMouseEnter={() => handleMouseEnter(item.label)}
+                      onMouseLeave={handleMouseLeave}
+                    />
+                  )
                 )}
               </div>
             ))}

@@ -23,6 +23,7 @@ import { Card, CardTitle, CardDescription } from "@/components/ui/card";
 import { CTA } from "@/components/ui/cta";
 import { LogoCloud } from "@/components/ui/logo-cloud";
 import { FadeIn } from "@/components/ui/fade-in";
+import { DemoVideos } from "@/components/sections/demo-videos";
 import { pillars } from "@/content/products";
 import { agents } from "@/content/agents";
 
@@ -36,6 +37,12 @@ const pillarIcons: Record<string, React.ReactNode> = {
   "ai-agents": <Bot className="h-6 w-6" />,
   workflows: <GitBranch className="h-6 w-6" />,
   "unified-search": <Search className="h-6 w-6" />,
+};
+
+const pillarDisplayNames: Record<string, string> = {
+  "ai-agents": "Persona Copilots",
+  workflows: "Execution Flows",
+  "unified-search": "Evidence Search",
 };
 
 const howSteps = [
@@ -116,7 +123,7 @@ export default function HomePage() {
                   <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     {pillarIcons[pillar.slug]}
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground">{pillar.title}</h3>
+                  <h3 className="text-xl font-semibold text-foreground">{pillarDisplayNames[pillar.slug] ?? pillar.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{pillar.summary}</p>
                   <ul className="mt-4 space-y-2">
                     {pillar.bullets.map((b, j) => (
@@ -127,7 +134,7 @@ export default function HomePage() {
                     ))}
                   </ul>
                   <div className="mt-auto pt-6 inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                    Explore {pillar.title} <ArrowRight className="h-3.5 w-3.5" />
+                    Explore {pillarDisplayNames[pillar.slug] ?? pillar.title} <ArrowRight className="h-3.5 w-3.5" />
                   </div>
                 </Link>
               </FadeIn>
@@ -163,14 +170,32 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Teams we automate - Agent grid */}
+      {/* Demo videos */}
       <section className="py-24">
         <Container>
           <FadeIn>
             <SectionHeading
-              badge="AI Agents"
+              badge="See it in action"
+              title="Watch ZUUZ work"
+              description="Each demo shows a real workflow — from signal to action to audit trail."
+            />
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="mt-16">
+              <DemoVideos />
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* Teams we automate - Copilot grid */}
+      <section className="py-24 bg-muted/30">
+        <Container>
+          <FadeIn>
+            <SectionHeading
+              badge="Persona Copilots"
               title="Teams we automate"
-              description="Purpose-built agents for every operational function. Each one handles a complete job—not just a chat response."
+              description="Purpose-built copilots for every operational function. Each one handles a complete job—not just a chat response."
             />
           </FadeIn>
           <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

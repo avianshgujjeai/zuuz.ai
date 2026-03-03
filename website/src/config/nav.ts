@@ -13,32 +13,21 @@ export interface NavItem {
   label: string;
   href: string;
   groups?: NavGroup[];
+  customMega?: "products";
 }
 
 export const navItems: NavItem[] = [
   {
     label: "Products",
     href: "/",
+    customMega: "products",
     groups: [
       {
         label: "Platform",
         links: [
-          { label: "AI Agents", href: "/products/ai-agents", description: "End-to-end agents for sales, procurement, legal, and more" },
-          { label: "Workflows", href: "/products/workflows", description: "Import and automate your existing business processes" },
-          { label: "Unified Search", href: "/products/unified-search", description: "One search across every tool—with citations and actions" },
-        ],
-      },
-      {
-        label: "AI Agents",
-        links: [
-          { label: "Sales Agent", href: "/products/agents/sales" },
-          { label: "Procurement Agent", href: "/products/agents/procurement" },
-          { label: "Email Agent", href: "/products/agents/email" },
-          { label: "Document Agent", href: "/products/agents/documents" },
-          { label: "Meeting Agent", href: "/products/agents/meetings" },
-          { label: "HR Agent", href: "/products/agents/hr" },
-          { label: "Legal Agent", href: "/products/agents/legal" },
-          { label: "Logistics Agent", href: "/products/agents/logistics" },
+          { label: "Persona Copilots", href: "/products/ai-agents", description: "Role-based copilots for Sales, Procurement, Ops, HR, and Legal — grounded in your systems, governed by policy, and designed to take action (not just answer)." },
+          { label: "Execution Flows", href: "/products/workflows", description: "Import your existing CRM/ERP/ITSM processes and run approvals end-to-end with guardrails, audit trails, and write-back to systems of record." },
+          { label: "Evidence Search", href: "/products/unified-search", description: "One permission-aware search across every tool — answers with citations plus the next best action in the same workspace." },
         ],
       },
     ],
