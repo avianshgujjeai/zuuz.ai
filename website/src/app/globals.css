@@ -68,8 +68,8 @@
   }
 
   h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    line-height: 1.08;
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    line-height: 1.1;
     font-weight: 700;
   }
 
@@ -105,8 +105,8 @@
   .bg-grid {
     background-image: radial-gradient(
       circle,
-      rgb(var(--color-border) / 0.5) 1px,
-      transparent 1px
+      rgb(var(--color-border) / 0.25) 0.75px,
+      transparent 0.75px
     );
     background-size: 24px 24px;
   }
@@ -122,8 +122,8 @@
 
   .bg-hero-glow {
     background: radial-gradient(
-      ellipse 80% 50% at 50% -20%,
-      rgb(var(--color-primary) / 0.06),
+      ellipse 70% 40% at 50% -15%,
+      rgb(var(--color-primary) / 0.035),
       transparent
     );
   }
