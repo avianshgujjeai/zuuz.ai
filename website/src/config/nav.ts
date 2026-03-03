@@ -23,16 +23,22 @@ export const navItems: NavItem[] = [
       {
         label: "Platform",
         links: [
-          { label: "AI Agents", href: "/products/agents", description: "Autonomous agents that handle complex tasks end-to-end" },
-          { label: "Workflows", href: "/products/workflows", description: "Automate multi-step processes with intelligent orchestration" },
-          { label: "Unified Search", href: "/products/unified-search", description: "Search across every tool and data source in one query" },
+          { label: "AI Agents", href: "/products/ai-agents", description: "End-to-end agents for sales, procurement, legal, and more" },
+          { label: "Workflows", href: "/products/workflows", description: "Import and automate your existing business processes" },
+          { label: "Unified Search", href: "/products/unified-search", description: "One search across every tool—with citations and actions" },
         ],
       },
       {
-        label: "Capabilities",
+        label: "AI Agents",
         links: [
-          { label: "Integrations", href: "/products/agents#integrations", description: "Connect to 200+ enterprise tools" },
-          { label: "Security", href: "/about/trust", description: "Enterprise-grade security & compliance" },
+          { label: "Sales Agent", href: "/products/agents/sales" },
+          { label: "Procurement Agent", href: "/products/agents/procurement" },
+          { label: "Email Agent", href: "/products/agents/email" },
+          { label: "Document Agent", href: "/products/agents/documents" },
+          { label: "Meeting Agent", href: "/products/agents/meetings" },
+          { label: "HR Agent", href: "/products/agents/hr" },
+          { label: "Legal Agent", href: "/products/agents/legal" },
+          { label: "Logistics Agent", href: "/products/agents/logistics" },
         ],
       },
     ],
@@ -92,10 +98,10 @@ export const navItems: NavItem[] = [
       {
         label: "Company",
         links: [
-          { label: "Our Story", href: "/about/company", description: "Mission, vision, and team" },
-          { label: "Careers", href: "/about/careers", description: "Join the team building the future of work" },
-          { label: "Trust & Security", href: "/about/trust", description: "Compliance, privacy, and security" },
-          { label: "Contact", href: "/about/contact", description: "Get in touch with our team" },
+          { label: "Our Story", href: "/about/our-story", description: "How a repeating enterprise pain became a platform" },
+          { label: "Careers", href: "/about/careers", description: "Build the operating layer for modern enterprises" },
+          { label: "Trust & Security", href: "/about/trust-security", description: "SOC 2 Type I. On-prem. Immutable audit trails." },
+          { label: "Contact", href: "/about/contact", description: "Offices in California, UAE, and India" },
         ],
       },
     ],

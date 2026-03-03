@@ -11,8 +11,8 @@ export function IndustryGrid() {
         <FadeIn>
           <SectionHeading
             badge="Solutions"
-            title="Industry grid section title"
-            description="1–2 sentence section description placeholder."
+            title="Built for your industry"
+            description="Purpose-built agents, workflows, and search for the challenges your industry faces every day."
           />
         </FadeIn>
         <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -21,7 +21,7 @@ export function IndustryGrid() {
               <Card href={`/solutions/${sol.slug}`} className="text-center">
                 <div className="mx-auto mb-4 h-12 w-12 rounded-xl bg-primary/10" />
                 <CardTitle className="text-base">{sol.industry}</CardTitle>
-                <CardDescription className="mt-1">{sol.description}</CardDescription>
+                <CardDescription className="mt-1">{sol.outcomeOneLiner}</CardDescription>
               </Card>
             </FadeIn>
           ))}
