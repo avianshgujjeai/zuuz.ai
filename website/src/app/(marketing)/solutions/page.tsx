@@ -47,7 +47,7 @@ export default function SolutionsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-28">
+      <section className="relative overflow-hidden pt-16 pb-20 sm:pt-16 sm:pb-28">
         <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
         <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
         <Container className="relative">
@@ -80,7 +80,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* Industries Grid */}
-      <section id="industries" className="py-24">
+      <section id="industries" className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -110,7 +110,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* 3 Pillars */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading

@@ -69,7 +69,7 @@ export default async function ManualPage({ params }: Props) {
       </section>
 
       {/* PDF preview */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <div className="mx-auto max-w-4xl rounded-2xl border border-border overflow-hidden shadow-sm bg-muted/30">

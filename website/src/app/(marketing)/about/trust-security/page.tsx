@@ -38,7 +38,7 @@ export default function TrustSecurityPage() {
       </section>
 
       {/* Leadership credibility */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -64,7 +64,7 @@ export default function TrustSecurityPage() {
       </section>
 
       {/* Security posture */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -93,7 +93,7 @@ export default function TrustSecurityPage() {
       </section>
 
       {/* How we build trust */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -115,7 +115,7 @@ export default function TrustSecurityPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading

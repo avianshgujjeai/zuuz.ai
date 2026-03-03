@@ -19,7 +19,7 @@ export function CaseStudyGrid({
   items = customers,
 }: CaseStudyGridProps) {
   return (
-    <section className="py-24">
+    <section className="py-16">
       <Container>
         <FadeIn>
           <SectionHeading badge={badge} title={title} description={description} />

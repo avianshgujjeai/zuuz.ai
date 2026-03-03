@@ -14,7 +14,7 @@ export default function ResourcesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-24">
+      <section className="relative overflow-hidden pt-16 pb-20 sm:pt-16 sm:pb-16">
         <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
         <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
         <Container className="relative">
@@ -33,7 +33,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Resources hub */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <ResourcesHub />

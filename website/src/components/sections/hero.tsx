@@ -21,7 +21,7 @@ export function Hero({
   secondaryCta = { label: "Secondary action", href: "/products/agents" },
 }: HeroProps) {
   return (
-    <section className="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32">
+    <section className="relative overflow-hidden pt-16 pb-16 sm:pt-16 sm:pb-20">
       <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
       <div className="absolute inset-0 bg-grid opacity-40" aria-hidden="true" />
       <Container className="relative">

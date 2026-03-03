@@ -37,7 +37,7 @@ const faq = [
 export default function SecurityPage() {
   return (
     <>
-      <section className="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32">
+      <section className="relative overflow-hidden pt-16 pb-16 sm:pt-16 sm:pb-20">
         <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
         <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
         <Container className="relative">
@@ -60,7 +60,7 @@ export default function SecurityPage() {
         </Container>
       </section>
 
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -84,7 +84,7 @@ export default function SecurityPage() {
         </Container>
       </section>
 
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading badge="Principles" title="How we build trust" />
@@ -109,7 +109,7 @@ export default function SecurityPage() {
         </Container>
       </section>
 
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading badge="FAQ" title="Common security questions" />

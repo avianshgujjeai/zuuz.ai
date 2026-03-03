@@ -39,9 +39,7 @@
 }
 
 @layer base {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     border-color: rgb(var(--color-border));
   }
 
@@ -83,18 +81,26 @@
 
 @layer utilities {
   .bg-grid {
-    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.15) 0.75px, transparent 0.75px);
-    background-size: 24px 24px;
+    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.12) 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
   }
 
   .bg-dot {
-    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.4) 0.5px, transparent 0.5px);
-    background-size: 16px 16px;
+    background-image: radial-gradient(circle, rgb(var(--color-border) / 0.3) 0.5px, transparent 0.5px);
+    background-size: 14px 14px;
   }
 
   .bg-hero-glow {
-    background: radial-gradient(ellipse 60% 35% at 50% -10%, rgb(var(--color-primary) / 0.025), transparent);
+    background: radial-gradient(ellipse 60% 35% at 50% -10%, rgb(var(--color-primary) / 0.02), transparent);
   }
 
   .text-balance { text-wrap: balance; }
+
+  .section       { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+  .section-tight { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+
+  @media (min-width: 768px) {
+    .section       { padding-top: 4.5rem; padding-bottom: 4.5rem; }
+    .section-tight { padding-top: 3rem;   padding-bottom: 3rem; }
+  }
 }

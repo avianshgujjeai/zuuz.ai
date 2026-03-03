@@ -31,7 +31,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Founder narrative */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <div className="mx-auto max-w-3xl space-y-16">
             {ourStory.founderNarrative.map((section, i) => (
@@ -47,7 +47,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Why now */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <div className="mx-auto max-w-3xl">
@@ -60,7 +60,7 @@ export default function OurStoryPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading

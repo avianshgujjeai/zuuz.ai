@@ -27,7 +27,7 @@ export function HeroShell({
 }: HeroShellProps) {
   return (
     <section
-      className={`relative overflow-hidden bg-hero-glow ${compact ? "pt-12 pb-16" : "pt-16 pb-24 sm:pt-24 sm:pb-32"}`}
+      className={`relative overflow-hidden bg-hero-glow ${compact ? "pt-12 pb-16" : "pt-16 pb-16 sm:pt-16 sm:pb-20"}`}
     >
       <div className="absolute inset-0 bg-grid opacity-[0.35]" aria-hidden="true" />
       <Container className="relative">

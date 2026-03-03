@@ -6,7 +6,7 @@ import { solutions } from "@/content/solutions";
 
 export function IndustryGrid() {
   return (
-    <section className="py-24">
+    <section className="py-16">
       <Container>
         <FadeIn>
           <SectionHeading

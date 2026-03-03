@@ -35,7 +35,7 @@ export default function CustomersPage() {
         </Container>
       </section>
 
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -58,7 +58,7 @@ export default function CustomersPage() {
         </Container>
       </section>
 
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading

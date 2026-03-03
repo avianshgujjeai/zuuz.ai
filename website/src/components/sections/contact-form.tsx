@@ -8,7 +8,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 
 export function ContactForm() {
   return (
-    <section className="py-24">
+    <section className="py-16">
       <Container>
         <FadeIn>
           <div className="mx-auto max-w-xl">

@@ -28,7 +28,7 @@ export function WorkflowStrip({
   steps = defaultSteps,
 }: WorkflowStripProps) {
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="py-16 bg-muted/30">
       <Container>
         <FadeIn>
           <SectionHeading badge={badge} title={title} />

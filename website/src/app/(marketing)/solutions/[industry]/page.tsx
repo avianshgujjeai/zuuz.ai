@@ -66,7 +66,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* Use Cases */}
-      <section id="use-cases" className="py-24">
+      <section id="use-cases" className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -107,7 +107,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* Recommended Agents */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -143,7 +143,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* Workflow Timeline */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -161,7 +161,7 @@ export default async function IndustryPage({ params }: Props) {
       </section>
 
       {/* Unified Search */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -206,7 +206,7 @@ export default async function IndustryPage({ params }: Props) {
       )}
 
       {/* Security */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading

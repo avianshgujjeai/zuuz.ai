@@ -21,7 +21,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-16 pb-24 sm:pt-24 sm:pb-32">
+      <section className="relative overflow-hidden pt-16 pb-16 sm:pt-16 sm:pb-20">
         <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
         <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
         <Container className="relative">
@@ -48,7 +48,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4-card grid */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2">
             {aboutOverview.cards.map((card, i) => {

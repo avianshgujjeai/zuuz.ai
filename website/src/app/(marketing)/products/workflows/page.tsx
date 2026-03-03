@@ -62,7 +62,7 @@ export default function WorkflowsPage() {
       </section>
 
       {/* Workflow intake */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -88,7 +88,7 @@ export default function WorkflowsPage() {
       </section>
 
       {/* Interactive Flow Animator */}
-      <section id="flow-demo" className="py-24 bg-muted/30">
+      <section id="flow-demo" className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -106,7 +106,7 @@ export default function WorkflowsPage() {
       </section>
 
       {/* Workflow library */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading

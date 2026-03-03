@@ -81,7 +81,7 @@ export default async function AgentDetailPage({ params }: Props) {
       </section>
 
       {/* Pain → Fix → Result */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading title="From manual work to autonomous execution" />
@@ -103,7 +103,7 @@ export default async function AgentDetailPage({ params }: Props) {
       </section>
 
       {/* Automations included */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -126,7 +126,7 @@ export default async function AgentDetailPage({ params }: Props) {
       </section>
 
       {/* Typical workflows */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -144,7 +144,7 @@ export default async function AgentDetailPage({ params }: Props) {
       </section>
 
       {/* Inputs / Outputs / Controls */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <div className="grid gap-8 sm:grid-cols-3">
             <FadeIn>
@@ -200,7 +200,7 @@ export default async function AgentDetailPage({ params }: Props) {
       </section>
 
       {/* Time & cost impact */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-card p-8 sm:p-12 text-center">

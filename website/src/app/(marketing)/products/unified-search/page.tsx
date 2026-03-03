@@ -68,7 +68,7 @@ export default function UnifiedSearchPage() {
       </section>
 
       {/* From keywords to questions */}
-      <section id="search-demo" className="py-24">
+      <section id="search-demo" className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -86,7 +86,7 @@ export default function UnifiedSearchPage() {
       </section>
 
       {/* Permission-aware */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -112,7 +112,7 @@ export default function UnifiedSearchPage() {
       </section>
 
       {/* Search to action */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading

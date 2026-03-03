@@ -13,7 +13,7 @@ const placeholderTeam = [
 
 export function TeamGrid() {
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="py-16 bg-muted/30">
       <Container>
         <FadeIn>
           <SectionHeading

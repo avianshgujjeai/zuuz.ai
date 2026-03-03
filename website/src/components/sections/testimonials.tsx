@@ -19,7 +19,7 @@ export function Testimonials({
 }: TestimonialsProps) {
   const items = customers.slice(0, limit);
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="py-16 bg-muted/30">
       <Container>
         <FadeIn>
           <SectionHeading badge={badge} title={title} description={description} />

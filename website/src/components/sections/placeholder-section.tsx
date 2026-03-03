@@ -37,7 +37,7 @@ export function PlaceholderSection({
 
   return (
     <section
-      className={cn("py-24", isMuted && "bg-muted/30", className)}
+      className={cn("py-16", isMuted && "bg-muted/30", className)}
     >
       <Container>
         <FadeIn>

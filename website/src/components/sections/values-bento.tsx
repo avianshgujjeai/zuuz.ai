@@ -13,7 +13,7 @@ const placeholderValues = [
 
 export function ValuesBento() {
   return (
-    <section className="py-24">
+    <section className="py-16">
       <Container>
         <FadeIn>
           <SectionHeading

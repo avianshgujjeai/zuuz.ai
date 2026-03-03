@@ -116,7 +116,7 @@ export default async function BlogPostPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <div className="mx-auto max-w-3xl">
             {body ? (
@@ -135,7 +135,7 @@ export default async function BlogPostPage({ params }: Props) {
         </Container>
       </section>
 
-      <section className="py-24 bg-muted/30">
+      <section className="py-16 bg-muted/30">
         <Container>
           <div className="mb-8">
             <Button variant="ghost" asChild>

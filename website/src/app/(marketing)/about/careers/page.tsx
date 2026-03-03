@@ -42,7 +42,7 @@ export default function CareersPage() {
       </section>
 
       {/* Culture */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading title={careers.culture.heading} />
@@ -61,7 +61,7 @@ export default function CareersPage() {
       </section>
 
       {/* Open roles */}
-      <section id="open-roles" className="py-24 bg-muted/30">
+      <section id="open-roles" className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading

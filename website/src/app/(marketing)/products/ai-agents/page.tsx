@@ -63,7 +63,7 @@ export default function AIAgentsPage() {
       </section>
 
       {/* How agents work */}
-      <section className="py-24">
+      <section className="py-16">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -89,7 +89,7 @@ export default function AIAgentsPage() {
       </section>
 
       {/* Agent grid */}
-      <section id="agent-grid" className="py-24 bg-muted/30">
+      <section id="agent-grid" className="py-16 bg-muted/30">
         <Container>
           <FadeIn>
             <SectionHeading

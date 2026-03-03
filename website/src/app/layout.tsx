@@ -23,11 +23,11 @@ const mono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "ZUUZ — The Intelligent Enterprise Platform",
+    default: "ZUUZ — The Execution Layer for Enterprise Work",
     template: "%s | ZUUZ",
   },
   description:
-    "Deploy AI agents, orchestrate workflows, and search across every tool — all from one unified platform built for the enterprise.",
+    "ZUUZ connects email, documents, meetings, CRM, ERP, and ITSM. It assembles evidence, routes approvals through policy, and safely writes back to systems of record.",
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "ZUUZ",
-    title: "ZUUZ — The Intelligent Enterprise Platform",
+    title: "ZUUZ — The Execution Layer for Enterprise Work",
     description:
-      "Deploy AI agents, orchestrate workflows, and search across every tool — all from one unified platform.",
+      "Persona Copilots, Execution Flows, and Evidence Search — one platform for enterprise operations.",
   },
 };
 

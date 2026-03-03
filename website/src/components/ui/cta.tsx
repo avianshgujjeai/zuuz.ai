@@ -24,7 +24,7 @@ export function CTA({
   className,
 }: CTAProps) {
   return (
-    <section className={cn("py-24", className)}>
+    <section className={cn("py-16", className)}>
       <Container>
         <div className="relative overflow-hidden rounded-2xl bg-[#0a0a14] px-6 py-16 sm:px-16 sm:py-20">
           <div
