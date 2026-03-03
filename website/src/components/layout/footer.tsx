@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { navItems } from "@/config/nav";
 
@@ -29,14 +30,14 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-6">
             {/* Brand */}
             <div className="col-span-2 md:col-span-4 lg:col-span-2">
-              <Link
-                href="/"
-                className="flex items-center gap-2 text-lg font-bold text-foreground"
-              >
-                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
-                  Z
-                </div>
-                ZUUZ
+              <Link href="/" className="flex items-center" aria-label="ZUUZ home">
+                <Image
+                  src="/brand/zuuz-logo.png"
+                  alt="ZUUZ"
+                  width={90}
+                  height={27}
+                  className="h-6 w-auto"
+                />
               </Link>
               <p className="mt-3 max-w-xs text-sm text-muted-foreground leading-relaxed">
                 Short brand description placeholder.

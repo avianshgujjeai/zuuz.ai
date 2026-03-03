@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     "Deploy AI agents, orchestrate workflows, and search across every tool — all from one unified platform built for the enterprise.",
   icons: {
     icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
