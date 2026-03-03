@@ -92,6 +92,13 @@ export const manuals: PdfResource[] = [
     tags: ["AI Agents", "Meetings", "Operations"],
     pdfPath: "/resources/manuals/meetings-ai-agent.pdf",
   },
+  {
+    slug: "approving-customer-deal",
+    title: "Why Approving One Big Customer Deal Still Takes 3–5 Days",
+    summary: "The hidden friction in enterprise deal approvals and how AI-powered ApprovalOps eliminates it.",
+    tags: ["ApprovalOps", "Sales", "Enterprise"],
+    pdfPath: "/resources/manuals/approving-customer-deal.pdf",
+  },
 ];
 
 // ─── Industry solution guides ────────────────────────────────
@@ -123,6 +130,20 @@ export const industryGuides: PdfResource[] = [
     summary: "Project approvals, vendor management, and compliance workflows for construction and real estate operations.",
     tags: ["Construction", "Real Estate", "ApprovalOps"],
     pdfPath: "/resources/industry/construction-real-estate.pdf",
+  },
+  {
+    slug: "distribution-trading",
+    title: "ZUUZ for Distribution & Trading",
+    summary: "PO approvals, pricing exceptions, and fulfillment operations — with full context and audit trails.",
+    tags: ["Distribution", "Trading", "ApprovalOps"],
+    pdfPath: "/resources/industry/distribution-trading.pdf",
+  },
+  {
+    slug: "it-services",
+    title: "ZUUZ for IT Services",
+    summary: "Change requests, vendor onboarding, and operational approvals — fast, compliant, auditable.",
+    tags: ["IT Services", "ApprovalOps", "Workflows"],
+    pdfPath: "/resources/industry/it-services.pdf",
   },
 ];
 
