@@ -76,17 +76,11 @@ export const navItems: NavItem[] = [
     href: "/resources",
     groups: [
       {
-        label: "Learn",
+        label: "Content",
         links: [
-          { label: "Blog", href: "/resources/blog", description: "Latest insights and product updates" },
-          { label: "Guides", href: "/resources/guides", description: "Step-by-step implementation guides" },
-          { label: "Webinars", href: "/resources/webinars", description: "Live and on-demand sessions" },
-        ],
-      },
-      {
-        label: "Develop",
-        links: [
-          { label: "Documentation", href: "/resources/docs", description: "API reference and tutorials" },
+          { label: "Blog", href: "/resources", description: "Insights on enterprise AI, agents, and operations" },
+          { label: "Product Manuals", href: "/resources", description: "Agent one-pagers and product guides (PDF)" },
+          { label: "Industry Guides", href: "/resources", description: "Industry-specific solution documents (PDF)" },
         ],
       },
     ],
