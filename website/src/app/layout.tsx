@@ -1,51 +1,21 @@
-import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  weight: ["500", "600", "700", "800"],
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
-export const metadata: Metadata = {
+}export const metadata: Metadata = {
   title: {
-    default: "ZUUZ — The Intelligent Enterprise Platform",
+    default: "ZUUZ — The Execution Layer for Enterprise Work",
     template: "%s | ZUUZ",
   },
   description:
-    "Deploy AI agents, orchestrate workflows, and search across every tool — all from one unified platform built for the enterprise.",
+    "ZUUZ connects email, documents, meetings, CRM, ERP, and ITSM. Assemble evidence automatically, route approvals through policy, and safely write back to systems of record.",
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    // Remove apple icon unless you actually have website/public/apple-touch-icon.png
+    // apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: "ZUUZ",
-    title: "ZUUZ — The Intelligent Enterprise Platform",
+    title: "ZUUZ — The Execution Layer for Enterprise Work",
     description:
-      "Deploy AI agents, orchestrate workflows, and search across every tool — all from one unified platform.",
+      "Connect your tools, assemble evidence automatically, route approvals through policy, and safely write back to systems of record.",
   },
 };
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable} ${mono.variable}`}>
-      <body className="min-h-screen font-sans antialiased">{children}</body>
-    </html>
-  );
-}
