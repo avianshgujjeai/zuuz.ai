@@ -55,7 +55,7 @@ export default function HomePage() {
           <HeroAnimated>
             <div className="mx-auto max-w-3xl text-center">
               <HeroItem>
-                <span className="inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                <span className="inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] gradient-text">
                   DECISION &bull; EXECUTION &bull; AI WORKSPACE
                 </span>
               </HeroItem>
@@ -76,7 +76,7 @@ export default function HomePage() {
               </HeroItem>
               <HeroItem>
                 <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                  <Button size="lg" className="relative overflow-hidden group hover:shadow-[0_0_24px_rgba(0,24,255,0.25)] active:scale-[0.98] transition-all duration-200" asChild>
+                  <Button size="lg" className="relative overflow-hidden group animate-breathe" asChild>
                     <Link href="/about/contact">
                       Request a demo <ArrowRight className="h-4 w-4 opacity-70" />
                       <ShimmerSpan />
@@ -93,7 +93,8 @@ export default function HomePage() {
       </section>
 
       {/* Integrations */}
-      <section id="integrations" className="py-10 border-y border-border">
+      <div className="section-separator" aria-hidden="true" />
+      <section id="integrations" className="py-10">
         <Container>
           <FadeIn><IntegrationsWall /></FadeIn>
         </Container>
@@ -146,7 +147,8 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="py-12 md:py-14 bg-muted/30">
+      <div className="section-separator" aria-hidden="true" />
+      <section className="py-12 md:py-14 bg-section-alt">
         <Container>
           <FadeIn>
             <SectionHeading
@@ -183,7 +185,8 @@ export default function HomePage() {
       </section>
 
       {/* Live Work Showcase */}
-      <section className="py-12 md:py-14 bg-muted/30">
+      <div className="section-separator" aria-hidden="true" />
+      <section className="py-12 md:py-14 bg-section-alt">
         <Container>
           <FadeIn>
             <SectionHeading badge="Live Work" title="Live Work Showcase" description="See how ZUUZ turns everyday work into executed outcomes — with evidence, controls, and safe write-back." />
@@ -216,7 +219,8 @@ export default function HomePage() {
       </section>
 
       {/* Trust */}
-      <section className="py-8 border-y border-border">
+      <div className="section-separator" aria-hidden="true" />
+      <section className="py-8">
         <Container>
           <FadeIn>
             <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3">

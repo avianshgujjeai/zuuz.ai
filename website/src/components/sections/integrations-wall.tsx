@@ -71,8 +71,8 @@ export function IntegrationsWall() {
               <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/60 mb-1.5">{group.category}</p>
               <div className="space-y-1">
                 {group.items.map(({ label, icon }) => (
-                  <div key={label} className="flex items-center gap-2 rounded-lg border border-border bg-card px-2.5 py-1.5 transition-colors hover:border-primary/20">
-                    <span className="text-muted-foreground shrink-0">{icon}</span>
+                  <div key={label} className="flex items-center gap-2 rounded-lg border border-border/40 bg-white/70 px-2.5 py-1.5 transition-all duration-200 hover:border-primary/20 hover:shadow-xs group/tile">
+                    <span className="text-muted-foreground shrink-0 transition-all duration-200 group-hover/tile:text-primary group-hover/tile:scale-110">{icon}</span>
                     <span className="text-[11px] font-medium text-foreground">{label}</span>
                   </div>
                 ))}
