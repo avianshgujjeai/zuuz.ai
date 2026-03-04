@@ -48,7 +48,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18 overflow-hidden dot-grid">
+      <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18 overflow-hidden dot-grid noise-overlay">
         <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
         <HeroBlobs />
         <Container className="relative z-10">
