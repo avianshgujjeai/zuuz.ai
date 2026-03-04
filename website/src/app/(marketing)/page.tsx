@@ -17,6 +17,10 @@ import { IntegrationsWall } from "@/components/sections/integrations-wall";
 import { HeroAnimated, HeroItem, HeroBlobs, ShimmerSpan } from "@/components/sections/hero-animated";
 import { ThreePillars } from "@/components/sections/three-pillars";
 import { ScrollAnimate } from "@/components/ui/scroll-animate";
+import { AnimatedStroke } from "@/components/visual/animated-stroke";
+import { Glow } from "@/components/visual/glow";
+import { WorkflowTableMock } from "@/components/visual/workflow-table-mock";
+import { ActivityConsole } from "@/components/visual/activity-console";
 import { agents } from "@/content/agents";
 
 export const metadata: Metadata = {
@@ -85,6 +89,12 @@ export default function HomePage() {
               </HeroItem>
             </div>
           </HeroAnimated>
+          {/* Context threads visual */}
+          <FadeIn delay={0.4}>
+            <div className="mt-10 max-w-2xl mx-auto opacity-60">
+              <AnimatedStroke />
+            </div>
+          </FadeIn>
         </Container>
       </section>
 
@@ -139,6 +149,20 @@ export default function HomePage() {
             <SectionHeading badge="See it in action" title="Watch ZUUZ work" description="Each demo shows a real workflow — from signal to action to audit trail." />
           </FadeIn>
           <FadeIn delay={0.1}><div className="mt-8"><DemoVideos /></div></FadeIn>
+        </Container>
+      </section>
+      </ScrollAnimate>
+
+      {/* Product UI Mocks */}
+      <div className="section-separator" aria-hidden="true" />
+      <ScrollAnimate>
+      <section className="py-12 md:py-14 relative">
+        <Glow className="-top-40 left-1/4" size={400} opacity={0.03} />
+        <Container className="relative z-10">
+          <div className="grid gap-6 lg:grid-cols-2">
+            <FadeIn><WorkflowTableMock /></FadeIn>
+            <FadeIn delay={0.15}><ActivityConsole /></FadeIn>
+          </div>
         </Container>
       </section>
       </ScrollAnimate>

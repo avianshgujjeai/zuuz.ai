@@ -21,10 +21,20 @@ const clips: DemoClip[] = [
 export function DemoVideos() {
   const [active, setActive] = useState(clips[0].id);
   const [hasError, setHasError] = useState<Record<string, boolean>>({});
+  const [fading, setFading] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const activeClip = clips.find((c) => c.id === active)!;
   const clipHasError = hasError[activeClip.src];
+
+  function switchTab(id: string) {
+    if (id === active) return;
+    setFading(true);
+    setTimeout(() => {
+      setActive(id);
+      setFading(false);
+    }, 200);
+  }
 
   useEffect(() => {
     if (videoRef.current && !clipHasError) {
@@ -35,17 +45,18 @@ export function DemoVideos() {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2 mb-6 justify-center">
+      {/* Premium pill tabs */}
+      <div className="flex flex-wrap gap-1.5 mb-6 justify-center p-1 rounded-2xl bg-muted/50 inline-flex mx-auto w-fit">
         {clips.map((clip) => (
           <button
             key={clip.id}
-            onClick={() => setActive(clip.id)}
+            onClick={() => switchTab(clip.id)}
             className={cn(
-              "rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-150",
+              "rounded-xl px-4 py-2 text-[13px] font-semibold transition-all duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
               active === clip.id
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "bg-muted text-muted-foreground hover:text-foreground hover:bg-muted/80",
+                ? "bg-white text-foreground shadow-sm border border-primary/20"
+                : "text-muted-foreground hover:text-foreground hover:bg-white/50",
             )}
           >
             {clip.label}
@@ -53,29 +64,38 @@ export function DemoVideos() {
         ))}
       </div>
 
-      <div className="relative rounded-2xl border border-border overflow-hidden shadow-elevated bg-foreground/5 aspect-video">
-        {clipHasError ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8">
-            <Play className="h-10 w-10 text-muted-foreground/30 mb-3" />
-            <p className="text-sm font-medium text-muted-foreground">Demo clip coming soon.</p>
-          </div>
-        ) : (
-          <video
-            ref={videoRef}
-            key={activeClip.src + activeClip.id}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="w-full h-full object-cover"
-            onError={() => setHasError((prev) => ({ ...prev, [activeClip.src]: true }))}
-          >
-            <source src={activeClip.src} type="video/quicktime" />
-            <source src={activeClip.src.replace(".mov", ".mp4")} type="video/mp4" />
-            <source src={activeClip.src.replace(".mov", ".webm")} type="video/webm" />
-          </video>
-        )}
+      {/* DeviceFrame */}
+      <div className="rounded-2xl border border-border/50 bg-white shadow-elevated overflow-hidden">
+        <div className="flex items-center gap-1.5 px-4 py-2.5 border-b border-border/40 bg-muted/30">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/60" />
+          <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
+          <span className="ml-3 text-[10px] text-muted-foreground/50 font-mono">{activeClip.label}</span>
+        </div>
+        <div className={cn("relative aspect-video transition-opacity duration-200", fading && "opacity-0")}>
+          {clipHasError ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-muted/20">
+              <Play className="h-10 w-10 text-muted-foreground/30 mb-3" />
+              <p className="text-sm font-medium text-muted-foreground">Demo clip coming soon.</p>
+            </div>
+          ) : (
+            <video
+              ref={videoRef}
+              key={activeClip.src + activeClip.id}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+              onError={() => setHasError((prev) => ({ ...prev, [activeClip.src]: true }))}
+            >
+              <source src={activeClip.src} type="video/quicktime" />
+              <source src={activeClip.src.replace(".mov", ".mp4")} type="video/mp4" />
+              <source src={activeClip.src.replace(".mov", ".webm")} type="video/webm" />
+            </video>
+          )}
+        </div>
       </div>
     </div>
   );
