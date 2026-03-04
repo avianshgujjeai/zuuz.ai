@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowRight, Bot, GitBranch, Search, ShieldCheck,
+  ArrowRight, ShieldCheck,
   Plug, Brain, Workflow,
   Lock, KeyRound, Users, FileCheck, Clock,
 } from "lucide-react";
@@ -15,6 +15,7 @@ import { DemoVideos } from "@/components/sections/demo-videos";
 import { LiveWorkShowcase } from "@/components/sections/live-work-showcase";
 import { IntegrationsWall } from "@/components/sections/integrations-wall";
 import { HeroAnimated, HeroItem, HeroBlobs, ShimmerSpan } from "@/components/sections/hero-animated";
+import { ThreePillars } from "@/components/sections/three-pillars";
 import { ScrollAnimate } from "@/components/ui/scroll-animate";
 import { agents } from "@/content/agents";
 
@@ -22,12 +23,6 @@ export const metadata: Metadata = {
   title: "ZUUZ — The execution layer for enterprise work",
   description: "ZUUZ connects your email, documents, meetings, CRM, ERP, and ITSM. It assembles evidence automatically, routes approvals through policy, and safely writes back to systems of record.",
 };
-
-const capabilityCards = [
-  { slug: "ai-agents", icon: Bot, title: "Persona Copilots", description: "Role-specific copilots for Sales, Procurement, HR, Legal, and Ops — designed to act, not just answer." },
-  { slug: "workflows", icon: GitBranch, title: "Execution Flows", description: "Import your existing processes from CRM/ERP/ITSM and run them with policy gates, approvals, and audit trails." },
-  { slug: "unified-search", icon: Search, title: "Evidence Search", description: "One search across every tool — with citations and a ready-to-share context pack behind every decision." },
-];
 
 const howSteps = [
   { icon: Plug, number: "01", title: "Connect", description: "Link your tools in minutes. CRM, ERP, email, docs, calendars — 200+ connectors, no migration required." },
@@ -103,53 +98,8 @@ export default function HomePage() {
         </section>
       </ScrollAnimate>
 
-      {/* Capabilities */}
-      <ScrollAnimate>
-      <section className="py-12 md:py-14">
-        <Container>
-          <FadeIn>
-            <SectionHeading
-              badge="Platform"
-              title="Three capabilities. One execution layer."
-              description="Copilots that act. Flows that enforce. Search that proves."
-            />
-          </FadeIn>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilityCards.map((card, i) => (
-              <FadeIn key={card.slug} delay={i * 0.08}>
-                <Link
-                  href={`/products/${card.slug}`}
-                  className="group flex flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-200 hover:shadow-md hover:border-primary/20 h-full"
-                >
-                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                    <card.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-base font-semibold text-foreground">{card.title}</h3>
-                  <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{card.description}</p>
-                  <div className="mt-auto pt-4 inline-flex items-center gap-1 text-sm font-medium text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                    Explore <ArrowRight className="h-3.5 w-3.5" />
-                  </div>
-                </Link>
-              </FadeIn>
-            ))}
-          </div>
-          {/* Safe Write-back card */}
-          <FadeIn delay={0.25}>
-            <div className="mt-4 rounded-2xl border border-border bg-card p-6 flex items-start gap-4">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary shrink-0">
-                <ShieldCheck className="h-5 w-5" />
-              </div>
-              <div>
-                <h3 className="text-base font-semibold text-foreground">Safe Write-back</h3>
-                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-                  Approved actions update Salesforce, HubSpot, SAP, ServiceNow, Jira, and more — with permissions enforced.
-                </p>
-              </div>
-            </div>
-          </FadeIn>
-        </Container>
-      </section>
-      </ScrollAnimate>
+      {/* Capabilities — 3 Pillars */}
+      <ThreePillars />
 
       {/* How it works */}
       <div className="section-separator" aria-hidden="true" />
