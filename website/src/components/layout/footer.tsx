@@ -24,7 +24,8 @@ const footerColumns = buildFooterColumns();
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/30">
+    <footer className="bg-muted/50 relative">
+      <div className="section-separator" aria-hidden="true" />
       <Container>
         <div className="py-16">
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-6">
