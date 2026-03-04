@@ -15,6 +15,7 @@ import { DemoVideos } from "@/components/sections/demo-videos";
 import { LiveWorkShowcase } from "@/components/sections/live-work-showcase";
 import { IntegrationsWall } from "@/components/sections/integrations-wall";
 import { HeroAnimated, HeroItem, HeroBlobs, ShimmerSpan } from "@/components/sections/hero-animated";
+import { ScrollAnimate } from "@/components/ui/scroll-animate";
 import { agents } from "@/content/agents";
 
 export const metadata: Metadata = {
@@ -47,42 +48,42 @@ const trustItems = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18 overflow-hidden dot-grid noise-overlay">
-        <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
+      {/* Hero — dark gradient (portkey-style) */}
+      <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18 overflow-hidden bg-hero-dark noise-overlay">
+        <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <HeroBlobs />
         <Container className="relative z-10">
           <HeroAnimated>
             <div className="mx-auto max-w-3xl text-center">
               <HeroItem>
-                <span className="inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] gradient-text">
+                <span className="hero-animate inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-purple-300/80">
                   DECISION &bull; EXECUTION &bull; AI WORKSPACE
                 </span>
               </HeroItem>
               <HeroItem>
-                <h1 className="font-display text-foreground text-balance leading-tight">
+                <h1 className="hero-animate font-display text-white text-balance leading-tight">
                   An AI workspace for decisions and execution — across tools, teams, and approvals
                 </h1>
               </HeroItem>
               <HeroItem>
-                <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground leading-relaxed text-balance">
+                <p className="hero-animate mx-auto mt-5 max-w-2xl text-base text-slate-300/80 leading-relaxed text-balance">
                   ZUUZ assembles the full context from email, documents, meetings, CRM, ERP, and ITSM — then routes decisions through policy and safely writes back to systems of record. Every answer and action is permission-aware, identity-verified, and recorded with a complete audit trail.
                 </p>
               </HeroItem>
               <HeroItem>
-                <p className="mt-4 text-[12px] text-muted-foreground/70 tracking-wide">
+                <p className="hero-animate mt-4 text-[12px] text-slate-400/60 tracking-wide">
                   Permission-safe &bull; Identity-aware &bull; Evidence-backed &bull; Audit logged &bull; Safe write-back
                 </p>
               </HeroItem>
               <HeroItem>
-                <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <div className="hero-animate mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                   <Button size="lg" className="relative overflow-hidden group animate-breathe" asChild>
                     <Link href="/about/contact">
                       Request a demo <ArrowRight className="h-4 w-4 opacity-70" />
                       <ShimmerSpan />
                     </Link>
                   </Button>
-                  <Button variant="outline" size="lg" asChild>
+                  <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 hover:border-white/30" asChild>
                     <Link href="/products/ai-agents">See how it works</Link>
                   </Button>
                 </div>
@@ -94,13 +95,16 @@ export default function HomePage() {
 
       {/* Integrations */}
       <div className="section-separator" aria-hidden="true" />
-      <section id="integrations" className="py-10">
-        <Container>
-          <FadeIn><IntegrationsWall /></FadeIn>
-        </Container>
-      </section>
+      <ScrollAnimate>
+        <section id="integrations" className="py-10">
+          <Container>
+            <FadeIn><IntegrationsWall /></FadeIn>
+          </Container>
+        </section>
+      </ScrollAnimate>
 
       {/* Capabilities */}
+      <ScrollAnimate>
       <section className="py-12 md:py-14">
         <Container>
           <FadeIn>
@@ -145,9 +149,11 @@ export default function HomePage() {
           </FadeIn>
         </Container>
       </section>
+      </ScrollAnimate>
 
       {/* How it works */}
       <div className="section-separator" aria-hidden="true" />
+      <ScrollAnimate>
       <section className="py-12 md:py-14 bg-section-alt">
         <Container>
           <FadeIn>
@@ -173,8 +179,10 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+      </ScrollAnimate>
 
       {/* Demo */}
+      <ScrollAnimate>
       <section className="py-12 md:py-14">
         <Container>
           <FadeIn>
@@ -183,9 +191,11 @@ export default function HomePage() {
           <FadeIn delay={0.1}><div className="mt-8"><DemoVideos /></div></FadeIn>
         </Container>
       </section>
+      </ScrollAnimate>
 
       {/* Live Work Showcase */}
       <div className="section-separator" aria-hidden="true" />
+      <ScrollAnimate>
       <section className="py-12 md:py-14 bg-section-alt">
         <Container>
           <FadeIn>
@@ -194,8 +204,10 @@ export default function HomePage() {
           <FadeIn delay={0.1}><div className="mt-8"><LiveWorkShowcase /></div></FadeIn>
         </Container>
       </section>
+      </ScrollAnimate>
 
       {/* Teams */}
+      <ScrollAnimate>
       <section className="py-12 md:py-14">
         <Container>
           <FadeIn>
@@ -217,9 +229,11 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+      </ScrollAnimate>
 
       {/* Trust */}
       <div className="section-separator" aria-hidden="true" />
+      <ScrollAnimate>
       <section className="py-8">
         <Container>
           <FadeIn>
@@ -233,7 +247,9 @@ export default function HomePage() {
           </FadeIn>
         </Container>
       </section>
+      </ScrollAnimate>
 
+      <ScrollAnimate>
       <CTA
         title="Bring your workflows. We'll make them run themselves."
         description="See how ZUUZ turns your existing tools and processes into an autonomous operations layer — with guardrails built in."
@@ -242,6 +258,7 @@ export default function HomePage() {
         secondaryLabel="See Persona Copilots"
         secondaryHref="/products/ai-agents"
       />
+      </ScrollAnimate>
     </>
   );
 }
