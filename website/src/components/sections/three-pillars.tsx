@@ -10,7 +10,7 @@ const pillars = [
     subtitle: "Role-specific copilots for Sales, Procurement, HR, Legal, and Ops — designed to act, not just answer.",
     href: "/products/ai-agents",
     accent: "#7c3aed",
-    entrance: "from-left" as const,
+    entrance: "pillar-enter-left" as const,
     icon: (
       <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10">
         <circle cx="20" cy="14" r="6" stroke="#7c3aed" strokeWidth="1.5" opacity="0.8" />
@@ -25,7 +25,7 @@ const pillars = [
     subtitle: "Import your existing processes from CRM/ERP/ITSM and run them with policy gates, approvals, and audit trails.",
     href: "/products/workflows",
     accent: "#2563eb",
-    entrance: "from-bottom" as const,
+    entrance: "pillar-enter-bottom" as const,
     icon: (
       <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10">
         <circle cx="8" cy="20" r="4" stroke="#2563eb" strokeWidth="1.5" opacity="0.8" />
@@ -41,7 +41,7 @@ const pillars = [
     subtitle: "One search across every tool — with citations and a ready-to-share context pack behind every decision.",
     href: "/products/unified-search",
     accent: "#0891b2",
-    entrance: "from-right" as const,
+    entrance: "pillar-enter-right" as const,
     icon: (
       <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10">
         <circle cx="18" cy="18" r="9" stroke="#0891b2" strokeWidth="1.5" opacity="0.8" />
@@ -82,7 +82,7 @@ export function ThreePillars() {
         background: "radial-gradient(ellipse at 50% 0%, rgba(99,38,255,0.25) 0%, rgba(6,6,20,1) 60%)",
       }}
     >
-      {/* Particle grid layer */}
+      {/* Particle grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -92,7 +92,6 @@ export function ThreePillars() {
         aria-hidden="true"
       />
 
-      {/* Content */}
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-14">
@@ -112,81 +111,61 @@ export function ThreePillars() {
           </p>
         </div>
 
-        {/* 3 Pillar Cards */}
+        {/* Cards — entrance wrapper + float inner */}
         <div className="flex flex-col lg:flex-row gap-6 justify-center items-stretch">
-          {pillars.map((pillar, i) => {
-            const entranceStyle = (): React.CSSProperties => {
-              if (!visible) {
-                switch (pillar.entrance) {
-                  case "from-left": return { opacity: 0, transform: "translateX(-60px)" };
-                  case "from-bottom": return { opacity: 0, transform: "translateY(60px)" };
-                  case "from-right": return { opacity: 0, transform: "translateX(60px)" };
-                }
-              }
-              return { opacity: 1, transform: "translateY(0)" };
-            };
-
-            return (
-              <Link
-                key={pillar.title}
-                href={pillar.href}
-                className={cn(
-                  "group relative flex-1 rounded-[20px] p-8 sm:p-10",
-                  "transition-all duration-[400ms]",
-                  visible && "pillar-float",
-                )}
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  backdropFilter: "blur(12px)",
-                  boxShadow: "0 0 40px rgba(124,58,237,0.12), 0 8px 32px rgba(0,0,0,0.4)",
-                  transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-                  transitionDelay: visible ? `${i * 150}ms` : "0ms",
-                  animationDelay: `${i * 0.8}s`,
-                  ...entranceStyle(),
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = pillar.accent;
-                  el.style.boxShadow = `0 0 60px ${pillar.accent}66, 0 12px 40px rgba(0,0,0,0.5)`;
-                  el.style.transform = "translateY(-8px)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = "rgba(255,255,255,0.08)";
-                  el.style.boxShadow = "0 0 40px rgba(124,58,237,0.12), 0 8px 32px rgba(0,0,0,0.4)";
-                  el.style.transform = "";
-                }}
-              >
-                {/* Icon glow */}
-                <div
-                  className="mb-5 w-14 h-14 rounded-2xl flex items-center justify-center"
+          {pillars.map((pillar, i) => (
+            /* Entrance wrapper — handles staggered slide-in */
+            <div
+              key={pillar.title}
+              className={cn(
+                "flex-1",
+                visible ? `${pillar.entrance} pillar-entered` : pillar.entrance,
+              )}
+              style={{ transitionDelay: `${i * 150}ms` }}
+            >
+              {/* Float wrapper — continuous animation, pauses on hover */}
+              <div className={cn("h-full", visible && "pillar-float")} style={{ animationDelay: `${i * 0.8}s` }}>
+                <Link
+                  href={pillar.href}
+                  className="pillar-card group flex flex-col h-full rounded-[20px] p-8 sm:p-10 no-underline"
                   style={{
-                    background: `${pillar.accent}15`,
-                    boxShadow: `0 0 24px ${pillar.accent}25`,
+                    ["--pillar-accent" as string]: pillar.accent,
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    backdropFilter: "blur(12px)",
+                    boxShadow: "0 0 40px rgba(124,58,237,0.12), 0 8px 32px rgba(0,0,0,0.4)",
                   }}
                 >
-                  {pillar.icon}
-                </div>
+                  {/* Icon */}
+                  <div
+                    className="mb-5 w-14 h-14 rounded-2xl flex items-center justify-center"
+                    style={{
+                      background: `${pillar.accent}15`,
+                      boxShadow: `0 0 24px ${pillar.accent}25`,
+                    }}
+                  >
+                    {pillar.icon}
+                  </div>
 
-                <h3 className="text-lg font-semibold text-white mb-2">{pillar.title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed mb-5">{pillar.subtitle}</p>
+                  <h3 className="text-lg font-semibold text-white mb-2">{pillar.title}</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed mb-5">{pillar.subtitle}</p>
 
-                <span
-                  className="inline-flex items-center gap-1 text-sm font-medium transition-colors duration-200"
-                  style={{ color: pillar.accent }}
-                >
-                  Explore
-                  <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="2">
-                    <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </span>
-              </Link>
-            );
-          })}
+                  <span
+                    className="mt-auto inline-flex items-center gap-1 text-sm font-medium transition-colors duration-200"
+                    style={{ color: pillar.accent }}
+                  >
+                    Explore
+                    <svg className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 16 16" stroke="currentColor" strokeWidth="2">
+                      <path d="M3 8h10M9 4l4 4-4 4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Safe Write-back strip */}
+        {/* Safe Write-back */}
         <div
           className="mt-6 rounded-[16px] p-5 flex items-start gap-4"
           style={{
@@ -212,8 +191,32 @@ export function ThreePillars() {
         </div>
       </div>
 
-      {/* Float animation style */}
       <style>{`
+        /* ── Entrance animations ── */
+        .pillar-enter-left {
+          opacity: 0;
+          transform: translateX(-60px);
+          transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                      transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .pillar-enter-bottom {
+          opacity: 0;
+          transform: translateY(60px);
+          transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                      transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .pillar-enter-right {
+          opacity: 0;
+          transform: translateX(60px);
+          transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                      transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .pillar-entered {
+          opacity: 1 !important;
+          transform: translateX(0) translateY(0) !important;
+        }
+
+        /* ── Continuous float ── */
         @keyframes float-card {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-12px); }
@@ -221,10 +224,33 @@ export function ThreePillars() {
         .pillar-float {
           animation: float-card 5s ease-in-out infinite;
         }
-        .pillar-float:nth-child(2) { animation-delay: 0.8s; }
-        .pillar-float:nth-child(3) { animation-delay: 1.6s; }
+
+        /* ── Hover: pause float, lift card, glow border ── */
+        .pillar-float:hover {
+          animation-play-state: paused;
+        }
+        .pillar-card {
+          transition: border-color 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                      box-shadow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                      transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .pillar-card:hover {
+          border-color: var(--pillar-accent) !important;
+          box-shadow: 0 0 60px color-mix(in srgb, var(--pillar-accent) 40%, transparent),
+                      0 12px 40px rgba(0,0,0,0.5) !important;
+          transform: translateY(-8px);
+        }
+
+        /* ── Reduced motion ── */
         @media (prefers-reduced-motion: reduce) {
           .pillar-float { animation: none; }
+          .pillar-enter-left,
+          .pillar-enter-bottom,
+          .pillar-enter-right {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
         }
       `}</style>
     </section>
