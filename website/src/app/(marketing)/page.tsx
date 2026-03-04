@@ -15,6 +15,7 @@ import { DemoVideos } from "@/components/sections/demo-videos";
 import { LiveWorkShowcase } from "@/components/sections/live-work-showcase";
 import { IntegrationsWall } from "@/components/sections/integrations-wall";
 import { HeroAnimated, HeroItem, HeroBlobs, ShimmerSpan } from "@/components/sections/hero-animated";
+import { HeroProductFrame } from "@/components/visual/hero-product-frame";
 import { ThreePillars } from "@/components/sections/three-pillars";
 import { ScrollAnimate } from "@/components/ui/scroll-animate";
 import { AnimatedStroke } from "@/components/visual/animated-stroke";
@@ -47,51 +48,60 @@ const trustItems = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — dark gradient (portkey-style) */}
+      {/* Hero — dark gradient, split layout */}
       <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18 overflow-hidden bg-hero-dark noise-overlay">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
         <HeroBlobs />
         <Container className="relative z-10">
-          <HeroAnimated>
-            <div className="mx-auto max-w-3xl text-center">
-              <HeroItem>
-                <span className="hero-animate inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-purple-300/80">
-                  DECISION &bull; EXECUTION &bull; AI WORKSPACE
-                </span>
-              </HeroItem>
-              <HeroItem>
-                <h1 className="hero-animate font-display text-white text-balance leading-tight">
-                  An AI workspace for decisions and execution — across tools, teams, and approvals
-                </h1>
-              </HeroItem>
-              <HeroItem>
-                <p className="hero-animate mx-auto mt-5 max-w-2xl text-base text-slate-300/80 leading-relaxed text-balance">
-                  ZUUZ assembles the full context from email, documents, meetings, CRM, ERP, and ITSM — then routes decisions through policy and safely writes back to systems of record. Every answer and action is permission-aware, identity-verified, and recorded with a complete audit trail.
-                </p>
-              </HeroItem>
-              <HeroItem>
-                <p className="hero-animate mt-4 text-[12px] text-slate-400/60 tracking-wide">
-                  Permission-safe &bull; Identity-aware &bull; Evidence-backed &bull; Audit logged &bull; Safe write-back
-                </p>
-              </HeroItem>
-              <HeroItem>
-                <div className="hero-animate mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                  <Button size="lg" className="relative overflow-hidden group animate-breathe" asChild>
-                    <Link href="/about/contact">
-                      Request a demo <ArrowRight className="h-4 w-4 opacity-70" />
-                      <ShimmerSpan />
-                    </Link>
-                  </Button>
-                  <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 hover:border-white/30" asChild>
-                    <Link href="/products/ai-agents">See how it works</Link>
-                  </Button>
-                </div>
-              </HeroItem>
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-14 items-center">
+            {/* LEFT — text (unchanged) */}
+            <HeroAnimated>
+              <div>
+                <HeroItem>
+                  <span className="hero-animate inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-purple-300/80">
+                    DECISION &bull; EXECUTION &bull; AI WORKSPACE
+                  </span>
+                </HeroItem>
+                <HeroItem>
+                  <h1 className="hero-animate font-display text-white text-balance leading-tight">
+                    An AI workspace for decisions and execution — across tools, teams, and approvals
+                  </h1>
+                </HeroItem>
+                <HeroItem>
+                  <p className="hero-animate mt-5 max-w-xl text-base text-slate-300/80 leading-relaxed text-balance">
+                    ZUUZ assembles the full context from email, documents, meetings, CRM, ERP, and ITSM — then routes decisions through policy and safely writes back to systems of record. Every answer and action is permission-aware, identity-verified, and recorded with a complete audit trail.
+                  </p>
+                </HeroItem>
+                <HeroItem>
+                  <p className="hero-animate mt-4 text-[12px] text-slate-400/60 tracking-wide">
+                    Permission-safe &bull; Identity-aware &bull; Evidence-backed &bull; Audit logged &bull; Safe write-back
+                  </p>
+                </HeroItem>
+                <HeroItem>
+                  <div className="hero-animate mt-8 flex flex-col items-start gap-3 sm:flex-row">
+                    <Button size="lg" className="relative overflow-hidden group animate-breathe" asChild>
+                      <Link href="/about/contact">
+                        Request a demo <ArrowRight className="h-4 w-4 opacity-70" />
+                        <ShimmerSpan />
+                      </Link>
+                    </Button>
+                    <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10 hover:border-white/30" asChild>
+                      <Link href="/products/ai-agents">See how it works</Link>
+                    </Button>
+                  </div>
+                </HeroItem>
+              </div>
+            </HeroAnimated>
+
+            {/* RIGHT — product frame + floating cards + connector */}
+            <div className="hidden lg:block">
+              <HeroProductFrame />
             </div>
-          </HeroAnimated>
-          {/* Context threads visual */}
+          </div>
+
+          {/* Context threads — visible on mobile (below text), hidden on desktop (shown in frame) */}
           <FadeIn delay={0.4}>
-            <div className="mt-10 max-w-2xl mx-auto opacity-60">
+            <div className="mt-10 max-w-2xl mx-auto opacity-60 lg:hidden">
               <AnimatedStroke />
             </div>
           </FadeIn>
