@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 
 interface LogoCloudProps {
@@ -16,6 +18,8 @@ export function LogoCloud({
   logos = defaultLogos,
   className,
 }: LogoCloudProps) {
+  const doubled = [...logos, ...logos];
+
   return (
     <div className={cn("text-center", className)}>
       {title && (
@@ -23,15 +27,19 @@ export function LogoCloud({
           {title}
         </p>
       )}
-      <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
-        {logos.map((logo) => (
-          <div
-            key={logo}
-            className="flex h-10 items-center justify-center rounded-md border border-dashed border-border px-5 text-xs font-medium text-muted-foreground"
-          >
-            {logo}
-          </div>
-        ))}
+      <div className="overflow-hidden relative">
+        <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+        <div className="flex animate-marquee-left whitespace-nowrap gap-10 w-max hover:[animation-play-state:paused]">
+          {doubled.map((logo, i) => (
+            <span
+              key={`${logo}-${i}`}
+              className="flex h-10 items-center justify-center rounded-md border border-dashed border-border px-5 text-xs font-medium text-muted-foreground transition-colors duration-300 hover:text-primary cursor-default select-none"
+            >
+              {logo}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

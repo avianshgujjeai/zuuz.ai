@@ -14,6 +14,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { DemoVideos } from "@/components/sections/demo-videos";
 import { LiveWorkShowcase } from "@/components/sections/live-work-showcase";
 import { IntegrationsWall } from "@/components/sections/integrations-wall";
+import { HeroAnimated, HeroItem, HeroBlobs, ShimmerSpan } from "@/components/sections/hero-animated";
 import { agents } from "@/content/agents";
 
 export const metadata: Metadata = {
@@ -47,33 +48,47 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18">
+      <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18 overflow-hidden dot-grid">
         <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
-        <Container className="relative">
-          <FadeIn>
+        <HeroBlobs />
+        <Container className="relative z-10">
+          <HeroAnimated>
             <div className="mx-auto max-w-3xl text-center">
-              <span className="inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-                DECISION &bull; EXECUTION &bull; AI WORKSPACE
-              </span>
-              <h1 className="font-display text-foreground text-balance leading-tight">
-                An AI workspace for decisions and execution — across tools, teams, and approvals
-              </h1>
-              <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground leading-relaxed text-balance">
-                ZUUZ assembles the full context from email, documents, meetings, CRM, ERP, and ITSM — then routes decisions through policy and safely writes back to systems of record. Every answer and action is permission-aware, identity-verified, and recorded with a complete audit trail.
-              </p>
-              <p className="mt-4 text-[12px] text-muted-foreground/70 tracking-wide">
-                Permission-safe &bull; Identity-aware &bull; Evidence-backed &bull; Audit logged &bull; Safe write-back
-              </p>
-              <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                <Button size="lg" asChild>
-                  <Link href="/about/contact">Request a demo <ArrowRight className="h-4 w-4 opacity-70" /></Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/products/ai-agents">See how it works</Link>
-                </Button>
-              </div>
+              <HeroItem>
+                <span className="inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                  DECISION &bull; EXECUTION &bull; AI WORKSPACE
+                </span>
+              </HeroItem>
+              <HeroItem>
+                <h1 className="font-display text-foreground text-balance leading-tight">
+                  An AI workspace for decisions and execution — across tools, teams, and approvals
+                </h1>
+              </HeroItem>
+              <HeroItem>
+                <p className="mx-auto mt-5 max-w-2xl text-base text-muted-foreground leading-relaxed text-balance">
+                  ZUUZ assembles the full context from email, documents, meetings, CRM, ERP, and ITSM — then routes decisions through policy and safely writes back to systems of record. Every answer and action is permission-aware, identity-verified, and recorded with a complete audit trail.
+                </p>
+              </HeroItem>
+              <HeroItem>
+                <p className="mt-4 text-[12px] text-muted-foreground/70 tracking-wide">
+                  Permission-safe &bull; Identity-aware &bull; Evidence-backed &bull; Audit logged &bull; Safe write-back
+                </p>
+              </HeroItem>
+              <HeroItem>
+                <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                  <Button size="lg" className="relative overflow-hidden group hover:shadow-[0_0_24px_rgba(0,24,255,0.25)] active:scale-[0.98] transition-all duration-200" asChild>
+                    <Link href="/about/contact">
+                      Request a demo <ArrowRight className="h-4 w-4 opacity-70" />
+                      <ShimmerSpan />
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" asChild>
+                    <Link href="/products/ai-agents">See how it works</Link>
+                  </Button>
+                </div>
+              </HeroItem>
             </div>
-          </FadeIn>
+          </HeroAnimated>
         </Container>
       </section>
 
