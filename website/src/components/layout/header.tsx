@@ -86,10 +86,11 @@ export function Header() {
                 <Link
                   href={item.href}
                   className={cn(
-                    "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                    "relative inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-3/4",
                     isActive(item.href)
-                      ? "text-primary"
+                      ? "text-primary after:w-3/4"
                       : "text-muted-foreground hover:text-foreground",
                   )}
                   aria-current={isActive(item.href) ? "page" : undefined}
@@ -124,7 +125,7 @@ export function Header() {
             >
               <Link href="/about/contact">Sign in</Link>
             </Button>
-            <Button size="sm" className="hidden sm:inline-flex" asChild>
+            <Button size="sm" className="hidden sm:inline-flex hover:shadow-[0_0_20px_rgba(0,24,255,0.3)] transition-shadow duration-300" asChild>
               <Link href="/about/contact">Request demo</Link>
             </Button>
             <button
