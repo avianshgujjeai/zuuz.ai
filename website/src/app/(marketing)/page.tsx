@@ -61,7 +61,7 @@ export default function HomePage() {
             <HeroAnimated>
               <div>
                 <HeroItem>
-                  <span className="hero-animate inline-block mb-5 text-[12px] font-semibold uppercase tracking-[0.18em] text-purple-200">
+                  <span className="hero-animate inline-block mb-5 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.15em] text-white/80">
                     DECISION &bull; EXECUTION &bull; AI WORKSPACE
                   </span>
                 </HeroItem>
