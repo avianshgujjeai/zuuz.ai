@@ -59,6 +59,8 @@ const config: Config = {
         "drawer-out": "drawerOut 0.2s ease-in forwards",
         "flow-dash": "flowDash 2s linear infinite",
         "flow-dot": "flowDot 3s ease-in-out infinite",
+        "marquee-left": "marquee-left 28s linear infinite",
+        "marquee-right": "marquee-right 28s linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -87,6 +89,14 @@ const config: Config = {
         flowDot: {
           "0%": { offsetDistance: "0%" },
           "100%": { offsetDistance: "100%" },
+        },
+        "marquee-left": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "marquee-right": {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0)" },
         },
       },
     },

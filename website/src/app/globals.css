@@ -106,21 +106,18 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
 }
 
-@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-@keyframes marquee-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+/* Keyframes not managed by Tailwind config */
+@keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }
 @keyframes breathe {
   0%, 100% { box-shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 2px 8px rgb(0 24 255 / 0.1); }
   50% { box-shadow: 0 2px 4px rgb(0 0 0 / 0.06), 0 4px 20px rgb(0 24 255 / 0.2); }
 }
 @keyframes glow-pulse { 0%, 100% { box-shadow: 0 0 15px rgba(0, 24, 255, 0.15); } 50% { box-shadow: 0 0 30px rgba(0, 24, 255, 0.3); } }
+@keyframes heroFadeIn { to { opacity: 1; transform: translateY(0); } }
 
 .animate-float { animation: float 5s ease-in-out infinite; }
-.animate-marquee-left { animation: marquee-left 35s linear infinite; }
-.animate-marquee-right { animation: marquee-right 45s linear infinite; }
 .animate-glow-pulse { animation: glow-pulse 3s ease-in-out infinite; }
 .animate-breathe { animation: breathe 3s ease-in-out infinite; }
 .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 .hero-animate { opacity: 0; transform: translateY(30px); animation: heroFadeIn 0.6s ease 0.3s forwards; }
-@keyframes heroFadeIn { to { opacity: 1; transform: translateY(0); } }
