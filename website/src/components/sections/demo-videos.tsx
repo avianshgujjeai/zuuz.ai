@@ -11,8 +11,8 @@ interface DemoClip {
 }
 
 const clips: DemoClip[] = [
-  { id: "email", label: "Email Copilot", src: "/media/0223-2.mov" },
-  { id: "docs", label: "Document Copilot", src: "/media/0223-3.mov" },
+  { id: "email", label: "Email Copilot", src: "/media/0223-3.mov" },
+  { id: "docs", label: "Document Copilot", src: "/media/0223-2.mov" },
   { id: "meetings", label: "Meeting Copilot", src: "/media/0223-4.mov" },
   { id: "search", label: "Evidence Search", src: "/media/0223-8.mov" },
   { id: "insights", label: "Insight Dashboards", src: "/media/0223-8.mov" },

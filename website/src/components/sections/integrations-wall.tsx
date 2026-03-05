@@ -41,7 +41,7 @@ function MarqueeRow({ items, direction }: { items: IconItem[]; direction: "left"
     <div className="overflow-hidden relative">
       <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
-      <div className={`flex gap-3 w-max hover:[animation-play-state:paused] ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"}`}>
+      <div className={`flex gap-3 w-max hover:[animation-play-state:paused] ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"}`} style={{ willChange: "transform" }}>
         {doubled.map(({ label, icon }, i) => (
           <div
             key={`${label}-${i}`}

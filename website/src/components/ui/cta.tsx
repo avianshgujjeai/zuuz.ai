@@ -2,7 +2,6 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { Container } from "./container";
-import { ArrowRight } from "lucide-react";
 
 interface CTAProps {
   title?: string;
@@ -51,7 +50,6 @@ export function CTA({
               <Button size="lg" className="shadow-[0_2px_8px_rgb(0_24_255/0.3)]" asChild>
                 <Link href={primaryHref}>
                   {primaryLabel}
-                  <ArrowRight className="h-4 w-4 opacity-70" />
                 </Link>
               </Button>
               <Button

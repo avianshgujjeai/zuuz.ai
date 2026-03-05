@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Scan, Map, Cpu, Scale } from "lucide-react";
+import { Scan, Map, Cpu, Scale } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
@@ -51,7 +51,7 @@ export default function WorkflowsPage() {
             </p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="/about/contact">Request a demo <ArrowRight className="h-4 w-4" /></Link>
+                <Link href="/about/contact">Request a demo</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="#flow-demo">See workflow intake</Link>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
+import { MotionOverride } from "@/components/motion/motion-override";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -46,7 +47,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${montserratDisplay.variable} ${mono.variable}`}>
-      <body className="min-h-screen font-sans antialiased">{children}</body>
+      <body
+        className="min-h-screen font-sans antialiased"
+        data-build={process.env.NEXT_PUBLIC_BUILD_ID ?? "local"}
+      >
+        <MotionOverride />
+        {children}
+      </body>
     </html>
   );
 }

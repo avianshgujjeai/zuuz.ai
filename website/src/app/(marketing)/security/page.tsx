@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ShieldCheck, Lock, Users, FileCheck, Server, Eye,
-  CheckCircle2, ArrowRight,
+  CheckCircle2,
 } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
@@ -52,7 +52,7 @@ export default function SecurityPage() {
               </p>
               <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
                 <Button size="lg" asChild>
-                  <Link href="/about/contact">Request a security review <ArrowRight className="h-4 w-4" /></Link>
+                  <Link href="/about/contact">Request a security review</Link>
                 </Button>
               </div>
             </div>

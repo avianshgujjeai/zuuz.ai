@@ -55,7 +55,7 @@ export default async function IndustryPage({ params }: Props) {
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground leading-relaxed">{sol.heroDescription}</p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="/about/contact">Request a demo <ArrowRight className="h-4 w-4" /></Link>
+                <Link href="/about/contact">Request a demo</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="#use-cases">See use cases</Link>
