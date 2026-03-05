@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { BUILD_ID } from "@/config/build";
 import { navItems } from "@/config/nav";
 
 const socialLinks = [
@@ -94,6 +95,7 @@ export function Footer() {
             </a>
           </div>
         </div>
+        <div className="text-[10px] text-muted-foreground/40 mt-4 text-center">BUILD: {BUILD_ID}</div>
       </Container>
     </footer>
   );
