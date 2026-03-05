@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const montserratDisplay = Montserrat({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-  weight: ["500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
 const mono = JetBrains_Mono({
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jakarta.variable} ${mono.variable}`}>
+    <html lang="en" className={`${montserrat.variable} ${montserratDisplay.variable} ${mono.variable}`}>
       <body className="min-h-screen font-sans antialiased">{children}</body>
     </html>
   );

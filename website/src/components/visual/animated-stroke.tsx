@@ -25,8 +25,8 @@ export function AnimatedStroke({ className }: AnimatedStrokeProps) {
       {/* Nodes */}
       {[20, 140, 260, 380, 500, 580].map((x, i) => (
         <g key={i}>
-          <circle cx={x} cy={40} r="4" fill="white" stroke="rgb(0 24 255 / 0.3)" strokeWidth="1" />
-          <circle cx={x} cy={40} r="2" fill="rgb(0 24 255 / 0.5)" />
+          <circle cx={x} cy={40} r="4" fill="white" stroke="rgba(163 243 255 / 0.4)" strokeWidth="1" />
+          <circle cx={x} cy={40} r="2" fill="rgba(163 243 255 / 0.6)" />
         </g>
       ))}
       {/* Labels */}
@@ -38,9 +38,9 @@ export function AnimatedStroke({ className }: AnimatedStrokeProps) {
       <text x="580" y="68" className="fill-slate-400 text-[8px]" textAnchor="middle">Write-back</text>
       <defs>
         <linearGradient id="thread-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="rgb(0 24 255 / 0.1)" />
-          <stop offset="50%" stopColor="rgb(0 24 255 / 0.35)" />
-          <stop offset="100%" stopColor="rgb(16 185 129 / 0.3)" />
+          <stop offset="0%" stopColor="rgba(163 243 255 / 0.15)" />
+          <stop offset="50%" stopColor="rgba(163 243 255 / 0.4)" />
+          <stop offset="100%" stopColor="rgba(16 185 129 / 0.3)" />
         </linearGradient>
       </defs>
       <style>{`
