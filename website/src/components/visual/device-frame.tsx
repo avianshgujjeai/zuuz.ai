@@ -28,8 +28,8 @@ export function DeviceFrame({ src, type = "video", children, className }: Device
         <div className="w-2.5 h-2.5 rounded-full bg-green-400/60" />
         <div className="ml-3 flex-1 h-5 rounded-md bg-border/30 max-w-[200px]" />
       </div>
-      {/* Content */}
-      <div className="relative">
+      {/* Content — full-bleed */}
+      <div className="relative aspect-[16/10]">
         {type === "video" && src && (
           <video
             ref={videoRef}
@@ -39,7 +39,7 @@ export function DeviceFrame({ src, type = "video", children, className }: Device
             loop
             playsInline
             preload="metadata"
-            className="w-full h-auto"
+            className="absolute inset-0 w-full h-full object-cover"
           >
             <source src={src} type="video/quicktime" />
             <source src={src.replace(".mov", ".mp4")} type="video/mp4" />

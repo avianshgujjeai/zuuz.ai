@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowRight, ShieldCheck,
+  ShieldCheck,
   Plug, Brain, Workflow,
   Lock, KeyRound, Users, FileCheck, Clock,
 } from "lucide-react";
@@ -22,6 +22,8 @@ import { AnimatedStroke } from "@/components/visual/animated-stroke";
 import { Glow } from "@/components/visual/glow";
 import { WorkflowTableMock } from "@/components/visual/workflow-table-mock";
 import { ActivityConsole } from "@/components/visual/activity-console";
+import { ArchitectureLayers } from "@/components/sections/architecture-layers";
+import { RiveHero } from "@/components/visual/rive-hero";
 import { agents } from "@/content/agents";
 
 export const metadata: Metadata = {
@@ -51,6 +53,7 @@ export default function HomePage() {
       {/* Hero — dark gradient, split layout */}
       <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18 overflow-hidden bg-hero-dark noise-overlay">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
+        <RiveHero />
         <HeroBlobs />
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-[1fr_1fr] gap-10 lg:gap-14 items-center">
@@ -58,7 +61,7 @@ export default function HomePage() {
             <HeroAnimated>
               <div>
                 <HeroItem>
-                  <span className="hero-animate inline-block mb-5 text-[11px] font-semibold uppercase tracking-[0.15em] text-purple-300/80">
+                  <span className="hero-animate inline-block mb-5 text-[12px] font-semibold uppercase tracking-[0.18em] text-purple-200">
                     DECISION &bull; EXECUTION &bull; AI WORKSPACE
                   </span>
                 </HeroItem>
@@ -81,7 +84,7 @@ export default function HomePage() {
                   <div className="hero-animate mt-8 flex flex-col items-start gap-3 sm:flex-row">
                     <Button size="lg" className="relative overflow-hidden group animate-breathe" asChild>
                       <Link href="/about/contact">
-                        Request a demo <ArrowRight className="h-4 w-4 opacity-70" />
+                        Request a demo
                         <ShimmerSpan />
                       </Link>
                     </Button>
@@ -120,6 +123,11 @@ export default function HomePage() {
 
       {/* Capabilities — 3 Pillars */}
       <ThreePillars />
+
+      {/* Architecture — clickable layers */}
+      <ScrollAnimate>
+        <ArchitectureLayers />
+      </ScrollAnimate>
 
       {/* How it works */}
       <div className="section-separator" aria-hidden="true" />
