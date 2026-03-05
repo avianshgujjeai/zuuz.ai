@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
-import { MotionOverride } from "@/components/motion/motion-override";
+import { MotionProvider } from "@/components/motion/motion-provider";
 import { BUILD_ID } from "@/config/build";
 import "./globals.css";
 
@@ -48,12 +48,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${montserratDisplay.variable} ${mono.variable}`}>
-      <body
-        className="min-h-screen font-sans antialiased"
-        data-build={process.env.NEXT_PUBLIC_BUILD_ID ?? "local"}
-      >
-        <MotionOverride />
-        {process.env.NODE_ENV === "production" ? (
+      <body className="min-h-screen font-sans antialiased">
+        <MotionProvider>
           <div
             style={{
               position: "fixed",
@@ -71,8 +67,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           >
             BUILD: {BUILD_ID}
           </div>
-        ) : null}
-        {children}
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );
