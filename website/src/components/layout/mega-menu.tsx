@@ -25,7 +25,7 @@ export function MegaMenu({
       <div
         role="menu"
         className={cn(
-          "rounded-xl border border-border bg-card p-4 shadow-lg animate-slide-down",
+          "rounded-xl border border-border/60 bg-white p-4 shadow-elevated animate-slide-down",
           hasDescriptions && colCount > 1
             ? "w-[48rem]"
             : hasDescriptions
