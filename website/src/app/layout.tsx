@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, JetBrains_Mono } from "next/font/google";
 import { MotionOverride } from "@/components/motion/motion-override";
+import { BUILD_ID } from "@/config/build";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -52,6 +53,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         data-build={process.env.NEXT_PUBLIC_BUILD_ID ?? "local"}
       >
         <MotionOverride />
+        {process.env.NODE_ENV === "production" ? (
+          <div
+            style={{
+              position: "fixed",
+              right: 12,
+              bottom: 12,
+              zIndex: 999999,
+              background: "#0018FF",
+              color: "#fff",
+              padding: "8px 12px",
+              borderRadius: 12,
+              fontSize: 12,
+              fontWeight: 600,
+              boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
+            }}
+          >
+            BUILD: {BUILD_ID}
+          </div>
+        ) : null}
         {children}
       </body>
     </html>
