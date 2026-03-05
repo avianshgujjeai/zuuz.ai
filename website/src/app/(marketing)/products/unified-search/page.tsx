@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Lock, ShieldCheck, FileCheck, Zap } from "lucide-react";
+import { Lock, ShieldCheck, FileCheck, Zap } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Badge } from "@/components/ui/badge";

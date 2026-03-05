@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Bot, GitBranch, Search } from "lucide-react";
+import { Bot, GitBranch, Search } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -64,7 +64,6 @@ export default function SolutionsPage() {
                 <Button size="lg" asChild>
                   <Link href="/about/contact">
                     Request a demo
-                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild>

@@ -13,7 +13,6 @@ import { CTA } from "@/components/ui/cta";
 import { FadeIn } from "@/components/ui/fade-in";
 import { DemoVideos } from "@/components/sections/demo-videos";
 import { LiveWorkShowcase } from "@/components/sections/live-work-showcase";
-import { IntegrationsWall } from "@/components/sections/integrations-wall";
 import { HeroAnimated, HeroItem, HeroBlobs, ShimmerSpan } from "@/components/sections/hero-animated";
 import { HeroProductFrame } from "@/components/visual/hero-product-frame";
 import { ThreePillars } from "@/components/sections/three-pillars";
@@ -24,6 +23,10 @@ import { WorkflowTableMock } from "@/components/visual/workflow-table-mock";
 import { ActivityConsole } from "@/components/visual/activity-console";
 import { ArchitectureLayers } from "@/components/sections/architecture-layers";
 import { RiveHero } from "@/components/visual/rive-hero";
+import { AmbientBackground } from "@/components/visual/ambient-background";
+import { ContextThreads } from "@/components/visual/context-threads";
+import { LogoMarquee } from "@/components/visual/logo-marquee";
+import { Reveal } from "@/components/motion/reveal";
 import { agents } from "@/content/agents";
 
 export const metadata: Metadata = {
@@ -50,6 +53,8 @@ const trustItems = [
 export default function HomePage() {
   return (
     <>
+      <AmbientBackground />
+
       {/* Hero — dark gradient, split layout */}
       <section className="relative pt-14 pb-16 sm:pt-20 sm:pb-18 overflow-hidden bg-hero-dark noise-overlay">
         <div className="absolute inset-0 dot-grid opacity-30" aria-hidden="true" />
@@ -96,8 +101,9 @@ export default function HomePage() {
               </div>
             </HeroAnimated>
 
-            {/* RIGHT — product frame + floating cards + connector */}
-            <div className="hidden lg:block">
+            {/* RIGHT — product frame + context threads behind it */}
+            <div className="hidden lg:block relative">
+              <ContextThreads className="absolute inset-0 w-full h-full opacity-40 -z-10" />
               <HeroProductFrame />
             </div>
           </div>
@@ -113,13 +119,16 @@ export default function HomePage() {
 
       {/* Integrations */}
       <div className="section-separator" aria-hidden="true" />
-      <ScrollAnimate>
+      <Reveal>
         <section id="integrations" className="py-10">
           <Container>
-            <FadeIn><IntegrationsWall /></FadeIn>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-6 text-center">
+              Connects with the tools your teams already use
+            </p>
+            <LogoMarquee />
           </Container>
         </section>
-      </ScrollAnimate>
+      </Reveal>
 
       {/* Capabilities — 3 Pillars */}
       <ThreePillars />

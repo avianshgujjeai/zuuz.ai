@@ -108,6 +108,14 @@ html { scroll-behavior: smooth; }
   pointer-events: none;
 }
 
+/* Orb drift */
+@keyframes orb-drift-1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(40px, -30px); } }
+@keyframes orb-drift-2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-35px, 25px); } }
+@keyframes orb-drift-3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, 20px); } }
+.orb-1 { animation: orb-drift-1 22s ease-in-out infinite; }
+.orb-2 { animation: orb-drift-2 28s ease-in-out infinite; }
+.orb-3 { animation: orb-drift-3 18s ease-in-out infinite; }
+
 /* Keyframes */
 @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }
 @keyframes marquee-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
