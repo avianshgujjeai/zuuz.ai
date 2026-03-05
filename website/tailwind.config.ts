@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
       colors: {
@@ -51,53 +51,23 @@ const config: Config = {
         display: ["var(--font-display)", "var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
+      keyframes: {
+        fadeIn: { from: { opacity: "0" }, to: { opacity: "1" } },
+        slideUp: { from: { opacity: "0", transform: "translateY(12px)" }, to: { opacity: "1", transform: "translateY(0)" } },
+        slideDown: { from: { opacity: "0", transform: "translateY(-8px)" }, to: { opacity: "1", transform: "translateY(0)" } },
+        drawerIn: { from: { transform: "translateX(100%)" }, to: { transform: "translateX(0)" } },
+        drawerOut: { from: { transform: "translateX(0)" }, to: { transform: "translateX(100%)" } },
+        "marquee-left": { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
+        "marquee-right": { "0%": { transform: "translateX(-50%)" }, "100%": { transform: "translateX(0)" } },
+      },
       animation: {
         "fade-in": "fadeIn 0.2s ease-out forwards",
         "slide-up": "slideUp 0.2s ease-out forwards",
         "slide-down": "slideDown 0.2s ease-out forwards",
         "drawer-in": "drawerIn 0.25s ease-out forwards",
         "drawer-out": "drawerOut 0.2s ease-in forwards",
-        "flow-dash": "flowDash 2s linear infinite",
-        "flow-dot": "flowDot 3s ease-in-out infinite",
-        "marquee-left": "marquee-left 28s linear infinite",
-        "marquee-right": "marquee-right 28s linear infinite",
-      },
-      keyframes: {
-        fadeIn: {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
-        slideUp: {
-          from: { opacity: "0", transform: "translateY(12px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        slideDown: {
-          from: { opacity: "0", transform: "translateY(-8px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        drawerIn: {
-          from: { transform: "translateX(100%)" },
-          to: { transform: "translateX(0)" },
-        },
-        drawerOut: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(100%)" },
-        },
-        flowDash: {
-          to: { strokeDashoffset: "-20" },
-        },
-        flowDot: {
-          "0%": { offsetDistance: "0%" },
-          "100%": { offsetDistance: "100%" },
-        },
-        "marquee-left": {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        "marquee-right": {
-          "0%": { transform: "translateX(-50%)" },
-          "100%": { transform: "translateX(0)" },
-        },
+        "marquee-left": "marquee-left 35s linear infinite",
+        "marquee-right": "marquee-right 45s linear infinite",
       },
     },
   },
