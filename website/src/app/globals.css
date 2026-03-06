@@ -14,7 +14,7 @@
   --color-accent: 163 243 255;
   --color-accent-foreground: 0 0 0;
   --color-muted: 246 247 251;
-  --color-muted-foreground: 80 85 100;
+  --color-muted-foreground: 70 78 95;
   --color-border: 228 232 240;
   --color-ring: 0 24 255;
   --radius-sm: 0.375rem;
@@ -117,6 +117,9 @@ html { scroll-behavior: smooth; }
 .orb-1 { animation: orb-drift-1 22s ease-in-out infinite; }
 .orb-2 { animation: orb-drift-2 28s ease-in-out infinite; }
 .orb-3 { animation: orb-drift-3 18s ease-in-out infinite; }
+
+/* Connector dot animation (offset-path) */
+@keyframes dot-move { from { offset-distance: 0%; } to { offset-distance: 100%; } }
 
 /* Keyframes */
 @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-14px); } }

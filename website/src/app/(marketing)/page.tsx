@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ShieldCheck,
-  Plug, Brain, Workflow,
-  Lock, KeyRound, Users, FileCheck, Clock,
-} from "lucide-react";
+import { Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -15,7 +11,9 @@ import { DemoVideos } from "@/components/sections/demo-videos";
 import { LiveWorkShowcase } from "@/components/sections/live-work-showcase";
 import { HeroAnimated, HeroItem, HeroBlobs, ShimmerSpan } from "@/components/sections/hero-animated";
 import { HeroProductFrame } from "@/components/visual/hero-product-frame";
-import { ThreePillars } from "@/components/sections/three-pillars";
+import { ExecutionLayerAnimated } from "@/components/sections/execution-layer-animated";
+import { WeeksNotQuartersAnimated } from "@/components/sections/weeks-not-quarters-animated";
+import { SecurityChecklist } from "@/components/sections/security-checklist";
 import { ScrollAnimate } from "@/components/ui/scroll-animate";
 import { AnimatedStroke } from "@/components/visual/animated-stroke";
 import { Glow } from "@/components/visual/glow";
@@ -34,21 +32,6 @@ export const metadata: Metadata = {
   description: "ZUUZ connects your email, documents, meetings, CRM, ERP, and ITSM. It assembles evidence automatically, routes approvals through policy, and safely writes back to systems of record.",
 };
 
-const howSteps = [
-  { icon: Plug, number: "01", title: "Connect", description: "Link your tools in minutes. CRM, ERP, email, docs, calendars — 200+ connectors, no migration required." },
-  { icon: Brain, number: "02", title: "Understand", description: "ZUUZ maps your data, permissions, and existing workflows. It learns how your teams actually work." },
-  { icon: Workflow, number: "03", title: "Automate", description: "Copilots handle complete tasks. Flows execute multi-step processes. Humans approve what matters." },
-  { icon: ShieldCheck, number: "04", title: "Prove", description: "Every action logged with evidence. Audit trails, compliance reports, and measurable time savings — out of the box." },
-];
-
-const trustItems = [
-  { icon: Lock, label: "Permission-aware by design" },
-  { icon: KeyRound, label: "SSO & SAML 2.0" },
-  { icon: Users, label: "Role-based access control" },
-  { icon: FileCheck, label: "Audit trail for every action" },
-  { icon: ShieldCheck, label: "SOC 2 Type I" },
-  { icon: Clock, label: "Evidence links on all outputs" },
-];
 
 export default function HomePage() {
   return (
@@ -130,43 +113,21 @@ export default function HomePage() {
         </section>
       </Reveal>
 
-      {/* Capabilities — 3 Pillars */}
-      <ThreePillars />
+      {/* Capabilities — animated execution layer */}
+      <Reveal>
+        <ExecutionLayerAnimated />
+      </Reveal>
 
       {/* Architecture — clickable layers */}
       <ScrollAnimate>
         <ArchitectureLayers />
       </ScrollAnimate>
 
-      {/* How it works */}
+      {/* How it works — animated stepper */}
       <div className="section-separator" aria-hidden="true" />
-      <ScrollAnimate>
-      <section className="py-12 md:py-14 bg-section-alt">
-        <Container>
-          <FadeIn>
-            <SectionHeading
-              badge="How it works"
-              title="What you get in weeks, not quarters"
-              description="From connected to autonomous in four steps."
-            />
-          </FadeIn>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {howSteps.map((step, i) => (
-              <FadeIn key={step.title} delay={i * 0.06}>
-                <div className="flex flex-col bg-card p-5 h-full">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-xs font-bold text-primary/60 tracking-wider">{step.number}</span>
-                    <step.icon className="h-4 w-4 text-primary" />
-                  </div>
-                  <h3 className="text-sm font-semibold text-foreground">{step.title}</h3>
-                  <p className="mt-1 text-[13px] text-muted-foreground leading-relaxed">{step.description}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </Container>
-      </section>
-      </ScrollAnimate>
+      <Reveal delay={0.05}>
+        <WeeksNotQuartersAnimated />
+      </Reveal>
 
       {/* Demo */}
       <ScrollAnimate>
@@ -232,23 +193,11 @@ export default function HomePage() {
       </section>
       </ScrollAnimate>
 
-      {/* Trust */}
+      {/* Trust — big icons */}
       <div className="section-separator" aria-hidden="true" />
-      <ScrollAnimate>
-      <section className="py-8">
-        <Container>
-          <FadeIn>
-            <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3">
-              {trustItems.map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-1.5 text-[13px] text-muted-foreground">
-                  <Icon className="h-3.5 w-3.5" /> {label}
-                </div>
-              ))}
-            </div>
-          </FadeIn>
-        </Container>
-      </section>
-      </ScrollAnimate>
+      <Reveal delay={0.08}>
+        <SecurityChecklist />
+      </Reveal>
 
       <ScrollAnimate>
       <CTA
