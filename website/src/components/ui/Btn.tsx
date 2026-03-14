@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 interface BtnProps {
-  variant?: "primary" | "secondary" | "ghost" | "dark-outline";
+  variant?: "primary" | "secondary" | "ghost" | "dark-outline" | "dark-ghost";
   size?: "sm" | "md" | "lg";
   href?: string;
   onClick?: () => void;
@@ -27,6 +27,8 @@ const variants: Record<NonNullable<BtnProps["variant"]>, string> = {
     "bg-transparent hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200 hover:border-slate-300",
   "dark-outline":
     "bg-transparent hover:bg-white/10 text-white/80 hover:text-white border border-white/15 hover:border-white/30",
+  "dark-ghost":
+    "bg-transparent hover:bg-white/8 text-white/60 hover:text-white/90 active:scale-[0.98]",
 };
 
 const sizes: Record<NonNullable<BtnProps["size"]>, string> = {
