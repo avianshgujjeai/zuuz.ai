@@ -558,8 +558,7 @@ export default function HomePage() {
             ].map((cap, i) => (
               <Link key={cap.title} href={cap.href}
                 className={`reveal delay-${i} card-lift group block bg-white border border-neutral-200 rounded-2xl p-7`}>
-                <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-5 ${
-                  cap.accent==="blue"?"bg-blue-50":"cap.accent==="violet"?"bg-violet-50":"bg-green-50"}`}
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center text-xl mb-5"
                   style={{ background: cap.accent==="blue"?"rgba(0,85,255,0.06)":cap.accent==="violet"?"rgba(109,40,217,0.06)":"rgba(0,185,107,0.06)" }}>
                   {cap.icon}
                 </div>
