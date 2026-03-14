@@ -6,7 +6,6 @@ import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Search, ExternalLink } from "lucide-react";
 import { getSolution, getAllSolutionSlugs } from "@/content/solutions";
 import { Container } from "@/components/ui/container";
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Breadcrumb } from "@/components/ui/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -51,13 +50,12 @@ export default async function IndustryPage({ params }: Props) {
         <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
         <Container className="relative">
           <Breadcrumb
-            items={[
-              { label: "Home",      href: "/" },
-              { label: "Solutions", href: "/solutions" },
-              { label: industryName, href: "" },
+            crumbs={[
+              { label: "Home",       href: "/" },
+              { label: "Solutions",  href: "/solutions" },
+              { label: industryName },
             ]}
           />
-          <Breadcrumbs items={[{ label: "Solutions", href: "/solutions" }, { label: sol.industry }]} />
           <FadeIn>
             <Badge variant="primary" className="mb-4">ZUUZ for {sol.industry}</Badge>
             <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance max-w-3xl leading-[1.1]">

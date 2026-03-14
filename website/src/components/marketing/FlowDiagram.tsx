@@ -1,171 +1,154 @@
 "use client";
 
-const SOURCES = [
-  { label: "Email",  color: "#0078D4", x: 30  },
-  { label: "CRM",    color: "#00A1E0", x: 130 },
-  { label: "ERP",    color: "#C74634", x: 230 },
-  { label: "Docs",   color: "#0052CC", x: 330 },
-  { label: "ITSM",   color: "#62D84E", x: 430 },
+const sources = [
+  { label: "Email", color: "#0078D4", x: 30  },
+  { label: "CRM",   color: "#00A1E0", x: 130 },
+  { label: "ERP",   color: "#F80000", x: 230 },
+  { label: "Docs",  color: "#0052CC", x: 330 },
+  { label: "ITSM",  color: "#81B5A1", x: 430 },
 ];
 
-const OUTPUTS = [
-  { label: "AI Agents",      color: "#2457FF", x: 20  },
-  { label: "Unified Search", color: "#3B82F6", x: 145 },
-  { label: "Workflows",      color: "#7c3aed", x: 290 },
-  { label: "Safe Write-back",color: "#10B981", x: 400 },
+const outputs = [
+  { label: "AI Agents",       color: "#2563EB", x: 15  },
+  { label: "Unified Search",  color: "#3B82F6", x: 140 },
+  { label: "Workflows",       color: "#7C3AED", x: 285 },
+  { label: "Safe Write-back", color: "#10B981", x: 400 },
 ];
 
-const CORE_X = 270;
-const CORE_Y = 160;
-const SOURCE_Y = 30;
-const OUTPUT_Y = 255;
+const cx = 265, cy = 158;
 
 export function FlowDiagram() {
   return (
-    <div style={{ width: "100%", maxWidth: 560 }}>
+    <div style={{ width: "100%", maxWidth: 540, margin: "0 auto" }}>
       <svg
         viewBox="0 0 540 320"
-        style={{ width: "100%", height: "auto", display: "block" }}
-        aria-label="ZUUZ data flow diagram"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ width: "100%", overflow: "visible" }}
+        aria-label="ZUUZ data flow: sources to core to outputs"
       >
-        {/* ── Connector lines: sources → core ── */}
-        {SOURCES.map((src, i) => {
-          const sx = src.x + 34;
-          const sy = SOURCE_Y + 28;
-          return (
-            <line
-              key={`src-line-${i}`}
-              x1={sx} y1={sy}
-              x2={CORE_X} y2={CORE_Y - 50}
-              stroke="rgba(37,99,235,0.2)"
-              strokeWidth={1.2}
-              strokeDasharray="4 4"
-            />
-          );
-        })}
+        <defs>
+          <radialGradient id="coreGlowGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="#2563EB" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#2563EB" stopOpacity="0" />
+          </radialGradient>
+          <filter id="blueGlowFilter" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
 
-        {/* ── Connector lines: core → outputs ── */}
-        {OUTPUTS.map((out, i) => {
-          const ox = out.x + 55;
-          const oy = OUTPUT_Y;
-          return (
-            <line
-              key={`out-line-${i}`}
-              x1={CORE_X} y1={CORE_Y + 50}
-              x2={ox} y2={oy}
-              stroke="rgba(16,185,129,0.2)"
-              strokeWidth={1.2}
-              strokeDasharray="4 4"
+        {/* ── Connector lines: source → core ── */}
+        {sources.map((s, i) => (
+          <line
+            key={`sl${i}`}
+            x1={s.x + 35} y1={56}
+            x2={cx}       y2={cy - 38}
+            stroke={`${s.color}28`}
+            strokeWidth="1.2"
+            strokeDasharray="5 4"
+          />
+        ))}
+
+        {/* ── Connector lines: core → output ── */}
+        {outputs.map((o, i) => (
+          <line
+            key={`ol${i}`}
+            x1={cx}       y1={cy + 38}
+            x2={o.x + 57} y2={263}
+            stroke={`${o.color}28`}
+            strokeWidth="1.2"
+            strokeDasharray="5 4"
+          />
+        ))}
+
+        {/* ── Animated dots: source → core ── */}
+        {sources.map((s, i) => (
+          <circle key={`sd${i}`} r="4.5" fill={s.color} opacity="0.9" filter="url(#blueGlowFilter)">
+            <animateMotion
+              dur={`${2.0 + i * 0.3}s`}
+              begin={`${i * 0.45}s`}
+              repeatCount="indefinite"
+              path={`M ${s.x + 35},56 L ${cx},${cy - 38}`}
             />
-          );
-        })}
+          </circle>
+        ))}
+
+        {/* ── Animated dots: core → output ── */}
+        {outputs.map((o, i) => (
+          <circle key={`od${i}`} r="4.5" fill={o.color} opacity="0.9">
+            <animateMotion
+              dur={`${2.2 + i * 0.3}s`}
+              begin={`${0.6 + i * 0.5}s`}
+              repeatCount="indefinite"
+              path={`M ${cx},${cy + 38} L ${o.x + 57},263`}
+            />
+          </circle>
+        ))}
 
         {/* ── Source chips ── */}
-        {SOURCES.map((src, i) => (
-          <g key={`src-${i}`}>
-            <rect
-              x={src.x} y={SOURCE_Y}
-              width={68} height={28} rx={8}
-              fill="#fff" stroke="#DCE3F1"
-            />
-            <rect
-              x={src.x} y={SOURCE_Y}
-              width={4} height={28} rx={4}
-              fill={src.color}
-            />
+        {sources.map((s, i) => (
+          <g key={`sc${i}`}>
+            <rect x={s.x} y={28} width={70} height={28} rx={8} fill="white" stroke="#E2E8F0" strokeWidth="1" />
+            <rect x={s.x} y={28} width={4}  height={28} rx={2} fill={s.color} />
             <text
-              x={src.x + 12} y={SOURCE_Y + 18}
-              fontSize={10.5} fontWeight={600}
-              fill="#0B1324"
+              x={s.x + 14} y={46}
+              fontSize="10.5" fontWeight="600" fill="#1E293B"
               fontFamily="Inter, sans-serif"
             >
-              {src.label}
+              {s.label}
             </text>
           </g>
         ))}
 
-        {/* ── ZUUZ Core node ── */}
-        {/* Outer pulse ring */}
-        <circle cx={CORE_X} cy={CORE_Y} r={50} fill="none" stroke="#2457FF" strokeWidth={1} opacity={0.2}>
-          <animate attributeName="r" values="50;58;50" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.2;0.05;0.2" dur="3s" repeatCount="indefinite" />
+        {/* ── Core node ── */}
+        {/* Outer pulse */}
+        <circle cx={cx} cy={cy} r={52} fill="url(#coreGlowGrad)">
+          <animate attributeName="r"       values="48;58;48" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.7;0.1;0.7" dur="3s" repeatCount="indefinite" />
         </circle>
-        {/* Middle ring */}
-        <circle cx={CORE_X} cy={CORE_Y} r={44} fill="#0F1B3D" stroke="#2457FF" strokeWidth={1.5} />
-        {/* Inner */}
-        <circle cx={CORE_X} cy={CORE_Y} r={34} fill="#0F1B3D" />
-        {/* ZUUZ text */}
+        {/* Main circle */}
+        <circle
+          cx={cx} cy={cy} r={40}
+          fill="#0A1628"
+          stroke="#2563EB"
+          strokeWidth="1.5"
+          filter="url(#blueGlowFilter)"
+        />
+        {/* Inner ring */}
+        <circle cx={cx} cy={cy} r={34} fill="none" stroke="#2563EB" strokeWidth="0.5" opacity="0.35" />
+        {/* Label */}
         <text
-          x={CORE_X} y={CORE_Y + 5}
-          fontSize={14} fontWeight={800}
-          fill="#fff"
+          x={cx} y={cy - 4}
           textAnchor="middle"
-          fontFamily="Manrope, sans-serif"
+          fontSize="15" fontWeight="900" fill="white"
+          fontFamily="Plus Jakarta Sans, sans-serif"
         >
           ZUUZ
         </text>
         <text
-          x={CORE_X} y={CORE_Y + 18}
-          fontSize={7.5}
-          fill="#60A5FA"
+          x={cx} y={cy + 12}
           textAnchor="middle"
-          letterSpacing="0.1em"
+          fontSize="7" fill="#60A5FA"
           fontFamily="Inter, sans-serif"
+          letterSpacing="0.12em"
         >
           EXECUTION
         </text>
 
         {/* ── Output chips ── */}
-        {OUTPUTS.map((out, i) => (
-          <g key={`out-${i}`}>
-            <rect
-              x={out.x} y={OUTPUT_Y}
-              width={110} height={28} rx={8}
-              fill={out.color + "18"}
-              stroke={out.color + "40"}
-            />
+        {outputs.map((o, i) => (
+          <g key={`oc${i}`}>
+            <rect x={o.x} y={249} width={115} height={28} rx={8} fill="white" stroke={o.color} strokeWidth="1" />
             <text
-              x={out.x + 10} y={OUTPUT_Y + 18}
-              fontSize={10} fontWeight={700}
-              fill={out.color}
+              x={o.x + 12} y={267}
+              fontSize="9.5" fontWeight="700" fill={o.color}
               fontFamily="Inter, sans-serif"
             >
-              {out.label}
+              {o.label}
             </text>
           </g>
         ))}
-
-        {/* ── Animated dots: sources → core ── */}
-        {SOURCES.map((src, i) => {
-          const sx = src.x + 34;
-          const sy = SOURCE_Y + 28;
-          return (
-            <circle key={`dot-src-${i}`} r={4.5} fill="#2457FF" opacity={0.85}>
-              <animateMotion
-                dur="2.4s"
-                repeatCount="indefinite"
-                begin={`${i * 0.5}s`}
-                path={`M ${sx} ${sy} L ${CORE_X} ${CORE_Y - 50}`}
-              />
-            </circle>
-          );
-        })}
-
-        {/* ── Animated dots: core → outputs ── */}
-        {OUTPUTS.map((out, i) => {
-          const ox = out.x + 55;
-          const oy = OUTPUT_Y;
-          return (
-            <circle key={`dot-out-${i}`} r={4.5} fill="#10B981" opacity={0.85}>
-              <animateMotion
-                dur="2.6s"
-                repeatCount="indefinite"
-                begin={`${0.3 + i * 0.5}s`}
-                path={`M ${CORE_X} ${CORE_Y + 50} L ${ox} ${oy}`}
-              />
-            </circle>
-          );
-        })}
       </svg>
     </div>
   );

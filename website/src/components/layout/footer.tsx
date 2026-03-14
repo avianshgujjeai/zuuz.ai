@@ -2,17 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 const PRODUCTS = [
-  { label: "Persona Copilots",  href: "/products/ai-agents" },
-  { label: "Execution Flows",   href: "/products/workflows" },
-  { label: "Evidence Search",   href: "/products/unified-search" },
+  { label: "Persona Copilots", href: "/products/ai-agents" },
+  { label: "Execution Flows",  href: "/products/workflows" },
+  { label: "Evidence Search",  href: "/products/unified-search" },
 ];
 
 const SOLUTIONS = [
-  { label: "IT Services",         href: "/solutions/it-services" },
-  { label: "Financial Services",  href: "/solutions/financial-services" },
-  { label: "Healthcare",          href: "/solutions/healthcare" },
-  { label: "Distribution",        href: "/solutions/distribution" },
-  { label: "Manufacturing",       href: "/solutions/manufacturing" },
+  { label: "IT Services",        href: "/solutions/it-services" },
+  { label: "Financial Services", href: "/solutions/financial-services" },
+  { label: "Healthcare",         href: "/solutions/healthcare" },
+  { label: "Distribution",       href: "/solutions/distribution" },
+  { label: "Manufacturing",      href: "/solutions/manufacturing" },
 ];
 
 const COMPANY = [
@@ -29,36 +29,14 @@ const RESOURCES = [
   { label: "Industry Guides", href: "/resources/manuals/industries" },
 ];
 
-function FooterCol({ heading, links }: { heading: string; links: { label: string; href: string }[] }) {
+function Col({ heading, links }: { heading: string; links: { label: string; href: string }[] }) {
   return (
     <div>
-      <p style={{
-        fontSize: 11,
-        fontWeight: 800,
-        textTransform: "uppercase",
-        letterSpacing: "0.08em",
-        color: "#94a3b8",
-        marginBottom: 14,
-        fontFamily: "'Inter', sans-serif",
-      }}>
-        {heading}
-      </p>
-      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-        {links.map((link) => (
-          <li key={link.href}>
-            <Link
-              href={link.href}
-              style={{
-                fontSize: 13,
-                color: "#64748B",
-                textDecoration: "none",
-                fontFamily: "'Inter', sans-serif",
-                transition: "color 0.15s ease",
-              }}
-              className="zuuz-footer-link"
-            >
-              {link.label}
-            </Link>
+      <p className="footer-col-heading">{heading}</p>
+      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 9 }}>
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href} className="footer-col-link">{l.label}</Link>
           </li>
         ))}
       </ul>
@@ -68,126 +46,59 @@ function FooterCol({ heading, links }: { heading: string; links: { label: string
 
 export function Footer() {
   return (
-    <footer style={{ background: "#fff", borderTop: "1px solid #DCE3F1" }}>
-      <div
-        style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "56px 24px 40px",
-        }}
-      >
-        {/* Top grid */}
-        <div
-          className="zuuz-footer-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "240px 1fr 1fr 1fr 1fr",
-            gap: 40,
-            marginBottom: 48,
-          }}
-        >
-          {/* Brand column */}
-          <div style={{ maxWidth: 240 }}>
+    <footer style={{ background: "#fff", borderTop: "1px solid var(--border)" }}>
+      <div className="footer-inner">
+        {/* Top */}
+        <div className="footer-grid">
+          {/* Brand */}
+          <div className="footer-brand">
             <Link href="/" aria-label="ZUUZ home">
               <Image
                 src="/brand/zuuz-logo.png"
                 alt="ZUUZ"
-                width={84}
-                height={26}
-                style={{ height: 26, width: "auto", marginBottom: 14 }}
+                width={88}
+                height={28}
+                style={{ height: 28, width: "auto", marginBottom: 14, display: "block" }}
               />
             </Link>
             <p style={{
               fontSize: 13,
-              color: "#64748B",
-              lineHeight: 1.6,
-              maxWidth: 210,
-              fontFamily: "'Inter', sans-serif",
-              margin: "0 0 16px",
+              color: "var(--muted)",
+              lineHeight: 1.65,
+              maxWidth: 200,
+              marginBottom: 16,
+              fontFamily: "var(--font-body)",
             }}>
-              The Agentic AI execution layer for enterprise work. Decision. Execution. AI Workspace.
+              The Agentic AI execution layer for enterprise.
             </p>
             <div style={{ display: "flex", gap: 8 }}>
-              <a
-                href="https://linkedin.com/company/zuuz-ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontSize: 12,
-                  fontWeight: 600,
-                  color: "#64748B",
-                  textDecoration: "none",
-                  border: "1.5px solid #DCE3F1",
-                  borderRadius: 8,
-                  padding: "5px 10px",
-                  fontFamily: "'Inter', sans-serif",
-                  transition: "all 0.15s ease",
-                }}
-                className="zuuz-footer-social"
-              >
+              <a href="https://linkedin.com/company/zuuz-ai" target="_blank" rel="noopener noreferrer" className="footer-social-btn">
                 LinkedIn
               </a>
-              <a
-                href="https://twitter.com/zuuz_ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  fontSize: 12,
-                  fontWeight: 600,
-                  color: "#64748B",
-                  textDecoration: "none",
-                  border: "1.5px solid #DCE3F1",
-                  borderRadius: 8,
-                  padding: "5px 10px",
-                  fontFamily: "'Inter', sans-serif",
-                  transition: "all 0.15s ease",
-                }}
-                className="zuuz-footer-social"
-              >
-                X / Twitter
+              <a href="https://twitter.com/zuuz_ai" target="_blank" rel="noopener noreferrer" className="footer-social-btn">
+                Twitter
               </a>
             </div>
           </div>
 
-          <FooterCol heading="Products"  links={PRODUCTS}  />
-          <FooterCol heading="Solutions" links={SOLUTIONS} />
-          <FooterCol heading="Company"   links={COMPANY}   />
-          <FooterCol heading="Resources" links={RESOURCES} />
+          <Col heading="Products"  links={PRODUCTS}  />
+          <Col heading="Solutions" links={SOLUTIONS} />
+          <Col heading="Company"   links={COMPANY}   />
+          <Col heading="Resources" links={RESOURCES} />
         </div>
 
         {/* Bottom bar */}
-        <div
-          style={{
-            borderTop: "1px solid #DCE3F1",
-            paddingTop: 24,
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 12,
-          }}
-        >
-          <p style={{ fontSize: 12, color: "#94a3b8", fontFamily: "'Inter', sans-serif", margin: 0 }}>
-            © 2026 ZUUZ, Inc. All rights reserved. · 440N Wolfe Rd, Sunnyvale, CA 94085
+        <div className="footer-bottom">
+          <p style={{ fontSize: 12, color: "var(--faint)", fontFamily: "var(--font-body)", margin: 0 }}>
+            © 2026 ZUUZ Inc. · 440N Wolfe Rd, Sunnyvale CA 94085
           </p>
-          <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
+          <div style={{ display: "flex", gap: 20 }}>
             {[
-              { label: "Privacy Policy", href: "/privacy" },
-              { label: "Terms",          href: "/terms" },
-              { label: "Cookies",        href: "/cookies" },
+              { label: "Privacy", href: "/privacy" },
+              { label: "Terms",   href: "/terms" },
+              { label: "Cookies", href: "/cookies" },
             ].map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                style={{
-                  fontSize: 12,
-                  color: "#94a3b8",
-                  textDecoration: "none",
-                  fontFamily: "'Inter', sans-serif",
-                  transition: "color 0.15s ease",
-                }}
-                className="zuuz-footer-link"
-              >
+              <Link key={l.href} href={l.href} className="footer-legal-link">
                 {l.label}
               </Link>
             ))}
@@ -196,21 +107,76 @@ export function Footer() {
       </div>
 
       <style>{`
-        .zuuz-footer-link:hover  { color: #0B1324 !important; }
-        .zuuz-footer-social:hover {
-          border-color: #94a3b8 !important;
-          color: #0B1324 !important;
-          background: #F8FAFC;
+        .footer-inner {
+          max-width: 1240px;
+          margin: 0 auto;
+          padding: 56px 24px 36px;
         }
-        @media (max-width: 900px) {
-          .zuuz-footer-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 200px 1fr 1fr 1fr 1fr;
+          gap: 40px;
+          margin-bottom: 48px;
+        }
+        .footer-col-heading {
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.09em;
+          color: var(--faint);
+          margin-bottom: 14px;
+          font-family: var(--font-body);
+        }
+        .footer-col-link {
+          font-size: 13px;
+          color: var(--muted);
+          text-decoration: none;
+          font-family: var(--font-body);
+          transition: color 0.15s ease;
+          display: block;
+        }
+        .footer-col-link:hover { color: var(--ink); }
+        .footer-brand { max-width: 220px; }
+        .footer-social-btn {
+          font-size: 12px;
+          font-weight: 600;
+          color: var(--muted);
+          text-decoration: none;
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 5px 11px;
+          font-family: var(--font-body);
+          transition: all 0.15s ease;
+          display: inline-block;
+        }
+        .footer-social-btn:hover {
+          color: var(--ink);
+          border-color: #CBD5E1;
+          background: var(--bg-subtle);
+        }
+        .footer-bottom {
+          border-top: 1px solid var(--border);
+          padding-top: 24px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+        }
+        .footer-legal-link {
+          font-size: 12px;
+          color: var(--faint);
+          text-decoration: none;
+          font-family: var(--font-body);
+          transition: color 0.15s ease;
+        }
+        .footer-legal-link:hover { color: var(--ink); }
+        @media (max-width: 960px) {
+          .footer-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 540px) {
-          .zuuz-footer-grid {
-            grid-template-columns: 1fr !important;
-          }
+          .footer-grid { grid-template-columns: 1fr !important; }
+          .footer-inner { padding: 40px 20px 28px; }
         }
       `}</style>
     </footer>

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { Btn } from "@/components/ui/Btn";
 
 const NAV_LINKS = [
   { label: "Platform",  href: "/products/ai-agents" },
@@ -23,11 +23,7 @@ export function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    if (mobileOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
@@ -37,147 +33,121 @@ export function Navbar() {
   }
 
   return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 50,
-        background: "rgba(255,255,255,0.93)",
-        backdropFilter: "blur(18px)",
-        WebkitBackdropFilter: "blur(18px)",
-        borderBottom: "1px solid #f1f5f9",
-        height: 66,
-      }}
-    >
-      <div
+    <>
+      <header
         style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0 24px",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          gap: 32,
+          position: "sticky",
+          top: 0,
+          zIndex: 50,
+          background: "rgba(255,255,255,0.95)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          borderBottom: "1px solid var(--border)",
+          height: 68,
         }}
       >
-        {/* Logo */}
-        <Link href="/" aria-label="ZUUZ home" style={{ flexShrink: 0 }}>
-          <Image
-            src="/brand/zuuz-logo.png"
-            alt="ZUUZ"
-            width={90}
-            height={28}
-            priority
-            style={{ height: 28, width: "auto" }}
-          />
-        </Link>
-
-        {/* Desktop Nav */}
-        <nav
-          className="navbar-desktop"
-          style={{ display: "flex", alignItems: "center", gap: 4 }}
-        >
-          {NAV_LINKS.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              style={{
-                color: isActive(href) ? "#2457FF" : "#4b5563",
-                fontWeight: isActive(href) ? 700 : 600,
-                fontSize: 13,
-                fontFamily: "'Inter', sans-serif",
-                padding: "6px 14px",
-                borderRadius: 8,
-                textDecoration: "none",
-                transition: "color 0.15s ease",
-              }}
-              className="navbar-link"
-            >
-              {label}
-            </Link>
-          ))}
-        </nav>
-
-        {/* Desktop CTAs */}
         <div
-          className="navbar-ctas"
-          style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}
-        >
-          <Button variant="ghost" size="sm" href="/about/contact">
-            Sign in
-          </Button>
-          <Button variant="nav" size="sm" href="/about/contact">
-            Request demo →
-          </Button>
-        </div>
-
-        {/* Mobile Hamburger */}
-        <button
-          className="navbar-hamburger"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
           style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 8,
-            display: "none",
-            flexDirection: "column",
-            gap: 5,
+            maxWidth: 1240,
+            margin: "0 auto",
+            padding: "0 24px",
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 32,
           }}
         >
-          <span
+          {/* Logo */}
+          <Link href="/" aria-label="ZUUZ home" style={{ flexShrink: 0 }}>
+            <Image
+              src="/brand/zuuz-logo.png"
+              alt="ZUUZ"
+              width={92}
+              height={30}
+              priority
+              style={{ height: 30, width: "auto", display: "block" }}
+            />
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="navbar-desktop" style={{ display: "flex", alignItems: "center", gap: 2 }}>
+            {NAV_LINKS.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                className={`navbar-link ${isActive(href) ? "navbar-link-active" : ""}`}
+                style={{
+                  fontSize: 14,
+                  fontWeight: isActive(href) ? 600 : 500,
+                  color: isActive(href) ? "#2563EB" : "#475569",
+                  padding: "6px 14px",
+                  borderRadius: 10,
+                  textDecoration: "none",
+                  transition: "color 0.15s ease",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Desktop CTAs */}
+          <div className="navbar-ctas" style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+            <Btn variant="ghost" size="sm" href="/about/contact">Sign in</Btn>
+            <Btn variant="primary" size="sm" href="/about/contact">Request demo →</Btn>
+          </div>
+
+          {/* Hamburger */}
+          <button
+            className="navbar-hamburger"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             style={{
-              display: "block",
-              width: 22,
-              height: 2,
-              background: "#0B1324",
-              borderRadius: 2,
+              display: "none",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 8,
+              flexDirection: "column",
+              gap: 5,
+            }}
+          >
+            <span style={{
+              display: "block", width: 22, height: 2, background: "#0A0F1E", borderRadius: 2,
               transition: "all 0.2s ease",
               transform: mobileOpen ? "translateY(7px) rotate(45deg)" : "none",
-            }}
-          />
-          <span
-            style={{
-              display: "block",
-              width: 22,
-              height: 2,
-              background: "#0B1324",
-              borderRadius: 2,
+            }} />
+            <span style={{
+              display: "block", width: 22, height: 2, background: "#0A0F1E", borderRadius: 2,
               transition: "all 0.2s ease",
               opacity: mobileOpen ? 0 : 1,
-            }}
-          />
-          <span
-            style={{
-              display: "block",
-              width: 22,
-              height: 2,
-              background: "#0B1324",
-              borderRadius: 2,
+            }} />
+            <span style={{
+              display: "block", width: 22, height: 2, background: "#0A0F1E", borderRadius: 2,
               transition: "all 0.2s ease",
               transform: mobileOpen ? "translateY(-7px) rotate(-45deg)" : "none",
-            }}
-          />
-        </button>
-      </div>
+            }} />
+          </button>
+        </div>
+      </header>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile overlay */}
       {mobileOpen && (
         <div
           style={{
             position: "fixed",
-            top: 66,
+            top: 68,
             left: 0,
             right: 0,
             bottom: 0,
             background: "#fff",
             zIndex: 49,
-            padding: "24px 24px 32px",
+            padding: "24px 24px 40px",
             display: "flex",
             flexDirection: "column",
-            gap: 8,
+            gap: 4,
             overflowY: "auto",
           }}
         >
@@ -187,12 +157,12 @@ export function Navbar() {
               href={href}
               onClick={() => setMobileOpen(false)}
               style={{
-                color: isActive(href) ? "#2457FF" : "#0B1324",
-                fontWeight: isActive(href) ? 700 : 600,
-                fontSize: 17,
-                fontFamily: "'Inter', sans-serif",
+                color: isActive(href) ? "#2563EB" : "#0A0F1E",
+                fontWeight: isActive(href) ? 700 : 500,
+                fontSize: 18,
+                fontFamily: "var(--font-body)",
                 padding: "14px 0",
-                borderBottom: "1px solid #f1f5f9",
+                borderBottom: "1px solid #F1F5F9",
                 textDecoration: "none",
               }}
             >
@@ -200,9 +170,9 @@ export function Navbar() {
             </Link>
           ))}
           <div style={{ marginTop: 24 }}>
-            <Button variant="primary" size="lg" href="/about/contact">
+            <Btn variant="primary" size="lg" href="/about/contact" className="w-full justify-center">
               Request a demo →
-            </Button>
+            </Btn>
           </div>
         </div>
       )}
@@ -213,9 +183,9 @@ export function Navbar() {
           .navbar-ctas    { display: none !important; }
           .navbar-hamburger { display: flex !important; }
         }
-        .navbar-link:hover { color: #2457FF !important; }
+        .navbar-link:hover { color: #2563EB !important; }
       `}</style>
-    </header>
+    </>
   );
 }
 
