@@ -14,6 +14,7 @@ import {
 import { getAgent, getAllAgentSlugs } from "@/content/agents";
 import { Container } from "@/components/ui/container";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { Breadcrumb } from "@/components/ui/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -53,6 +54,14 @@ export default async function AgentDetailPage({ params }: Props) {
       <section className="relative overflow-hidden pt-12 pb-16 bg-hero-glow">
         <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
         <Container className="relative">
+          <Breadcrumb
+            items={[
+              { label: "Home",     href: "/" },
+              { label: "Platform", href: "/products/ai-agents" },
+              { label: "Agents",   href: "/products/ai-agents" },
+              { label: agent.title, href: "" },
+            ]}
+          />
           <Breadcrumbs
             items={[
               { label: "Products", href: "/" },

@@ -2,19 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Google Fonts ─────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
 /* ── Design tokens ─────────────────────────────────────── */
 :root {
-  --c-ink:      #0a0a0f;
+  --ink:          #0B1324;
+  --navy:         #0F1B3D;
+  --brand:        #2457FF;
+  --brand-light:  #3B82F6;
+  --cyan:         #60A5FA;
+  --bg:           #F8FAFC;
+  --white:        #FFFFFF;
+  --muted:        #64748B;
+  --border:       #DCE3F1;
+  --dark:         #081225;
+  --success:      #10B981;
+  --warning:      #F59E0B;
+
+  /* Legacy tokens (kept for backward compat) */
+  --c-ink:      #0B1324;
   --c-ink-dim:  #3d3d4a;
-  --c-muted:    #6b6b7a;
+  --c-muted:    #64748B;
   --c-border:   rgba(0,0,0,0.08);
   --c-border2:  rgba(0,0,0,0.14);
-  --c-surface:  #f7f7f9;
+  --c-surface:  #F8FAFC;
   --c-white:    #ffffff;
-  --c-blue:     #0055ff;
-  --c-blue-dim: #3377ff;
-  --c-green:    #00b96b;
-  --c-amber:    #f5a623;
+  --c-blue:     #2457FF;
+  --c-blue-dim: #3B82F6;
+  --c-green:    #10B981;
+  --c-amber:    #F59E0B;
   --radius-sm:  6px;
   --radius-md:  10px;
   --radius-lg:  16px;
@@ -31,15 +48,81 @@ html {
 }
 
 body {
-  background: var(--c-white);
-  color: var(--c-ink);
+  background: var(--white);
+  color: var(--ink);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(40px, 5.5vw, 68px);
+  font-weight: 900;
+  line-height: 1.06;
+}
+
+h2 {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p, span, a {
+  font-family: 'Inter', sans-serif;
 }
 
 /* ── Keyframes ────────────────────────────────────────── */
 
-/* Ambient orbs */
+/* Zuuz specific animations */
+@keyframes zuuz-ping {
+  0%   { transform: scale(1); opacity: .8; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes zuuz-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes zuuz-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes zuuz-marquee-r {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes zuuz-orb {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(40px, -30px); }
+}
+
+@keyframes zuuz-blink {
+  0%, 100% { opacity: .2; }
+  50%       { opacity: 1; }
+}
+
+@keyframes zuuz-pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(36,87,255,0.25); }
+  70%  { box-shadow: 0 0 0 12px rgba(36,87,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(36,87,255,0); }
+}
+
+/* Legacy ambient orbs */
 @keyframes orb-drift-1 {
   0%   { transform: translate(0px, 0px) scale(1); }
   33%  { transform: translate(40px, -30px) scale(1.05); }
@@ -72,7 +155,7 @@ body {
   to   { opacity: 1; transform: scale(1); }
 }
 
-/* Marquee */
+/* Marquee (legacy) */
 @keyframes marquee-ltr {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -84,8 +167,8 @@ body {
 
 /* Workflow step pulse */
 @keyframes step-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 85, 255, 0.15); }
-  50%       { box-shadow: 0 0 0 6px rgba(0, 85, 255, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(36, 87, 255, 0.15); }
+  50%       { box-shadow: 0 0 0 6px rgba(36, 87, 255, 0); }
 }
 
 /* Dot blink */
@@ -127,23 +210,47 @@ body {
 
 /* ── Utility classes ──────────────────────────────────── */
 
+/* Zuuz animation classes */
+.animate-zuuz-float     { animation: zuuz-float 7s ease-in-out infinite; }
+.animate-zuuz-ping      { animation: zuuz-ping 1.5s ease-out infinite; }
+.animate-zuuz-orb       { animation: zuuz-orb 8s ease-in-out infinite; }
+.animate-zuuz-blink     { animation: zuuz-blink 1.4s ease-in-out infinite; }
+.animate-zuuz-marquee   { animation: zuuz-marquee 28s linear infinite; }
+.animate-zuuz-marquee-r { animation: zuuz-marquee-r 34s linear infinite; }
+.animate-zuuz-pulse-ring { animation: zuuz-pulse-ring 2s ease-in-out infinite; }
+
+/* Legacy animation classes */
 .animate-marquee-ltr  { animation: marquee-ltr 28s linear infinite; }
 .animate-marquee-rtl  { animation: marquee-rtl 32s linear infinite; }
+.animate-marquee-left  { animation: marquee-ltr 28s linear infinite; }
+.animate-marquee-right { animation: marquee-rtl 32s linear infinite; }
 .animate-float        { animation: float 5s ease-in-out infinite; }
 .animate-orb-1        { animation: orb-drift-1 22s ease-in-out infinite; }
 .animate-orb-2        { animation: orb-drift-2 28s ease-in-out infinite; }
 .animate-orb-3        { animation: orb-drift-3 18s ease-in-out infinite; }
 
-/* Reveal on scroll — set via JS IntersectionObserver */
+/* Reveal on scroll */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(22px);
   transition: opacity 0.65s ease, transform 0.65s ease;
 }
 .reveal.visible {
   opacity: 1;
   transform: none;
 }
+
+.reveal-x {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal-x.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Legacy reveal classes */
 .reveal-left {
   opacity: 0;
   transform: translateX(28px);
@@ -163,7 +270,17 @@ body {
   transform: none;
 }
 
-/* Stagger delays */
+/* Stagger delays (new d1-d8 system) */
+.d1 { transition-delay: 70ms; }
+.d2 { transition-delay: 140ms; }
+.d3 { transition-delay: 210ms; }
+.d4 { transition-delay: 280ms; }
+.d5 { transition-delay: 350ms; }
+.d6 { transition-delay: 420ms; }
+.d7 { transition-delay: 490ms; }
+.d8 { transition-delay: 560ms; }
+
+/* Legacy delay classes */
 .delay-0  { transition-delay: 0ms; }
 .delay-1  { transition-delay: 80ms; }
 .delay-2  { transition-delay: 160ms; }
@@ -173,8 +290,24 @@ body {
 .delay-6  { transition-delay: 480ms; }
 .delay-7  { transition-delay: 560ms; }
 
+/* Card hover */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.09);
+  border-color: #b0bcd4 !important;
+}
+
 /* Grid dot background */
 .dot-grid {
+  background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* Legacy grid dot */
+.dot-grid-legacy {
   background-image: radial-gradient(circle, rgba(0,0,0,0.07) 1px, transparent 1px);
   background-size: 28px 28px;
 }
@@ -197,13 +330,13 @@ body {
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--c-ink) 0%, var(--c-blue) 100%);
+  background: linear-gradient(135deg, var(--ink) 0%, var(--brand) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Hover card lift */
+/* Hover card lift (legacy) */
 .card-lift {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -216,8 +349,8 @@ body {
 /* Step active glow */
 .step-active {
   animation: step-pulse 2s ease-in-out infinite;
-  border-color: rgba(0, 85, 255, 0.3) !important;
-  background: rgba(0, 85, 255, 0.03) !important;
+  border-color: rgba(36, 87, 255, 0.3) !important;
+  background: rgba(36, 87, 255, 0.03) !important;
 }
 
 /* Scrollbar */
@@ -226,4 +359,33 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 3px; }
 
 /* Selection */
-::selection { background: rgba(0, 85, 255, 0.12); }
+::selection { background: rgba(36, 87, 255, 0.12); }
+
+/* ── Button hover states ─────────────────────────────── */
+.zuuz-btn-primary:hover {
+  background: #1a44e8 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(36,87,255,0.3);
+}
+.zuuz-btn-primary:active  { transform: scale(0.98); }
+.zuuz-btn-primary:focus-visible { outline: 2px solid #60A5FA; outline-offset: 2px; }
+
+.zuuz-btn-secondary:hover {
+  border-color: #94a3b8 !important;
+  background: #F8FAFC !important;
+  transform: translateY(-1px);
+}
+.zuuz-btn-secondary:active { transform: scale(0.98); }
+
+.zuuz-btn-ghost:hover {
+  border-color: #94a3b8 !important;
+  color: #0B1324 !important;
+  background: #F8FAFC !important;
+}
+
+.zuuz-btn-nav:hover {
+  background: #1a44e8 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(36,87,255,0.28);
+}
+.zuuz-btn-nav:active { transform: scale(0.98); }
