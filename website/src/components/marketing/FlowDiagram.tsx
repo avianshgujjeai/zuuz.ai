@@ -102,10 +102,15 @@ export function FlowDiagram() {
         ))}
 
         {/* ── Core node ── */}
+        {/* Second larger pulse ring (slow) */}
+        <circle cx={cx} cy={cy} r={65} fill="none" stroke="#2563EB" strokeWidth="1" opacity="0.1">
+          <animate attributeName="r"       values="65;78;65" dur="5s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.1;0.02;0.1" dur="5s" repeatCount="indefinite" />
+        </circle>
         {/* Outer pulse */}
         <circle cx={cx} cy={cy} r={52} fill="url(#coreGlowGrad)">
           <animate attributeName="r"       values="48;58;48" dur="3s" repeatCount="indefinite" />
-          <animate attributeName="opacity" values="0.7;0.1;0.7" dur="3s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="0.4;0.08;0.4" dur="3s" repeatCount="indefinite" />
         </circle>
         {/* Main circle */}
         <circle

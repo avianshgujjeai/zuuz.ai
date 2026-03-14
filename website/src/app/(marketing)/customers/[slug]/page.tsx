@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getCaseStudy, getAllCaseStudySlugs } from "@/content/customers";
-import { Container } from "@/components/ui/container";
-import { Badge } from "@/components/ui/badge";
 import { Breadcrumb } from "@/components/ui/breadcrumbs";
 import { Btn } from "@/components/ui/Btn";
+import { CountUpBanner } from "@/components/marketing/CountUpBanner";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -21,17 +21,53 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: cs.meta.title, description: cs.meta.description };
 }
 
+/* ─── Industry badge colors ─────────────────────────────── */
+const INDUSTRY_COLORS: Record<string, { bg: string; color: string }> = {
+  "Distribution & Trading": { bg: "#FEF3C7", color: "#D97706" },
+  "Retail & Distribution":  { bg: "#F5F3FF", color: "#7C3AED" },
+  "IT Services":            { bg: "#EFF6FF", color: "#2563EB" },
+  "IT Services & Cloud":    { bg: "#ECFDF5", color: "#10B981" },
+};
+
 export default async function CaseStudyPage({ params }: Props) {
   const { slug } = await params;
   const cs = getCaseStudy(slug);
   if (!cs) notFound();
 
+  const industryStyle = INDUSTRY_COLORS[cs.industry] ?? { bg: "#F1F5F9", color: "#64748B" };
+
+  /* Build CountUpBanner stats from results */
+  const bannerStats = cs.results.map((r) => ({
+    target: 0,
+    suffix: "",
+    label: r.label,
+    sublabel: r.desc,
+    static: r.metric,
+  }));
+
   return (
     <>
       {/* ── 1. Breadcrumb + Hero ── */}
-      <section className="relative overflow-hidden pt-12 pb-20 bg-hero-glow">
-        <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
-        <Container className="relative">
+      <section
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          paddingTop: 72,
+          paddingBottom: 72,
+          background: "#fff",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            opacity: 0.5,
+            pointerEvents: "none",
+          }}
+        />
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px", position: "relative" }}>
           <Breadcrumb
             crumbs={[
               { label: "Home", href: "/" },
@@ -39,114 +75,383 @@ export default async function CaseStudyPage({ params }: Props) {
               { label: cs.name },
             ]}
           />
-          <div className="mt-6 max-w-3xl">
-            <div className="flex flex-wrap items-center gap-3 mb-4">
-              <Badge variant="primary">{cs.industry}</Badge>
-              <span className="text-xs font-medium text-muted-foreground border border-border rounded-full px-3 py-1">
-                {cs.stack}
-              </span>
-              <span className="text-xs font-medium text-muted-foreground border border-border rounded-full px-3 py-1">
-                {cs.location}
-              </span>
+
+          <div style={{ marginTop: 24 }} className="case-hero-grid">
+            {/* Left */}
+            <div className="sr">
+              {/* Badges row */}
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 20 }}>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 700,
+                    padding: "4px 12px",
+                    borderRadius: 999,
+                    fontFamily: "var(--font-body)",
+                    background: industryStyle.bg,
+                    color: industryStyle.color,
+                  }}
+                >
+                  {cs.industry}
+                </span>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 600,
+                    padding: "4px 12px",
+                    borderRadius: 999,
+                    background: "#F1F5F9",
+                    color: "#475569",
+                    fontFamily: "var(--font-body)",
+                    border: "1px solid #E2E8F0",
+                  }}
+                >
+                  {cs.stack}
+                </span>
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 600,
+                    padding: "4px 12px",
+                    borderRadius: 999,
+                    background: "#F1F5F9",
+                    color: "#475569",
+                    fontFamily: "var(--font-body)",
+                    border: "1px solid #E2E8F0",
+                  }}
+                >
+                  📍 {cs.location}
+                </span>
+              </div>
+
+              <h1 style={{ marginBottom: 16 }}>{cs.name}</h1>
+              <p
+                style={{
+                  fontSize: 18,
+                  color: "#64748B",
+                  lineHeight: 1.75,
+                  marginBottom: 32,
+                  maxWidth: 520,
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                {cs.heroSub}
+              </p>
+              <Btn href="/about/contact" size="lg">
+                Request a similar demo →
+              </Btn>
             </div>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance leading-[1.1]">
-              {cs.name}
-            </h1>
-            <p className="mt-4 text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              {cs.heroSub}
-            </p>
+
+            {/* Right — logo / visual */}
+            <div
+              className="sr-x d1"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "#F8FAFC",
+                border: "1px solid #E2E8F0",
+                borderRadius: 24,
+                padding: 40,
+                minHeight: 200,
+              }}
+            >
+              <div style={{ textAlign: "center" }}>
+                <p
+                  style={{
+                    fontSize: 32,
+                    fontWeight: 900,
+                    color: "#0A0F1E",
+                    fontFamily: "var(--font-display)",
+                    letterSpacing: "-0.03em",
+                    lineHeight: 1.1,
+                    marginBottom: 8,
+                  }}
+                >
+                  {cs.name}
+                </p>
+                <p
+                  style={{
+                    fontSize: 13,
+                    color: "#94A3B8",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  {cs.industry} · {cs.location}
+                </p>
+              </div>
+            </div>
           </div>
-        </Container>
+        </div>
+
+        <style>{`
+          .case-hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 56px;
+            align-items: center;
+          }
+          @media (max-width: 767px) {
+            .case-hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          }
+        `}</style>
       </section>
 
       {/* ── 2. Results Bar ── */}
-      <section className="py-14 border-y border-border bg-card">
-        <Container>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-            {cs.results.map((r) => (
-              <div key={r.label} className="flex flex-col items-center gap-1">
-                <p className="text-4xl font-black text-primary">{r.metric}</p>
-                <p className="text-sm font-semibold text-foreground">{r.label}</p>
-                <p className="text-xs text-muted-foreground">{r.desc}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      <CountUpBanner stats={bannerStats} />
 
       {/* ── 3. Challenge → Solution ── */}
-      <section className="py-20">
-        <Container>
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
-            <div>
-              <div className="flex items-center gap-2 mb-5">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-rose-100 text-rose-600 text-xs font-bold">1</span>
-                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">The challenge</p>
+      <section style={{ padding: "88px 0" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <div className="challenge-grid">
+            <div className="sr">
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                <span
+                  style={{
+                    width: 28,
+                    height: 28,
+                    borderRadius: "50%",
+                    background: "#FEE2E2",
+                    color: "#DC2626",
+                    fontSize: 13,
+                    fontWeight: 800,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: "var(--font-body)",
+                    flexShrink: 0,
+                  }}
+                >
+                  1
+                </span>
+                <p
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    color: "#DC2626",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  The Challenge
+                </p>
               </div>
-              <p className="text-base text-foreground leading-relaxed">{cs.challenge}</p>
+              <p
+                style={{
+                  fontSize: 16,
+                  color: "#334155",
+                  lineHeight: 1.8,
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                {cs.challenge}
+              </p>
             </div>
-            <div>
-              <div className="flex items-center gap-2 mb-5">
-                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-primary text-xs font-bold">2</span>
-                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">The solution</p>
+            <div className="sr d2">
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                <span
+                  style={{
+                    width: 28,
+                    height: 28,
+                    borderRadius: "50%",
+                    background: "#EFF6FF",
+                    color: "#2563EB",
+                    fontSize: 13,
+                    fontWeight: 800,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontFamily: "var(--font-body)",
+                    flexShrink: 0,
+                  }}
+                >
+                  2
+                </span>
+                <p
+                  style={{
+                    fontSize: 11,
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                    color: "#2563EB",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  The ZUUZ Solution
+                </p>
               </div>
-              <p className="text-base text-foreground leading-relaxed">{cs.solution}</p>
+              <p
+                style={{
+                  fontSize: 16,
+                  color: "#334155",
+                  lineHeight: 1.8,
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                {cs.solution}
+              </p>
             </div>
           </div>
-        </Container>
+        </div>
+        <style>{`
+          .challenge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+          @media (max-width: 767px) { .challenge-grid { grid-template-columns: 1fr !important; gap: 40px !important; } }
+        `}</style>
       </section>
 
       {/* ── 4. Pull Quote ── */}
-      <section className="py-20 bg-muted/30 border-y border-border">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <svg className="h-10 w-10 text-primary/30 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M14.017 21v-7.391c0-5.704 3.748-9.57 9-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.995zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-            </svg>
-            <blockquote className="text-xl font-medium text-foreground leading-relaxed sm:text-2xl">
-              &ldquo;{cs.quote}&rdquo;
-            </blockquote>
-            <div className="mt-8 flex items-center justify-center gap-3">
-              <div className="h-px w-12 bg-border" />
-              <div className="text-center">
-                <p className="text-sm font-semibold text-foreground">{cs.quoteName}</p>
-                <p className="text-xs text-muted-foreground">{cs.quoteCompany}</p>
+      <section
+        style={{
+          padding: "88px 0",
+          background: "#F8FAFC",
+          borderTop: "1px solid #F1F5F9",
+          borderBottom: "1px solid #F1F5F9",
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <div className="sr" style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+            <p
+              style={{
+                fontSize: 72,
+                lineHeight: 0.8,
+                color: "#BFDBFE",
+                fontFamily: "Georgia, serif",
+                marginBottom: 20,
+                userSelect: "none",
+              }}
+            >
+              &ldquo;
+            </p>
+            <p
+              style={{
+                fontSize: 22,
+                fontStyle: "italic",
+                fontWeight: 500,
+                color: "#1E293B",
+                lineHeight: 1.7,
+                marginBottom: 40,
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              {cs.quote}
+            </p>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 16,
+              }}
+            >
+              <div style={{ height: 1, width: 48, background: "#E2E8F0" }} />
+              <div style={{ textAlign: "center" }}>
+                <p
+                  style={{
+                    fontSize: 14,
+                    fontWeight: 700,
+                    color: "#0A0F1E",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  {cs.quoteName}
+                </p>
+                <p
+                  style={{
+                    fontSize: 12,
+                    color: "#64748B",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  {cs.quoteCompany}
+                </p>
               </div>
-              <div className="h-px w-12 bg-border" />
+              <div style={{ height: 1, width: 48, background: "#E2E8F0" }} />
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* ── 5. Agents & Connectors ── */}
-      <section className="py-20">
-        <Container>
-          <div className="grid gap-12 sm:grid-cols-2">
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-5">
-                AI Agents used
+      <section style={{ padding: "88px 0" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <div className="chips-grid">
+            <div className="sr">
+              <p
+                style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: "#94A3B8",
+                  fontFamily: "var(--font-body)",
+                  marginBottom: 20,
+                }}
+              >
+                AI Agents Used
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {cs.agents.map((agent) => (
                   <span
                     key={agent}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 6,
+                      background: "#EFF6FF",
+                      border: "1px solid rgba(37,99,235,0.15)",
+                      borderRadius: 999,
+                      padding: "8px 16px",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: "#2563EB",
+                      fontFamily: "var(--font-body)",
+                    }}
                   >
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    <span
+                      style={{
+                        width: 6,
+                        height: 6,
+                        borderRadius: "50%",
+                        background: "#2563EB",
+                        flexShrink: 0,
+                      }}
+                    />
                     {agent}
                   </span>
                 ))}
               </div>
             </div>
-            <div>
-              <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-5">
-                Systems connected
+            <div className="sr d2">
+              <p
+                style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.12em",
+                  color: "#94A3B8",
+                  fontFamily: "var(--font-body)",
+                  marginBottom: 20,
+                }}
+              >
+                Systems Connected
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {cs.connectors.map((connector) => (
                   <span
                     key={connector}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      background: "#F8FAFC",
+                      border: "1px solid #E2E8F0",
+                      borderRadius: 999,
+                      padding: "8px 16px",
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: "#334155",
+                      fontFamily: "var(--font-body)",
+                    }}
                   >
                     {connector}
                   </span>
@@ -154,25 +459,59 @@ export default async function CaseStudyPage({ params }: Props) {
               </div>
             </div>
           </div>
-        </Container>
+          {/* Back link */}
+          <div style={{ marginTop: 56, textAlign: "center" }}>
+            <Link
+              href="/customers"
+              style={{
+                fontSize: 14,
+                fontWeight: 600,
+                color: "#64748B",
+                fontFamily: "var(--font-body)",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
+              ← Back to all customers
+            </Link>
+          </div>
+        </div>
+        <style>{`
+          .chips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+          @media (max-width: 767px) { .chips-grid { grid-template-columns: 1fr !important; gap: 40px !important; } }
+        `}</style>
       </section>
 
       {/* ── 6. CTA ── */}
-      <section className="py-20 border-t border-border" style={{ background: "var(--bg-dark, #050D1F)" }}>
-        <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl mb-4">
+      <section style={{ padding: "88px 0", background: "var(--bg-dark)" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <div className="sr" style={{ textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
+            <h2 style={{ color: "#fff", marginBottom: 16 }}>
               See what ZUUZ can do for your team
             </h2>
-            <p className="text-blue-200/70 mb-8 text-lg">
-              Book a 20-minute demo. Bring your messiest approval workflow — we&apos;ll show you what changes.
+            <p
+              style={{
+                fontSize: 17,
+                color: "#94A3B8",
+                lineHeight: 1.75,
+                marginBottom: 40,
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Book a 20-minute demo. Bring your messiest approval workflow — we&apos;ll show you what
+              changes.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Btn href="/about/contact" variant="primary" size="lg">Request a demo</Btn>
-              <Btn href="/customers" variant="dark-outline" size="lg">View all case studies</Btn>
+            <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
+              <Btn variant="primary" size="lg" href="/about/contact">
+                Request a demo
+              </Btn>
+              <Btn variant="dark-outline" size="lg" href="/customers">
+                View all case studies
+              </Btn>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
     </>
   );

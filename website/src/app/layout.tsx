@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { MotionProvider } from "@/components/motion/motion-provider";
-import { BUILD_ID } from "@/config/build";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/footer";
+import { AmbientBg } from "@/components/marketing/AmbientBg";
+import { RevealInit } from "@/components/ui/RevealInit";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -38,28 +39,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body style={{ minHeight: "100vh", overflowX: "hidden" }}>
+        <AmbientBg />
         <MotionProvider>
+          <RevealInit />
           <Navbar />
           <main>{children}</main>
           <Footer />
-          <div
-            style={{
-              position: "fixed",
-              right: 12,
-              bottom: 12,
-              zIndex: 999999,
-              background: "#2563EB",
-              color: "#fff",
-              padding: "8px 12px",
-              borderRadius: 12,
-              fontSize: 12,
-              fontWeight: 600,
-              boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
-              fontFamily: "'Inter', sans-serif",
-            }}
-          >
-            BUILD: {BUILD_ID}
-          </div>
         </MotionProvider>
       </body>
     </html>

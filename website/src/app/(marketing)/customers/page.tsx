@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Container } from "@/components/ui/container";
-import { Badge } from "@/components/ui/badge";
+import { customers } from "@/content/customers";
 import { Breadcrumb } from "@/components/ui/breadcrumbs";
 import { Btn } from "@/components/ui/Btn";
-import { customers } from "@/content/customers";
+import { CustomerLogoWall } from "@/components/marketing/CustomerLogoWall";
+import { CountUpBanner } from "@/components/marketing/CountUpBanner";
 
 export const metadata: Metadata = {
   title: "Customers — ZUUZ",
@@ -12,195 +12,657 @@ export const metadata: Metadata = {
     "See how enterprise teams at Western International, Nesto Group, RA Technologies, and Cloud Box Technologies use ZUUZ to close the gap between AI and action.",
 };
 
-const PARTNER = {
-  name: "One + One Tech",
-  role: "Strategic Partner & Systems Integrator",
-  description:
-    "One + One Tech partners with ZUUZ to deliver enterprise AI deployments across the UAE and GCC. Their team handles implementation, change management, and ongoing optimisation for customers on SAP, Microsoft 365, and Zoho stacks.",
-  location: "UAE",
-  website: "https://oneplusontech.com",
-};
+/* ─── Testimonials ───────────────────────────────────────── */
+const TESTIMONIALS = [
+  {
+    quote: "ZUUZ gave us one place to see everything — our SAP data, our emails, our approvals — and act on it without switching systems. Procurement that used to take days now happens before lunch.",
+    name: "Senior Operations Director",
+    company: "Western International Group, UAE",
+    initials: "WI",
+    color: "#2563EB",
+  },
+  {
+    quote: "Before ZUUZ, our procurement team was chasing approvals across SAP and Outlook separately. Now every decision arrives with full context — budget, vendor history, policy flags — all in one screen. It changed how we operate.",
+    name: "Head of Procurement",
+    company: "Nesto Group, UAE",
+    initials: "NG",
+    color: "#7C3AED",
+  },
+  {
+    quote: "Our reps were spending hours every week updating Zoho after calls and chasing approvals on email. ZUUZ made that invisible. The CRM updates itself, approvals route automatically, and our team just sells.",
+    name: "CEO",
+    company: "RA Technologies LLC, USA",
+    initials: "RA",
+    color: "#10B981",
+  },
+  {
+    quote: "ZUUZ connected our Zoho and Microsoft world in ways we didn't think were possible this fast. Proposals get reviewed, contracts get flagged, meetings turn into actions — all without anyone having to remember to do it.",
+    name: "Managing Director",
+    company: "Cloud Box Technologies, UAE",
+    initials: "CB",
+    color: "#F59E0B",
+  },
+];
+
+/* ─── Logo wall data ─────────────────────────────────────── */
+const LOGOS = customers.map((c) => ({
+  src: c.logo,
+  alt: c.name,
+  industry: c.industry,
+  location: c.location,
+  slug: c.slug,
+}));
 
 export default function CustomersPage() {
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden pt-12 pb-20 bg-hero-glow">
-        <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
-        <Container className="relative">
+      {/* ── 1. Hero ── */}
+      <section
+        style={{
+          position: "relative",
+          overflow: "hidden",
+          paddingTop: 72,
+          paddingBottom: 72,
+          background: "#fff",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            opacity: 0.5,
+            pointerEvents: "none",
+          }}
+        />
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px", position: "relative" }}>
           <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Customers" }]} />
-          <div className="sr mt-6 max-w-3xl">
-            <Badge variant="primary" className="mb-4">Customer Stories</Badge>
-            <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance leading-[1.1]">
-              Real teams. Real workflows.<br />Measurable results.
+          <div className="sr" style={{ marginTop: 24, maxWidth: 720 }}>
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: "#EFF6FF",
+                borderRadius: 999,
+                padding: "6px 16px",
+                marginBottom: 20,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "#2563EB",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                Customer Stories
+              </span>
+            </div>
+            <h1 style={{ marginBottom: 20 }}>
+              Trusted by enterprise
+              <br />
+              <span
+                style={{
+                  background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                operations teams
+              </span>
             </h1>
-            <p className="mt-5 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-              Enterprise deployments across distribution, retail, IT services, and cloud — all powered by ZUUZ AI Agents, ApprovalOps, and Unified Search.
+            <p
+              style={{
+                fontSize: 18,
+                color: "#64748B",
+                lineHeight: 1.75,
+                marginBottom: 32,
+                maxWidth: 580,
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              ZUUZ is deployed across enterprises in the UAE and USA, unifying SAP, Zoho, and
+              Microsoft 365 into a single agentic execution layer.
             </p>
-            <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
-              <Btn href="/about/contact" size="lg">Request a demo</Btn>
-              <Btn href="#case-studies" variant="secondary" size="lg">See case studies</Btn>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginBottom: 32 }}>
+              {["4 Enterprises in Production", "UAE & USA"].map((chip) => (
+                <span
+                  key={chip}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                    border: "1px solid #E2E8F0",
+                    borderRadius: 999,
+                    padding: "6px 16px",
+                    fontSize: 12,
+                    fontWeight: 700,
+                    color: "#0A0F1E",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: "50%",
+                      background: "#10B981",
+                      flexShrink: 0,
+                    }}
+                  />
+                  {chip}
+                </span>
+              ))}
+            </div>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <Btn href="/about/contact" size="lg">
+                Request a demo
+              </Btn>
+              <Btn href="#case-studies" variant="secondary" size="lg">
+                See case studies
+              </Btn>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* ── Customer Logo Wall ── */}
-      <section className="py-12 border-y border-border">
-        <Container>
-          <p className="text-center text-xs font-bold uppercase tracking-widest text-muted-foreground mb-10">
-            Trusted by enterprise teams across the GCC and USA
+      {/* ── 2. Logo Wall ── */}
+      <section
+        style={{
+          padding: "64px 0",
+          borderTop: "1px solid #F1F5F9",
+          borderBottom: "1px solid #F1F5F9",
+        }}
+      >
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <p
+            style={{
+              textAlign: "center",
+              fontSize: 11,
+              fontWeight: 700,
+              textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              color: "#94A3B8",
+              fontFamily: "var(--font-body)",
+              marginBottom: 32,
+            }}
+          >
+            Deployed at
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-            {customers.map((c) => (
-              <Link
-                key={c.slug}
-                href={`/customers/${c.slug}`}
-                className="flex flex-col items-center justify-center gap-2 rounded-xl border border-border bg-card p-6 text-center transition-shadow hover:shadow-md card-lift"
-              >
-                <span className="text-base font-semibold text-foreground">{c.name}</span>
-                <span className="text-xs text-muted-foreground">{c.industry}</span>
-                <span className="text-xs text-muted-foreground">{c.location}</span>
-              </Link>
-            ))}
-          </div>
-        </Container>
+          <CustomerLogoWall logos={LOGOS} />
+        </div>
       </section>
 
-      {/* ── Case Study Cards 2×2 ── */}
-      <section id="case-studies" className="py-20">
-        <Container>
-          <div className="sr text-center mb-14">
-            <Badge variant="outline" className="mb-3">Case Studies</Badge>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
+      {/* ── 3. Use Case Cards 2×2 ── */}
+      <section id="case-studies" style={{ padding: "88px 0" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <div className="sr" style={{ textAlign: "center", marginBottom: 52 }}>
+            <p
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "#2563EB",
+                fontFamily: "var(--font-body)",
+                marginBottom: 12,
+              }}
+            >
+              Case Studies
+            </p>
+            <h2 style={{ color: "#0A0F1E", marginBottom: 14 }}>
               From messy approvals to governed outcomes
             </h2>
-            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-              Each deployment is a live integration — SAP, Zoho, Microsoft 365 — with AI Agents acting on real data and writing back to source systems.
+            <p
+              style={{
+                fontSize: 18,
+                color: "#64748B",
+                maxWidth: 540,
+                margin: "0 auto",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Each deployment is a live integration — SAP, Zoho, Microsoft 365 — with AI Agents
+              acting on real data and writing back to source systems.
             </p>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2">
+          <div className="cs-cards-grid">
             {customers.map((c, i) => (
               <Link
                 key={c.slug}
                 href={`/customers/${c.slug}`}
-                className={`sr d${i + 1} card-lift rounded-2xl border border-border bg-card p-8 flex flex-col h-full`}
+                className={`card-lift sr d${i + 1}`}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  background: "#fff",
+                  border: "1px solid #E2E8F0",
+                  borderRadius: 20,
+                  padding: 28,
+                  textDecoration: "none",
+                }}
               >
-                <div className="flex items-start justify-between gap-4 mb-6">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "flex-start",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    marginBottom: 20,
+                  }}
+                >
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-1">
+                    <p
+                      style={{
+                        fontSize: 10,
+                        fontWeight: 800,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.08em",
+                        color: "#64748B",
+                        fontFamily: "var(--font-body)",
+                        marginBottom: 4,
+                      }}
+                    >
                       {c.industry} · {c.location}
                     </p>
-                    <h3 className="text-xl font-bold text-foreground">{c.name}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">{c.stack}</p>
+                    <h3
+                      style={{
+                        fontSize: 20,
+                        color: "#0A0F1E",
+                        fontFamily: "var(--font-display)",
+                        letterSpacing: "-0.02em",
+                      }}
+                    >
+                      {c.name}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: 12,
+                        color: "#94A3B8",
+                        fontFamily: "var(--font-body)",
+                        marginTop: 4,
+                      }}
+                    >
+                      {c.stack}
+                    </p>
                   </div>
-                  <Badge variant="outline" className="shrink-0">{c.location}</Badge>
+                  <span
+                    style={{
+                      fontSize: 10,
+                      fontWeight: 700,
+                      background: "#EFF6FF",
+                      color: "#2563EB",
+                      padding: "4px 10px",
+                      borderRadius: 999,
+                      fontFamily: "var(--font-body)",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {c.location}
+                  </span>
                 </div>
 
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                <p
+                  style={{
+                    fontSize: 14,
+                    color: "#64748B",
+                    lineHeight: 1.7,
+                    marginBottom: 24,
+                    flex: 1,
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
                   {c.heroSub}
                 </p>
 
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                {/* Top 2 results */}
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 20 }}>
                   {c.results.slice(0, 2).map((r) => (
-                    <div key={r.label} className="rounded-lg bg-primary/5 p-3">
-                      <p className="text-2xl font-black text-primary">{r.metric}</p>
-                      <p className="text-xs font-medium text-foreground mt-0.5">{r.label}</p>
+                    <div
+                      key={r.label}
+                      style={{
+                        background: "#EFF6FF",
+                        borderRadius: 12,
+                        padding: "12px 14px",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: 24,
+                          fontWeight: 900,
+                          color: "#2563EB",
+                          fontFamily: "var(--font-display)",
+                          letterSpacing: "-0.03em",
+                          lineHeight: 1,
+                        }}
+                      >
+                        {r.metric}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: 11,
+                          fontWeight: 600,
+                          color: "#1E293B",
+                          fontFamily: "var(--font-body)",
+                          marginTop: 4,
+                        }}
+                      >
+                        {r.label}
+                      </p>
                     </div>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 6,
+                    fontSize: 13,
+                    fontWeight: 700,
+                    color: "#2563EB",
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
                   Read case study
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <svg
+                    width="14"
+                    height="14"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                   </svg>
                 </div>
               </Link>
             ))}
           </div>
-        </Container>
+        </div>
+        <style>{`
+          .cs-cards-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+          @media (max-width: 767px) { .cs-cards-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
       </section>
 
-      {/* ── Testimonials 2×2 ── */}
-      <section className="py-20 bg-muted/30 border-y border-border">
-        <Container>
-          <div className="sr text-center mb-14">
-            <Badge variant="outline" className="mb-3">What customers say</Badge>
-            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-              In their own words
-            </h2>
+      {/* ── 4. Results Bar ── */}
+      <CountUpBanner
+        stats={[
+          { target: 70,  suffix: "%+", label: "Faster Procurement",     sublabel: "vs. pre-ZUUZ baseline" },
+          { target: 100, suffix: "%",  label: "Audit Coverage",         sublabel: "on every transaction" },
+          { target: 0,   suffix: "",   label: "Saved per User / Week",  static: "5+ hrs" },
+          { target: 4,   suffix: "",   label: "Enterprises in Production", sublabel: "UAE & USA" },
+        ]}
+      />
+
+      {/* ── 5. Testimonials 2×2 ── */}
+      <section style={{ padding: "88px 0", background: "#F8FAFC" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <div className="sr" style={{ textAlign: "center", marginBottom: 52 }}>
+            <p
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "#2563EB",
+                fontFamily: "var(--font-body)",
+                marginBottom: 12,
+              }}
+            >
+              What customers say
+            </p>
+            <h2 style={{ color: "#0A0F1E" }}>In their own words</h2>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {customers.map((c, i) => (
+          <div className="testimonials-grid">
+            {TESTIMONIALS.map((t, i) => (
               <div
-                key={c.slug}
-                className={`sr d${i + 1} rounded-2xl border border-border bg-card p-8 flex flex-col`}
+                key={t.company}
+                className={`sr d${i + 1}`}
+                style={{
+                  background: "#fff",
+                  border: "1px solid #F1F5F9",
+                  borderRadius: 20,
+                  padding: "32px 28px",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
               >
-                <svg className="h-8 w-8 text-primary/30 mb-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14.017 21v-7.391c0-5.704 3.748-9.57 9-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.995zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
-                </svg>
-                <blockquote className="text-base text-foreground leading-relaxed flex-1 mb-6">
-                  &ldquo;{c.quote}&rdquo;
-                </blockquote>
-                <div className="border-t border-border pt-4">
-                  <p className="text-sm font-semibold text-foreground">{c.quoteName}</p>
-                  <p className="text-xs text-muted-foreground">{c.quoteCompany}</p>
+                {/* Opening quote mark */}
+                <p
+                  style={{
+                    fontSize: 72,
+                    lineHeight: 0.8,
+                    color: "#BFDBFE",
+                    fontFamily: "Georgia, serif",
+                    marginBottom: 16,
+                    userSelect: "none",
+                  }}
+                >
+                  &ldquo;
+                </p>
+                <p
+                  style={{
+                    fontSize: 16,
+                    fontStyle: "italic",
+                    color: "#334155",
+                    lineHeight: 1.75,
+                    flex: 1,
+                    marginBottom: 24,
+                    fontFamily: "var(--font-body)",
+                  }}
+                >
+                  {t.quote}
+                </p>
+                {/* Attribution */}
+                <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                  <div
+                    style={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: "50%",
+                      background: t.color,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: 11,
+                        fontWeight: 800,
+                        color: "#fff",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
+                      {t.initials}
+                    </span>
+                  </div>
+                  <div>
+                    <p
+                      style={{
+                        fontSize: 13,
+                        fontWeight: 700,
+                        color: "#0A0F1E",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
+                      {t.name}
+                    </p>
+                    <p
+                      style={{
+                        fontSize: 12,
+                        color: "#64748B",
+                        fontFamily: "var(--font-body)",
+                      }}
+                    >
+                      {t.company}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
-        </Container>
+        </div>
+        <style>{`
+          .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+          @media (max-width: 767px) { .testimonials-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
       </section>
 
-      {/* ── Strategic Partner ── */}
-      <section className="py-20">
-        <Container>
-          <div className="sr rounded-2xl border border-primary/20 bg-primary/5 p-10 sm:p-14 flex flex-col sm:flex-row items-start gap-10">
-            <div className="flex-1">
-              <p className="text-xs font-bold uppercase tracking-widest text-primary mb-3">
-                Strategic Partner
-              </p>
-              <h2 className="text-2xl font-bold text-foreground mb-4">{PARTNER.name}</h2>
-              <p className="text-sm font-medium text-muted-foreground mb-1">{PARTNER.role} · {PARTNER.location}</p>
-              <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-xl">
-                {PARTNER.description}
-              </p>
+      {/* ── 6. Strategic Partner ── */}
+      <section style={{ padding: "88px 0", background: "#F8FAFC", borderTop: "1px solid #F1F5F9" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <div className="sr" style={{ textAlign: "center", marginBottom: 40 }}>
+            <p
+              style={{
+                fontSize: 12,
+                fontWeight: 700,
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+                color: "#2563EB",
+                fontFamily: "var(--font-body)",
+                marginBottom: 12,
+              }}
+            >
+              Strategic Partnership
+            </p>
+            <h2 style={{ color: "#0A0F1E" }}>Expanding across the US market</h2>
+          </div>
+
+          <div
+            className="sr d1"
+            style={{
+              maxWidth: 760,
+              margin: "0 auto",
+              background: "#fff",
+              border: "1px solid #E2E8F0",
+              borderRadius: 24,
+              padding: "40px 48px",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: "#ECFDF5",
+                borderRadius: 999,
+                padding: "6px 16px",
+                marginBottom: 20,
+              }}
+            >
+              <span
+                style={{
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "#10B981",
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 800,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "#10B981",
+                  fontFamily: "var(--font-body)",
+                }}
+              >
+                Strategic Partner · Central USA
+              </span>
             </div>
-            <div className="shrink-0 flex flex-col gap-4">
-              <div className="rounded-xl border border-border bg-card p-5 text-sm">
-                <p className="font-semibold text-foreground mb-2">Capabilities</p>
-                <ul className="space-y-1 text-muted-foreground">
-                  <li>· Enterprise implementation &amp; rollout</li>
-                  <li>· SAP, Microsoft 365 &amp; Zoho expertise</li>
-                  <li>· Change management &amp; training</li>
-                  <li>· Ongoing optimisation &amp; support</li>
-                </ul>
-              </div>
-              <Btn href="/about/contact" variant="secondary" size="sm">
-                Partner with us
+
+            <h3
+              style={{
+                fontSize: 26,
+                color: "#0A0F1E",
+                fontFamily: "var(--font-display)",
+                letterSpacing: "-0.02em",
+                marginBottom: 14,
+              }}
+            >
+              One + One Tech
+            </h3>
+
+            <p
+              style={{
+                fontSize: 16,
+                color: "#64748B",
+                lineHeight: 1.75,
+                maxWidth: 540,
+                margin: "0 auto 24px",
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Delivering ZUUZ&apos;s agentic AI execution platform to enterprise accounts in the
+              Central United States, bringing intelligent workflow automation to mid-market and
+              enterprise operations teams.
+            </p>
+
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+                fontSize: 13,
+                color: "#64748B",
+                fontFamily: "var(--font-body)",
+                marginBottom: 24,
+              }}
+            >
+              📍 Central United States
+            </div>
+
+            <div>
+              <Btn href="/about/contact" variant="secondary">
+                Contact us about partnerships →
               </Btn>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      {/* ── CTA Banner ── */}
-      <section className="py-20 border-t border-border" style={{ background: "var(--bg-dark, #050D1F)" }}>
-        <Container>
-          <div className="text-center max-w-2xl mx-auto">
-            <h2 className="text-3xl font-bold text-white sm:text-4xl mb-4">
+      {/* ── 7. Dark CTA ── */}
+      <section style={{ padding: "88px 0", background: "var(--bg-dark)" }}>
+        <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
+          <div className="sr" style={{ textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
+            <h2 style={{ color: "#fff", marginBottom: 16 }}>
               Ready to see ZUUZ in action?
             </h2>
-            <p className="text-blue-200/70 mb-8 text-lg">
-              Book a 20-minute demo. Bring your messiest approval workflow — we&apos;ll show you what changes.
+            <p
+              style={{
+                fontSize: 17,
+                color: "#94A3B8",
+                lineHeight: 1.75,
+                marginBottom: 40,
+                fontFamily: "var(--font-body)",
+              }}
+            >
+              Book a 20-minute demo. Bring your messiest approval workflow — we&apos;ll show you
+              what changes.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Btn href="/about/contact" variant="primary" size="lg">Request a demo</Btn>
-              <Btn href="/about/contact" variant="dark-outline" size="lg">Talk to an expert</Btn>
+            <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
+              <Btn variant="primary" size="lg" href="/about/contact">
+                Request a demo
+              </Btn>
+              <Btn variant="dark-outline" size="lg" href="/about/contact">
+                Talk to an expert
+              </Btn>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
     </>
   );

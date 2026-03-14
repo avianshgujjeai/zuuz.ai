@@ -177,6 +177,22 @@ a { text-decoration: none; }
   50%       { border-color: rgba(37,99,235,0.6); }
 }
 
+/* ─── Ambient Orb Keyframes (for AmbientBg.tsx) ─────────── */
+@keyframes orb1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(60px,-50px) scale(1.06); }
+  66%      { transform: translate(-30px,30px) scale(0.97); }
+}
+@keyframes orb2 {
+  0%,100% { transform: translate(0,0); }
+  40%      { transform: translate(-60px,60px); }
+  70%      { transform: translate(40px,-30px); }
+}
+@keyframes orb3 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%      { transform: translate(30px,-40px) scale(1.04); }
+}
+
 /* Legacy zuuz animations (kept for compat) */
 @keyframes zuuz-ping {
   0%   { transform: scale(1); opacity: .8; }

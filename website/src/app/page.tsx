@@ -4,6 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { FlowDiagram } from "@/components/marketing/FlowDiagram";
 import { LogoMarquee } from "@/components/marketing/LogoMarquee";
+import { StatsTicker } from "@/components/marketing/StatsTicker";
+import { VideoShowcase } from "@/components/marketing/VideoShowcase";
 import { Btn } from "@/components/ui/Btn";
 
 /* ─── Scroll Reveal Hook ─────────────────────────────────── */
@@ -480,7 +482,10 @@ export default function HomePage() {
         `}</style>
       </section>
 
-      {/* ═══ 2. THREE PILLARS ═══════════════════════════════ */}
+      {/* ═══ 2. STATS TICKER ════════════════════════════════ */}
+      <StatsTicker />
+
+      {/* ═══ 3. THREE PILLARS ═══════════════════════════════ */}
       <section style={{ padding: "80px 0", borderTop: "1px solid #F1F5F9" }}>
         <div style={W}>
           <div style={{ textAlign: "center", marginBottom: 52 }} className="sr">
@@ -630,7 +635,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ 5. METRICS ═════════════════════════════════════ */}
+      {/* ═══ 5. VIDEO SHOWCASE ══════════════════════════════ */}
+      <VideoShowcase />
+
+      {/* ═══ 6. METRICS ═════════════════════════════════════ */}
       <section style={{ padding: "80px 0", background: "#F8FAFC", borderTop: "1px solid #F1F5F9" }}>
         <div style={W}>
           <div style={{ textAlign: "center", marginBottom: 48 }} className="sr">
