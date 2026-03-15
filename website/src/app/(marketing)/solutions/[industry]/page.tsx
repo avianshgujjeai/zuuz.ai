@@ -6,7 +6,7 @@ import type { LucideIcon } from "lucide-react";
 import { ArrowRight, Search, ExternalLink } from "lucide-react";
 import { getSolution, getAllSolutionSlugs } from "@/content/solutions";
 import { Container } from "@/components/ui/container";
-import { Breadcrumbs } from "@/components/ui/breadcrumbs";
+import { Breadcrumb } from "@/components/ui/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -15,6 +15,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { WorkflowTimeline } from "@/components/sections/workflow-timeline";
 import { ContextPackChips } from "@/components/sections/context-pack-chips";
 import { SecurityCards } from "@/components/sections/security-cards";
+import { LogoMarquee } from "@/components/marketing/LogoMarquee";
 
 interface Props {
   params: Promise<{ industry: string }>;
@@ -40,13 +41,21 @@ export default async function IndustryPage({ params }: Props) {
   const sol = getSolution(industry);
   if (!sol) notFound();
 
+  const industryName = sol.industry;
+
   return (
     <>
       {/* Hero */}
       <section className="relative overflow-hidden pt-12 pb-16 bg-hero-glow">
         <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
         <Container className="relative">
-          <Breadcrumbs items={[{ label: "Solutions", href: "/solutions" }, { label: sol.industry }]} />
+          <Breadcrumb
+            crumbs={[
+              { label: "Home",       href: "/" },
+              { label: "Solutions",  href: "/solutions" },
+              { label: industryName },
+            ]}
+          />
           <FadeIn>
             <Badge variant="primary" className="mb-4">ZUUZ for {sol.industry}</Badge>
             <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl text-balance max-w-3xl leading-[1.1]">
@@ -62,6 +71,13 @@ export default async function IndustryPage({ params }: Props) {
               </Button>
             </div>
           </FadeIn>
+        </Container>
+      </section>
+
+      {/* Logo Marquee */}
+      <section className="py-8 border-y border-border">
+        <Container>
+          <LogoMarquee />
         </Container>
       </section>
 

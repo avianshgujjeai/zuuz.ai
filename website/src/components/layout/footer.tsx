@@ -1,102 +1,184 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Container } from "@/components/ui/container";
-import { BUILD_ID } from "@/config/build";
-import { navItems } from "@/config/nav";
 
-const socialLinks = [
-  { label: "Twitter", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "GitHub", href: "#" },
+const PRODUCTS = [
+  { label: "Persona Copilots", href: "/products/ai-agents" },
+  { label: "Execution Flows",  href: "/products/workflows" },
+  { label: "Evidence Search",  href: "/products/unified-search" },
 ];
 
-function buildFooterColumns() {
-  return navItems.map((item) => ({
-    heading: item.label,
-    links: item.groups
-      ? item.groups.flatMap((g) =>
-          g.links.map((l) => ({ label: l.label, href: l.href })),
-        )
-      : [{ label: item.label, href: item.href }],
-  }));
-}
+const SOLUTIONS = [
+  { label: "IT Services",        href: "/solutions/it-services" },
+  { label: "Financial Services", href: "/solutions/financial-services" },
+  { label: "Healthcare",         href: "/solutions/healthcare" },
+  { label: "Distribution",       href: "/solutions/distribution" },
+  { label: "Manufacturing",      href: "/solutions/manufacturing" },
+];
 
-const footerColumns = buildFooterColumns();
+const COMPANY = [
+  { label: "Our Story",        href: "/about/our-story" },
+  { label: "Careers",          href: "/about/careers" },
+  { label: "Trust & Security", href: "/about/trust-security" },
+  { label: "Contact",          href: "/about/contact" },
+  { label: "Customers",        href: "/customers" },
+];
+
+const RESOURCES = [
+  { label: "Resource Hub",    href: "/resources" },
+  { label: "Blog",            href: "/resources/blog/agentic-ai-explained" },
+  { label: "Industry Guides", href: "/resources/manuals/industries" },
+];
+
+function Col({ heading, links }: { heading: string; links: { label: string; href: string }[] }) {
+  return (
+    <div>
+      <p className="footer-col-heading">{heading}</p>
+      <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 9 }}>
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href} className="footer-col-link">{l.label}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function Footer() {
   return (
-    <footer className="bg-muted/50 relative">
-      <div className="section-separator" aria-hidden="true" />
-      <Container>
-        <div className="py-16">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-6">
-            {/* Brand */}
-            <div className="col-span-2 md:col-span-4 lg:col-span-2">
-              <Link href="/" className="flex items-center" aria-label="ZUUZ home">
-                <Image
-                  src="/brand/zuuz-logo.png"
-                  alt="ZUUZ"
-                  width={90}
-                  height={27}
-                  className="h-6 w-auto"
-                />
-              </Link>
-              <p className="mt-3 max-w-xs text-sm text-muted-foreground leading-relaxed">
-                Short brand description placeholder.
-              </p>
-              <div className="mt-4 flex gap-4">
-                {socialLinks.map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    className="text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
-                    aria-label={s.label}
-                  >
-                    {s.label}
-                  </a>
-                ))}
-              </div>
+    <footer style={{ background: "#fff", borderTop: "1px solid var(--border)" }}>
+      <div className="footer-inner">
+        {/* Top */}
+        <div className="footer-grid">
+          {/* Brand */}
+          <div className="footer-brand">
+            <Link href="/" aria-label="ZUUZ home">
+              <Image
+                src="/brand/zuuz-logo.png"
+                alt="ZUUZ"
+                width={88}
+                height={28}
+                style={{ height: 28, width: "auto", marginBottom: 14, display: "block" }}
+              />
+            </Link>
+            <p style={{
+              fontSize: 13,
+              color: "var(--muted)",
+              lineHeight: 1.65,
+              maxWidth: 200,
+              marginBottom: 16,
+              fontFamily: "var(--font-body)",
+            }}>
+              The Agentic AI execution layer for enterprise.
+            </p>
+            <div style={{ display: "flex", gap: 8 }}>
+              <a href="https://linkedin.com/company/zuuz-ai" target="_blank" rel="noopener noreferrer" className="footer-social-btn">
+                LinkedIn
+              </a>
+              <a href="https://twitter.com/zuuz_ai" target="_blank" rel="noopener noreferrer" className="footer-social-btn">
+                Twitter
+              </a>
             </div>
+          </div>
 
-            {/* Generated columns */}
-            {footerColumns.map((col) => (
-              <div key={col.heading}>
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                  {col.heading}
-                </p>
-                <ul className="mt-3 space-y-2.5">
-                  {col.links.slice(0, 6).map((link) => (
-                    <li key={link.href}>
-                      <Link
-                        href={link.href}
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <Col heading="Products"  links={PRODUCTS}  />
+          <Col heading="Solutions" links={SOLUTIONS} />
+          <Col heading="Company"   links={COMPANY}   />
+          <Col heading="Resources" links={RESOURCES} />
+        </div>
+
+        {/* Bottom bar */}
+        <div className="footer-bottom">
+          <p style={{ fontSize: 12, color: "var(--faint)", fontFamily: "var(--font-body)", margin: 0 }}>
+            © 2026 ZUUZ Inc. · 440N Wolfe Rd, Sunnyvale CA 94085
+          </p>
+          <div style={{ display: "flex", gap: 20 }}>
+            {[
+              { label: "Privacy", href: "/privacy" },
+              { label: "Terms",   href: "/terms" },
+              { label: "Cookies", href: "/cookies" },
+            ].map((l) => (
+              <Link key={l.href} href={l.href} className="footer-legal-link">
+                {l.label}
+              </Link>
             ))}
           </div>
         </div>
+      </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-border py-6 text-xs text-muted-foreground sm:flex-row">
-          <p>&copy; {new Date().getFullYear()} ZUUZ, Inc. All rights reserved.</p>
-          <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Terms
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Cookies
-            </a>
-          </div>
-        </div>
-        <div className="text-[10px] text-muted-foreground/40 mt-4 text-center">BUILD: {BUILD_ID}</div>
-      </Container>
+      <style>{`
+        .footer-inner {
+          max-width: 1240px;
+          margin: 0 auto;
+          padding: 56px 24px 36px;
+        }
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 200px 1fr 1fr 1fr 1fr;
+          gap: 40px;
+          margin-bottom: 48px;
+        }
+        .footer-col-heading {
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.09em;
+          color: var(--faint);
+          margin-bottom: 14px;
+          font-family: var(--font-body);
+        }
+        .footer-col-link {
+          font-size: 13px;
+          color: var(--muted);
+          text-decoration: none;
+          font-family: var(--font-body);
+          transition: color 0.15s ease;
+          display: block;
+        }
+        .footer-col-link:hover { color: var(--ink); }
+        .footer-brand { max-width: 220px; }
+        .footer-social-btn {
+          font-size: 12px;
+          font-weight: 600;
+          color: var(--muted);
+          text-decoration: none;
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          padding: 5px 11px;
+          font-family: var(--font-body);
+          transition: all 0.15s ease;
+          display: inline-block;
+        }
+        .footer-social-btn:hover {
+          color: var(--ink);
+          border-color: #CBD5E1;
+          background: var(--bg-subtle);
+        }
+        .footer-bottom {
+          border-top: 1px solid var(--border);
+          padding-top: 24px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+        }
+        .footer-legal-link {
+          font-size: 12px;
+          color: var(--faint);
+          text-decoration: none;
+          font-family: var(--font-body);
+          transition: color 0.15s ease;
+        }
+        .footer-legal-link:hover { color: var(--ink); }
+        @media (max-width: 960px) {
+          .footer-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 540px) {
+          .footer-grid { grid-template-columns: 1fr !important; }
+          .footer-inner { padding: 40px 20px 28px; }
+        }
+      `}</style>
     </footer>
   );
 }

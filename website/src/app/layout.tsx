@@ -1,28 +1,10 @@
 import type { Metadata } from "next";
-import { Montserrat, JetBrains_Mono } from "next/font/google";
 import { MotionProvider } from "@/components/motion/motion-provider";
-import { BUILD_ID } from "@/config/build";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/footer";
+import { AmbientBg } from "@/components/marketing/AmbientBg";
+import { RevealInit } from "@/components/ui/RevealInit";
 import "./globals.css";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-});
-
-const montserratDisplay = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-  weight: ["500", "600", "700"],
-});
-
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: {
@@ -47,27 +29,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${montserratDisplay.variable} ${mono.variable}`}>
-      <body className="min-h-screen font-sans antialiased">
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body style={{ minHeight: "100vh", overflowX: "hidden" }}>
+        <AmbientBg />
         <MotionProvider>
-          <div
-            style={{
-              position: "fixed",
-              right: 12,
-              bottom: 12,
-              zIndex: 999999,
-              background: "#0018FF",
-              color: "#fff",
-              padding: "8px 12px",
-              borderRadius: 12,
-              fontSize: 12,
-              fontWeight: 600,
-              boxShadow: "0 10px 30px rgba(0,0,0,0.18)",
-            }}
-          >
-            BUILD: {BUILD_ID}
-          </div>
-          {children}
+          <RevealInit />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </MotionProvider>
       </body>
     </html>

@@ -47,28 +47,78 @@ export default function SolutionsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden pt-16 pb-20 sm:pt-16 sm:pb-28">
-        <div className="absolute inset-0 bg-hero-glow" aria-hidden="true" />
-        <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
+      <section
+        style={{ background: "linear-gradient(160deg, #F0F4FF 0%, #FAFAFA 60%)" }}
+        className="relative overflow-hidden pt-16 pb-20 sm:pt-20 sm:pb-28"
+      >
         <Container className="relative">
           <FadeIn>
             <div className="mx-auto max-w-3xl text-center">
-              <Badge variant="primary" className="mb-6">Solutions</Badge>
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance leading-[1.1]">
+              {/* Bordered pill eyebrow */}
+              <div style={{ display: "inline-block", marginBottom: 24 }}>
+                <span style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  border: "1px solid #E5E7EB",
+                  borderRadius: 100,
+                  padding: "6px 18px",
+                  background: "white",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase" as const,
+                  color: "#374151",
+                  fontFamily: "Inter, sans-serif",
+                }}>
+                  Solutions
+                </span>
+              </div>
+              <h1 style={{
+                fontSize: "clamp(36px, 5vw, 64px)",
+                fontWeight: 700,
+                lineHeight: 1.1,
+                letterSpacing: "-0.025em",
+                color: "#111827",
+                marginBottom: 24,
+              }}>
                 Industry-ready AI&nbsp;Agents + ApprovalOps workflows. Built for real operations.
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground leading-relaxed text-balance">
+              <p style={{
+                fontSize: 17,
+                color: "#6B7280",
+                lineHeight: 1.7,
+                maxWidth: 600,
+                margin: "0 auto 32px",
+                fontFamily: "Inter, sans-serif",
+              }}>
                 ZUUZ connects to your systems, assembles the Context Pack, routes approvals safely, and writes back only when identity, permissions, and audit trail are verified.
               </p>
-              <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                <Button size="lg" asChild>
-                  <Link href="/about/contact">
-                    Request a demo
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="#industries">See industries</Link>
-                </Button>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
+                <Link href="/about/contact" style={{
+                  fontSize: 15,
+                  fontWeight: 700,
+                  color: "#111827",
+                  textDecoration: "none",
+                  fontFamily: "Inter, sans-serif",
+                }}>
+                  Request a demo →
+                </Link>
+                <Link href="#industries" style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  border: "1px solid #E5E7EB",
+                  borderRadius: 999,
+                  padding: "10px 28px",
+                  fontSize: 15,
+                  fontWeight: 500,
+                  color: "#374151",
+                  textDecoration: "none",
+                  fontFamily: "Inter, sans-serif",
+                  background: "white",
+                  transition: "border-color 0.2s ease",
+                }}>
+                  See industries
+                </Link>
               </div>
             </div>
           </FadeIn>
