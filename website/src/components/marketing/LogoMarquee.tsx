@@ -21,51 +21,43 @@ const LOGOS = [
   { name: "Qlik",         file: "/brand-icons/qlik.svg"              },
 ];
 
-/* Single chip — fixed height, icon constrained to 20×20 */
 function Chip({ logo }: { logo: typeof LOGOS[0] }) {
   return (
-    <div
-      style={{
+    <div style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 9,
+      height: 40,
+      padding: "0 16px",
+      background: "#ffffff",
+      border: "1px solid #E8E8EE",
+      borderRadius: 999,
+      flexShrink: 0,
+      overflow: "hidden",
+      boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
+      whiteSpace: "nowrap",
+    }}>
+      {/* Icon box — MUST have overflow:hidden and explicit dimensions */}
+      <span style={{
         display: "inline-flex",
         alignItems: "center",
-        gap: 8,
-        height: 40,
-        padding: "0 16px",
-        background: "#ffffff",
-        border: "1px solid #E8E8EE",
-        borderRadius: 999,
+        justifyContent: "center",
+        width: 24,
+        height: 24,
+        minWidth: 24,
+        maxWidth: 24,
+        minHeight: 24,
+        maxHeight: 24,
         flexShrink: 0,
-        maxWidth: 180,
         overflow: "hidden",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
-        userSelect: "none",
-        whiteSpace: "nowrap",
-      }}
-    >
-      {/*
-        Icon wrapper: Fixed 24×24 with overflow:hidden clips the SVG.
-        The SVG may try to render at its intrinsic size; parent clips it.
-      */}
-      <span
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: 24,
-          height: 24,
-          minWidth: 24,
-          maxWidth: 24,
-          overflow: "hidden",
-          flexShrink: 0,
-          borderRadius: 4,
-        }}
-      >
+        borderRadius: 5,
+      }}>
         <img
           src={logo.file}
           alt=""
           aria-hidden="true"
           style={{
-            display: "block",
+            /* CSS width/height ARE respected for SVGs; HTML attrs are NOT */
             width: "20px",
             height: "20px",
             minWidth: "20px",
@@ -73,26 +65,24 @@ function Chip({ logo }: { logo: typeof LOGOS[0] }) {
             minHeight: "20px",
             maxHeight: "20px",
             objectFit: "contain",
+            display: "block",
             flexShrink: 0,
           }}
-          onError={(e) => {
+          onError={e => {
             (e.currentTarget.parentElement as HTMLElement).style.display = "none";
           }}
         />
       </span>
-      <span
-        style={{
-          fontSize: 13,
-          fontWeight: 500,
-          color: "#222222",
-          fontFamily: "'Montserrat', sans-serif",
-          lineHeight: 1,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-          maxWidth: 120,
-        }}
-      >
+      <span style={{
+        fontSize: 13,
+        fontWeight: 500,
+        color: "#222",
+        fontFamily: "'Montserrat', sans-serif",
+        lineHeight: 1,
+        maxWidth: 110,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+      }}>
         {logo.name}
       </span>
     </div>
