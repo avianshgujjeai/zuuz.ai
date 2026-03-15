@@ -4,6 +4,11 @@ const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     extend: {
+      fontFamily: {
+        /* Ensures className="font-sans" uses Montserrat (matches body in globals.css) */
+        sans: ["Montserrat", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        mono: ["Montserrat", "ui-monospace", "monospace"],
+      },
       colors: {
         background: "rgb(var(--color-background) / <alpha-value>)",
         foreground: "rgb(var(--color-foreground) / <alpha-value>)",
