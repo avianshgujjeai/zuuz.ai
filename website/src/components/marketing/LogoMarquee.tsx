@@ -95,8 +95,8 @@ function LogoChip({ logo }: { logo: typeof LOGOS[0] }) {
         dangerouslySetInnerHTML={{ __html: logo.icon }}
       />
       <span style={{
-        fontSize: 13, fontWeight: 500, color: "#374151",
-        whiteSpace: "nowrap", fontFamily: "Inter, sans-serif",
+        fontSize: 13, fontWeight: 500, color: "#222222",
+        whiteSpace: "nowrap", fontFamily: "Montserrat, sans-serif",
       }}>
         {logo.name}
       </span>
@@ -113,7 +113,7 @@ export function LogoMarquee() {
       <p style={{
         textAlign: "center", fontSize: 11, fontWeight: 600,
         letterSpacing: "0.1em", textTransform: "uppercase",
-        color: "#9CA3AF", marginBottom: 18, fontFamily: "Inter, sans-serif",
+        color: "#AAAAAA", marginBottom: 18, fontFamily: "Montserrat, sans-serif",
       }}>
         Connects with the tools your teams already use
       </p>

@@ -19,7 +19,7 @@ const TESTIMONIALS = [
     name: "Senior Operations Director",
     company: "Western International Group, UAE",
     initials: "WI",
-    color: "#2563EB",
+    color: "#0018FF",
   },
   {
     quote: "Before ZUUZ, our procurement team was chasing approvals across SAP and Outlook separately. Now every decision arrives with full context — budget, vendor history, policy flags — all in one screen. It changed how we operate.",
@@ -96,7 +96,7 @@ export default function CustomersPage() {
                   fontWeight: 800,
                   textTransform: "uppercase",
                   letterSpacing: "0.1em",
-                  color: "#2563EB",
+                  color: "#0018FF",
                   fontFamily: "var(--font-body)",
                 }}
               >
@@ -108,7 +108,7 @@ export default function CustomersPage() {
               <br />
               <span
                 style={{
-                  background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 100%)",
+                  background: "linear-gradient(135deg, #0018FF 0%, #7C3AED 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                   backgroundClip: "text",
@@ -209,7 +209,7 @@ export default function CustomersPage() {
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                color: "#2563EB",
+                color: "#0018FF",
                 fontFamily: "var(--font-body)",
                 marginBottom: 12,
               }}
@@ -297,7 +297,7 @@ export default function CustomersPage() {
                       fontSize: 10,
                       fontWeight: 700,
                       background: "#EFF6FF",
-                      color: "#2563EB",
+                      color: "#0018FF",
                       padding: "4px 10px",
                       borderRadius: 999,
                       fontFamily: "var(--font-body)",
@@ -336,7 +336,7 @@ export default function CustomersPage() {
                         style={{
                           fontSize: 24,
                           fontWeight: 900,
-                          color: "#2563EB",
+                          color: "#0018FF",
                           fontFamily: "var(--font-display)",
                           letterSpacing: "-0.03em",
                           lineHeight: 1,
@@ -366,7 +366,7 @@ export default function CustomersPage() {
                     gap: 6,
                     fontSize: 13,
                     fontWeight: 700,
-                    color: "#2563EB",
+                    color: "#0018FF",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -412,7 +412,7 @@ export default function CustomersPage() {
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                color: "#2563EB",
+                color: "#0018FF",
                 fontFamily: "var(--font-body)",
                 marginBottom: 12,
               }}
@@ -528,7 +528,7 @@ export default function CustomersPage() {
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
-                color: "#2563EB",
+                color: "#0018FF",
                 fontFamily: "var(--font-body)",
                 marginBottom: 12,
               }}

@@ -45,7 +45,7 @@ function WorkflowFlow() {
     { label:"Context Pack",    sub:"Evidence bundle",         color:"#111827", border:"#111827", bg:"white" },
     { label:"Approver",        sub:"Human-in-the-loop",       color:"#B45309", border:"#F59E0B", bg:"#FFFBEB" },
     { label:"Safe Write-back", sub:"Verified action",         color:"#065F46", border:"#10B981", bg:"#ECFDF5" },
-    { label:"Audit Log",       sub:"Immutable record",        color:"#1E40AF", border:"#3B82F6", bg:"#EFF6FF" },
+    { label:"Audit Log",       sub:"Immutable record",        color:"#1E40AF", border:"#0018FF", bg:"#EFF6FF" },
   ];
   const sources = ["Email", "Docs", "Calendar", "CRM", "ERP"];
   return (
@@ -57,7 +57,7 @@ function WorkflowFlow() {
           <div key={s} style={{
             padding:"5px 14px", border:"1.5px solid #D1D5DB", borderRadius:8,
             fontSize:12, fontWeight:600, color:"#374151", background:"white",
-            fontFamily:"Inter, sans-serif"
+            fontFamily:"Montserrat, sans-serif"
           }}>{s}</div>
         ))}
       </div>
@@ -78,9 +78,9 @@ function WorkflowFlow() {
             textAlign:"center"
           }}>
             <p style={{ fontSize:12, fontWeight:700, color:step.color,
-              fontFamily:"Inter, sans-serif", lineHeight:1.2 }}>{step.label}</p>
+              fontFamily:"Montserrat, sans-serif", lineHeight:1.2 }}>{step.label}</p>
             <p style={{ fontSize:10, color:"#6B7280", marginTop:3,
-              fontFamily:"Inter, sans-serif" }}>{step.sub}</p>
+              fontFamily:"Montserrat, sans-serif" }}>{step.sub}</p>
           </div>
           {i < steps.length - 1 && (
             <div style={{ display:"flex", alignItems:"center", margin:"0 8px" }}>
@@ -98,7 +98,7 @@ function WorkflowFlow() {
           background:"#10B981", display:"inline-block",
           boxShadow:"0 0 0 3px rgba(16,185,129,0.2)" }}/>
         <span style={{ fontSize:11, color:"#059669", fontWeight:600,
-          fontFamily:"Inter, sans-serif" }}>Live</span>
+          fontFamily:"Montserrat, sans-serif" }}>Live</span>
       </div>
     </div>
   );
@@ -129,7 +129,7 @@ export default function SolutionsPage() {
                   letterSpacing: "0.1em",
                   textTransform: "uppercase" as const,
                   color: "#374151",
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "Montserrat, sans-serif",
                 }}>
                   Solutions
                 </span>
@@ -150,7 +150,7 @@ export default function SolutionsPage() {
                 lineHeight: 1.7,
                 maxWidth: 600,
                 margin: "0 auto 32px",
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
               }}>
                 ZUUZ connects to your systems, assembles the Context Pack, routes approvals safely, and writes back only when identity, permissions, and audit trail are verified.
               </p>
@@ -160,7 +160,7 @@ export default function SolutionsPage() {
                   fontWeight: 700,
                   color: "#111827",
                   textDecoration: "none",
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "Montserrat, sans-serif",
                 }}>
                   Request a demo →
                 </Link>
@@ -174,7 +174,7 @@ export default function SolutionsPage() {
                   fontWeight: 500,
                   color: "#374151",
                   textDecoration: "none",
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "Montserrat, sans-serif",
                   background: "white",
                   transition: "border-color 0.2s ease",
                 }}>

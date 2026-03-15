@@ -61,7 +61,7 @@ export function VideoShowcase() {
           <p
             style={{
               fontSize: 12, fontWeight: 700, textTransform: "uppercase",
-              letterSpacing: "0.1em", color: "#2563EB",
+              letterSpacing: "0.1em", color: "#0018FF",
               fontFamily: "var(--font-body)", marginBottom: 12,
             }}
           >
@@ -98,9 +98,9 @@ export function VideoShowcase() {
                 fontFamily: "var(--font-body)",
                 cursor: "pointer",
                 transition: "all 0.2s ease",
-                background: active === i ? "#2563EB" : "#fff",
+                background: active === i ? "#0018FF" : "#fff",
                 color: active === i ? "#fff" : "#475569",
-                border: active === i ? "1.5px solid #2563EB" : "1.5px solid #E2E8F0",
+                border: active === i ? "1.5px solid #0018FF" : "1.5px solid #E2E8F0",
               }}
             >
               {t.label}
@@ -211,7 +211,7 @@ export function VideoShowcase() {
                   width: 6,
                   height: 6,
                   borderRadius: "50%",
-                  background: "#2563EB",
+                  background: "#0018FF",
                   flexShrink: 0,
                 }}
               />
