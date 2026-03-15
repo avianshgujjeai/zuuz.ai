@@ -127,7 +127,7 @@ export function FlowDiagram() {
           x={cx} y={cy - 4}
           textAnchor="middle"
           fontSize="15" fontWeight="900" fill="white"
-          fontFamily="Plus Jakarta Sans, sans-serif"
+          fontFamily="Inter, sans-serif"
         >
           ZUUZ
         </text>

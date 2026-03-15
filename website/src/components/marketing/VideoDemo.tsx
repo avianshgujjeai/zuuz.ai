@@ -3,11 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 
 const TABS = [
-  { category:"SALES",   catColor:"#3B82F6", label:"Deal Desk",       video:"/media/0223-3.mov", urlPath:"deal-desk" },
-  { category:"HR",      catColor:"#8B5CF6", label:"HR Ops",           video:"/media/0223-4.mov", urlPath:"hr-ops" },
-  { category:"IT",      catColor:"#06B6D4", label:"IT Triage",        video:"/media/0223-2.mov", urlPath:"it-triage" },
-  { category:"LEGAL",   catColor:"#10B981", label:"Contract Review",  video:"/media/0223-7.mov", urlPath:"contract-review" },
-  { category:"FINANCE", catColor:"#F59E0B", label:"AP Matching",      video:"/media/0223-8.mov", urlPath:"ap-matching" },
+  { category:"EMAIL",    catColor:"#3B82F6", label:"Email Insights",        video:"/media/0223-3.mov", urlPath:"email-insights" },
+  { category:"DOCS",     catColor:"#8B5CF6", label:"Document Review",       video:"/media/0223-4.mov", urlPath:"document-review" },
+  { category:"MEETINGS", catColor:"#06B6D4", label:"Meeting Intelligence",  video:"/media/0223-2.mov", urlPath:"meeting-intelligence" },
+  { category:"DECISION", catColor:"#10B981", label:"Decision Routing",      video:"/media/0223-7.mov", urlPath:"decision-routing" },
+  { category:"EXEC",     catColor:"#F59E0B", label:"Safe Execution",        video:"/media/0223-8.mov", urlPath:"safe-execution" },
 ];
 
 export function VideoDemo() {
