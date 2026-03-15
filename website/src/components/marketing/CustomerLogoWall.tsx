@@ -55,7 +55,7 @@ function LogoItem({
               fontSize: 15,
               fontWeight: 700,
               color: "#111827",
-              fontFamily: "Inter, sans-serif",
+              fontFamily: "Montserrat, sans-serif",
               letterSpacing: "-0.02em",
               textAlign: "center",
             }}
@@ -85,7 +85,7 @@ function LogoItem({
               fontSize: 15,
               fontWeight: 700,
               color: "#94A3B8",
-              fontFamily: "Inter, sans-serif",
+              fontFamily: "Montserrat, sans-serif",
             }}
           >
             {logo.alt}

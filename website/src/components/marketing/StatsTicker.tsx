@@ -135,7 +135,7 @@ export function StatsTicker() {
           left: 0,
           right: 0,
           height: 1,
-          background: "linear-gradient(90deg, transparent, #2563EB 30%, #7C3AED 55%, #10B981 80%, transparent)",
+          background: "linear-gradient(90deg, transparent, #0018FF 30%, #7C3AED 55%, #10B981 80%, transparent)",
           backgroundSize: "200% auto",
           animation: "shimmer 3s linear infinite",
         }}

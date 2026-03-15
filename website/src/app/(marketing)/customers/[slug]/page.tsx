@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const INDUSTRY_COLORS: Record<string, { bg: string; color: string }> = {
   "Distribution & Trading": { bg: "#FEF3C7", color: "#D97706" },
   "Retail & Distribution":  { bg: "#F5F3FF", color: "#7C3AED" },
-  "IT Services":            { bg: "#EFF6FF", color: "#2563EB" },
+  "IT Services":            { bg: "#EFF6FF", color: "#0018FF" },
   "IT Services & Cloud":    { bg: "#ECFDF5", color: "#10B981" },
 };
 
@@ -174,7 +174,7 @@ export default async function CaseStudyPage({ params }: Props) {
                     fontSize: 18,
                     fontWeight: 700,
                     color: "#111827",
-                    fontFamily: "Inter, sans-serif",
+                    fontFamily: "Montserrat, sans-serif",
                     letterSpacing: "-0.02em",
                     lineHeight: 1.2,
                     marginBottom: 6,
@@ -186,7 +186,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   style={{
                     fontSize: 13,
                     color: "#94A3B8",
-                    fontFamily: "Inter, sans-serif",
+                    fontFamily: "Montserrat, sans-serif",
                   }}
                 >
                   {cs.industry} · {cs.location}
@@ -268,7 +268,7 @@ export default async function CaseStudyPage({ params }: Props) {
                     height: 28,
                     borderRadius: "50%",
                     background: "#EFF6FF",
-                    color: "#2563EB",
+                    color: "#0018FF",
                     fontSize: 13,
                     fontWeight: 800,
                     display: "flex",
@@ -286,7 +286,7 @@ export default async function CaseStudyPage({ params }: Props) {
                     fontWeight: 800,
                     textTransform: "uppercase",
                     letterSpacing: "0.12em",
-                    color: "#2563EB",
+                    color: "#0018FF",
                     fontFamily: "var(--font-body)",
                   }}
                 >
@@ -416,7 +416,7 @@ export default async function CaseStudyPage({ params }: Props) {
                       padding: "8px 16px",
                       fontSize: 13,
                       fontWeight: 600,
-                      color: "#2563EB",
+                      color: "#0018FF",
                       fontFamily: "var(--font-body)",
                     }}
                   >
@@ -425,7 +425,7 @@ export default async function CaseStudyPage({ params }: Props) {
                         width: 6,
                         height: 6,
                         borderRadius: "50%",
-                        background: "#2563EB",
+                        background: "#0018FF",
                         flexShrink: 0,
                       }}
                     />

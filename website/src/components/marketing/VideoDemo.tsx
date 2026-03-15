@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 
 const TABS = [
-  { category:"EMAIL",    catColor:"#3B82F6", label:"Email Insights",        video:"/media/0223-3.mov", urlPath:"email-insights" },
+  { category:"EMAIL",    catColor:"#0018FF", label:"Email Insights",        video:"/media/0223-3.mov", urlPath:"email-insights" },
   { category:"DOCS",     catColor:"#8B5CF6", label:"Document Review",       video:"/media/0223-4.mov", urlPath:"document-review" },
   { category:"MEETINGS", catColor:"#06B6D4", label:"Meeting Intelligence",  video:"/media/0223-2.mov", urlPath:"meeting-intelligence" },
   { category:"DECISION", catColor:"#10B981", label:"Decision Routing",      video:"/media/0223-7.mov", urlPath:"decision-routing" },
@@ -64,7 +64,7 @@ export function VideoDemo() {
                 textTransform: "uppercase",
                 letterSpacing: "0.07em",
                 color: isActive ? t.catColor : "rgba(255,255,255,0.4)",
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
               }}>
                 {t.category}
               </span>
@@ -72,7 +72,7 @@ export function VideoDemo() {
                 fontSize: 13,
                 fontWeight: isActive ? 600 : 400,
                 color: isActive ? "#fff" : "rgba(255,255,255,0.55)",
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
               }}>
                 {t.label}
               </span>
@@ -121,7 +121,7 @@ export function VideoDemo() {
             <span style={{
               fontSize: 11,
               color: "rgba(255,255,255,0.5)",
-              fontFamily: "Inter, sans-serif",
+              fontFamily: "Montserrat, sans-serif",
               letterSpacing: "0.01em",
             }}>
               app.zuuz.ai / copilot / {TABS[active].urlPath}
@@ -157,7 +157,7 @@ export function VideoDemo() {
         textAlign: "center",
         fontSize: 12,
         color: "rgba(255,255,255,0.25)",
-        fontFamily: "Inter, sans-serif",
+        fontFamily: "Montserrat, sans-serif",
         marginTop: 12,
       }}>
         {TABS[active].label} Copilot &mdash; live product demo

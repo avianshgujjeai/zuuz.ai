@@ -82,7 +82,7 @@ function StatItem({
         style={{
           fontSize: "clamp(34px, 4vw, 54px)",
           fontWeight: 700,
-          fontFamily: "Inter, sans-serif",
+          fontFamily: "Montserrat, sans-serif",
           letterSpacing: "-0.04em",
           color: "#FFFFFF",
           lineHeight: 1,
@@ -96,13 +96,13 @@ function StatItem({
           fontSize: 13,
           fontWeight: 600,
           color: "rgba(255,255,255,0.5)",
-          fontFamily: "Inter, sans-serif",
+          fontFamily: "Montserrat, sans-serif",
           marginBottom: 3,
         }}
       >
         {stat.label}
       </p>
-      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.28)", fontFamily: "Inter, sans-serif" }}>
+      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.28)", fontFamily: "Montserrat, sans-serif" }}>
         {stat.sub}
       </p>
     </div>
@@ -148,7 +148,7 @@ export function StatsBanner() {
           right: 0,
           height: 1,
           background:
-            "linear-gradient(90deg, transparent 0%, #2563EB 35%, #7C3AED 60%, #059669 85%, transparent 100%)",
+            "linear-gradient(90deg, transparent 0%, #0018FF 35%, #7C3AED 60%, #059669 85%, transparent 100%)",
           opacity: 0.65,
         }}
       />
