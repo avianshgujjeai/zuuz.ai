@@ -81,7 +81,9 @@ function LogoChip({ logo }: { logo: typeof LOGOS[0] }) {
       display: "flex",
       alignItems: "center",
       gap: 9,
-      padding: "8px 18px",
+      padding: "0 18px",
+      height: 44,
+      maxWidth: 200,
       background: "#ffffff",
       border: "1px solid #E5E7EB",
       borderRadius: 999,
@@ -90,8 +92,8 @@ function LogoChip({ logo }: { logo: typeof LOGOS[0] }) {
       boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
     }}>
       <span
-        style={{ width: 26, height: 26, flexShrink: 0, display: "flex",
-          alignItems: "center", justifyContent: "center" }}
+        style={{ width: 28, height: 28, flexShrink: 0, display: "flex",
+          alignItems: "center", justifyContent: "center", overflow: "hidden" }}
         dangerouslySetInnerHTML={{ __html: logo.icon }}
       />
       <span style={{
@@ -109,7 +111,7 @@ export function LogoMarquee() {
   const row2 = [...LOGOS.slice(9), ...LOGOS.slice(0, 9),
                  ...LOGOS.slice(9), ...LOGOS.slice(0, 9)];
   return (
-    <div style={{ padding: "28px 0", position: "relative", overflow: "hidden" }}>
+    <div style={{ padding: "28px 0", position: "relative", overflow: "hidden", width: "100%" }}>
       <p style={{
         textAlign: "center", fontSize: 11, fontWeight: 600,
         letterSpacing: "0.1em", textTransform: "uppercase",
