@@ -10,6 +10,26 @@
   --black:         #000000;
   --white:         #FFFFFF;
 
+  /* ── Tailwind CSS variable bridge ────────────────────────
+     These map the rgb() format that Tailwind's color system
+     uses (e.g. bg-primary = rgb(var(--color-primary))).
+     Without these, Tailwind color classes render transparent.
+  ── */
+  --color-background:         255 255 255;   /* #ffffff */
+  --color-foreground:          17  17  17;   /* #111111 */
+  --color-card:               255 255 255;   /* #ffffff */
+  --color-card-foreground:     17  17  17;   /* #111111 */
+  --color-primary:              0  24 255;   /* #0018FF — ZUUZ electric blue */
+  --color-primary-light:      238 240 255;   /* #EEF0FF */
+  --color-primary-dark:         0  20 204;   /* #0014CC */
+  --color-primary-foreground: 255 255 255;   /* #ffffff */
+  --color-accent:             163 243 255;   /* #A3F3FF */
+  --color-accent-foreground:    0   8  20;   /* near-black */
+  --color-muted:              245 246 255;   /* #F5F6FF */
+  --color-muted-foreground:   100 116 139;   /* #64748B */
+  --color-border:             224 224 232;   /* #E0E0E8 */
+  --color-ring:                 0  24 255;   /* #0018FF */
+
   /* Extended palette (derived) */
   --blue-dark:     #0014CC;
   --blue-light:    #EEF0FF;
@@ -418,6 +438,20 @@ button, input, select { font-family: 'Montserrat', sans-serif; }
 .animate-orb-2          { animation: orb-2 28s ease-in-out infinite; }
 .animate-orb-drift-1    { animation: orb-drift-1 22s ease-in-out infinite; }
 .animate-orb-drift-2    { animation: orb-drift-2 28s ease-in-out infinite; }
+
+/* ─── Tailwind component utility classes ─────────────────── */
+/* Used by legacy Cursor Agent pages that haven't been rebuilt yet */
+.bg-hero-glow {
+  background: linear-gradient(155deg, #EEF0FF 0%, #ffffff 55%);
+}
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 24, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 24, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+/* Shadow utility used by Button component */
+.shadow-soft { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
 
 /* ─── Background Patterns ────────────────────────────────── */
 .dot-grid {
