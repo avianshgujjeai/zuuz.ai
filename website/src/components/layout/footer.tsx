@@ -69,7 +69,7 @@ export function Footer() {
               marginBottom: 16,
               fontFamily: "var(--font-body)",
             }}>
-              The Agentic AI execution layer for enterprise.
+              Forged by Insight. Driven by Precision.
             </p>
             <div style={{ display: "flex", gap: 8 }}>
               <a href="https://linkedin.com/company/zuuz-ai" target="_blank" rel="noopener noreferrer" className="footer-social-btn">

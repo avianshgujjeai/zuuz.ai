@@ -80,7 +80,7 @@ export function Navbar() {
                 style={{
                   fontSize: 14,
                   fontWeight: isActive(href) ? 600 : 500,
-                  color: isActive(href) ? "#2563EB" : "#475569",
+                  color: isActive(href) ? "#0018FF" : "#475569",
                   padding: "6px 14px",
                   borderRadius: 10,
                   textDecoration: "none",
@@ -157,7 +157,7 @@ export function Navbar() {
               href={href}
               onClick={() => setMobileOpen(false)}
               style={{
-                color: isActive(href) ? "#2563EB" : "#0A0F1E",
+                color: isActive(href) ? "#0018FF" : "#0A0F1E",
                 fontWeight: isActive(href) ? 700 : 500,
                 fontSize: 18,
                 fontFamily: "var(--font-body)",
@@ -183,7 +183,7 @@ export function Navbar() {
           .navbar-ctas    { display: none !important; }
           .navbar-hamburger { display: flex !important; }
         }
-        .navbar-link:hover { color: #2563EB !important; }
+        .navbar-link:hover { color: #0018FF !important; }
       `}</style>
     </>
   );

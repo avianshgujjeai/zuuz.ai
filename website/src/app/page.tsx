@@ -29,9 +29,9 @@ function Eyebrow({ children, light = false }: { children: React.ReactNode; light
         fontWeight: 700,
         textTransform: "uppercase",
         letterSpacing: "0.1em",
-        color: light ? "#60A5FA" : "#2563EB",
+        color: light ? "#60A5FA" : "#0018FF",
         marginBottom: 10,
-        fontFamily: "Inter, sans-serif",
+        fontFamily: "Montserrat, sans-serif",
       }}
     >
       {children}
@@ -103,11 +103,11 @@ function HowItWorks() {
                 <span
                   style={{
                     width: 28, height: 28, borderRadius: "50%",
-                    background: active === i ? "#2563EB" : "#F3F4F6",
+                    background: active === i ? "#0018FF" : "#F3F4F6",
                     color: active === i ? "#fff" : "#9CA3AF",
                     fontSize: 11, fontWeight: active === i ? 600 : 500,
                     display: "flex", alignItems: "center", justifyContent: "center",
-                    flexShrink: 0, fontFamily: "Inter, sans-serif",
+                    flexShrink: 0, fontFamily: "Montserrat, sans-serif",
                     transition: "all 0.2s ease",
                   }}
                 >
@@ -117,7 +117,7 @@ function HowItWorks() {
                   style={{
                     fontWeight: 600, fontSize: 14,
                     color: active === i ? "#0C111D" : "#667085",
-                    fontFamily: "Inter, sans-serif",
+                    fontFamily: "Montserrat, sans-serif",
                     transition: "color 0.2s ease",
                   }}
                 >
@@ -128,7 +128,7 @@ function HowItWorks() {
                 <p style={{
                   fontSize: 13, color: "#667085", lineHeight: 1.65,
                   margin: 0, paddingLeft: 36,
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "Montserrat, sans-serif",
                 }}>
                   {step.body}
                 </p>
@@ -160,13 +160,13 @@ function HowItWorks() {
             }}
           >
             <svg width={20} height={20} viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="10" r="9" stroke="#2563EB" strokeWidth="1.5"/>
-              <path d="M6.5 10l2.5 2.5L13.5 7.5" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="10" cy="10" r="9" stroke="#0018FF" strokeWidth="1.5"/>
+              <path d="M6.5 10l2.5 2.5L13.5 7.5" stroke="#0018FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </div>
           <p style={{
             fontSize: 14, color: "#667085",
-            fontFamily: "Inter, sans-serif", textAlign: "center", lineHeight: 1.8,
+            fontFamily: "Montserrat, sans-serif", textAlign: "center", lineHeight: 1.8,
             maxWidth: 240,
           }}>
             {HOW_STEPS[active].visual}
@@ -264,7 +264,7 @@ export default function HomePage() {
                 <span
                   style={{
                     fontSize: 11, fontWeight: 700, textTransform: "uppercase",
-                    letterSpacing: "0.1em", color: "#667085", fontFamily: "Inter, sans-serif",
+                    letterSpacing: "0.1em", color: "#667085", fontFamily: "Montserrat, sans-serif",
                   }}
                 >
                   Agentic AI Execution Layer for your Business
@@ -286,7 +286,7 @@ export default function HomePage() {
                   maxWidth: 490,
                   lineHeight: 1.7,
                   marginBottom: 32,
-                  fontFamily: "Inter, sans-serif",
+                  fontFamily: "Montserrat, sans-serif",
                 }}
               >
                 ZUUZ connects to your systems, assembles full context, routes
@@ -330,7 +330,7 @@ export default function HomePage() {
                 ].map((badge) => (
                   <div key={badge} style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <GreenCheck />
-                    <span style={{ fontSize: 12, fontWeight: 600, color: "#667085", fontFamily: "Inter, sans-serif" }}>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: "#667085", fontFamily: "Montserrat, sans-serif" }}>
                       {badge}
                     </span>
                   </div>
@@ -378,7 +378,7 @@ export default function HomePage() {
             <h2 style={{ color: "#0C111D", marginBottom: 14 }}>
               Three capabilities. One execution layer.
             </h2>
-            <p style={{ fontSize: 18, color: "#475467", maxWidth: 520, margin: "0 auto", fontFamily: "Inter, sans-serif" }}>
+            <p style={{ fontSize: 18, color: "#475467", maxWidth: 520, margin: "0 auto", fontFamily: "Montserrat, sans-serif" }}>
               Copilots that act. Flows that enforce. Search that proves.
             </p>
           </div>
@@ -387,12 +387,12 @@ export default function HomePage() {
             {[
               {
                 iconBg: "#EFF6FF",
-                iconStroke: "#2563EB",
+                iconStroke: "#0018FF",
                 title: "Persona Copilots",
                 body: "AI agents built for specific enterprise roles. Each one handles a complete job — not just a chat response.",
                 link: "Learn more →",
                 href: "/products/ai-agents",
-                linkColor: "#2563EB",
+                linkColor: "#0018FF",
                 delay: "delay-0",
               },
               {
@@ -439,12 +439,12 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <h3 style={{ fontSize: 17, color: "#0C111D", marginBottom: 8, letterSpacing: "-0.02em" }}>{cap.title}</h3>
-                <p style={{ fontSize: 14, color: "#667085", lineHeight: 1.7, marginBottom: 18, fontFamily: "Inter, sans-serif" }}>
+                <p style={{ fontSize: 14, color: "#667085", lineHeight: 1.7, marginBottom: 18, fontFamily: "Montserrat, sans-serif" }}>
                   {cap.body}
                 </p>
                 <Link
                   href={cap.href}
-                  style={{ fontSize: 13, fontWeight: 600, color: cap.linkColor, textDecoration: "none", fontFamily: "Inter, sans-serif" }}
+                  style={{ fontSize: 13, fontWeight: 600, color: cap.linkColor, textDecoration: "none", fontFamily: "Montserrat, sans-serif" }}
                 >
                   {cap.link}
                 </Link>
@@ -469,7 +469,7 @@ export default function HomePage() {
                 Signal in. Decision out.{" "}
                 <span style={{ color: "#475467" }}>Audit logged.</span>
               </h2>
-              <p style={{ fontSize: 17, color: "#98A2B3", lineHeight: 1.75, marginBottom: 28, fontFamily: "Inter, sans-serif" }}>
+              <p style={{ fontSize: 17, color: "#98A2B3", lineHeight: 1.75, marginBottom: 28, fontFamily: "Montserrat, sans-serif" }}>
                 ZUUZ sits between your data and your systems of action. It assembles
                 context, routes through your approval logic, and writes back with full
                 identity and audit coverage.
@@ -483,7 +483,7 @@ export default function HomePage() {
                 ].map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                     <GreenCheck />
-                    <span style={{ fontSize: 14, color: "#98A2B3", fontFamily: "Inter, sans-serif" }}>{item}</span>
+                    <span style={{ fontSize: 14, color: "#98A2B3", fontFamily: "Montserrat, sans-serif" }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -517,7 +517,7 @@ export default function HomePage() {
           <div style={{ textAlign: "center", marginBottom: 48 }} className="reveal">
             <Eyebrow light>Product demo</Eyebrow>
             <h2 style={{ color: "#fff", marginBottom: 14 }}>See ZUUZ in action</h2>
-            <p style={{ fontSize: 17, color: "#98A2B3", maxWidth: 480, margin: "0 auto", fontFamily: "Inter, sans-serif" }}>
+            <p style={{ fontSize: 17, color: "#98A2B3", maxWidth: 480, margin: "0 auto", fontFamily: "Montserrat, sans-serif" }}>
               Real copilots. Real workflows. Actual enterprise scenarios.
             </p>
           </div>
@@ -586,7 +586,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/products/ai-agents"
-              style={{ fontSize: 14, fontWeight: 600, color: "#2563EB", textDecoration: "none", fontFamily: "Inter, sans-serif" }}
+              style={{ fontSize: 14, fontWeight: 600, color: "#0018FF", textDecoration: "none", fontFamily: "Montserrat, sans-serif" }}
             >
               Browse all agents →
             </Link>
@@ -610,17 +610,17 @@ export default function HomePage() {
                 <p
                   style={{
                     fontSize: 10, fontWeight: 700, textTransform: "uppercase",
-                    letterSpacing: "0.08em", color: "#2563EB",
-                    fontFamily: "Inter, sans-serif", marginBottom: 6,
+                    letterSpacing: "0.08em", color: "#0018FF",
+                    fontFamily: "Montserrat, sans-serif", marginBottom: 6,
                   }}
                 >
                   {a.tag}
                 </p>
                 <h3 style={{ fontSize: 15, color: "#0C111D", marginBottom: 8, lineHeight: 1.3, letterSpacing: "-0.02em" }}>{a.title}</h3>
-                <p style={{ fontSize: 12, color: "#667085", lineHeight: 1.65, marginBottom: 12, fontFamily: "Inter, sans-serif" }}>
+                <p style={{ fontSize: 12, color: "#667085", lineHeight: 1.65, marginBottom: 12, fontFamily: "Montserrat, sans-serif" }}>
                   {a.body}
                 </p>
-                <p style={{ fontSize: 12, fontWeight: 600, color: "#059669", fontFamily: "Inter, sans-serif" }}>{a.stat}</p>
+                <p style={{ fontSize: 12, fontWeight: 600, color: "#059669", fontFamily: "Montserrat, sans-serif" }}>{a.stat}</p>
               </Link>
             ))}
           </div>
@@ -656,15 +656,15 @@ export default function HomePage() {
               >
                 <h3 style={{
                   fontSize: 14, fontWeight: 600, color: "#0C111D",
-                  marginBottom: 6, fontFamily: "Inter, sans-serif",
+                  marginBottom: 6, fontFamily: "Montserrat, sans-serif",
                   letterSpacing: "-0.02em",
                 }}>
                   {ind.name}
                 </h3>
-                <p style={{ fontSize: 12, color: "#667085", lineHeight: 1.65, marginBottom: 12, fontFamily: "Inter, sans-serif" }}>
+                <p style={{ fontSize: 12, color: "#667085", lineHeight: 1.65, marginBottom: 12, fontFamily: "Montserrat, sans-serif" }}>
                   {ind.desc}
                 </p>
-                <span style={{ fontSize: 12, fontWeight: 600, color: "#2563EB", fontFamily: "Inter, sans-serif" }}>
+                <span style={{ fontSize: 12, fontWeight: 600, color: "#0018FF", fontFamily: "Montserrat, sans-serif" }}>
                   Explore →
                 </span>
               </Link>
@@ -716,10 +716,10 @@ export default function HomePage() {
                     <path d="M3.5 8l3 3L12.5 5" stroke="#059669" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <p style={{ fontSize: 13, fontWeight: 600, color: "#0C111D", marginBottom: 3, fontFamily: "Inter, sans-serif" }}>
+                <p style={{ fontSize: 13, fontWeight: 600, color: "#0C111D", marginBottom: 3, fontFamily: "Montserrat, sans-serif" }}>
                   {item.label}
                 </p>
-                <p style={{ fontSize: 11, color: "#667085", fontFamily: "Inter, sans-serif" }}>{item.desc}</p>
+                <p style={{ fontSize: 11, color: "#667085", fontFamily: "Montserrat, sans-serif" }}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -770,7 +770,7 @@ export default function HomePage() {
               </h2>
               <p style={{
                 fontSize: 17, color: "#98A2B3", lineHeight: 1.75, marginBottom: 40,
-                fontFamily: "Inter, sans-serif",
+                fontFamily: "Montserrat, sans-serif",
               }}>
                 Book a 20-minute demo. Bring your messiest approval workflow —
                 we&apos;ll show you what changes in the first two weeks.
@@ -820,8 +820,8 @@ function MetricCard({ number, label, desc, delay }: { number: string; label: str
         style={{
           fontSize: 46,
           fontWeight: 700,
-          color: "#2563EB",
-          fontFamily: "Inter, sans-serif",
+          color: "#0018FF",
+          fontFamily: "Montserrat, sans-serif",
           lineHeight: 1,
           marginBottom: 8,
           letterSpacing: "-0.04em",
@@ -829,10 +829,10 @@ function MetricCard({ number, label, desc, delay }: { number: string; label: str
       >
         {number}
       </p>
-      <p style={{ fontSize: 14, fontWeight: 600, color: "#0C111D", fontFamily: "Inter, sans-serif", marginBottom: 4 }}>
+      <p style={{ fontSize: 14, fontWeight: 600, color: "#0C111D", fontFamily: "Montserrat, sans-serif", marginBottom: 4 }}>
         {label}
       </p>
-      <p style={{ fontSize: 12, color: "#667085", fontFamily: "Inter, sans-serif", maxWidth: 140, margin: "0 auto" }}>
+      <p style={{ fontSize: 12, color: "#667085", fontFamily: "Montserrat, sans-serif", maxWidth: 140, margin: "0 auto" }}>
         {desc}
       </p>
     </div>

@@ -9,8 +9,8 @@ const sources = [
 ];
 
 const outputs = [
-  { label: "AI Agents",       color: "#2563EB", x: 15  },
-  { label: "Unified Search",  color: "#3B82F6", x: 140 },
+  { label: "AI Agents",       color: "#0018FF", x: 15  },
+  { label: "Unified Search",  color: "#0018FF", x: 140 },
   { label: "Workflows",       color: "#7C3AED", x: 285 },
   { label: "Safe Write-back", color: "#10B981", x: 400 },
 ];
@@ -29,8 +29,8 @@ export function FlowDiagram() {
       >
         <defs>
           <radialGradient id="coreGlowGrad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"   stopColor="#2563EB" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#2563EB" stopOpacity="0" />
+            <stop offset="0%"   stopColor="#0018FF" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#0018FF" stopOpacity="0" />
           </radialGradient>
           <filter id="blueGlowFilter" x="-60%" y="-60%" width="220%" height="220%">
             <feGaussianBlur stdDeviation="5" result="blur" />
@@ -94,7 +94,7 @@ export function FlowDiagram() {
             <text
               x={s.x + 14} y={46}
               fontSize="10.5" fontWeight="600" fill="#1E293B"
-              fontFamily="Inter, sans-serif"
+              fontFamily="Montserrat, sans-serif"
             >
               {s.label}
             </text>
@@ -103,7 +103,7 @@ export function FlowDiagram() {
 
         {/* ── Core node ── */}
         {/* Second larger pulse ring (slow) */}
-        <circle cx={cx} cy={cy} r={65} fill="none" stroke="#2563EB" strokeWidth="1" opacity="0.1">
+        <circle cx={cx} cy={cy} r={65} fill="none" stroke="#0018FF" strokeWidth="1" opacity="0.1">
           <animate attributeName="r"       values="65;78;65" dur="5s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="0.1;0.02;0.1" dur="5s" repeatCount="indefinite" />
         </circle>
@@ -116,18 +116,18 @@ export function FlowDiagram() {
         <circle
           cx={cx} cy={cy} r={40}
           fill="#0A1628"
-          stroke="#2563EB"
+          stroke="#0018FF"
           strokeWidth="1.5"
           filter="url(#blueGlowFilter)"
         />
         {/* Inner ring */}
-        <circle cx={cx} cy={cy} r={34} fill="none" stroke="#2563EB" strokeWidth="0.5" opacity="0.35" />
+        <circle cx={cx} cy={cy} r={34} fill="none" stroke="#0018FF" strokeWidth="0.5" opacity="0.35" />
         {/* Label */}
         <text
           x={cx} y={cy - 4}
           textAnchor="middle"
           fontSize="15" fontWeight="900" fill="white"
-          fontFamily="Inter, sans-serif"
+          fontFamily="Montserrat, sans-serif"
         >
           ZUUZ
         </text>
@@ -135,7 +135,7 @@ export function FlowDiagram() {
           x={cx} y={cy + 12}
           textAnchor="middle"
           fontSize="7" fill="#60A5FA"
-          fontFamily="Inter, sans-serif"
+          fontFamily="Montserrat, sans-serif"
           letterSpacing="0.12em"
         >
           EXECUTION
@@ -148,7 +148,7 @@ export function FlowDiagram() {
             <text
               x={o.x + 12} y={267}
               fontSize="9.5" fontWeight="700" fill={o.color}
-              fontFamily="Inter, sans-serif"
+              fontFamily="Montserrat, sans-serif"
             >
               {o.label}
             </text>
