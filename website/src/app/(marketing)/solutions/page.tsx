@@ -114,53 +114,52 @@ export default function SolutionsPage() {
       >
         <Container className="relative">
           <FadeIn>
-            <div className="mx-auto max-w-3xl text-center">
-              {/* Bordered pill eyebrow */}
-              <div style={{ display: "inline-block", marginBottom: 24 }}>
-                <span style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  border: "1px solid #E5E7EB",
-                  borderRadius: 100,
-                  padding: "6px 18px",
-                  background: "white",
-                  fontSize: 11,
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase" as const,
-                  color: "#374151",
-                  fontFamily: "Montserrat, sans-serif",
-                }}>
-                  Solutions
-                </span>
-              </div>
-              <h1 style={{
-                fontSize: "clamp(36px, 5vw, 64px)",
+            <div style={{ maxWidth: 680 }}>
+              {/* Plain uppercase eyebrow */}
+              <p style={{
+                fontSize: 11,
                 fontWeight: 700,
+                letterSpacing: "0.11em",
+                textTransform: "uppercase",
+                color: "#0018FF",
+                fontFamily: "Montserrat, sans-serif",
+                marginBottom: 16,
+              }}>
+                Solutions
+              </p>
+              <h1 style={{
+                fontSize: "clamp(32px, 4vw, 52px)",
+                fontWeight: 800,
                 lineHeight: 1.1,
                 letterSpacing: "-0.025em",
                 color: "#111827",
-                marginBottom: 24,
+                marginBottom: 20,
               }}>
-                Industry-ready AI&nbsp;Agents + ApprovalOps workflows. Built for real operations.
+                Industry-ready AI Agents + ApprovalOps workflows.
               </h1>
               <p style={{
                 fontSize: 17,
                 color: "#6B7280",
                 lineHeight: 1.7,
-                maxWidth: 600,
-                margin: "0 auto 32px",
+                maxWidth: 560,
+                marginBottom: 32,
                 fontFamily: "Montserrat, sans-serif",
               }}>
                 ZUUZ connects to your systems, assembles the Context Pack, routes approvals safely, and writes back only when identity, permissions, and audit trail are verified.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
                 <Link href="/about/contact" style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "12px 28px",
+                  background: "#0018FF",
+                  color: "#FFFFFF",
+                  borderRadius: 10,
                   fontSize: 15,
-                  fontWeight: 700,
-                  color: "#111827",
-                  textDecoration: "none",
+                  fontWeight: 600,
                   fontFamily: "Montserrat, sans-serif",
+                  textDecoration: "none",
+                  boxShadow: "0 2px 8px rgba(0,24,255,0.25)",
                 }}>
                   Request a demo →
                 </Link>
@@ -168,15 +167,14 @@ export default function SolutionsPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   border: "1px solid #E5E7EB",
-                  borderRadius: 999,
-                  padding: "10px 28px",
+                  borderRadius: 10,
+                  padding: "11px 24px",
                   fontSize: 15,
                   fontWeight: 500,
                   color: "#374151",
                   textDecoration: "none",
                   fontFamily: "Montserrat, sans-serif",
                   background: "white",
-                  transition: "border-color 0.2s ease",
                 }}>
                   See industries
                 </Link>

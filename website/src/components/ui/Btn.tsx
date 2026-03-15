@@ -20,7 +20,7 @@ const base =
 
 const variants: Record<NonNullable<BtnProps["variant"]>, string> = {
   primary:
-    "bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white shadow-sm hover:shadow-md hover:-translate-y-0.5",
+    "bg-[#0018FF] hover:bg-[#0014CC] active:bg-[#0010A0] text-white shadow-sm hover:shadow-md hover:-translate-y-0.5",
   secondary:
     "bg-white hover:bg-slate-50 active:bg-slate-100 text-slate-800 border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow hover:-translate-y-0.5",
   ghost:
