@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 interface LogoDef {
@@ -54,9 +53,9 @@ function LogoItem({
           <span
             style={{
               fontSize: 15,
-              fontWeight: 800,
-              color: "#0A0F1E",
-              fontFamily: "var(--font-display)",
+              fontWeight: 700,
+              color: "#111827",
+              fontFamily: "Inter, sans-serif",
               letterSpacing: "-0.02em",
               textAlign: "center",
             }}
@@ -64,17 +63,15 @@ function LogoItem({
             {logo.alt}
           </span>
         ) : (
-          <Image
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
             src={logo.src}
             alt={logo.alt}
-            width={180}
-            height={56}
-            unoptimized
             style={{
+              maxWidth: 140,
+              maxHeight: 48,
               objectFit: "contain",
-              maxHeight: 56,
-              filter: `grayscale(${imgLoaded ? "1" : "1"})`,
-              transition: "filter 0.3s ease",
+              filter: "grayscale(20%)",
               display: imgLoaded ? "block" : "none",
             }}
             onLoad={() => setImgLoaded(true)}
@@ -86,9 +83,9 @@ function LogoItem({
           <span
             style={{
               fontSize: 15,
-              fontWeight: 800,
+              fontWeight: 700,
               color: "#94A3B8",
-              fontFamily: "var(--font-display)",
+              fontFamily: "Inter, sans-serif",
             }}
           >
             {logo.alt}
