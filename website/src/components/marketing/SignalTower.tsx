@@ -20,7 +20,7 @@ const SOURCES = [
   {
     label: "Slack",
     color: "#4A154B",
-    iconPath: "M6.527 14.514A1.973 1.973 0 014.56 12.55a1.973 1.973 0 011.967-1.964h1.967v1.964a1.973 1.973 0 01-1.967 1.964zm0-5.892A1.973 1.973 0 014.56 6.658a1.973 1.973 0 011.967-1.965 1.973 1.973 0 011.967 1.965v4.912H6.527zm5.924 0a1.973 1.973 0 011.967-1.964 1.973 1.973 0 011.967 1.964 1.973 1.973 0 01-1.967 1.965h-1.967V8.622zm0 5.892v-1.964h1.967a1.973 1.973 0 011.967 1.964 1.973 1.973 0 01-1.967 1.965 1.973 1.973 0 01-1.967-1.965zM6.527 20.406a1.973 1.973 0 01-1.967-1.965 1.973 1.973 0 011.967-1.964h1.967v1.964a1.973 1.973 0 01-1.967 1.965zm5.924-1.965v1.965a1.973 1.973 0 01-1.967 1.964 1.973 1.973 0 01-1.967-1.964v-1.965h3.934zM6.527 3.594A1.973 1.973 0 014.56 1.63 1.973 1.973 0 016.527-.335a1.973 1.973 0 011.967 1.965v1.964H6.527zm5.924 0V1.63a1.973 1.973 0 011.967-1.965 1.973 1.973 0 011.967 1.965 1.973 1.973 0 01-1.967 1.964h-1.967z",
+    iconPath: "M6.527 14.514A1.973 1.973 0 014.56 12.55a1.973 1.973 0 011.967-1.964h1.967v1.964a1.973 1.973 0 01-1.967 1.964zm0-5.892A1.973 1.973 0 014.56 6.658a1.973 1.973 0 011.967-1.965 1.973 1.973 0 011.967 1.965v4.912H6.527zm5.924 0a1.973 1.973 0 011.967-1.964 1.973 1.973 0 011.967 1.964 1.973 1.973 0 01-1.967 1.965h-1.967V8.622zm0 5.892v-1.964h1.967a1.973 1.973 0 011.967 1.964 1.973 1.973 0 01-1.967 1.965 1.973 1.973 0 01-1.967-1.965z",
   },
   {
     label: "Teams",
@@ -47,6 +47,37 @@ const OUTPUTS = [
   { label: "Safe Exec.", sub: "Verified write-back",        color: "#D97706" },
 ];
 
+// Cubic bezier path: source chip bottom → core node edge
+function srcToCoreD(sx: number, sy: number, cx: number, cy: number): string {
+  const cp1x = sx + (cx - sx) * 0.3;
+  const cp1y = sy + (cy - sy) * 0.1;
+  const cp2x = sx + (cx - sx) * 0.7;
+  const cp2y = sy + (cy - sy) * 0.9;
+  return `M ${sx},${sy} C ${cp1x},${cp1y} ${cp2x},${cp2y} ${cx},${cy}`;
+}
+
+// Cubic bezier path: core node edge → output box top
+function coreToOutD(cx: number, cy: number, ox: number, oy: number): string {
+  const cp1x = cx + (ox - cx) * 0.3;
+  const cp1y = cy + (oy - cy) * 0.1;
+  const cp2x = cx + (ox - cx) * 0.7;
+  const cp2y = cy + (oy - cy) * 0.9;
+  return `M ${cx},${cy} C ${cp1x},${cp1y} ${cp2x},${cp2y} ${ox},${oy}`;
+}
+
+// 4-pointed star with bezier control points (smooth sparkle shape)
+function star4(cx: number, cy: number, tip = 22, waist = 5): string {
+  const w = waist;
+  return [
+    `M ${cx},${cy - tip}`,
+    `C ${cx + w},${cy - w} ${cx + w},${cy - w} ${cx + tip},${cy}`,
+    `C ${cx + w},${cy + w} ${cx + w},${cy + w} ${cx},${cy + tip}`,
+    `C ${cx - w},${cy + w} ${cx - w},${cy + w} ${cx - tip},${cy}`,
+    `C ${cx - w},${cy - w} ${cx - w},${cy - w} ${cx},${cy - tip}`,
+    "Z",
+  ].join(" ");
+}
+
 export function SignalTower() {
   const uid = useId().replace(/:/g, "");
   const W = 720, H = 520;
@@ -56,6 +87,14 @@ export function SignalTower() {
 
   const srcXs = SOURCES.map((_, i) => 40 + i * ((W - 80) / (SOURCES.length - 1)));
   const outXs = OUTPUTS.map((_, i) => 48 + i * ((W - 96) / (OUTPUTS.length - 1)));
+
+  // Precompute bezier paths
+  const srcPaths = SOURCES.map((_, i) =>
+    srcToCoreD(srcXs[i], srcY + 48, coreX, coreY - 46)
+  );
+  const outPaths = OUTPUTS.map((_, i) =>
+    coreToOutD(coreX, coreY + 46, outXs[i], outY)
+  );
 
   return (
     <div style={{ width: "100%", maxWidth: 720, margin: "0 auto", userSelect: "none" }}>
@@ -70,7 +109,7 @@ export function SignalTower() {
           {/* Gradient flow lines: source → core */}
           {SOURCES.map((s, i) => (
             <linearGradient key={`sg${i}`} id={`sg${uid}${i}`}
-              x1={srcXs[i]} y1={srcY + 48} x2={coreX} y2={coreY - 44}
+              x1={srcXs[i]} y1={srcY + 48} x2={coreX} y2={coreY - 46}
               gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor={s.color} stopOpacity="0.8"/>
               <stop offset="100%" stopColor="#0018FF" stopOpacity="0.15"/>
@@ -79,17 +118,28 @@ export function SignalTower() {
           {/* Gradient flow lines: core → output */}
           {OUTPUTS.map((o, i) => (
             <linearGradient key={`og${i}`} id={`og${uid}${i}`}
-              x1={coreX} y1={coreY + 44} x2={outXs[i]} y2={outY}
+              x1={coreX} y1={coreY + 46} x2={outXs[i]} y2={outY}
               gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#0018FF" stopOpacity="0.6"/>
               <stop offset="100%" stopColor={o.color} stopOpacity="0.8"/>
             </linearGradient>
           ))}
-          {/* Core glow radial */}
+          {/* Core ambient glow */}
           <radialGradient id={`cg${uid}`} cx="50%" cy="50%" r="50%">
             <stop offset="0%"   stopColor="#0018FF" stopOpacity="0.5"/>
             <stop offset="60%"  stopColor="#A3F3FF" stopOpacity="0.1"/>
             <stop offset="100%" stopColor="#0018FF" stopOpacity="0"/>
+          </radialGradient>
+          {/* 3D sphere gradient — lit from upper-left */}
+          <radialGradient id={`sphere${uid}`} cx="35%" cy="32%" r="68%">
+            <stop offset="0%"   stopColor="#4D6AFF" stopOpacity="1"/>
+            <stop offset="42%"  stopColor="#0018FF" stopOpacity="1"/>
+            <stop offset="100%" stopColor="#000A66" stopOpacity="1"/>
+          </radialGradient>
+          {/* Specular shine highlight */}
+          <radialGradient id={`shine${uid}`} cx="36%" cy="28%" r="44%">
+            <stop offset="0%"   stopColor="white" stopOpacity="0.38"/>
+            <stop offset="100%" stopColor="white" stopOpacity="0"/>
           </radialGradient>
           {/* Glow filter for flow dots */}
           <filter id={`gf${uid}`} x="-50%" y="-50%" width="200%" height="200%">
@@ -98,25 +148,25 @@ export function SignalTower() {
           </filter>
         </defs>
 
-        {/* ── Gradient flow lines: sources → core ── */}
+        {/* ── Bezier flow lines: sources → core ── */}
         {SOURCES.map((s, i) => (
-          <line key={`fl${i}`}
-            x1={srcXs[i]} y1={srcY + 48}
-            x2={coreX}    y2={coreY - 44}
+          <path key={`fl${i}`}
+            d={srcPaths[i]}
             stroke={`url(#sg${uid}${i})`}
             strokeWidth="1.5"
             strokeDasharray="6 4"
+            fill="none"
           />
         ))}
 
-        {/* ── Gradient flow lines: core → outputs ── */}
+        {/* ── Bezier flow lines: core → outputs ── */}
         {OUTPUTS.map((o, i) => (
-          <line key={`fl2${i}`}
-            x1={coreX}    y1={coreY + 44}
-            x2={outXs[i]} y2={outY}
+          <path key={`fl2${i}`}
+            d={outPaths[i]}
             stroke={`url(#og${uid}${i})`}
             strokeWidth="1.5"
             strokeDasharray="6 4"
+            fill="none"
           />
         ))}
 
@@ -124,19 +174,18 @@ export function SignalTower() {
         {SOURCES.map((s, i) => {
           const dur = 1.6 + i * 0.2;
           const delay = i * 0.32;
-          const path = `M ${srcXs[i]},${srcY + 48} L ${coreX},${coreY - 44}`;
           return (
             <g key={`afd${i}`} filter={`url(#gf${uid})`}>
               <circle r="5" fill={s.color} opacity="0.4">
                 <animateMotion dur={`${dur}s`} begin={`${delay}s`}
-                  repeatCount="indefinite" path={path}/>
+                  repeatCount="indefinite" path={srcPaths[i]}/>
                 <animate attributeName="opacity"
                   values="0;0.4;0.4;0" keyTimes="0;0.05;0.9;1"
                   dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite"/>
               </circle>
               <circle r="3" fill={s.color} opacity="0.95">
                 <animateMotion dur={`${dur}s`} begin={`${delay}s`}
-                  repeatCount="indefinite" path={path}/>
+                  repeatCount="indefinite" path={srcPaths[i]}/>
                 <animate attributeName="opacity"
                   values="0;1;1;0" keyTimes="0;0.05;0.92;1"
                   dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite"/>
@@ -149,19 +198,18 @@ export function SignalTower() {
         {OUTPUTS.map((o, i) => {
           const dur = 1.8 + i * 0.22;
           const delay = 0.5 + i * 0.38;
-          const path = `M ${coreX},${coreY + 44} L ${outXs[i]},${outY}`;
           return (
             <g key={`aod${i}`} filter={`url(#gf${uid})`}>
               <circle r="5" fill={o.color} opacity="0.4">
                 <animateMotion dur={`${dur}s`} begin={`${delay}s`}
-                  repeatCount="indefinite" path={path}/>
+                  repeatCount="indefinite" path={outPaths[i]}/>
                 <animate attributeName="opacity"
                   values="0;0.4;0.4;0" keyTimes="0;0.05;0.9;1"
                   dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite"/>
               </circle>
               <circle r="3" fill={o.color} opacity="0.95">
                 <animateMotion dur={`${dur}s`} begin={`${delay}s`}
-                  repeatCount="indefinite" path={path}/>
+                  repeatCount="indefinite" path={outPaths[i]}/>
                 <animate attributeName="opacity"
                   values="0;1;1;0" keyTimes="0;0.05;0.92;1"
                   dur={`${dur}s`} begin={`${delay}s`} repeatCount="indefinite"/>
@@ -190,22 +238,30 @@ export function SignalTower() {
         ))}
 
         {/* ── ZUUZ Core Node ── */}
+        {/* Ambient glow ring */}
         <circle cx={coreX} cy={coreY} r={80} fill={`url(#cg${uid})`}>
           <animate attributeName="r" values="75;90;75" dur="4s" repeatCount="indefinite"/>
         </circle>
+        {/* Pulsing outer ring */}
         <circle cx={coreX} cy={coreY} r={58}
           fill="none" stroke="#A3F3FF" strokeWidth="1" opacity="0.3">
           <animate attributeName="r" values="56;62;56" dur="3s" repeatCount="indefinite"/>
           <animate attributeName="opacity" values="0.3;0.08;0.3" dur="3s" repeatCount="indefinite"/>
         </circle>
-        {/* Main filled circle */}
-        <circle cx={coreX} cy={coreY} r={46} fill="#0018FF"/>
+        {/* Drop shadow under sphere */}
+        <ellipse cx={coreX} cy={coreY + 52} rx={42} ry={9}
+          fill="rgba(0,10,80,0.22)"/>
+        {/* 3D sphere base */}
+        <circle cx={coreX} cy={coreY} r={46} fill={`url(#sphere${uid})`}/>
+        {/* Specular highlight */}
+        <circle cx={coreX} cy={coreY} r={46} fill={`url(#shine${uid})`}/>
+        {/* Inner ring */}
         <circle cx={coreX} cy={coreY} r={40}
-          fill="none" stroke="rgba(163,243,255,0.3)" strokeWidth="1"/>
-        {/* 4-pointed star */}
+          fill="none" stroke="rgba(163,243,255,0.25)" strokeWidth="1"/>
+        {/* 4-pointed star with bezier curves */}
         <path
-          d={`M${coreX},${coreY - 22} L${coreX + 5},${coreY - 5} L${coreX + 22},${coreY} L${coreX + 5},${coreY + 5} L${coreX},${coreY + 22} L${coreX - 5},${coreY + 5} L${coreX - 22},${coreY} L${coreX - 5},${coreY - 5} Z`}
-          fill="white" opacity="0.9">
+          d={star4(coreX, coreY, 22, 5)}
+          fill="white" opacity="0.92">
           <animate attributeName="opacity" values="0.85;1;0.85" dur="2.5s" repeatCount="indefinite"/>
         </path>
         <text x={coreX} y={coreY + 5}

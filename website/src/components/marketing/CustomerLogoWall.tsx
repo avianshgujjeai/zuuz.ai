@@ -42,7 +42,7 @@ function LogoItem({
       {/* Logo image — fallback to styled name */}
       <div
         style={{
-          height: 56,
+          minHeight: 140,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -68,8 +68,8 @@ function LogoItem({
             src={logo.src}
             alt={logo.alt}
             style={{
-              maxWidth: 140,
-              maxHeight: 48,
+              maxWidth: 180,
+              maxHeight: 64,
               objectFit: "contain",
               filter: "grayscale(20%)",
               display: imgLoaded ? "block" : "none",
