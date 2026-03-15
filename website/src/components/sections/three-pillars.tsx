@@ -24,14 +24,14 @@ const pillars = [
     title: "Execution Flows",
     subtitle: "Import your existing processes from CRM/ERP/ITSM and run them with policy gates, approvals, and audit trails.",
     href: "/products/workflows",
-    accent: "#2563eb",
+    accent: "#0018FF",
     entrance: "pillar-enter-bottom" as const,
     icon: (
       <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10">
-        <circle cx="8" cy="20" r="4" stroke="#2563eb" strokeWidth="1.5" opacity="0.8" />
-        <circle cx="20" cy="10" r="4" stroke="#2563eb" strokeWidth="1.5" opacity="0.8" />
-        <circle cx="20" cy="30" r="4" stroke="#2563eb" strokeWidth="1.5" opacity="0.8" />
-        <circle cx="32" cy="20" r="4" stroke="#2563eb" strokeWidth="1.5" opacity="0.8" />
+        <circle cx="8" cy="20" r="4" stroke="#0018FF" strokeWidth="1.5" opacity="0.8" />
+        <circle cx="20" cy="10" r="4" stroke="#0018FF" strokeWidth="1.5" opacity="0.8" />
+        <circle cx="20" cy="30" r="4" stroke="#0018FF" strokeWidth="1.5" opacity="0.8" />
+        <circle cx="32" cy="20" r="4" stroke="#0018FF" strokeWidth="1.5" opacity="0.8" />
         <path d="M12 18l5-5M12 22l5 5M25 13l4 4M25 27l4-4" stroke="#60a5fa" strokeWidth="1" opacity="0.5" />
       </svg>
     ),

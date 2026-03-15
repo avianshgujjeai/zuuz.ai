@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- Google Meet camera icon shape, multicolor -->
+  <path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H14a2.5 2.5 0 0 1 2.5 2.5v2.25L20 5v14l-3.5-1.75V17.5A2.5 2.5 0 0 1 14 20H4.5A2.5 2.5 0 0 1 2 17.5V4.5z" fill="#00832D"/>
+  <path d="M14 12.5V4.5A2.5 2.5 0 0 0 11.5 2H4.5A2.5 2.5 0 0 0 2 4.5v8H14z" fill="#00832D"/>
+  <path d="M14 12.5H2v5A2.5 2.5 0 0 0 4.5 20H14V12.5z" fill="#0066DA"/>
+  <path d="M14 6.75L20 5v14l-6-1.75V6.75z" fill="#E94235"/>
+  <path d="M14 12.5L20 14V5l-6 1.75v5.75z" fill="#2684FC"/>
+</svg>
