@@ -2,13 +2,13 @@
 import { useRef } from "react";
 
 const SOURCES = [
-  { id:"crm",   label:"CRM",   color:"#00A1E0", bg:"#E6F6FD", icon:"◈" },
-  { id:"erp",   label:"ERP",   color:"#0070AD", bg:"#E6F2F9", icon:"⬡" },
-  { id:"itsm",  label:"ITSM",  color:"#62D84E", bg:"#EDF9EA", icon:"◎" },
-  { id:"slack", label:"Slack", color:"#4A154B", bg:"#F3E8F7", icon:"#" },
-  { id:"teams", label:"Teams", color:"#5059C9", bg:"#ECEDF9", icon:"T" },
-  { id:"email", label:"Email", color:"#EA4335", bg:"#FDE9E8", icon:"@" },
-  { id:"docs",  label:"Docs",  color:"#4285F4", bg:"#EAF0FE", icon:"≡" },
+  { id:"crm",   label:"CRM",   color:"#00A1E0", icon:"◈" },
+  { id:"erp",   label:"ERP",   color:"#0070AD", icon:"⬡" },
+  { id:"itsm",  label:"ITSM",  color:"#62D84E", icon:"◎" },
+  { id:"slack", label:"Slack", color:"#4A154B", icon:"#" },
+  { id:"teams", label:"Teams", color:"#5059C9", icon:"T" },
+  { id:"email", label:"Email", color:"#EA4335", icon:"@" },
+  { id:"docs",  label:"Docs",  color:"#4285F4", icon:"≡" },
 ];
 
 const OUTPUTS = [
@@ -41,6 +41,13 @@ export function SignalTower() {
         style={{ width: "100%", overflow: "visible" }}
       >
         <defs>
+          {/* Radial background gradient */}
+          <radialGradient id="bgRadial" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#2563EB" stopOpacity="1"/>
+            <stop offset="100%" stopColor="#2563EB" stopOpacity="0"/>
+          </radialGradient>
+
+          {/* Core glow */}
           <radialGradient id="stCoreGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%"   stopColor="#2563EB" stopOpacity="0.3"/>
             <stop offset="70%"  stopColor="#2563EB" stopOpacity="0.07"/>
@@ -50,7 +57,25 @@ export function SignalTower() {
             <feGaussianBlur stdDeviation="4" result="blur"/>
             <feComposite in="SourceGraphic" in2="blur" operator="over"/>
           </filter>
+
+          {/* Arrowhead for source → core lines */}
+          <marker id="arrowBlue" markerWidth="6" markerHeight="6"
+            refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L6,3 Z" fill="#2563EB" opacity="0.4"/>
+          </marker>
+
+          {/* Per-color arrowheads for core → output lines */}
+          {OUTPUTS.map((o, i) => (
+            <marker key={`m-${i}`} id={`arrow-${i}`} markerWidth="6" markerHeight="6"
+              refX="5" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L6,3 Z" fill={o.color} opacity="0.5"/>
+            </marker>
+          ))}
         </defs>
+
+        {/* Subtle radial background */}
+        <circle cx={W / 2} cy={coreY} r={200}
+          fill="url(#bgRadial)" opacity="0.08"/>
 
         {/* ── CONNECTOR LINES: sources → core ── */}
         {SOURCES.map((s, i) => (
@@ -58,9 +83,10 @@ export function SignalTower() {
             x1={srcXs[i]} y1={srcY + 40}
             x2={coreX}    y2={coreY - 42}
             stroke={s.color}
-            strokeWidth="1"
-            strokeDasharray="4 5"
-            opacity="0.25"
+            strokeWidth="1.5"
+            strokeDasharray="3 4"
+            opacity="0.5"
+            markerEnd="url(#arrowBlue)"
           />
         ))}
 
@@ -70,9 +96,10 @@ export function SignalTower() {
             x1={coreX}    y1={coreY + 42}
             x2={outXs[i]} y2={outY}
             stroke={o.color}
-            strokeWidth="1"
-            strokeDasharray="4 5"
-            opacity="0.25"
+            strokeWidth="1.5"
+            strokeDasharray="3 4"
+            opacity="0.5"
+            markerEnd={`url(#arrow-${i})`}
           />
         ))}
 
@@ -84,7 +111,7 @@ export function SignalTower() {
           const delay = i * 0.38;
           return (
             <g key={`sb-${i}`}>
-              <rect width="16" height="8" rx="2" fill={s.color} opacity="0.9">
+              <rect width="20" height="6" rx="2" fill={s.color} opacity="0.9">
                 <animateMotion
                   dur={`${dur}s`}
                   begin={`${delay}s`}
@@ -93,6 +120,21 @@ export function SignalTower() {
                 />
                 <animate attributeName="opacity"
                   values="0;0.9;0.9;0"
+                  keyTimes="0;0.08;0.9;1"
+                  dur={`${dur}s`}
+                  begin={`${delay}s`}
+                  repeatCount="indefinite"/>
+              </rect>
+              {/* White center line detail */}
+              <rect width="8" height="2" rx="1" fill="white" opacity="0.5">
+                <animateMotion
+                  dur={`${dur}s`}
+                  begin={`${delay}s`}
+                  repeatCount="indefinite"
+                  path={`M ${x1 + 6},${y1 + 2} L ${x2 + 6},${y2 + 2}`}
+                />
+                <animate attributeName="opacity"
+                  values="0;0.5;0.5;0"
                   keyTimes="0;0.08;0.9;1"
                   dur={`${dur}s`}
                   begin={`${delay}s`}
@@ -110,7 +152,7 @@ export function SignalTower() {
           const delay = 0.4 + i * 0.42;
           return (
             <g key={`ob-${i}`}>
-              <rect width="16" height="8" rx="2" fill={o.color} opacity="0.9">
+              <rect width="20" height="6" rx="2" fill={o.color} opacity="0.9">
                 <animateMotion
                   dur={`${dur}s`}
                   begin={`${delay}s`}
@@ -124,11 +166,26 @@ export function SignalTower() {
                   begin={`${delay}s`}
                   repeatCount="indefinite"/>
               </rect>
+              {/* White center line detail */}
+              <rect width="8" height="2" rx="1" fill="white" opacity="0.5">
+                <animateMotion
+                  dur={`${dur}s`}
+                  begin={`${delay}s`}
+                  repeatCount="indefinite"
+                  path={`M ${x1 + 6},${y1 + 2} L ${x2 + 6},${y2 + 2}`}
+                />
+                <animate attributeName="opacity"
+                  values="0;0.5;0.5;0"
+                  keyTimes="0;0.08;0.9;1"
+                  dur={`${dur}s`}
+                  begin={`${delay}s`}
+                  repeatCount="indefinite"/>
+              </rect>
             </g>
           );
         })}
 
-        {/* ── SOURCE CHIPS — rectangular blocks ── */}
+        {/* ── SOURCE CHIPS ── */}
         {SOURCES.map((s, i) => (
           <g key={`sc-${i}`}>
             <rect
@@ -137,29 +194,15 @@ export function SignalTower() {
               rx={8}
               fill="white"
               stroke={s.color}
-              strokeWidth="1.2"
+              strokeWidth="1.5"
               style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.07))" }}
             />
-            {/* Top color bar */}
-            <rect
-              x={srcXs[i] - 32} y={srcY}
-              width={64} height={4}
-              rx={8}
-              fill={s.color}
-              opacity="0.75"
-            />
-            {/* Icon */}
-            <text
-              x={srcXs[i] - 14} y={srcY + 24}
-              fontSize="11" fontWeight="600"
-              fill={s.color}
-              fontFamily="Inter, sans-serif">
-              {s.icon}
-            </text>
+            {/* Color dot on left */}
+            <circle cx={srcXs[i] - 20} cy={srcY + 19} r={5} fill={s.color}/>
             {/* Label */}
             <text
-              x={srcXs[i] + 2} y={srcY + 25}
-              fontSize="9" fontWeight="600"
+              x={srcXs[i] - 10} y={srcY + 24}
+              fontSize="10" fontWeight="600"
               fill="#374151"
               fontFamily="Inter, sans-serif">
               {s.label}

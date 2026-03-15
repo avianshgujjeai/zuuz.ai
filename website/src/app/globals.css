@@ -183,6 +183,13 @@ a { text-decoration: none; }
   50%      { transform: translateY(-5px); }
 }
 
+@keyframes flow-pulse {
+  0%   { left:0%;   opacity:0; }
+  5%   { opacity:1; }
+  95%  { opacity:1; }
+  100% { left:100%; opacity:0; }
+}
+
 @keyframes marquee-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }

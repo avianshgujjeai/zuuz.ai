@@ -157,15 +157,27 @@ export default async function CaseStudyPage({ params }: Props) {
               }}
             >
               <div style={{ textAlign: "center" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={cs.logo}
+                  alt={cs.name}
+                  style={{
+                    maxWidth: 160,
+                    maxHeight: 60,
+                    objectFit: "contain",
+                    marginBottom: 12,
+                    filter: "grayscale(10%)",
+                  }}
+                />
                 <p
                   style={{
-                    fontSize: 32,
-                    fontWeight: 900,
-                    color: "#0A0F1E",
-                    fontFamily: "var(--font-display)",
-                    letterSpacing: "-0.03em",
-                    lineHeight: 1.1,
-                    marginBottom: 8,
+                    fontSize: 18,
+                    fontWeight: 700,
+                    color: "#111827",
+                    fontFamily: "Inter, sans-serif",
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.2,
+                    marginBottom: 6,
                   }}
                 >
                   {cs.name}
@@ -174,7 +186,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   style={{
                     fontSize: 13,
                     color: "#94A3B8",
-                    fontFamily: "var(--font-body)",
+                    fontFamily: "Inter, sans-serif",
                   }}
                 >
                   {cs.industry} · {cs.location}
