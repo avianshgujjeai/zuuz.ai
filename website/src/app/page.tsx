@@ -43,22 +43,22 @@ function Eyebrow({ children, light = false }: { children: React.ReactNode; light
 const HOW_STEPS = [
   {
     title: "Connect your systems",
-    body: "200+ pre-built connectors for email, CRM, ERP, ITSM, docs, and communication tools. No custom ETL or professional services required.",
+    body: "Link your CRM, ERP, email, docs and calendars. 200+ connectors. Live in minutes, no migration needed.",
     visual: "CRM · ERP · Email · Slack · Jira · ServiceNow",
   },
   {
     title: "Assemble context automatically",
-    body: "ZUUZ pulls relevant signals across every connected system — contracts, emails, tickets, approvals — and packages them into decision-ready briefs.",
+    body: "ZUUZ pulls signals across every connected system — contracts, emails, tickets, approvals — and packages them into decision-ready briefs.",
     visual: "Contract context · Email thread · Budget approval · Stakeholder history",
   },
   {
     title: "Route decisions through policy",
-    body: "Every action is identity-verified, permission-checked, and routed through your approval workflows before any execution.",
+    body: "Every decision routes to the right approver with full context. Policy gates enforced automatically. No back-and-forth.",
     visual: "Policy check → Identity verified → Approval gate → Action cleared",
   },
   {
     title: "Write back with full audit trail",
-    body: "Actions are safely written back to your systems of record. Every step is logged with evidence links and an immutable audit trail.",
+    body: "Approved actions execute back to your systems of record. Every step identity-verified, logged, and auditable.",
     visual: "CRM updated · Ticket closed · Audit entry created · Evidence archived",
   },
 ];
@@ -91,8 +91,8 @@ function HowItWorks() {
               onClick={() => { setActive(i); resetTimer(); }}
               style={{
                 textAlign: "left",
-                background: active === i ? "rgba(37,99,235,0.04)" : "transparent",
-                border: active === i ? "1.5px solid rgba(37,99,235,0.25)" : "1.5px solid #E4E7EC",
+                background: active === i ? "white" : "transparent",
+                border: active === i ? "1px solid #BFDBFE" : "1px solid #E5E7EB",
                 borderRadius: 12,
                 padding: "14px 18px",
                 cursor: "pointer",
@@ -102,10 +102,10 @@ function HowItWorks() {
               <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: active === i ? 8 : 0 }}>
                 <span
                   style={{
-                    width: 24, height: 24, borderRadius: "50%",
-                    background: active === i ? "#2563EB" : "#E4E7EC",
-                    color: active === i ? "#fff" : "#667085",
-                    fontSize: 11, fontWeight: 700,
+                    width: 28, height: 28, borderRadius: "50%",
+                    background: active === i ? "#2563EB" : "#F3F4F6",
+                    color: active === i ? "#fff" : "#9CA3AF",
+                    fontSize: 11, fontWeight: active === i ? 600 : 500,
                     display: "flex", alignItems: "center", justifyContent: "center",
                     flexShrink: 0, fontFamily: "Inter, sans-serif",
                     transition: "all 0.2s ease",
@@ -267,32 +267,31 @@ export default function HomePage() {
                     letterSpacing: "0.1em", color: "#667085", fontFamily: "Inter, sans-serif",
                   }}
                 >
-                  The Agentic AI Execution Layer for Enterprise
+                  Agentic AI Execution Layer for your Business
                 </span>
               </div>
 
               {/* H1 */}
-              <h1 style={{ marginBottom: 20, animation: "fadeUp 0.7s 0.2s both" }}>
-                Where enterprise decisions
+              <h1 style={{ marginBottom: 20 }}>
+                AI That Gets Business
                 <br />
-                <span className="gradient-text">actually happen.</span>
+                <span className="gradient-text">Work Done.</span>
               </h1>
 
               {/* Sub */}
               <p
                 style={{
                   fontSize: 18,
-                  color: "#475467",
+                  color: "#6B7280",
                   maxWidth: 490,
-                  lineHeight: 1.75,
+                  lineHeight: 1.7,
                   marginBottom: 32,
-                  animation: "fadeUp 0.7s 0.35s both",
                   fontFamily: "Inter, sans-serif",
                 }}
               >
-                Context assembled from email, docs, meetings, CRM and ERP.
-                Decisions routed through policy. Every action identity-verified,
-                permission-checked, and audit-logged.
+                ZUUZ connects to your systems, assembles full context, routes
+                decisions through policy, and executes — every action verified,
+                logged, and audited.
               </p>
 
               {/* CTAs */}
@@ -309,7 +308,7 @@ export default function HomePage() {
                   Request a demo
                 </Btn>
                 <Btn variant="secondary" size="lg" href="/products/ai-agents">
-                  See how it works →
+                  See it in action
                 </Btn>
               </div>
 
@@ -502,7 +501,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ 5. HOW IT WORKS ════════════════════════════════ */}
-      <section style={{ padding: "80px 0", borderTop: "1px solid #F2F4F7" }}>
+      <section style={{ padding: "80px 0", background: "linear-gradient(135deg, #F0F4FF 0%, #F9FAFB 50%, #EFF6FF 100%)" }}>
         <div style={W}>
           <div style={{ textAlign: "center", marginBottom: 48 }} className="reveal">
             <Eyebrow>How it works</Eyebrow>
