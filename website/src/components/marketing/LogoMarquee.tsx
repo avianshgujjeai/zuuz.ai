@@ -1,56 +1,56 @@
 "use client";
 
 const LOGOS = [
-  { name:"Salesforce",  abbr:"S",   color:"#fff", bg:"#00A1E0" },
-  { name:"SAP",         abbr:"SAP", color:"#fff", bg:"#0070AD", small:true },
-  { name:"Microsoft",   abbr:"⊞",   color:"#fff", bg:"#0078D4" },
-  { name:"Slack",       abbr:"#",   color:"#fff", bg:"#4A154B" },
-  { name:"Jira",        abbr:"J",   color:"#fff", bg:"#0052CC" },
-  { name:"ServiceNow",  abbr:"SN",  color:"#fff", bg:"#81B5A1", small:true },
-  { name:"Google",      abbr:"G",   color:"#fff", bg:"#4285F4" },
-  { name:"HubSpot",     abbr:"H",   color:"#fff", bg:"#FF7A59" },
-  { name:"Oracle",      abbr:"O",   color:"#fff", bg:"#F80000" },
-  { name:"Zoom",        abbr:"Z",   color:"#fff", bg:"#2D8CFF" },
-  { name:"Zendesk",     abbr:"Z",   color:"#fff", bg:"#03363D" },
-  { name:"NetSuite",    abbr:"N",   color:"#fff", bg:"#009EDB" },
-  { name:"Workday",     abbr:"W",   color:"#fff", bg:"#F8A01C" },
-  { name:"GitHub",      abbr:"GH",  color:"#fff", bg:"#24292F", small:true },
-  { name:"Teams",       abbr:"T",   color:"#fff", bg:"#5059C9" },
-  { name:"SharePoint",  abbr:"S",   color:"#fff", bg:"#0078D4" },
-  { name:"BambooHR",    abbr:"B",   color:"#fff", bg:"#73AC41" },
-  { name:"Zoho",        abbr:"Z",   color:"#fff", bg:"#E42527" },
+  { name:"Salesforce",  color:"#00A1E0", symbol:"☁",  size:14 },
+  { name:"SAP",         color:"#0070AD", symbol:"SAP", size:8  },
+  { name:"Microsoft",   color:"#0078D4", symbol:"⊞",  size:13 },
+  { name:"Slack",       color:"#4A154B", symbol:"#",   size:14 },
+  { name:"Jira",        color:"#0052CC", symbol:"◈",  size:13 },
+  { name:"ServiceNow",  color:"#62D84E", symbol:"✦",  size:13 },
+  { name:"Google",      color:"#4285F4", symbol:"G",   size:14 },
+  { name:"HubSpot",     color:"#FF7A59", symbol:"⬡",  size:13 },
+  { name:"Oracle",      color:"#F80000", symbol:"○",  size:14 },
+  { name:"Zoom",        color:"#2D8CFF", symbol:"Z",   size:14 },
+  { name:"Zendesk",     color:"#03363D", symbol:"Z",   size:14 },
+  { name:"NetSuite",    color:"#009EDB", symbol:"N",   size:14 },
+  { name:"Workday",     color:"#F8A01C", symbol:"W",   size:13 },
+  { name:"GitHub",      color:"#24292F", symbol:"⌥",  size:13 },
+  { name:"Teams",       color:"#5059C9", symbol:"T",   size:14 },
+  { name:"SharePoint",  color:"#0078D4", symbol:"S",   size:14 },
+  { name:"BambooHR",    color:"#73AC41", symbol:"⬡",  size:12 },
+  { name:"Zoho",        color:"#E42527", symbol:"Z",   size:14 },
 ];
 
-function LogoChip({ logo }: { logo: typeof LOGOS[0] }) {
+function Chip({ logo }: { logo: typeof LOGOS[0] }) {
   return (
     <div style={{
       display: "flex",
       alignItems: "center",
-      gap: 9,
-      padding: "9px 18px",
-      background: "white",
+      gap: 8,
+      padding: "8px 16px",
+      background: "#ffffff",
       border: "1px solid #E5E7EB",
-      borderRadius: 100,
+      borderRadius: 999,
       flexShrink: 0,
       userSelect: "none",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+      boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
     }}>
       <span style={{
         width: 24,
         height: 24,
         borderRadius: 6,
-        background: logo.bg,
+        background: logo.color,
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        fontSize: logo.small ? 8 : 11,
+        fontSize: logo.size,
+        color: "#ffffff",
         fontWeight: 700,
-        color: "white",
         flexShrink: 0,
-        letterSpacing: "-0.02em",
+        lineHeight: 1,
         fontFamily: "Inter, sans-serif",
       }}>
-        {logo.abbr}
+        {logo.symbol}
       </span>
       <span style={{
         fontSize: 13,
@@ -70,7 +70,7 @@ export function LogoMarquee() {
   const row2 = [...LOGOS.slice(9), ...LOGOS.slice(0, 9), ...LOGOS.slice(9), ...LOGOS.slice(0, 9)];
 
   return (
-    <div style={{ padding: "32px 0", position: "relative" }}>
+    <div style={{ padding: "28px 0", position: "relative", overflow: "hidden" }}>
       <p style={{
         textAlign: "center",
         fontSize: 11,
@@ -78,42 +78,22 @@ export function LogoMarquee() {
         letterSpacing: "0.1em",
         textTransform: "uppercase",
         color: "#9CA3AF",
-        marginBottom: 24,
+        marginBottom: 18,
         fontFamily: "Inter, sans-serif",
       }}>
         Connects with the tools your teams already use
       </p>
 
       {/* Fade masks */}
-      <div style={{
-        position: "absolute", left: 0, top: 0, bottom: 0, width: 80,
-        zIndex: 2, pointerEvents: "none",
-        background: "linear-gradient(to right, #fff, transparent)",
-      }} />
-      <div style={{
-        position: "absolute", right: 0, top: 0, bottom: 0, width: 80,
-        zIndex: 2, pointerEvents: "none",
-        background: "linear-gradient(to left, #fff, transparent)",
-      }} />
+      <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 80, zIndex: 10, pointerEvents: "none", background: "linear-gradient(to right, #ffffff, transparent)" }} />
+      <div style={{ position: "absolute", right: 0, top: 0, bottom: 0, width: 80, zIndex: 10, pointerEvents: "none", background: "linear-gradient(to left, #ffffff, transparent)" }} />
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 10, overflow: "hidden" }}>
-        {/* Row 1 — scroll left */}
-        <div style={{
-          display: "flex",
-          gap: 10,
-          width: "max-content",
-          animation: "marquee-left 32s linear infinite",
-        }}>
-          {row1.map((l, i) => <LogoChip key={i} logo={l} />)}
+      <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+        <div style={{ display: "flex", gap: 10, width: "max-content", animation: "marquee-left 30s linear infinite" }}>
+          {row1.map((l, i) => <Chip key={i} logo={l} />)}
         </div>
-        {/* Row 2 — scroll right */}
-        <div style={{
-          display: "flex",
-          gap: 10,
-          width: "max-content",
-          animation: "marquee-right 38s linear infinite",
-        }}>
-          {row2.map((l, i) => <LogoChip key={i} logo={l} />)}
+        <div style={{ display: "flex", gap: 10, width: "max-content", animation: "marquee-right 36s linear infinite" }}>
+          {row2.map((l, i) => <Chip key={i} logo={l} />)}
         </div>
       </div>
     </div>
