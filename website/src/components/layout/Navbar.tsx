@@ -124,60 +124,74 @@ const NAV_ITEMS: NavItem[] = [
 ];
 
 function DropdownPanel({ groups }: { groups: DropGroup[] }) {
+  const totalItems = groups.reduce((a, g) => a + g.items.length, 0);
   return (
     <div style={{
       position: "absolute",
-      top: "calc(100% + 8px)",
+      top: "calc(100% + 6px)",
       left: "50%",
       transform: "translateX(-50%)",
-      background: "#fff",
+      background: "#ffffff",
       border: "1px solid #E8E8EE",
       borderRadius: 14,
-      boxShadow: "0 12px 48px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06)",
-      padding: "16px",
-      minWidth: 260,
-      maxWidth: 600,
-      display: "flex",
-      gap: 24,
+      boxShadow: "0 16px 48px rgba(0,0,0,0.11), 0 4px 16px rgba(0,0,0,0.06)",
+      padding: "18px 20px",
+      minWidth: totalItems > 5 ? 580 : 280,
       zIndex: 100,
+      display: "grid",
+      gridTemplateColumns: groups.length > 1 ? `repeat(${groups.length}, 1fr)` : "1fr",
+      gap: 24,
     }}>
       {groups.map((g, gi) => (
-        <div key={gi} style={{ flex: 1, minWidth: 200 }}>
+        <div key={gi}>
           {g.heading && (
             <p style={{
               fontSize: 10,
               fontWeight: 700,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "#AAA",
+              color: "#AAAAAA",
               fontFamily: F,
-              marginBottom: 8,
-              paddingBottom: 6,
+              marginBottom: 10,
+              paddingBottom: 8,
               borderBottom: "1px solid #F0F0F5",
             }}>{g.heading}</p>
           )}
-          <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
             {g.items.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 10,
-                  padding: "8px 10px",
-                  borderRadius: 10,
+                  display: "block",
+                  padding: "9px 10px",
+                  borderRadius: 8,
                   textDecoration: "none",
-                  transition: "background 0.12s ease",
+                  transition: "background 0.15s ease",
                 }}
                 onMouseEnter={e => (e.currentTarget.style.background = "#F5F6FF")}
                 onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
               >
-                <span style={{ fontSize: 15, lineHeight: 1.2, flexShrink: 0, marginTop: 2 }}>{item.icon}</span>
-                <div>
-                  <p style={{ fontSize: 13, fontWeight: 600, color: "#111", fontFamily: F, lineHeight: 1.2, margin: 0 }}>{item.label}</p>
-                  <p style={{ fontSize: 11, color: "#888", fontFamily: F, marginTop: 2, lineHeight: 1.4, margin: "2px 0 0" }}>{item.desc}</p>
-                </div>
+                <p style={{
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "#111111",
+                  fontFamily: F,
+                  marginBottom: 3,
+                  lineHeight: 1.3,
+                  margin: "0 0 3px",
+                }}>
+                  {item.label}
+                </p>
+                <p style={{
+                  fontSize: 11,
+                  color: "#777777",
+                  fontFamily: F,
+                  lineHeight: 1.5,
+                  margin: 0,
+                }}>
+                  {item.desc}
+                </p>
               </Link>
             ))}
           </div>

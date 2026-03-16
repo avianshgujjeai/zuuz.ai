@@ -8,6 +8,7 @@ import { CTA } from "@/components/ui/cta";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ContextPackChips } from "@/components/sections/context-pack-chips";
 import { solutions } from "@/content/solutions";
+import { WorkflowPipeline } from "@/components/marketing/WorkflowPipeline";
 
 export const metadata: Metadata = {
   title: "Solutions — ZUUZ",
@@ -40,69 +41,6 @@ const contextChips = ["Policy", "Budget", "Contract Terms", "Risk Flags", "Prior
 
 const metricsFromPdfs = solutions.flatMap((s) => s.metrics).filter((m) => m.source);
 
-function WorkflowFlow() {
-  const steps = [
-    { label:"Context Pack",    sub:"Evidence bundle",         color:"#111827", border:"#111827", bg:"white" },
-    { label:"Approver",        sub:"Human-in-the-loop",       color:"#B45309", border:"#F59E0B", bg:"#FFFBEB" },
-    { label:"Safe Write-back", sub:"Verified action",         color:"#065F46", border:"#10B981", bg:"#ECFDF5" },
-    { label:"Audit Log",       sub:"Immutable record",        color:"#1E40AF", border:"#0018FF", bg:"#EFF6FF" },
-  ];
-  const sources = ["Email", "Docs", "Calendar", "CRM", "ERP"];
-  return (
-    <div style={{ display:"flex", alignItems:"center", gap:0,
-                  flexWrap:"wrap", justifyContent:"center", padding:"20px 0" }}>
-      {/* Source chips on the left */}
-      <div style={{ display:"flex", flexDirection:"column", gap:6, marginRight:16 }}>
-        {sources.map(s => (
-          <div key={s} style={{
-            padding:"5px 14px", border:"1.5px solid #D1D5DB", borderRadius:8,
-            fontSize:12, fontWeight:600, color:"#374151", background:"white",
-            fontFamily:"Montserrat, sans-serif"
-          }}>{s}</div>
-        ))}
-      </div>
-      {/* Arrow */}
-      <div style={{ display:"flex", alignItems:"center", marginRight:16 }}>
-        <div style={{ width:32, height:2, background:"#9CA3AF" }}/>
-        <div style={{ width:0, height:0,
-          borderTop:"5px solid transparent", borderBottom:"5px solid transparent",
-          borderLeft:"8px solid #9CA3AF" }}/>
-      </div>
-      {/* Flow steps with arrows between */}
-      {steps.map((step, i) => (
-        <div key={step.label} style={{ display:"flex", alignItems:"center" }}>
-          <div style={{
-            padding:"12px 16px", minWidth:110,
-            border:`2px solid ${step.border}`,
-            borderRadius:12, background:step.bg,
-            textAlign:"center"
-          }}>
-            <p style={{ fontSize:12, fontWeight:700, color:step.color,
-              fontFamily:"Montserrat, sans-serif", lineHeight:1.2 }}>{step.label}</p>
-            <p style={{ fontSize:10, color:"#6B7280", marginTop:3,
-              fontFamily:"Montserrat, sans-serif" }}>{step.sub}</p>
-          </div>
-          {i < steps.length - 1 && (
-            <div style={{ display:"flex", alignItems:"center", margin:"0 8px" }}>
-              <div style={{ width:24, height:2, background:"#D1D5DB" }}/>
-              <div style={{ width:0, height:0,
-                borderTop:"4px solid transparent", borderBottom:"4px solid transparent",
-                borderLeft:"6px solid #D1D5DB" }}/>
-            </div>
-          )}
-        </div>
-      ))}
-      {/* Live dot */}
-      <div style={{ marginLeft:12, display:"flex", alignItems:"center", gap:6 }}>
-        <span style={{ width:10, height:10, borderRadius:"50%",
-          background:"#10B981", display:"inline-block",
-          boxShadow:"0 0 0 3px rgba(16,185,129,0.2)" }}/>
-        <span style={{ fontSize:11, color:"#059669", fontWeight:600,
-          fontFamily:"Montserrat, sans-serif" }}>Live</span>
-      </div>
-    </div>
-  );
-}
 
 export default function SolutionsPage() {
   return (
@@ -182,7 +120,7 @@ export default function SolutionsPage() {
             </div>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <WorkflowFlow />
+            <WorkflowPipeline />
           </FadeIn>
         </Container>
       </section>
