@@ -263,17 +263,12 @@ export const contact = {
     {
       label: "USA HQ (California)",
       address: ["Plug and Play Tech Center", "440 N Wolfe Rd", "Sunnyvale, CA 94085"],
-      mapsUrl: "https://www.google.com/maps?q=Plug+and+Play+Tech+Center,+440+N+Wolfe+Rd,+Sunnyvale,+CA+94085",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=440+N+Wolfe+Rd+Sunnyvale+CA+94085",
     },
     {
       label: "UAE Office",
-      address: ["TODO: Pull address from zuuz.ai"],
-      isTodo: true,
-    },
-    {
-      label: "India Office",
-      address: ["TODO: Pull address from zuuz.ai"],
-      isTodo: true,
+      address: ["Dubai, United Arab Emirates", "Enterprise deployments across UAE"],
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dubai+United+Arab+Emirates",
     },
   ] as OfficeLocation[],
   meta: { title: "Contact — ZUUZ", description: "Get in touch with the ZUUZ team. Offices in Sunnyvale CA, UAE, and India." },

@@ -99,19 +99,48 @@ export default function AboutPage() {
       <section style={{ padding: "72px 0", background: "#fff" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px",
           display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
-          {[
-            { h: "Headquarters", b: "Sunnyvale, CA 94085", s: "440N Wolfe Rd"        },
-            { h: "Coverage",     b: "UAE & USA",           s: "Enterprise ops teams" },
-            { h: "Contact",      b: "info@zuuz.ai",        s: "+1 469 347 3394"      },
-          ].map(item => (
+          {([
+            {
+              h: "USA Headquarters", flag: "🇺🇸",
+              b: "440 N Wolfe Rd, Sunnyvale, CA 94085",
+              s: "Plug and Play Tech Center",
+              mapUrl: "https://www.google.com/maps/search/?api=1&query=440+N+Wolfe+Rd+Sunnyvale+CA+94085",
+            },
+            {
+              h: "UAE Office", flag: "🇦🇪",
+              b: "Dubai, United Arab Emirates",
+              s: "Enterprise deployments across UAE",
+              mapUrl: "https://www.google.com/maps/search/?api=1&query=Dubai+United+Arab+Emirates",
+            },
+            {
+              h: "Contact", flag: "📬",
+              b: "info@zuuz.ai",
+              s: "+1 469 347 3394",
+              mapUrl: null,
+            },
+          ] as Array<{ h: string; flag: string; b: string; s: string; mapUrl: string | null }>).map(item => (
             <div key={item.h} style={{ padding: "28px 24px",
               border: "1px solid #E8E8EE", borderRadius: 14, background: "#fff" }}>
               <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.11em",
                 textTransform: "uppercase", color: BLUE, marginBottom: 12,
                 fontFamily: F }}>{item.h}</p>
               <p style={{ fontSize: 18, fontWeight: 700, color: "#000",
-                marginBottom: 6, lineHeight: 1.3, fontFamily: F }}>{item.b}</p>
-              <p style={{ fontSize: 13, color: "#888", fontFamily: F }}>{item.s}</p>
+                marginBottom: 6, lineHeight: 1.2, fontFamily: F }}>
+                {item.flag} {item.b}
+              </p>
+              <p style={{ fontSize: 13, color: "#888", fontFamily: F, marginBottom: item.mapUrl ? 12 : 0 }}>{item.s}</p>
+              {item.mapUrl && (
+                <a href={item.mapUrl} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 5,
+                    fontSize: 12, fontWeight: 600, color: BLUE, fontFamily: F,
+                    textDecoration: "none" }}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                      fill={BLUE}/>
+                  </svg>
+                  View on Google Maps →
+                </a>
+              )}
             </div>
           ))}
         </div>
