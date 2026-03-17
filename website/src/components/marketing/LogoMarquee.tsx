@@ -114,7 +114,7 @@ export function LogoMarquee() {
           fontWeight: 600,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          color: "#AAAAAA",
+          color: "#555555",
           marginBottom: 18,
           fontFamily: "'Montserrat', sans-serif",
         }}

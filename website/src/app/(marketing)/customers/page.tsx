@@ -198,7 +198,7 @@ export default function CustomersPage() {
               fontWeight: 700,
               textTransform: "uppercase",
               letterSpacing: "0.12em",
-              color: "#94A3B8",
+              color: "#555555",
               fontFamily: "var(--font-body)",
               marginBottom: 32,
             }}
@@ -294,7 +294,7 @@ export default function CustomersPage() {
                     <p
                       style={{
                         fontSize: 12,
-                        color: "#94A3B8",
+                        color: "#555555",
                         fontFamily: "var(--font-body)",
                         marginTop: 4,
                       }}
@@ -660,7 +660,7 @@ export default function CustomersPage() {
             <p
               style={{
                 fontSize: 17,
-                color: "#94A3B8",
+                color: "#555555",
                 lineHeight: 1.75,
                 marginBottom: 40,
                 fontFamily: "var(--font-body)",

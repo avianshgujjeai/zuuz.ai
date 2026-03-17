@@ -62,7 +62,7 @@ export function WorkflowPipeline() {
           ))}
         </div>
 
-        <Arrow color="#9CA3AF" />
+        <Arrow color="#555555" />
 
         {/* Pipeline steps */}
         {STEPS.map((step, i) => (
@@ -88,7 +88,7 @@ export function WorkflowPipeline() {
               }}>{step.label}</p>
               <p style={{
                 fontSize: 10,
-                color: "#9CA3AF",
+                color: "#555555",
                 fontFamily: F,
               }}>{step.sub}</p>
             </div>

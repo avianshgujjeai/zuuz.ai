@@ -185,7 +185,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 <p
                   style={{
                     fontSize: 13,
-                    color: "#94A3B8",
+                    color: "#555555",
                     fontFamily: "Montserrat, sans-serif",
                   }}
                 >
@@ -395,7 +395,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   fontWeight: 800,
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
-                  color: "#94A3B8",
+                  color: "#555555",
                   fontFamily: "var(--font-body)",
                   marginBottom: 20,
                 }}
@@ -441,7 +441,7 @@ export default async function CaseStudyPage({ params }: Props) {
                   fontWeight: 800,
                   textTransform: "uppercase",
                   letterSpacing: "0.12em",
-                  color: "#94A3B8",
+                  color: "#555555",
                   fontFamily: "var(--font-body)",
                   marginBottom: 20,
                 }}
@@ -505,7 +505,7 @@ export default async function CaseStudyPage({ params }: Props) {
             <p
               style={{
                 fontSize: 17,
-                color: "#94A3B8",
+                color: "#555555",
                 lineHeight: 1.75,
                 marginBottom: 40,
                 fontFamily: "var(--font-body)",

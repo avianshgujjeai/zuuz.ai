@@ -90,7 +90,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="footer-bottom">
           <p style={{ fontSize: 12, color: "var(--faint)", fontFamily: "var(--font-body)", margin: 0 }}>
-            © 2026 ZUUZ Inc. · 440N Wolfe Rd, Sunnyvale CA 94085
+            © 2026 ZUUZ Inc. · 440 N Wolfe Rd, Sunnyvale CA 94085 | Dubai, UAE | Hyderabad, India
           </p>
           <div style={{ display: "flex", gap: 20 }}>
             {[

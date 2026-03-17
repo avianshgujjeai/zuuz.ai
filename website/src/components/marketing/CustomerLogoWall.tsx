@@ -85,7 +85,7 @@ function LogoItem({
             style={{
               fontSize: 15,
               fontWeight: 700,
-              color: "#94A3B8",
+              color: "#555555",
               fontFamily: "Montserrat, sans-serif",
             }}
           >
@@ -98,7 +98,7 @@ function LogoItem({
         <p
           style={{
             fontSize: 11,
-            color: "#94A3B8",
+            color: "#555555",
             fontFamily: "var(--font-body)",
             fontWeight: 500,
           }}

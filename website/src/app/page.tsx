@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SignalTower } from "@/components/marketing/SignalTower";
+import { ArchDiagram } from "@/components/marketing/ArchDiagram";
 import { LogoMarquee } from "@/components/marketing/LogoMarquee";
 import { StatsBanner } from "@/components/marketing/StatsBanner";
 import { VideoDemo } from "@/components/marketing/VideoDemo";
@@ -104,7 +105,7 @@ function HowItWorks() {
                   style={{
                     width: 28, height: 28, borderRadius: "50%",
                     background: active === i ? "#0018FF" : "#F3F4F6",
-                    color: active === i ? "#fff" : "#9CA3AF",
+                    color: active === i ? "#fff" : "#555555",
                     fontSize: 11, fontWeight: active === i ? 600 : 500,
                     display: "flex", alignItems: "center", justifyContent: "center",
                     flexShrink: 0, fontFamily: "Montserrat, sans-serif",
@@ -154,7 +155,7 @@ function HowItWorks() {
         >
           {active === 0 && (
             <div style={{ width: "100%" }}>
-              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", textAlign: "center", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>200+ connectors · Live in minutes</p>
+              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555555", textAlign: "center", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>200+ connectors · Live in minutes</p>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
                 {[
                   { name: "SAP",   color: "#0070AD" },
@@ -173,7 +174,7 @@ function HowItWorks() {
           )}
           {active === 1 && (
             <div style={{ width: "100%", maxWidth: 260 }}>
-              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>Context Pack assembled</p>
+              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555555", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>Context Pack assembled</p>
               {[
                 "Contract context",
                 "Email thread",
@@ -192,7 +193,7 @@ function HowItWorks() {
           )}
           {active === 2 && (
             <div style={{ width: "100%" }}>
-              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", textAlign: "center", marginBottom: 16, fontFamily: "Montserrat, sans-serif" }}>Decision routing</p>
+              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555555", textAlign: "center", marginBottom: 16, fontFamily: "Montserrat, sans-serif" }}>Decision routing</p>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0, flexWrap: "wrap", rowGap: 10 }}>
                 {[
                   { label: "Request",       color: "#374151", bg: "#F9FAFB",  border: "#D1D5DB" },
@@ -212,7 +213,7 @@ function HowItWorks() {
           )}
           {active === 3 && (
             <div style={{ width: "100%", maxWidth: 280 }}>
-              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>Audit trail</p>
+              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555555", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>Audit trail</p>
               {[
                 { entry: "REQ-2841 approved", time: "09:42:18 UTC" },
                 { entry: "SAP write-back",    time: "09:42:21 UTC" },
@@ -224,10 +225,10 @@ function HowItWorks() {
                     <path d="M4.5 8l2.5 2.5L11.5 5.5" stroke="#059669" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                   <span style={{ fontSize: 12, color: "#059669", fontFamily: "'Courier New', monospace", fontWeight: 600 }}>{log.entry}</span>
-                  <span style={{ fontSize: 10, color: "#9CA3AF", fontFamily: "'Courier New', monospace", marginLeft: "auto" }}>{log.time}</span>
+                  <span style={{ fontSize: 10, color: "#555555", fontFamily: "'Courier New', monospace", marginLeft: "auto" }}>{log.time}</span>
                 </div>
               ))}
-              <p style={{ fontSize: 11, color: "#9CA3AF", marginTop: 10, textAlign: "center", fontFamily: "Montserrat, sans-serif", fontWeight: 600 }}>100% audit coverage · Every action logged</p>
+              <p style={{ fontSize: 11, color: "#555555", marginTop: 10, textAlign: "center", fontFamily: "Montserrat, sans-serif", fontWeight: 600 }}>100% audit coverage · Every action logged</p>
             </div>
           )}
         </div>
@@ -515,6 +516,28 @@ export default function HomePage() {
           .pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
           @media (max-width: 767px) { .pillars-grid { grid-template-columns: 1fr !important; } }
         `}</style>
+      </section>
+
+      {/* ═══ 3b. ARCH DIAGRAM ════════════════════════════════ */}
+      <section style={{ padding: "80px 0", background: "#F5F6FF" }}>
+        <div style={W}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.11em",
+              textTransform: "uppercase", color: "#0018FF", marginBottom: 14,
+              fontFamily: "Montserrat, sans-serif" }}>
+              Platform Architecture
+            </p>
+            <h2 style={{ maxWidth: 520, margin: "0 auto 16px", lineHeight: 1.2 }}>
+              One layer. Every system. Full control.
+            </h2>
+            <p style={{ fontSize: 16, color: "#444", lineHeight: 1.75, maxWidth: 480,
+              margin: "0 auto", fontFamily: "Montserrat, sans-serif" }}>
+              ZUUZ sits between your data sources and actions — assembling context,
+              enforcing policy, and writing back with a complete audit trail.
+            </p>
+          </div>
+          <ArchDiagram />
+        </div>
       </section>
 
       {/* ═══ 4. DARK ARCHITECTURE (SignalTower) ═════════════ */}
