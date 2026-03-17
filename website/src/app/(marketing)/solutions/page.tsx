@@ -212,6 +212,48 @@ export default function SolutionsPage() {
         </section>
       )}
 
+      {/* Decision Flow Section */}
+      <section style={{
+        padding: "80px 0",
+        background: "white",
+        borderTop: "1px solid #E8E8EE",
+      }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <p style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: "0.11em",
+              textTransform: "uppercase", color: "#0018FF",
+              fontFamily: "'Montserrat',sans-serif", marginBottom: 14,
+            }}>How It Works</p>
+            <h2 style={{ marginBottom: 16 }}>
+              From signal to safe execution.
+            </h2>
+            <p style={{
+              fontSize: 17, color: "#333333", lineHeight: 1.7,
+              fontFamily: "'Montserrat',sans-serif",
+              maxWidth: 520, margin: "0 auto",
+            }}>
+              Every approval in ZUUZ follows this exact path — context assembled,
+              policy enforced, human approved, safely executed.
+            </p>
+          </div>
+          <div style={{
+            background: "linear-gradient(135deg, #F0F4FF 0%, #F8F9FF 100%)",
+            borderRadius: 24,
+            padding: 32,
+            border: "1px solid #E0E4F0",
+            boxShadow: "0 12px 40px rgba(0,24,255,0.07), 0 4px 16px rgba(0,0,0,0.04)",
+          }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/Decision.png"
+              alt="ZUUZ Decision and Execution Flow"
+              style={{ width: "100%", display: "block", borderRadius: 16 }}
+            />
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <CTA
         title="Book a 20-minute demo"

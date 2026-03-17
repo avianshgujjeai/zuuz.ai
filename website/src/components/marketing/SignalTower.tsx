@@ -2,20 +2,19 @@
 
 const BLUE = "#0018FF";
 const F = "'Montserrat', sans-serif";
-const EF = "Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif";
 
 const SOURCES = [
-  { label: "CRM",   color: "#00A1E0", bg: "#E6F6FD", emoji: "👤" },
-  { label: "ERP",   color: "#0070AD", bg: "#E5F0F8", emoji: "🏢" },
-  { label: "ITSM",  color: "#059669", bg: "#E6F7F1", emoji: "⚙️"  },
-  { label: "Slack", color: "#4A154B", bg: "#F3E8F7", emoji: "💬" },
-  { label: "Teams", color: "#5059C9", bg: "#ECEDF9", emoji: "👥" },
-  { label: "Email", color: "#EA4335", bg: "#FDE9E8", emoji: "✉️"  },
-  { label: "Docs",  color: "#4285F4", bg: "#EAF0FE", emoji: "📄" },
+  { label: "CRM",   color: "#FF7A59", bg: "#FFF0EB", icon: "/brand-icons/hubspot.svg"          },
+  { label: "ERP",   color: "#0070AD", bg: "#E5F0F8", icon: "/brand-icons/sap.svg"              },
+  { label: "ITSM",  color: "#2684FF", bg: "#E6EFFE", icon: "/brand-icons/jira.svg"             },
+  { label: "Slack", color: "#4A154B", bg: "#F3E8F7", icon: "/brand-icons/slack-icon.svg"       },
+  { label: "Teams", color: "#5059C9", bg: "#ECEDF9", icon: "/brand-icons/microsoft-teams.svg"  },
+  { label: "Drive", color: "#0078D4", bg: "#E5F0FA", icon: "/brand-icons/google-drive.svg"     },
+  { label: "Zoho",  color: "#E42527", bg: "#FDE8E8", icon: "/brand-icons/zoho.svg"             },
 ];
 
 const OUTPUTS = [
-  { label: "AI Agents",       sub: "Task execution",     color: BLUE      },
+  { label: "AI Agents",       sub: "Task execution",      color: BLUE      },
   { label: "Unified Search",  sub: "Cross-system search", color: "#0891B2" },
   { label: "Workflows",       sub: "Process automation",  color: "#7C3AED" },
   { label: "Safe Write Back", sub: "Audit-logged exec.",  color: "#059669" },
@@ -55,8 +54,8 @@ export function SignalTower() {
 
   // 4 output boxes 170px wide with 20px gap → total 740px, centred in W=920
   const outStartX = (W - 740) / 2;  // 90
-  const outXs     = OUTPUTS.map((_, i) => outStartX + i * 190);  // left edges: [90, 280, 470, 660]
-  const outCenter = (i: number) => outXs[i] + 85;               // box centers for S-curves
+  const outXs     = OUTPUTS.map((_, i) => outStartX + i * 190);
+  const outCenter = (i: number) => outXs[i] + 85;
 
   return (
     <div style={{ width: "100%", maxWidth: 920, margin: "0 auto", userSelect: "none" }}>
@@ -117,7 +116,7 @@ export function SignalTower() {
           />
         ))}
 
-        {/* ── SOURCE CHIPS (88×60) ── */}
+        {/* ── SOURCE CHIPS (88×60) with real brand icons ── */}
         {SOURCES.map((s, i) => (
           <g key={`sc${i}`}>
             {/* Card background */}
@@ -127,14 +126,16 @@ export function SignalTower() {
             {/* Colored icon background */}
             <rect x={srcXs[i] - 22} y={srcY + 6} width={44} height={36} rx={8}
               fill={s.bg} />
-            {/* Emoji icon */}
-            <text x={srcXs[i]} y={srcY + 30}
-              textAnchor="middle" fontSize="22"
-              dominantBaseline="middle"
-              fontFamily={EF}>
-              {s.emoji}
-            </text>
-            {/* Label — dark, readable */}
+            {/* Brand icon from /brand-icons/ */}
+            <image
+              href={s.icon}
+              x={srcXs[i] - 18}
+              y={srcY + 8}
+              width={36}
+              height={32}
+              preserveAspectRatio="xMidYMid meet"
+            />
+            {/* Label */}
             <text x={srcXs[i]} y={srcY + 76}
               textAnchor="middle" fontSize="13" fontWeight="700"
               fill="#111111" fontFamily={F}>
@@ -189,7 +190,7 @@ export function SignalTower() {
               fontSize="14" fontWeight="700" fill={o.color} fontFamily={F}>
               {o.label}
             </text>
-            {/* Sub — dark grey, readable */}
+            {/* Sub */}
             <text x={outXs[i] + 16} y={outY + 52}
               fontSize="12" fill="#333333" fontFamily={F}>
               {o.sub}
@@ -197,7 +198,7 @@ export function SignalTower() {
           </g>
         ))}
 
-        {/* Brand tagline — readable */}
+        {/* Brand tagline */}
         <text x={W / 2} y={H - 12}
           textAnchor="middle" fontSize="13" fill="#444444"
           fontFamily={F} fontWeight="500">

@@ -45,23 +45,13 @@ const TESTIMONIALS = [
 ];
 
 /* ─── Logo wall data ─────────────────────────────────────── */
-const LOGOS = [
-  ...customers.map((c) => ({
-    src: c.logo,
-    alt: c.name,
-    industry: c.industry,
-    location: c.location,
-    slug: c.slug,
-  })),
-  {
-    src: "/logos/one-plus-one-tech.png",
-    alt: "One + One Tech",
-    industry: "Strategic Partner",
-    location: "Central USA",
-    slug: "one-plus-one-tech",
-    isPartner: true,
-  },
-];
+const LOGOS = customers.map((c) => ({
+  src: c.logo,
+  alt: c.name,
+  industry: c.industry,
+  location: c.location,
+  slug: c.slug,
+}));
 
 export default function CustomersPage() {
   return (
@@ -598,19 +588,8 @@ export default function CustomersPage() {
             <img
               src="/logos/one-plus-one-tech.png"
               alt="One + One Tech"
-              style={{ maxWidth: 220, maxHeight: 80, objectFit: "contain", marginBottom: 16 }}
+              style={{ maxWidth: 220, maxHeight: 80, objectFit: "contain", marginBottom: 24 }}
             />
-            <h3
-              style={{
-                fontSize: 26,
-                color: "#0A0F1E",
-                fontFamily: "var(--font-display)",
-                letterSpacing: "-0.02em",
-                marginBottom: 14,
-              }}
-            >
-              One + One Tech
-            </h3>
 
             <p
               style={{
