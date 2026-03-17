@@ -150,7 +150,7 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
               fontWeight: 700,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "#AAAAAA",
+              color: "#555555",
               fontFamily: F,
               marginBottom: 10,
               paddingBottom: 8,

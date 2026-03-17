@@ -95,55 +95,77 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* DETAILS */}
+      {/* OFFICES */}
       <section style={{ padding: "72px 0", background: "#fff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px",
-          display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
-          {([
-            {
-              h: "USA Headquarters", flag: "🇺🇸",
-              b: "440 N Wolfe Rd, Sunnyvale, CA 94085",
-              s: "Plug and Play Tech Center",
-              mapUrl: "https://www.google.com/maps/search/?api=1&query=440+N+Wolfe+Rd+Sunnyvale+CA+94085",
-            },
-            {
-              h: "UAE Office", flag: "🇦🇪",
-              b: "Dubai, United Arab Emirates",
-              s: "Enterprise deployments across UAE",
-              mapUrl: "https://www.google.com/maps/search/?api=1&query=Dubai+United+Arab+Emirates",
-            },
-            {
-              h: "Contact", flag: "📬",
-              b: "info@zuuz.ai",
-              s: "+1 469 347 3394",
-              mapUrl: null,
-            },
-          ] as Array<{ h: string; flag: string; b: string; s: string; mapUrl: string | null }>).map(item => (
-            <div key={item.h} style={{ padding: "28px 24px",
-              border: "1px solid #E8E8EE", borderRadius: 14, background: "#fff" }}>
-              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.11em",
-                textTransform: "uppercase", color: BLUE, marginBottom: 12,
-                fontFamily: F }}>{item.h}</p>
-              <p style={{ fontSize: 18, fontWeight: 700, color: "#000",
-                marginBottom: 6, lineHeight: 1.2, fontFamily: F }}>
-                {item.flag} {item.b}
-              </p>
-              <p style={{ fontSize: 13, color: "#888", fontFamily: F, marginBottom: item.mapUrl ? 12 : 0 }}>{item.s}</p>
-              {item.mapUrl && (
-                <a href={item.mapUrl} target="_blank" rel="noopener noreferrer"
-                  style={{ display: "inline-flex", alignItems: "center", gap: 5,
-                    fontSize: 12, fontWeight: 600, color: BLUE, fontFamily: F,
-                    textDecoration: "none" }}>
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
-                      fill={BLUE}/>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px" }}>
+          <div className="offices-grid">
+            {([
+              {
+                flag: "🇺🇸", role: "Global HQ", country: "United States",
+                name: "Plug and Play Tech Center",
+                line1: "440 N Wolfe Rd", line2: "Sunnyvale, CA 94085",
+                phone: "+1 469 347 3394", email: "info@zuuz.ai",
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=440+N+Wolfe+Rd+Sunnyvale+CA+94085",
+              },
+              {
+                flag: "🇦🇪", role: "Sales Office", country: "United Arab Emirates",
+                name: "Latifa Tower",
+                line1: "Tower 3807, Sheikh Zayed Road", line2: "Dubai, UAE · P.O Box 116287",
+                phone: "+971 XX XXX XXXX", email: "uae@zuuz.ai",
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=Latifa+Tower+Sheikh+Zayed+Road+Dubai+UAE",
+              },
+              {
+                flag: "🇮🇳", role: "R&D Centre", country: "India",
+                name: "Dwaraka Starline Pvt Ltd",
+                line1: "Plot No. 131, Dwaraka Icon Building, 4th Floor",
+                line2: "Kavuri Hills, Hyderabad 500033",
+                phone: "+91 XX XXXX XXXX", email: "india@zuuz.ai",
+                mapUrl: "https://www.google.com/maps/search/?api=1&query=Kavuri+Hills+Hyderabad+500033+India",
+              },
+            ]).map(office => (
+              <div key={office.country} style={{
+                padding: "32px 28px", border: "1px solid #E8E8EE",
+                borderRadius: 16, background: "white",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.05)",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>
+                  <span style={{ fontSize: 32 }}>{office.flag}</span>
+                  <div>
+                    <p style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.1em",
+                      textTransform: "uppercase", color: BLUE, fontFamily: F, marginBottom: 2 }}>
+                      {office.role}
+                    </p>
+                    <p style={{ fontSize: 13, fontWeight: 600, color: "#444", fontFamily: F }}>
+                      {office.country}
+                    </p>
+                  </div>
+                </div>
+                <p style={{ fontSize: 17, fontWeight: 700, color: "#000", fontFamily: F,
+                  marginBottom: 8, lineHeight: 1.3 }}>{office.name}</p>
+                <p style={{ fontSize: 14, color: "#333", fontFamily: F, marginBottom: 2, lineHeight: 1.6 }}>
+                  {office.line1}
+                </p>
+                <p style={{ fontSize: 14, color: "#333", fontFamily: F, marginBottom: 16, lineHeight: 1.6 }}>
+                  {office.line2}
+                </p>
+                <p style={{ fontSize: 13, color: "#555", fontFamily: F, marginBottom: 3 }}>{office.phone}</p>
+                <p style={{ fontSize: 13, color: "#555", fontFamily: F, marginBottom: 20 }}>{office.email}</p>
+                <a href={office.mapUrl} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 6,
+                    fontSize: 13, fontWeight: 600, color: BLUE, fontFamily: F, textDecoration: "none" }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill={BLUE}>
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                   </svg>
                   View on Google Maps →
                 </a>
-              )}
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
+        <style>{`
+          .offices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+          @media (max-width: 768px) { .offices-grid { grid-template-columns: 1fr !important; } }
+        `}</style>
       </section>
 
       {/* BRAND TAGLINE + CTA */}
