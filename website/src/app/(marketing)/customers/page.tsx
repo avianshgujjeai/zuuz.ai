@@ -584,13 +584,6 @@ export default function CustomersPage() {
               </span>
             </div>
 
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logos/one-plus-one-tech.png"
-              alt="One + One Tech"
-              style={{ maxWidth: 220, maxHeight: 80, objectFit: "contain", marginBottom: 24 }}
-            />
-
             <p
               style={{
                 fontSize: 16,
