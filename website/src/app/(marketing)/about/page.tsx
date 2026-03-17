@@ -111,7 +111,7 @@ export default function AboutPage() {
                 flag: "🇦🇪", role: "Sales Office", country: "United Arab Emirates",
                 name: "Latifa Tower",
                 line1: "Tower 3807, Sheikh Zayed Road", line2: "Dubai, UAE · P.O Box 116287",
-                phone: "+971 XX XXX XXXX", email: "uae@zuuz.ai",
+                phone: "", email: "uae@zuuz.ai",
                 mapUrl: "https://www.google.com/maps/search/?api=1&query=Latifa+Tower+Sheikh+Zayed+Road+Dubai+UAE",
               },
               {
@@ -119,7 +119,7 @@ export default function AboutPage() {
                 name: "Dwaraka Starline Pvt Ltd",
                 line1: "Plot No. 131, Dwaraka Icon Building, 4th Floor",
                 line2: "Kavuri Hills, Hyderabad 500033",
-                phone: "+91 XX XXXX XXXX", email: "india@zuuz.ai",
+                phone: "", email: "india@zuuz.ai",
                 mapUrl: "https://www.google.com/maps/search/?api=1&query=Kavuri+Hills+Hyderabad+500033+India",
               },
             ]).map(office => (
@@ -148,7 +148,7 @@ export default function AboutPage() {
                 <p style={{ fontSize: 14, color: "#333", fontFamily: F, marginBottom: 16, lineHeight: 1.6 }}>
                   {office.line2}
                 </p>
-                <p style={{ fontSize: 13, color: "#555", fontFamily: F, marginBottom: 3 }}>{office.phone}</p>
+                {office.phone && <p style={{ fontSize: 13, color: "#555", fontFamily: F, marginBottom: 3 }}>{office.phone}</p>}
                 <p style={{ fontSize: 13, color: "#555", fontFamily: F, marginBottom: 20 }}>{office.email}</p>
                 <a href={office.mapUrl} target="_blank" rel="noopener noreferrer"
                   style={{ display: "inline-flex", alignItems: "center", gap: 6,

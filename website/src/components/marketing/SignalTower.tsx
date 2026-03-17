@@ -4,12 +4,12 @@ const BLUE = "#0018FF";
 const F = "'Montserrat', sans-serif";
 
 const SOURCES = [
-  { label:"Email",    color:"#0078D4", bg:"#E5F0FA", icon:"/brand-icons/microsoft-onedrive.svg" },
-  { label:"CRM",      color:"#FF7A59", bg:"#FFF0EB", icon:"/brand-icons/hubspot.svg"             },
-  { label:"ERP",      color:"#0070AD", bg:"#E5F0F8", icon:"/brand-icons/sap.svg"                },
-  { label:"Docs",     color:"#2B579A", bg:"#EAF0FB", icon:"/brand-icons/google-drive.svg"       },
-  { label:"Meetings", color:"#5059C9", bg:"#ECEDF9", icon:"/brand-icons/microsoft-teams.svg"    },
-  { label:"ITSM",     color:"#62D84E", bg:"#E6F7F0", icon:"/brand-icons/jira.svg"               },
+  { label:"Email",    color:"#0072C6", bg:"#E5F0FA", icon:"/brand-icons/jira.svg"              },
+  { label:"CRM",      color:"#FF7A59", bg:"#FFF0EB", icon:"/brand-icons/hubspot.svg"            },
+  { label:"ERP",      color:"#0070AD", bg:"#E5F0F8", icon:"/brand-icons/sap.svg"               },
+  { label:"Docs",     color:"#185ABD", bg:"#EAF0FB", icon:"/brand-icons/notion-icon.svg"       },
+  { label:"Meetings", color:"#5059C9", bg:"#ECEDF9", icon:"/brand-icons/microsoft-teams.svg"   },
+  { label:"ITSM",     color:"#62D84E", bg:"#E6F7F0", icon:"/brand-icons/jira.svg"              },
 ];
 
 const OUTPUTS = [
@@ -40,25 +40,25 @@ function AnimDot({ path, dur, delay, color }: { path: string; dur: string; delay
 }
 
 export function SignalTower() {
-  const W    = 960;
-  const H    = 700;
-  const coreX = W / 2;  // 480
-  const coreY = 285;
+  const W    = 1000;
+  const H    = 740;
+  const coreX = W / 2;  // 500
+  const coreY = 300;
   const coreR = 54;
   const srcY  = 16;
-  const outY  = 455;
+  const outY  = 480;
 
   // 6 source chip centers, spread wider
   const gap = (W - 120) / (SOURCES.length - 1);
   const srcXs = SOURCES.map((_, i) => 60 + i * gap);
 
-  // 4 output boxes 170px wide with 20px gap → total 740px, centred in W=920
-  const outStartX = (W - 740) / 2;  // 90
+  // 4 output boxes 185px wide with gap → centred in W=1000
+  const outStartX = (W - 740) / 2;  // 130
   const outXs     = OUTPUTS.map((_, i) => outStartX + i * 190);
   const outCenter = (i: number) => outXs[i] + 85;
 
   return (
-    <div style={{ width: "100%", maxWidth: 960, margin: "0 auto", userSelect: "none" }}>
+    <div style={{ width: "100%", maxWidth: 1000, margin: "0 auto", userSelect: "none" }}>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         fill="none"
@@ -81,7 +81,7 @@ export function SignalTower() {
         {/* ── S-CURVE LINES: sources → core ── */}
         {SOURCES.map((s, i) => (
           <path key={`sp${i}`}
-            d={sCurve(srcXs[i], srcY + 72, coreX, coreY - coreR)}
+            d={sCurve(srcXs[i], srcY + 80, coreX, coreY - coreR)}
             stroke={s.color} strokeWidth="1.5" strokeDasharray="6 4" opacity="0.4"
           />
         ))}
@@ -98,7 +98,7 @@ export function SignalTower() {
         {SOURCES.map((s, i) => (
           <AnimDot
             key={`ad${i}`}
-            path={sCurve(srcXs[i], srcY + 72, coreX, coreY - coreR)}
+            path={sCurve(srcXs[i], srcY + 80, coreX, coreY - coreR)}
             dur={`${1.9 + i * 0.2}s`}
             delay={`${i * 0.28}s`}
             color={s.color}
@@ -116,29 +116,29 @@ export function SignalTower() {
           />
         ))}
 
-        {/* ── SOURCE CHIPS (88×60) with real brand icons ── */}
+        {/* ── SOURCE CHIPS (110×80) with real brand icons ── */}
         {SOURCES.map((s, i) => (
           <g key={`sc${i}`}>
             {/* Card background */}
-            <rect x={srcXs[i] - 50} y={srcY} width={100} height={72} rx={12}
+            <rect x={srcXs[i] - 55} y={srcY} width={110} height={80} rx={12}
               fill="white" stroke={s.color} strokeWidth="2"
               style={{ filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.10))" }} />
             {/* Colored icon background */}
-            <rect x={srcXs[i] - 22} y={srcY + 6} width={44} height={36} rx={8}
+            <rect x={srcXs[i] - 26} y={srcY + 8} width={52} height={44} rx={8}
               fill={s.bg} />
             {/* Brand icon from /brand-icons/ */}
             <image
               href={s.icon}
-              x={srcXs[i] - 22}
-              y={srcY + 8}
-              width={44}
-              height={44}
+              x={srcXs[i] - 26}
+              y={srcY + 10}
+              width={52}
+              height={52}
               preserveAspectRatio="xMidYMid meet"
             />
             {/* Label */}
-            <text x={srcXs[i]} y={srcY + 90}
-              textAnchor="middle" fontSize="16" fontWeight="700"
-              fill="#000000" fontFamily={F}>
+            <text x={srcXs[i]} y={srcY + 98}
+              textAnchor="middle" fontSize="18" fontWeight="800"
+              fill="#111111" fontFamily={F}>
               {s.label}
             </text>
           </g>
@@ -177,22 +177,22 @@ export function SignalTower() {
           fontSize="14" fontWeight="800"
           fill="white" fontFamily={F} letterSpacing="2">ZUUZ</text>
 
-        {/* ── OUTPUT BOXES (170×88) ── */}
+        {/* ── OUTPUT BOXES (185×96) ── */}
         {OUTPUTS.map((o, i) => (
           <g key={`ob${i}`}>
-            <rect x={outXs[i]} y={outY} width={170} height={88} rx={10}
+            <rect x={outXs[i]} y={outY} width={185} height={96} rx={10}
               fill="white" stroke={o.color} strokeWidth="2"
               style={{ filter: "drop-shadow(0 4px 14px rgba(0,0,0,0.10))" }} />
             {/* Left color bar */}
-            <rect x={outXs[i]} y={outY} width={5} height={88} rx={2} fill={o.color} />
+            <rect x={outXs[i]} y={outY} width={5} height={96} rx={2} fill={o.color} />
             {/* Title */}
-            <text x={outXs[i] + 16} y={outY + 30}
-              fontSize="16" fontWeight="800" fill={o.color} fontFamily={F}>
+            <text x={outXs[i] + 16} y={outY + 32}
+              fontSize="18" fontWeight="800" fill={o.color} fontFamily={F}>
               {o.label}
             </text>
             {/* Sub */}
-            <text x={outXs[i] + 16} y={outY + 52}
-              fontSize="14" fill="#222222" fontFamily={F}>
+            <text x={outXs[i] + 16} y={outY + 56}
+              fontSize="15" fill="#222222" fontFamily={F}>
               {o.sub}
             </text>
           </g>
