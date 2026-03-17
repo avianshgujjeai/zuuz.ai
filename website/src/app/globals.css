@@ -600,6 +600,15 @@ svg   { overflow: visible; }
 video { max-width: 100%; }
 input, button, textarea, select { font-family: inherit; }
 
+/* ─── Enforce readable text colors sitewide ─────────────── */
+p { color: #333333; }
+span { color: inherit; }
+li { color: #333333; }
+td, th { color: #222222; }
+.caption, .meta, small { color: #555555; font-size: 13px; }
+[style*="background: #000"] p,
+[style*="background:#000"] p { color: rgba(255,255,255,0.88); }
+
 /* ─── Reduced Motion ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
