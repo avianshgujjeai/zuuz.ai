@@ -9,6 +9,7 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { ContextPackChips } from "@/components/sections/context-pack-chips";
 import { solutions } from "@/content/solutions";
 import { WorkflowPipeline } from "@/components/marketing/WorkflowPipeline";
+import { DecisionImage } from "@/components/marketing/DecisionImage";
 
 export const metadata: Metadata = {
   title: "Solutions — ZUUZ",
@@ -244,12 +245,7 @@ export default function SolutionsPage() {
             border: "1px solid #E0E4F0",
             boxShadow: "0 12px 40px rgba(0,24,255,0.07), 0 4px 16px rgba(0,0,0,0.04)",
           }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/Decision.png"
-              alt="ZUUZ Decision and Execution Flow"
-              style={{ width: "100%", display: "block", borderRadius: 16 }}
-            />
+            <DecisionImage />
           </div>
         </div>
       </section>

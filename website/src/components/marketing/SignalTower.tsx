@@ -4,13 +4,12 @@ const BLUE = "#0018FF";
 const F = "'Montserrat', sans-serif";
 
 const SOURCES = [
-  { label:"Salesforce", color:"#00A1E0", bg:"#E6F6FD", icon:"/brand-icons/hubspot.svg"          },
-  { label:"SAP",        color:"#0070AD", bg:"#E5F0F8", icon:"/brand-icons/sap.svg"              },
-  { label:"ServiceNow", color:"#62D84E", bg:"#E6F7F0", icon:"/brand-icons/jira.svg"             },
-  { label:"Slack",      color:"#4A154B", bg:"#F3E8F7", icon:"/brand-icons/slack-icon.svg"       },
-  { label:"Teams",      color:"#5059C9", bg:"#ECEDF9", icon:"/brand-icons/microsoft-teams.svg"  },
-  { label:"Google",     color:"#4285F4", bg:"#EAF0FE", icon:"/brand-icons/google-drive.svg"     },
-  { label:"Zoho",       color:"#E42527", bg:"#FDE9E8", icon:"/brand-icons/zoho.svg"             },
+  { label:"Email",    color:"#0078D4", bg:"#E5F0FA", icon:"/brand-icons/microsoft-onedrive.svg" },
+  { label:"CRM",      color:"#FF7A59", bg:"#FFF0EB", icon:"/brand-icons/hubspot.svg"             },
+  { label:"ERP",      color:"#0070AD", bg:"#E5F0F8", icon:"/brand-icons/sap.svg"                },
+  { label:"Docs",     color:"#2B579A", bg:"#EAF0FB", icon:"/brand-icons/google-drive.svg"       },
+  { label:"Meetings", color:"#5059C9", bg:"#ECEDF9", icon:"/brand-icons/microsoft-teams.svg"    },
+  { label:"ITSM",     color:"#62D84E", bg:"#E6F7F0", icon:"/brand-icons/jira.svg"               },
 ];
 
 const OUTPUTS = [
@@ -49,7 +48,7 @@ export function SignalTower() {
   const srcY  = 16;
   const outY  = 455;
 
-  // 7 source chip centers, spread wider
+  // 6 source chip centers, spread wider
   const gap = (W - 120) / (SOURCES.length - 1);
   const srcXs = SOURCES.map((_, i) => 60 + i * gap);
 
