@@ -617,3 +617,68 @@ td, th { color: #222222; }
   }
   .sr, .sr-x, .sr-scale, .reveal { opacity: 1; transform: none; }
 }
+
+/* ═══════════════════════════════════════════
+   ZUUZ — FINAL FONT SIZE + COLOR ENFORCEMENT
+   ═══════════════════════════════════════════ */
+/* Headings */
+h1 { font-size: clamp(36px, 5vw, 56px) !important; line-height: 1.08 !important; }
+h2 { font-size: clamp(28px, 3.5vw, 44px) !important; line-height: 1.14 !important; }
+h3 { font-size: clamp(20px, 2.2vw, 26px) !important; line-height: 1.28 !important; }
+h4 { font-size: 20px !important; }
+/* All paragraph text — never below 16px */
+p  { font-size: 16px !important; line-height: 1.72 !important; color: #333333 !important; }
+/* Inline spans and links */
+a, span, li { font-size: inherit; color: inherit; }
+/* Section label / eyebrow */
+.eyebrow, .t-label {
+  font-size: 12px !important;
+  color: #0018FF !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.11em !important;
+}
+/* Secondary / helper text — minimum 14px */
+.t-sm, .text-sm, small {
+  font-size: 14px !important;
+  color: #444444 !important;
+}
+.t-xs, .text-xs {
+  font-size: 14px !important;
+  color: #444444 !important;
+}
+/* Force all grey text to be readable */
+[style*="color:#9CA3AF"],
+[style*="color: #9CA3AF"],
+[style*="color:#AAAAAA"],
+[style*="color: #AAAAAA"],
+[style*="color:#94A3B8"],
+[style*="color: #94A3B8"],
+[style*="color:#B0B0B0"],
+[style*="color: #B0B0B0"],
+[style*="color:#CBD5E1"],
+[style*="color: #CBD5E1"] {
+  color: #444444 !important;
+}
+/* White text on dark backgrounds — must be bright */
+[style*="background: #000814"] p,
+[style*="background:#000814"] p,
+[style*="background: #000"] p,
+[style*="background:#000"] p {
+  color: rgba(255,255,255,0.90) !important;
+}
+[style*="background: #000814"] span,
+[style*="background:#000814"] span {
+  color: rgba(255,255,255,0.85) !important;
+}
+/* Nav dropdown items */
+nav [style*="fontSize: 13"],
+nav [style*="fontSize:13"] {
+  font-size: 14px !important;
+  color: #111111 !important;
+}
+/* Navbar links */
+header nav a {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #222222 !important;
+}

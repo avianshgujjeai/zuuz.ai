@@ -71,34 +71,74 @@ export function ArchDiagram() {
         )}
         {imgLoaded && !imgError && (
           <>
-            <div style={{ position:"absolute", inset:0, borderRadius:16, background:"rgba(0,0,0,0.60)", pointerEvents:"none" }}/>
+            {/* LEFT dark panel */}
             <div style={{
-              position:"absolute", top:0, bottom:0,
-              left:pos.left, width:pos.width,
-              background:"transparent",
-              boxShadow:"0 0 0 9999px rgba(0,0,0,0.60)",
-              pointerEvents:"none",
-              transition:"left 0.55s cubic-bezier(0.4,0,0.2,1)",
+              position: "absolute",
+              top: 0, bottom: 0, left: 0,
+              width: pos.left,
+              background: "rgba(0,0,0,0.72)",
+              pointerEvents: "none",
+              transition: "width 0.55s cubic-bezier(0.4,0,0.2,1)",
             }}/>
+            {/* RIGHT dark panel */}
             <div style={{
-              position:"absolute", top:8, bottom:8,
-              left:`calc(${pos.left} + 4px)`,
-              width:`calc(${pos.width} - 8px)`,
-              border:"2.5px solid #0018FF",
-              borderRadius:8, pointerEvents:"none",
-              transition:"left 0.55s cubic-bezier(0.4,0,0.2,1)",
-              animation:"archPulse 1.5s ease-in-out infinite",
+              position: "absolute",
+              top: 0, bottom: 0, right: 0,
+              width: `calc(100% - ${pos.left} - ${pos.width})`,
+              background: "rgba(0,0,0,0.72)",
+              pointerEvents: "none",
+              transition: "width 0.55s cubic-bezier(0.4,0,0.2,1)",
             }}/>
+            {/* Blue border on active column */}
+            <div style={{
+              position: "absolute",
+              top: 6, bottom: 6,
+              left: `calc(${pos.left} + 3px)`,
+              width: `calc(${pos.width} - 6px)`,
+              border: "3px solid #0018FF",
+              borderRadius: 10,
+              boxShadow: "0 0 0 3px rgba(0,24,255,0.25), inset 0 0 24px rgba(0,24,255,0.1)",
+              pointerEvents: "none",
+              transition: "left 0.55s cubic-bezier(0.4,0,0.2,1)",
+              animation: "archPulse 1.8s ease-in-out infinite",
+            }}/>
+            {/* Stage number badge */}
+            <div style={{
+              position: "absolute",
+              top: 14,
+              left: `calc(${pos.left} + 8px)`,
+              width: 36, height: 36,
+              borderRadius: "50%",
+              background: "#0018FF",
+              color: "white",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 15,
+              fontWeight: 800,
+              fontFamily: "'Montserrat', sans-serif",
+              pointerEvents: "none",
+              boxShadow: "0 2px 12px rgba(0,24,255,0.5)",
+              transition: "left 0.55s cubic-bezier(0.4,0,0.2,1)",
+            }}>
+              {STAGES[active].id}
+            </div>
+            {/* Progress bar */}
+            <div style={{
+              position: "absolute", bottom: 0, left: 0, right: 0,
+              height: 5, background: "rgba(0,0,0,0.25)",
+              borderRadius: "0 0 16px 16px",
+            }}>
+              <div style={{
+                height: "100%",
+                background: "#0018FF",
+                borderRadius: "0 0 0 16px",
+                width: `${((active + 1) / STAGES.length) * 100}%`,
+                transition: "width 0.55s ease",
+              }}/>
+            </div>
           </>
         )}
-        {/* Progress bar */}
-        <div style={{ position:"absolute", bottom:0, left:0, right:0, height:4, background:"rgba(0,0,0,0.2)", borderRadius:"0 0 16px 16px" }}>
-          <div style={{
-            height:"100%", background:"#0018FF",
-            width:`${((active+1)/STAGES.length)*100}%`,
-            transition:"width 0.55s ease", borderRadius:"0 0 0 16px",
-          }}/>
-        </div>
       </div>
       {/* Stage description */}
       <div style={{ marginTop:16, padding:"16px 20px", background:"#EEF2FF", borderRadius:12, border:"1px solid #C7D2FE", display:"flex", alignItems:"center", gap:14 }}>
@@ -120,8 +160,8 @@ export function ArchDiagram() {
       </div>
       <style>{`
         @keyframes archPulse {
-          0%,100% { border-color:#0018FF; box-shadow:0 0 12px rgba(0,24,255,0.4); }
-          50%      { border-color:#A3F3FF; box-shadow:0 0 24px rgba(0,24,255,0.6); }
+          0%,100% { border-color:#0018FF; box-shadow:0 0 0 3px rgba(0,24,255,0.25), inset 0 0 24px rgba(0,24,255,0.1); }
+          50%      { border-color:#4D7FFF; box-shadow:0 0 0 5px rgba(0,24,255,0.35), inset 0 0 32px rgba(0,24,255,0.18); }
         }
       `}</style>
     </div>

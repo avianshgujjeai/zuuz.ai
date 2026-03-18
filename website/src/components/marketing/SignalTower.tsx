@@ -4,12 +4,12 @@ const BLUE = "#0018FF";
 const F = "'Montserrat', sans-serif";
 
 const SOURCES = [
-  { label:"Email",    color:"#0078D4", bg:"#E5F0FA", icon:"/brand-icons/microsoft-onedrive.svg" },
-  { label:"CRM",      color:"#FF7A59", bg:"#FFF0EB", icon:"/brand-icons/hubspot.svg"             },
-  { label:"ERP",      color:"#0070AD", bg:"#E5F0F8", icon:"/brand-icons/sap.svg"                },
-  { label:"Docs",     color:"#2B579A", bg:"#EAF0FB", icon:"/brand-icons/google-drive.svg"       },
-  { label:"Meetings", color:"#5059C9", bg:"#ECEDF9", icon:"/brand-icons/microsoft-teams.svg"    },
-  { label:"ITSM",     color:"#62D84E", bg:"#E6F7F0", icon:"/brand-icons/jira.svg"               },
+  { label:"Email",    color:"#EA4335", bg:"#FEF2F2", icon:"/signal-icons/google-gmail.svg"      },
+  { label:"CRM",      color:"#00A1E0", bg:"#E6F6FD", icon:"/signal-icons/salesforce.svg"        },
+  { label:"ERP",      color:"#0070AD", bg:"#E5F0F8", icon:"/signal-icons/sap.svg"               },
+  { label:"Docs",     color:"#185ABD", bg:"#EAF0FB", icon:"/signal-icons/word-1.svg"            },
+  { label:"Meetings", color:"#5059C9", bg:"#ECEDF9", icon:"/signal-icons/microsoft-teams.svg"  },
+  { label:"ITSM",     color:"#62D84E", bg:"#E6F7F0", icon:"/signal-icons/slack-icon.svg"        },
 ];
 
 const OUTPUTS = [
@@ -40,25 +40,22 @@ function AnimDot({ path, dur, delay, color }: { path: string; dur: string; delay
 }
 
 export function SignalTower() {
-  const W    = 960;
-  const H    = 700;
-  const coreX = W / 2;  // 480
-  const coreY = 285;
+  const W     = 1100;
+  const H     = 800;
+  const coreX = W / 2;  // 550
+  const coreY = 340;
   const coreR = 54;
-  const srcY  = 16;
-  const outY  = 455;
+  const srcY  = 20;
+  const outY  = 535;
 
-  // 6 source chip centers, spread wider
-  const gap = (W - 120) / (SOURCES.length - 1);
-  const srcXs = SOURCES.map((_, i) => 60 + i * gap);
+  // 6 source chip centers, spread across full width
+  const srcXs = SOURCES.map((_, i) => 80 + i * ((W - 160) / (SOURCES.length - 1)));
 
-  // 4 output boxes 170px wide with 20px gap → total 740px, centred in W=920
-  const outStartX = (W - 740) / 2;  // 90
-  const outXs     = OUTPUTS.map((_, i) => outStartX + i * 190);
-  const outCenter = (i: number) => outXs[i] + 85;
+  // 4 output box centers, spread across full width
+  const outXs = OUTPUTS.map((_, i) => 80 + i * ((W - 290) / (OUTPUTS.length - 1)));
 
   return (
-    <div style={{ width: "100%", maxWidth: 960, margin: "0 auto", userSelect: "none" }}>
+    <div style={{ width: "100%", maxWidth: 1100, margin: "0 auto", userSelect: "none" }}>
       <svg
         viewBox={`0 0 ${W} ${H}`}
         fill="none"
@@ -81,7 +78,7 @@ export function SignalTower() {
         {/* ── S-CURVE LINES: sources → core ── */}
         {SOURCES.map((s, i) => (
           <path key={`sp${i}`}
-            d={sCurve(srcXs[i], srcY + 72, coreX, coreY - coreR)}
+            d={sCurve(srcXs[i], srcY + 90, coreX, coreY - coreR)}
             stroke={s.color} strokeWidth="1.5" strokeDasharray="6 4" opacity="0.4"
           />
         ))}
@@ -89,7 +86,7 @@ export function SignalTower() {
         {/* ── S-CURVE LINES: core → outputs ── */}
         {OUTPUTS.map((o, i) => (
           <path key={`op${i}`}
-            d={sCurve(coreX, coreY + coreR, outCenter(i), outY)}
+            d={sCurve(coreX, coreY + coreR, outXs[i], outY)}
             stroke={o.color} strokeWidth="1.5" strokeDasharray="6 4" opacity="0.4"
           />
         ))}
@@ -98,7 +95,7 @@ export function SignalTower() {
         {SOURCES.map((s, i) => (
           <AnimDot
             key={`ad${i}`}
-            path={sCurve(srcXs[i], srcY + 72, coreX, coreY - coreR)}
+            path={sCurve(srcXs[i], srcY + 90, coreX, coreY - coreR)}
             dur={`${1.9 + i * 0.2}s`}
             delay={`${i * 0.28}s`}
             color={s.color}
@@ -109,36 +106,44 @@ export function SignalTower() {
         {OUTPUTS.map((o, i) => (
           <AnimDot
             key={`od${i}`}
-            path={sCurve(coreX, coreY + coreR, outCenter(i), outY)}
+            path={sCurve(coreX, coreY + coreR, outXs[i], outY)}
             dur={`${1.7 + i * 0.25}s`}
             delay={`${0.8 + i * 0.22}s`}
             color={o.color}
           />
         ))}
 
-        {/* ── SOURCE CHIPS (88×60) with real brand icons ── */}
+        {/* ── SOURCE CHIPS (120×90) with signal icons ── */}
         {SOURCES.map((s, i) => (
           <g key={`sc${i}`}>
             {/* Card background */}
-            <rect x={srcXs[i] - 50} y={srcY} width={100} height={72} rx={12}
-              fill="white" stroke={s.color} strokeWidth="2"
+            <rect x={srcXs[i] - 60} y={srcY} width={120} height={90} rx={14}
+              fill="white" stroke={s.color} strokeWidth="2.5"
               style={{ filter: "drop-shadow(0 3px 10px rgba(0,0,0,0.10))" }} />
-            {/* Colored icon background */}
-            <rect x={srcXs[i] - 22} y={srcY + 6} width={44} height={36} rx={8}
-              fill={s.bg} />
-            {/* Brand icon from /brand-icons/ */}
-            <image
-              href={s.icon}
-              x={srcXs[i] - 22}
-              y={srcY + 8}
-              width={44}
-              height={44}
-              preserveAspectRatio="xMidYMid meet"
-            />
+            {/* Icon via foreignObject */}
+            <foreignObject x={srcXs[i] - 28} y={srcY + 10} width={56} height={56}>
+              <div
+                style={{
+                  width: "56px",
+                  height: "56px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: "10px",
+                  background: s.bg,
+                }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={s.icon}
+                  alt={s.label}
+                  style={{ width: "44px", height: "44px", objectFit: "contain", display: "block" }}
+                />
+              </div>
+            </foreignObject>
             {/* Label */}
-            <text x={srcXs[i]} y={srcY + 90}
-              textAnchor="middle" fontSize="16" fontWeight="700"
-              fill="#000000" fontFamily={F}>
+            <text x={srcXs[i]} y={srcY + 112}
+              textAnchor="middle" fontSize="20" fontWeight="800"
+              fill="#111111" fontFamily={F}>
               {s.label}
             </text>
           </g>
@@ -177,30 +182,30 @@ export function SignalTower() {
           fontSize="14" fontWeight="800"
           fill="white" fontFamily={F} letterSpacing="2">ZUUZ</text>
 
-        {/* ── OUTPUT BOXES (170×88) ── */}
+        {/* ── OUTPUT BOXES (210×110) ── */}
         {OUTPUTS.map((o, i) => (
           <g key={`ob${i}`}>
-            <rect x={outXs[i]} y={outY} width={170} height={88} rx={10}
-              fill="white" stroke={o.color} strokeWidth="2"
+            <rect x={outXs[i] - 105} y={outY} width={210} height={110} rx={12}
+              fill="white" stroke={o.color} strokeWidth="2.5"
               style={{ filter: "drop-shadow(0 4px 14px rgba(0,0,0,0.10))" }} />
             {/* Left color bar */}
-            <rect x={outXs[i]} y={outY} width={5} height={88} rx={2} fill={o.color} />
+            <rect x={outXs[i] - 105} y={outY} width={5} height={110} rx={2} fill={o.color} />
             {/* Title */}
-            <text x={outXs[i] + 16} y={outY + 30}
-              fontSize="16" fontWeight="800" fill={o.color} fontFamily={F}>
+            <text x={outXs[i] - 105 + 16} y={outY + 34}
+              fontSize="20" fontWeight="800" fill={o.color} fontFamily={F}>
               {o.label}
             </text>
             {/* Sub */}
-            <text x={outXs[i] + 16} y={outY + 52}
-              fontSize="14" fill="#222222" fontFamily={F}>
+            <text x={outXs[i] - 105 + 16} y={outY + 62}
+              fontSize="16" fill="#222222" fontFamily={F}>
               {o.sub}
             </text>
           </g>
         ))}
 
         {/* Brand tagline */}
-        <text x={W / 2} y={H - 12}
-          textAnchor="middle" fontSize="13" fill="#444444"
+        <text x={W / 2} y={H - 18}
+          textAnchor="middle" fontSize="18" fill="#333333"
           fontFamily={F} fontWeight="500">
           Where Decisions Actually Happen.
         </text>
