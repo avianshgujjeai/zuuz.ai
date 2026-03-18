@@ -3,11 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 
 const TABS = [
-  { category:"EMAIL",    catColor:"#0018FF", label:"Email Insights",        video:"/media/0223-3.mov", urlPath:"email-insights" },
-  { category:"DOCS",     catColor:"#8B5CF6", label:"Document Review",       video:"/media/0223-4.mov", urlPath:"document-review" },
-  { category:"MEETINGS", catColor:"#06B6D4", label:"Meeting Intelligence",  video:"/media/0223-2.mov", urlPath:"meeting-intelligence" },
-  { category:"DECISION", catColor:"#10B981", label:"Decision Routing",      video:"/media/0223-7.mov", urlPath:"decision-routing" },
-  { category:"EXEC",     catColor:"#F59E0B", label:"Safe Execution",        video:"/media/0223-8.mov", urlPath:"safe-execution" },
+  { category:"EMAIL",    catColor:"#0018FF", label:"Email Insights",        video:"/media/email.mp4",    type:"video/mp4",       urlPath:"email-insights" },
+  { category:"DOCS",     catColor:"#8B5CF6", label:"Document Review",       video:"/media/docs.mp4",     type:"video/mp4",       urlPath:"document-review" },
+  { category:"MEETINGS", catColor:"#06B6D4", label:"Meeting Intelligence",  video:"/media/meetings.mp4", type:"video/mp4",       urlPath:"meeting-intelligence" },
+  { category:"DECISION", catColor:"#10B981", label:"Decision Routing",      video:"/media/0223-7.mov",   type:"video/quicktime", urlPath:"decision-routing" },
+  { category:"EXEC",     catColor:"#F59E0B", label:"Safe Execution",        video:"/media/0223-2.mov",   type:"video/quicktime", urlPath:"safe-execution" },
 ];
 
 export function VideoDemo() {
@@ -147,7 +147,7 @@ export function VideoDemo() {
               transition: "opacity 0.16s ease",
             }}
           >
-            <source src={TABS[active].video} type="video/mp4" />
+            <source src={TABS[active].video} type={TABS[active].type} />
           </video>
         </div>
       </div>
