@@ -713,3 +713,17 @@ header nav a {
 .stats-banner * {
   color: white !important;
 }
+
+/* ═══════════════════════════════════════
+   ZUUZ — DARK SECTION VISIBILITY (FINAL)
+   ═══════════════════════════════════════ */
+[style*="background: #000814"] p,
+[style*="background:#000814"] p { color: rgba(255,255,255,0.88) !important; }
+[style*="background: #000814"] h1,
+[style*="background: #000814"] h2,
+[style*="background: #000814"] h3,
+[style*="background:#000814"] h1,
+[style*="background:#000814"] h2,
+[style*="background:#000814"] h3 { color: #FFFFFF !important; }
+[style*="background: #000814"] span,
+[style*="background:#000814"] span { color: rgba(255,255,255,0.88) !important; }
