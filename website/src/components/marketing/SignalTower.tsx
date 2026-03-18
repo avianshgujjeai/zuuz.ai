@@ -57,7 +57,7 @@ export function SignalTower() {
   return (
     <div style={{ width: "100%", maxWidth: 1100, margin: "0 auto", userSelect: "none" }}>
       <svg
-        viewBox={`0 0 ${W} ${H}`}
+        viewBox={`0 0 ${W} 820`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{ width: "100%", overflow: "visible" }}
