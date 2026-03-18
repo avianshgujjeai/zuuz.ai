@@ -41,12 +41,12 @@ function AnimDot({ path, dur, delay, color }: { path: string; dur: string; delay
 
 export function SignalTower() {
   const W     = 1100;
-  const H     = 800;
+  const H     = 820;
   const coreX = W / 2;  // 550
-  const coreY = 340;
+  const coreY = 360;
   const coreR = 54;
-  const srcY  = 20;
-  const outY  = 535;
+  const srcY  = 40;
+  const outY  = 555;
 
   // 6 source chip centers, spread across full width
   const srcXs = SOURCES.map((_, i) => 80 + i * ((W - 160) / (SOURCES.length - 1)));
@@ -57,7 +57,7 @@ export function SignalTower() {
   return (
     <div style={{ width: "100%", maxWidth: 1100, margin: "0 auto", userSelect: "none" }}>
       <svg
-        viewBox={`0 0 ${W} ${H}`}
+        viewBox={`0 0 ${W} 820`}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         style={{ width: "100%", overflow: "visible" }}
@@ -79,7 +79,7 @@ export function SignalTower() {
         {SOURCES.map((s, i) => (
           <path key={`sp${i}`}
             d={sCurve(srcXs[i], srcY + 90, coreX, coreY - coreR)}
-            stroke={s.color} strokeWidth="1.5" strokeDasharray="6 4" opacity="0.4"
+            stroke={s.color} strokeWidth="2.5" strokeDasharray="6 4" opacity="0.65"
           />
         ))}
 
@@ -87,7 +87,7 @@ export function SignalTower() {
         {OUTPUTS.map((o, i) => (
           <path key={`op${i}`}
             d={sCurve(coreX, coreY + coreR, outXs[i], outY)}
-            stroke={o.color} strokeWidth="1.5" strokeDasharray="6 4" opacity="0.4"
+            stroke={o.color} strokeWidth="2.5" strokeDasharray="6 4" opacity="0.65"
           />
         ))}
 
@@ -142,7 +142,7 @@ export function SignalTower() {
             </foreignObject>
             {/* Label */}
             <text x={srcXs[i]} y={srcY + 112}
-              textAnchor="middle" fontSize="20" fontWeight="800"
+              textAnchor="middle" fontSize="22" fontWeight="800"
               fill="#111111" fontFamily={F}>
               {s.label}
             </text>
@@ -205,7 +205,7 @@ export function SignalTower() {
 
         {/* Brand tagline */}
         <text x={W / 2} y={H - 18}
-          textAnchor="middle" fontSize="18" fill="#333333"
+          textAnchor="middle" fontSize="20" fill="#333333"
           fontFamily={F} fontWeight="500">
           Where Decisions Actually Happen.
         </text>
