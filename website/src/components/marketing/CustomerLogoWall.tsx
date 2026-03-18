@@ -29,11 +29,12 @@ function LogoItem({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: 12,
-        padding: "32px 24px",
-        border: "1px solid #F1F5F9",
+        gap: 14,
+        padding: "36px 28px",
+        border: `1px solid ${(logo as {isPartner?: boolean}).isPartner ? "#A7F3D0" : "#E8E8EE"}`,
         borderRadius: 16,
         background: "#fff",
+        minHeight: 160,
         opacity: parentVisible ? 1 : 0,
         transform: parentVisible ? "scale(1)" : "scale(0.9)",
         transition: `opacity 0.5s cubic-bezier(0.16,1,0.3,1) ${index * 100}ms, transform 0.5s cubic-bezier(0.16,1,0.3,1) ${index * 100}ms`,
@@ -42,7 +43,7 @@ function LogoItem({
       {/* Logo image — fallback to styled name */}
       <div
         style={{
-          height: 56,
+          minHeight: 80,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -68,10 +69,10 @@ function LogoItem({
             src={logo.src}
             alt={logo.alt}
             style={{
-              maxWidth: 140,
-              maxHeight: 48,
+              maxWidth: 200,
+              maxHeight: 72,
               objectFit: "contain",
-              filter: "grayscale(20%)",
+              filter: "grayscale(10%)",
               display: imgLoaded ? "block" : "none",
             }}
             onLoad={() => setImgLoaded(true)}
@@ -84,7 +85,7 @@ function LogoItem({
             style={{
               fontSize: 15,
               fontWeight: 700,
-              color: "#94A3B8",
+              color: "#555555",
               fontFamily: "Montserrat, sans-serif",
             }}
           >
@@ -97,7 +98,7 @@ function LogoItem({
         <p
           style={{
             fontSize: 11,
-            color: "#94A3B8",
+            color: "#555555",
             fontFamily: "var(--font-body)",
             fontWeight: 500,
           }}
@@ -132,10 +133,13 @@ export function CustomerLogoWall({ logos }: { logos: LogoDef[] }) {
       <style>{`
         .logo-wall-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(5, 1fr);
           gap: 16px;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 900px) {
+          .logo-wall-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 560px) {
           .logo-wall-grid { grid-template-columns: repeat(2, 1fr); }
         }
       `}</style>

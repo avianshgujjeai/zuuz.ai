@@ -20,7 +20,7 @@ const layers = [
   {
     id: "execution",
     label: "Execution",
-    color: "#2563eb",
+    color: "#0018FF",
     details: [
       "Routes approvals through policy gates and role-based chains",
       "Enforces SLAs, thresholds, and compliance rules automatically",

@@ -8,6 +8,8 @@ import { CTA } from "@/components/ui/cta";
 import { FadeIn } from "@/components/ui/fade-in";
 import { ContextPackChips } from "@/components/sections/context-pack-chips";
 import { solutions } from "@/content/solutions";
+import { WorkflowPipeline } from "@/components/marketing/WorkflowPipeline";
+import { DecisionImage } from "@/components/marketing/DecisionImage";
 
 export const metadata: Metadata = {
   title: "Solutions — ZUUZ",
@@ -40,69 +42,6 @@ const contextChips = ["Policy", "Budget", "Contract Terms", "Risk Flags", "Prior
 
 const metricsFromPdfs = solutions.flatMap((s) => s.metrics).filter((m) => m.source);
 
-function WorkflowFlow() {
-  const steps = [
-    { label:"Context Pack",    sub:"Evidence bundle",         color:"#111827", border:"#111827", bg:"white" },
-    { label:"Approver",        sub:"Human-in-the-loop",       color:"#B45309", border:"#F59E0B", bg:"#FFFBEB" },
-    { label:"Safe Write-back", sub:"Verified action",         color:"#065F46", border:"#10B981", bg:"#ECFDF5" },
-    { label:"Audit Log",       sub:"Immutable record",        color:"#1E40AF", border:"#0018FF", bg:"#EFF6FF" },
-  ];
-  const sources = ["Email", "Docs", "Calendar", "CRM", "ERP"];
-  return (
-    <div style={{ display:"flex", alignItems:"center", gap:0,
-                  flexWrap:"wrap", justifyContent:"center", padding:"20px 0" }}>
-      {/* Source chips on the left */}
-      <div style={{ display:"flex", flexDirection:"column", gap:6, marginRight:16 }}>
-        {sources.map(s => (
-          <div key={s} style={{
-            padding:"5px 14px", border:"1.5px solid #D1D5DB", borderRadius:8,
-            fontSize:12, fontWeight:600, color:"#374151", background:"white",
-            fontFamily:"Montserrat, sans-serif"
-          }}>{s}</div>
-        ))}
-      </div>
-      {/* Arrow */}
-      <div style={{ display:"flex", alignItems:"center", marginRight:16 }}>
-        <div style={{ width:32, height:2, background:"#9CA3AF" }}/>
-        <div style={{ width:0, height:0,
-          borderTop:"5px solid transparent", borderBottom:"5px solid transparent",
-          borderLeft:"8px solid #9CA3AF" }}/>
-      </div>
-      {/* Flow steps with arrows between */}
-      {steps.map((step, i) => (
-        <div key={step.label} style={{ display:"flex", alignItems:"center" }}>
-          <div style={{
-            padding:"12px 16px", minWidth:110,
-            border:`2px solid ${step.border}`,
-            borderRadius:12, background:step.bg,
-            textAlign:"center"
-          }}>
-            <p style={{ fontSize:12, fontWeight:700, color:step.color,
-              fontFamily:"Montserrat, sans-serif", lineHeight:1.2 }}>{step.label}</p>
-            <p style={{ fontSize:10, color:"#6B7280", marginTop:3,
-              fontFamily:"Montserrat, sans-serif" }}>{step.sub}</p>
-          </div>
-          {i < steps.length - 1 && (
-            <div style={{ display:"flex", alignItems:"center", margin:"0 8px" }}>
-              <div style={{ width:24, height:2, background:"#D1D5DB" }}/>
-              <div style={{ width:0, height:0,
-                borderTop:"4px solid transparent", borderBottom:"4px solid transparent",
-                borderLeft:"6px solid #D1D5DB" }}/>
-            </div>
-          )}
-        </div>
-      ))}
-      {/* Live dot */}
-      <div style={{ marginLeft:12, display:"flex", alignItems:"center", gap:6 }}>
-        <span style={{ width:10, height:10, borderRadius:"50%",
-          background:"#10B981", display:"inline-block",
-          boxShadow:"0 0 0 3px rgba(16,185,129,0.2)" }}/>
-        <span style={{ fontSize:11, color:"#059669", fontWeight:600,
-          fontFamily:"Montserrat, sans-serif" }}>Live</span>
-      </div>
-    </div>
-  );
-}
 
 export default function SolutionsPage() {
   return (
@@ -114,53 +53,52 @@ export default function SolutionsPage() {
       >
         <Container className="relative">
           <FadeIn>
-            <div className="mx-auto max-w-3xl text-center">
-              {/* Bordered pill eyebrow */}
-              <div style={{ display: "inline-block", marginBottom: 24 }}>
-                <span style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  border: "1px solid #E5E7EB",
-                  borderRadius: 100,
-                  padding: "6px 18px",
-                  background: "white",
-                  fontSize: 11,
-                  fontWeight: 600,
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase" as const,
-                  color: "#374151",
-                  fontFamily: "Montserrat, sans-serif",
-                }}>
-                  Solutions
-                </span>
-              </div>
-              <h1 style={{
-                fontSize: "clamp(36px, 5vw, 64px)",
+            <div style={{ maxWidth: 680 }}>
+              {/* Plain uppercase eyebrow */}
+              <p style={{
+                fontSize: 11,
                 fontWeight: 700,
+                letterSpacing: "0.11em",
+                textTransform: "uppercase",
+                color: "#0018FF",
+                fontFamily: "Montserrat, sans-serif",
+                marginBottom: 16,
+              }}>
+                Solutions
+              </p>
+              <h1 style={{
+                fontSize: "clamp(32px, 4vw, 52px)",
+                fontWeight: 800,
                 lineHeight: 1.1,
                 letterSpacing: "-0.025em",
                 color: "#111827",
-                marginBottom: 24,
+                marginBottom: 20,
               }}>
-                Industry-ready AI&nbsp;Agents + ApprovalOps workflows. Built for real operations.
+                Industry-ready AI Agents + ApprovalOps workflows.
               </h1>
               <p style={{
                 fontSize: 17,
                 color: "#6B7280",
                 lineHeight: 1.7,
-                maxWidth: 600,
-                margin: "0 auto 32px",
+                maxWidth: 560,
+                marginBottom: 32,
                 fontFamily: "Montserrat, sans-serif",
               }}>
                 ZUUZ connects to your systems, assembles the Context Pack, routes approvals safely, and writes back only when identity, permissions, and audit trail are verified.
               </p>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
                 <Link href="/about/contact" style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  padding: "12px 28px",
+                  background: "#0018FF",
+                  color: "#FFFFFF",
+                  borderRadius: 10,
                   fontSize: 15,
-                  fontWeight: 700,
-                  color: "#111827",
-                  textDecoration: "none",
+                  fontWeight: 600,
                   fontFamily: "Montserrat, sans-serif",
+                  textDecoration: "none",
+                  boxShadow: "0 2px 8px rgba(0,24,255,0.25)",
                 }}>
                   Request a demo →
                 </Link>
@@ -168,15 +106,14 @@ export default function SolutionsPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   border: "1px solid #E5E7EB",
-                  borderRadius: 999,
-                  padding: "10px 28px",
+                  borderRadius: 10,
+                  padding: "11px 24px",
                   fontSize: 15,
                   fontWeight: 500,
                   color: "#374151",
                   textDecoration: "none",
                   fontFamily: "Montserrat, sans-serif",
                   background: "white",
-                  transition: "border-color 0.2s ease",
                 }}>
                   See industries
                 </Link>
@@ -184,7 +121,7 @@ export default function SolutionsPage() {
             </div>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <WorkflowFlow />
+            <WorkflowPipeline />
           </FadeIn>
         </Container>
       </section>
@@ -275,6 +212,43 @@ export default function SolutionsPage() {
           </Container>
         </section>
       )}
+
+      {/* Decision Flow Section */}
+      <section style={{
+        padding: "80px 0",
+        background: "white",
+        borderTop: "1px solid #E8E8EE",
+      }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px" }}>
+          <div style={{ textAlign: "center", marginBottom: 44 }}>
+            <p style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: "0.11em",
+              textTransform: "uppercase", color: "#0018FF",
+              fontFamily: "'Montserrat',sans-serif", marginBottom: 14,
+            }}>How It Works</p>
+            <h2 style={{ marginBottom: 16 }}>
+              From signal to safe execution.
+            </h2>
+            <p style={{
+              fontSize: 17, color: "#333333", lineHeight: 1.7,
+              fontFamily: "'Montserrat',sans-serif",
+              maxWidth: 520, margin: "0 auto",
+            }}>
+              Every approval in ZUUZ follows this exact path — context assembled,
+              policy enforced, human approved, safely executed.
+            </p>
+          </div>
+          <div style={{
+            background: "linear-gradient(135deg, #F0F4FF 0%, #F8F9FF 100%)",
+            borderRadius: 24,
+            padding: 32,
+            border: "1px solid #E0E4F0",
+            boxShadow: "0 12px 40px rgba(0,24,255,0.07), 0 4px 16px rgba(0,0,0,0.04)",
+          }}>
+            <DecisionImage />
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
       <CTA

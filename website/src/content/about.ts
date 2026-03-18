@@ -261,19 +261,19 @@ export const contact = {
   },
   locations: [
     {
-      label: "USA HQ (California)",
-      address: ["Plug and Play Tech Center", "440 N Wolfe Rd", "Sunnyvale, CA 94085"],
-      mapsUrl: "https://www.google.com/maps?q=Plug+and+Play+Tech+Center,+440+N+Wolfe+Rd,+Sunnyvale,+CA+94085",
+      label: "USA HQ — Plug and Play Tech Center",
+      address: ["440 N Wolfe Rd", "Sunnyvale, CA 94085", "info@zuuz.ai · +1 469 347 3394"],
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=440+N+Wolfe+Rd+Sunnyvale+CA+94085",
     },
     {
-      label: "UAE Office",
-      address: ["TODO: Pull address from zuuz.ai"],
-      isTodo: true,
+      label: "UAE — Latifa Tower",
+      address: ["Tower 3807, Sheikh Zayed Road", "Dubai, UAE · P.O Box 116287", "uae@zuuz.ai"],
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Latifa+Tower+Sheikh+Zayed+Road+Dubai+UAE",
     },
     {
-      label: "India Office",
-      address: ["TODO: Pull address from zuuz.ai"],
-      isTodo: true,
+      label: "India R&D — Dwaraka Starline",
+      address: ["Plot No. 131, Dwaraka Icon Building, 4F", "Kavuri Hills, Hyderabad 500033", "india@zuuz.ai"],
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Kavuri+Hills+Hyderabad+500033",
     },
   ] as OfficeLocation[],
   meta: { title: "Contact — ZUUZ", description: "Get in touch with the ZUUZ team. Offices in Sunnyvale CA, UAE, and India." },

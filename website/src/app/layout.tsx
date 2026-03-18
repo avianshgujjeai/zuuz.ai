@@ -4,6 +4,9 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/footer";
 import { AmbientBg } from "@/components/marketing/AmbientBg";
 import { RevealInit } from "@/components/ui/RevealInit";
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
+import { ChatBot } from "@/components/marketing/ChatBot";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -46,6 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
         </MotionProvider>
+        <ChatBot />
+        <GoogleAnalytics />
+        <Analytics />
       </body>
     </html>
   );

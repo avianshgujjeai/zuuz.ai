@@ -3,7 +3,6 @@ import Link from "next/link";
 import { customers } from "@/content/customers";
 import { Breadcrumb } from "@/components/ui/breadcrumbs";
 import { Btn } from "@/components/ui/Btn";
-import { CustomerLogoWall } from "@/components/marketing/CustomerLogoWall";
 import { CountUpBanner } from "@/components/marketing/CountUpBanner";
 
 export const metadata: Metadata = {
@@ -44,14 +43,6 @@ const TESTIMONIALS = [
   },
 ];
 
-/* ─── Logo wall data ─────────────────────────────────────── */
-const LOGOS = customers.map((c) => ({
-  src: c.logo,
-  alt: c.name,
-  industry: c.industry,
-  location: c.location,
-  slug: c.slug,
-}));
 
 export default function CustomersPage() {
   return (
@@ -181,21 +172,79 @@ export default function CustomersPage() {
         }}
       >
         <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 24px" }}>
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: 11,
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.12em",
-              color: "#94A3B8",
-              fontFamily: "var(--font-body)",
-              marginBottom: 32,
-            }}
-          >
+          {/* DEPLOYED AT */}
+          <p style={{
+            textAlign: "center", fontSize: 11, fontWeight: 700,
+            textTransform: "uppercase", letterSpacing: "0.12em",
+            color: "#888888", fontFamily: "var(--font-body)", marginBottom: 32,
+          }}>
             Deployed at
           </p>
-          <CustomerLogoWall logos={LOGOS} />
+          <div style={{
+            display: "flex", flexWrap: "wrap", justifyContent: "center",
+            gap: 20, maxWidth: 1000, margin: "0 auto",
+          }}>
+            {/* Western International */}
+            <div style={{
+              display: "flex", flexDirection: "column", alignItems: "center",
+              justifyContent: "center", gap: 16, padding: "32px 28px",
+              background: "white", border: "1px solid #E8E8EE", borderRadius: 16,
+              minWidth: 220, minHeight: 160, flex: "0 0 auto",
+            }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logos/western-international.png" alt="Western International Group"
+                style={{ maxWidth: 180, maxHeight: 80, objectFit: "contain", display: "block" }} />
+              <p style={{ fontSize: 14, color: "#333333", textAlign: "center",
+                fontFamily: "var(--font-body)", lineHeight: 1.4 }}>
+                Distribution &amp; Trading · UAE
+              </p>
+            </div>
+            {/* Nesto Group */}
+            <div style={{
+              display: "flex", flexDirection: "column", alignItems: "center",
+              justifyContent: "center", gap: 16, padding: "32px 28px",
+              background: "white", border: "1px solid #E8E8EE", borderRadius: 16,
+              minWidth: 220, minHeight: 160, flex: "0 0 auto",
+            }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logos/nesto-group.png" alt="Nesto Group"
+                style={{ maxWidth: 180, maxHeight: 80, objectFit: "contain", display: "block" }} />
+              <p style={{ fontSize: 14, color: "#333333", textAlign: "center",
+                fontFamily: "var(--font-body)", lineHeight: 1.4 }}>
+                Retail &amp; Distribution · UAE
+              </p>
+            </div>
+            {/* RA Technologies */}
+            <div style={{
+              display: "flex", flexDirection: "column", alignItems: "center",
+              justifyContent: "center", gap: 16, padding: "32px 28px",
+              background: "white", border: "1px solid #E8E8EE", borderRadius: 16,
+              minWidth: 220, minHeight: 160, flex: "0 0 auto",
+            }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logos/ra-technologies.png" alt="RA Technologies"
+                style={{ maxWidth: 180, maxHeight: 80, objectFit: "contain", display: "block" }} />
+              <p style={{ fontSize: 14, color: "#333333", textAlign: "center",
+                fontFamily: "var(--font-body)", lineHeight: 1.4 }}>
+                IT Services · USA
+              </p>
+            </div>
+            {/* Cloud Box Technologies */}
+            <div style={{
+              display: "flex", flexDirection: "column", alignItems: "center",
+              justifyContent: "center", gap: 16, padding: "32px 28px",
+              background: "white", border: "1px solid #E8E8EE", borderRadius: 16,
+              minWidth: 220, minHeight: 160, flex: "0 0 auto",
+            }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logos/cloud-box.png" alt="Cloud Box Technologies"
+                style={{ maxWidth: 180, maxHeight: 80, objectFit: "contain", display: "block" }} />
+              <p style={{ fontSize: 14, color: "#333333", textAlign: "center",
+                fontFamily: "var(--font-body)", lineHeight: 1.4 }}>
+                IT Services &amp; Cloud · UAE
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -284,7 +333,7 @@ export default function CustomersPage() {
                     <p
                       style={{
                         fontSize: 12,
-                        color: "#94A3B8",
+                        color: "#555555",
                         fontFamily: "var(--font-body)",
                         marginTop: 4,
                       }}
@@ -584,17 +633,15 @@ export default function CustomersPage() {
               </span>
             </div>
 
-            <h3
-              style={{
-                fontSize: 26,
-                color: "#0A0F1E",
-                fontFamily: "var(--font-display)",
-                letterSpacing: "-0.02em",
-                marginBottom: 14,
-              }}
-            >
-              One + One Tech
-            </h3>
+            {/* ONE+ONE LOGO — larger, centered */}
+            <div style={{ marginBottom: 24, display: "flex", justifyContent: "center" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logos/one-plus-one-tech.png"
+                alt="One Plus One Tech"
+                style={{ maxWidth: 280, maxHeight: 100, objectFit: "contain", display: "block" }}
+              />
+            </div>
 
             <p
               style={{
@@ -644,7 +691,7 @@ export default function CustomersPage() {
             <p
               style={{
                 fontSize: 17,
-                color: "#94A3B8",
+                color: "#555555",
                 lineHeight: 1.75,
                 marginBottom: 40,
                 fontFamily: "var(--font-body)",

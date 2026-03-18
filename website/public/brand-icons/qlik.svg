@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 24">
+  <!-- Qlik green circle + Q wordmark -->
+  <circle cx="12" cy="12" r="10" fill="#009848"/>
+  <circle cx="12" cy="12" r="6" fill="white"/>
+  <circle cx="12" cy="12" r="3" fill="#009848"/>
+  <!-- dot accent -->
+  <circle cx="17" cy="17" r="2.5" fill="#009848"/>
+  <text x="26" y="17" fill="#2B2B2B" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Qlik</text>
+</svg>

@@ -10,6 +10,26 @@
   --black:         #000000;
   --white:         #FFFFFF;
 
+  /* ── Tailwind CSS variable bridge ────────────────────────
+     These map the rgb() format that Tailwind's color system
+     uses (e.g. bg-primary = rgb(var(--color-primary))).
+     Without these, Tailwind color classes render transparent.
+  ── */
+  --color-background:         255 255 255;   /* #ffffff */
+  --color-foreground:          17  17  17;   /* #111111 */
+  --color-card:               255 255 255;   /* #ffffff */
+  --color-card-foreground:     17  17  17;   /* #111111 */
+  --color-primary:              0  24 255;   /* #0018FF — ZUUZ electric blue */
+  --color-primary-light:      238 240 255;   /* #EEF0FF */
+  --color-primary-dark:         0  20 204;   /* #0014CC */
+  --color-primary-foreground: 255 255 255;   /* #ffffff */
+  --color-accent:             163 243 255;   /* #A3F3FF */
+  --color-accent-foreground:    0   8  20;   /* near-black */
+  --color-muted:              245 246 255;   /* #F5F6FF */
+  --color-muted-foreground:   100 116 139;   /* #64748B */
+  --color-border:             224 224 232;   /* #E0E0E8 */
+  --color-ring:                 0  24 255;   /* #0018FF */
+
   /* Extended palette (derived) */
   --blue-dark:     #0014CC;
   --blue-light:    #EEF0FF;
@@ -419,6 +439,20 @@ button, input, select { font-family: 'Montserrat', sans-serif; }
 .animate-orb-drift-1    { animation: orb-drift-1 22s ease-in-out infinite; }
 .animate-orb-drift-2    { animation: orb-drift-2 28s ease-in-out infinite; }
 
+/* ─── Tailwind component utility classes ─────────────────── */
+/* Used by legacy Cursor Agent pages that haven't been rebuilt yet */
+.bg-hero-glow {
+  background: linear-gradient(155deg, #EEF0FF 0%, #ffffff 55%);
+}
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 24, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 24, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+/* Shadow utility used by Button component */
+.shadow-soft { box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+
 /* ─── Background Patterns ────────────────────────────────── */
 .dot-grid {
   background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px);
@@ -487,6 +521,73 @@ button, input, select { font-family: 'Montserrat', sans-serif; }
   .hide-sm { display: none !important; }
 }
 
+/* ─── Layout Aliases (.wrap / .sec) ─────────────────────── */
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.sec  { padding: 72px 0; }
+.sec-lg { padding: 96px 0; }
+.sec-sm { padding: 48px 0; }
+@media (max-width: 768px) {
+  .wrap  { padding: 0 20px; }
+  .sec   { padding: 48px 0; }
+  .sec-lg { padding: 64px 0; }
+}
+@media (max-width: 480px) {
+  .wrap  { padding: 0 16px; }
+  .sec   { padding: 40px 0; }
+}
+
+/* ─── Grid Aliases (.g2 / .g3 / .g4 / .ghero) ───────────── */
+.g2    { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.g3    { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.g4    { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.ghero { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+@media (max-width: 1024px) {
+  .g4 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .ghero { grid-template-columns: 1fr; gap: 40px; }
+  .ghero > *:last-child { order: -1; }
+}
+@media (max-width: 640px) {
+  .g4, .g3, .g2 { grid-template-columns: 1fr; }
+}
+
+/* ─── Text Utilities (.t-*) ──────────────────────────────── */
+.t-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0018FF;
+  font-family: 'Montserrat', sans-serif;
+  display: block;
+  margin-bottom: 8px;
+}
+.t-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: #000000;
+}
+.t-lead {
+  font-size: clamp(15px, 1.4vw, 17px);
+  line-height: 1.7;
+  color: #555555;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
+  max-width: 600px;
+}
+.t-body  { font-size: 15px; line-height: 1.7; color: #444444; }
+.t-sm    { font-size: 13px; line-height: 1.6; color: #666666; }
+.t-xs    { font-size: 11px; line-height: 1.5; color: #888888; }
+.t-muted { color: #666666; }
+.t-faint { color: #999999; }
+.t-blue  { color: #0018FF; }
+.t-center { text-align: center; }
+
 /* ─── Scrollbar ──────────────────────────────────────────── */
 ::-webkit-scrollbar       { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -499,6 +600,15 @@ svg   { overflow: visible; }
 video { max-width: 100%; }
 input, button, textarea, select { font-family: inherit; }
 
+/* ─── Enforce readable text colors sitewide ─────────────── */
+p { color: #333333; }
+span { color: inherit; }
+li { color: #333333; }
+td, th { color: #222222; }
+.caption, .meta, small { color: #555555; font-size: 13px; }
+[style*="background: #000"] p,
+[style*="background:#000"] p { color: rgba(255,255,255,0.88); }
+
 /* ─── Reduced Motion ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -506,4 +616,69 @@ input, button, textarea, select { font-family: inherit; }
     transition-duration: 0.001ms !important;
   }
   .sr, .sr-x, .sr-scale, .reveal { opacity: 1; transform: none; }
+}
+
+/* ═══════════════════════════════════════════
+   ZUUZ — FINAL FONT SIZE + COLOR ENFORCEMENT
+   ═══════════════════════════════════════════ */
+/* Headings */
+h1 { font-size: clamp(36px, 5vw, 56px) !important; line-height: 1.08 !important; }
+h2 { font-size: clamp(28px, 3.5vw, 44px) !important; line-height: 1.14 !important; }
+h3 { font-size: clamp(20px, 2.2vw, 26px) !important; line-height: 1.28 !important; }
+h4 { font-size: 20px !important; }
+/* All paragraph text — never below 16px */
+p  { font-size: 16px !important; line-height: 1.72 !important; color: #333333 !important; }
+/* Inline spans and links */
+a, span, li { font-size: inherit; color: inherit; }
+/* Section label / eyebrow */
+.eyebrow, .t-label {
+  font-size: 12px !important;
+  color: #0018FF !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.11em !important;
+}
+/* Secondary / helper text — minimum 14px */
+.t-sm, .text-sm, small {
+  font-size: 14px !important;
+  color: #444444 !important;
+}
+.t-xs, .text-xs {
+  font-size: 14px !important;
+  color: #444444 !important;
+}
+/* Force all grey text to be readable */
+[style*="color:#9CA3AF"],
+[style*="color: #9CA3AF"],
+[style*="color:#AAAAAA"],
+[style*="color: #AAAAAA"],
+[style*="color:#94A3B8"],
+[style*="color: #94A3B8"],
+[style*="color:#B0B0B0"],
+[style*="color: #B0B0B0"],
+[style*="color:#CBD5E1"],
+[style*="color: #CBD5E1"] {
+  color: #444444 !important;
+}
+/* White text on dark backgrounds — must be bright */
+[style*="background: #000814"] p,
+[style*="background:#000814"] p,
+[style*="background: #000"] p,
+[style*="background:#000"] p {
+  color: rgba(255,255,255,0.90) !important;
+}
+[style*="background: #000814"] span,
+[style*="background:#000814"] span {
+  color: rgba(255,255,255,0.85) !important;
+}
+/* Nav dropdown items */
+nav [style*="fontSize: 13"],
+nav [style*="fontSize:13"] {
+  font-size: 14px !important;
+  color: #111111 !important;
+}
+/* Navbar links */
+header nav a {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #222222 !important;
 }

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { SignalTower } from "@/components/marketing/SignalTower";
+import { ArchDiagram } from "@/components/marketing/ArchDiagram";
 import { LogoMarquee } from "@/components/marketing/LogoMarquee";
 import { StatsBanner } from "@/components/marketing/StatsBanner";
 import { VideoDemo } from "@/components/marketing/VideoDemo";
@@ -104,7 +105,7 @@ function HowItWorks() {
                   style={{
                     width: 28, height: 28, borderRadius: "50%",
                     background: active === i ? "#0018FF" : "#F3F4F6",
-                    color: active === i ? "#fff" : "#9CA3AF",
+                    color: active === i ? "#fff" : "#555555",
                     fontSize: 11, fontWeight: active === i ? 600 : 500,
                     display: "flex", alignItems: "center", justifyContent: "center",
                     flexShrink: 0, fontFamily: "Montserrat, sans-serif",
@@ -137,40 +138,99 @@ function HowItWorks() {
           ))}
         </div>
 
-        {/* Visual panel */}
+        {/* Visual panel — unique per step */}
         <div
           style={{
             background: "#F9FAFB",
             border: "1px solid #E4E7EC",
             borderRadius: 16,
-            padding: "48px 32px",
-            minHeight: 200,
+            padding: "36px 28px",
+            minHeight: 220,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: 16,
+            gap: 12,
           }}
         >
-          <div
-            style={{
-              width: 40, height: 40, borderRadius: 10,
-              background: "#EFF6FF",
-              display: "flex", alignItems: "center", justifyContent: "center",
-            }}
-          >
-            <svg width={20} height={20} viewBox="0 0 20 20" fill="none">
-              <circle cx="10" cy="10" r="9" stroke="#0018FF" strokeWidth="1.5"/>
-              <path d="M6.5 10l2.5 2.5L13.5 7.5" stroke="#0018FF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <p style={{
-            fontSize: 14, color: "#667085",
-            fontFamily: "Montserrat, sans-serif", textAlign: "center", lineHeight: 1.8,
-            maxWidth: 240,
-          }}>
-            {HOW_STEPS[active].visual}
-          </p>
+          {active === 0 && (
+            <div style={{ width: "100%" }}>
+              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555555", textAlign: "center", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>200+ connectors · Live in minutes</p>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
+                {[
+                  { name: "SAP",   color: "#0070AD" },
+                  { name: "M365",  color: "#0078D4" },
+                  { name: "Slack", color: "#4A154B" },
+                  { name: "Zoho",  color: "#E42527" },
+                  { name: "Jira",  color: "#0052CC" },
+                  { name: "Teams", color: "#5059C9" },
+                ].map(s => (
+                  <div key={s.name} style={{ padding: "8px 10px", background: "white", border: `1.5px solid ${s.color}22`, borderRadius: 8, textAlign: "center" }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: s.color, fontFamily: "Montserrat, sans-serif" }}>{s.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {active === 1 && (
+            <div style={{ width: "100%", maxWidth: 260 }}>
+              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555555", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>Context Pack assembled</p>
+              {[
+                "Contract context",
+                "Email thread",
+                "Budget approval",
+                "Stakeholder history",
+              ].map(item => (
+                <div key={item} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid #F3F4F6" }}>
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+                    <rect width="18" height="18" rx="4" fill="#EFF6FF" />
+                    <path d="M4.5 9l3 3L13.5 6" stroke="#0018FF" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: "#0018FF", fontFamily: "Montserrat, sans-serif" }}>{item}</span>
+                </div>
+              ))}
+            </div>
+          )}
+          {active === 2 && (
+            <div style={{ width: "100%" }}>
+              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555555", textAlign: "center", marginBottom: 16, fontFamily: "Montserrat, sans-serif" }}>Decision routing</p>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 0, flexWrap: "wrap", rowGap: 10 }}>
+                {[
+                  { label: "Request",       color: "#374151", bg: "#F9FAFB",  border: "#D1D5DB" },
+                  { label: "Policy Gate ⚡", color: "#92400E", bg: "#FEF3C7",  border: "#F59E0B" },
+                  { label: "CFO Approval",  color: "#1E40AF", bg: "#EFF6FF",  border: "#3B82F6" },
+                  { label: "Approved ✓",    color: "#065F46", bg: "#ECFDF5",  border: "#10B981" },
+                ].map((box, i, arr) => (
+                  <div key={box.label} style={{ display: "flex", alignItems: "center" }}>
+                    <div style={{ padding: "7px 11px", border: `1.5px solid ${box.border}`, borderRadius: 8, background: box.bg }}>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: box.color, fontFamily: "Montserrat, sans-serif", whiteSpace: "nowrap" }}>{box.label}</span>
+                    </div>
+                    {i < arr.length - 1 && <div style={{ width: 16, height: 2, background: "#D1D5DB", margin: "0 3px" }} />}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {active === 3 && (
+            <div style={{ width: "100%", maxWidth: 280 }}>
+              <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#555555", marginBottom: 14, fontFamily: "Montserrat, sans-serif" }}>Audit trail</p>
+              {[
+                { entry: "REQ-2841 approved", time: "09:42:18 UTC" },
+                { entry: "SAP write-back",    time: "09:42:21 UTC" },
+                { entry: "PO #4892 generated",time: "09:42:22 UTC" },
+              ].map(log => (
+                <div key={log.entry} style={{ display: "flex", alignItems: "center", gap: 8, padding: "7px 0", borderBottom: "1px solid #F3F4F6" }}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
+                    <circle cx="8" cy="8" r="8" fill="#DCFCE7" />
+                    <path d="M4.5 8l2.5 2.5L11.5 5.5" stroke="#059669" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span style={{ fontSize: 12, color: "#059669", fontFamily: "'Courier New', monospace", fontWeight: 600 }}>{log.entry}</span>
+                  <span style={{ fontSize: 10, color: "#555555", fontFamily: "'Courier New', monospace", marginLeft: "auto" }}>{log.time}</span>
+                </div>
+              ))}
+              <p style={{ fontSize: 11, color: "#555555", marginTop: 10, textAlign: "center", fontFamily: "Montserrat, sans-serif", fontWeight: 600 }}>100% audit coverage · Every action logged</p>
+            </div>
+          )}
         </div>
       </div>
       <style>{`
@@ -456,6 +516,28 @@ export default function HomePage() {
           .pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
           @media (max-width: 767px) { .pillars-grid { grid-template-columns: 1fr !important; } }
         `}</style>
+      </section>
+
+      {/* ═══ 3b. ARCH DIAGRAM ════════════════════════════════ */}
+      <section style={{ padding: "80px 0", background: "#F5F6FF" }}>
+        <div style={W}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.11em",
+              textTransform: "uppercase", color: "#0018FF", marginBottom: 14,
+              fontFamily: "Montserrat, sans-serif" }}>
+              Platform Architecture
+            </p>
+            <h2 style={{ maxWidth: 520, margin: "0 auto 16px", lineHeight: 1.2 }}>
+              One layer. Every system. Full control.
+            </h2>
+            <p style={{ fontSize: 16, color: "#444", lineHeight: 1.75, maxWidth: 480,
+              margin: "0 auto", fontFamily: "Montserrat, sans-serif" }}>
+              ZUUZ sits between your data sources and actions — assembling context,
+              enforcing policy, and writing back with a complete audit trail.
+            </p>
+          </div>
+          <ArchDiagram />
+        </div>
       </section>
 
       {/* ═══ 4. DARK ARCHITECTURE (SignalTower) ═════════════ */}
