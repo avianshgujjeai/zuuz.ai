@@ -93,16 +93,16 @@ function StatItem({
       </p>
       <p
         style={{
-          fontSize: 13,
+          fontSize: 18,
           fontWeight: 600,
-          color: "rgba(255,255,255,0.5)",
+          color: "#FFFFFF",
           fontFamily: "Montserrat, sans-serif",
           marginBottom: 3,
         }}
       >
         {stat.label}
       </p>
-      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.28)", fontFamily: "Montserrat, sans-serif" }}>
+      <p style={{ fontSize: 15, color: "rgba(255,255,255,0.80)", fontFamily: "Montserrat, sans-serif" }}>
         {stat.sub}
       </p>
     </div>
