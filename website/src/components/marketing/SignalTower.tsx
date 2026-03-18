@@ -49,10 +49,10 @@ const OUTPUTS = [
 
 export function SignalTower() {
   const uid = useId().replace(/:/g, "");
-  const W = 720, H = 520;
-  const coreX = W / 2, coreY = 220;
-  const srcY = 20;
-  const outY = 370;
+  const W = 720, H = 540;
+  const coreX = W / 2, coreY = 240;
+  const srcY = 40;
+  const outY = 390;
 
   const srcXs = SOURCES.map((_, i) => 40 + i * ((W - 80) / (SOURCES.length - 1)));
   const outXs = OUTPUTS.map((_, i) => 48 + i * ((W - 96) / (OUTPUTS.length - 1)));
@@ -104,8 +104,9 @@ export function SignalTower() {
             x1={srcXs[i]} y1={srcY + 48}
             x2={coreX}    y2={coreY - 44}
             stroke={`url(#sg${uid}${i})`}
-            strokeWidth="1.5"
+            strokeWidth="2.5"
             strokeDasharray="6 4"
+            opacity="0.65"
           />
         ))}
 
@@ -115,8 +116,9 @@ export function SignalTower() {
             x1={coreX}    y1={coreY + 44}
             x2={outXs[i]} y2={outY}
             stroke={`url(#og${uid}${i})`}
-            strokeWidth="1.5"
+            strokeWidth="2.5"
             strokeDasharray="6 4"
+            opacity="0.65"
           />
         ))}
 
@@ -174,16 +176,16 @@ export function SignalTower() {
         {SOURCES.map((s, i) => (
           <g key={`sc${i}`}>
             <rect x={srcXs[i] - 28} y={srcY} width={56} height={44} rx={10}
-              fill="white" stroke={s.color} strokeWidth="1.5"
+              fill="white" stroke={s.color} strokeWidth="2.5"
               style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.08))" }}/>
             <g transform={`translate(${srcXs[i] - 10}, ${srcY + 10})`}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill={s.color}>
                 <path d={s.iconPath}/>
               </svg>
             </g>
-            <text x={srcXs[i]} y={srcY + 58}
-              textAnchor="middle" fontSize="9" fontWeight="600"
-              fill="#555555" fontFamily="Montserrat, sans-serif">
+            <text x={srcXs[i]} y={srcY + 60}
+              textAnchor="middle" fontSize="11" fontWeight="700"
+              fill="#333333" fontFamily="Montserrat, sans-serif">
               {s.label}
             </text>
           </g>
@@ -218,18 +220,18 @@ export function SignalTower() {
         {OUTPUTS.map((o, i) => (
           <g key={`ob${i}`}>
             <rect x={outXs[i] - 54} y={outY} width={108} height={56} rx={10}
-              fill="white" stroke={o.color} strokeWidth="1.5"
+              fill="white" stroke={o.color} strokeWidth="2.5"
               style={{ filter: "drop-shadow(0 3px 8px rgba(0,0,0,0.08))" }}/>
             {/* Top color bar */}
             <rect x={outXs[i] - 54} y={outY} width={108} height={4} rx={2}
               fill={o.color}/>
             <text x={outXs[i]} y={outY + 24}
-              textAnchor="middle" fontSize="10.5" fontWeight="700"
+              textAnchor="middle" fontSize="13" fontWeight="800"
               fill={o.color} fontFamily="Montserrat, sans-serif">
               {o.label}
             </text>
-            <text x={outXs[i]} y={outY + 39}
-              textAnchor="middle" fontSize="8" fill="#777777"
+            <text x={outXs[i]} y={outY + 40}
+              textAnchor="middle" fontSize="10" fill="#222222"
               fontFamily="Montserrat, sans-serif">
               {o.sub}
             </text>
@@ -238,8 +240,8 @@ export function SignalTower() {
 
         {/* Brand tagline */}
         <text x={W / 2} y={H - 8}
-          textAnchor="middle" fontSize="10.5" fill="#AAAAAA"
-          fontFamily="Montserrat, sans-serif" fontStyle="italic">
+          textAnchor="middle" fontSize="12" fill="#333333"
+          fontFamily="Montserrat, sans-serif" fontWeight="500">
           Forged by Insight. Driven by Precision.
         </text>
       </svg>
