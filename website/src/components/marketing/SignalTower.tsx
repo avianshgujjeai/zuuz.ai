@@ -51,8 +51,12 @@ export function SignalTower() {
   // 6 source chip centers, spread across full width
   const srcXs = SOURCES.map((_, i) => 80 + i * ((W - 160) / (SOURCES.length - 1)));
 
-  // 4 output box centers, spread across full width
-  const outXs = OUTPUTS.map((_, i) => 80 + i * ((W - 290) / (OUTPUTS.length - 1)));
+  // 4 output box centers — evenly grouped in the middle
+  const OUT_W = 210;
+  const OUT_GAP = 18;
+  const totalOutWidth = OUTPUTS.length * OUT_W + (OUTPUTS.length - 1) * OUT_GAP;
+  const outStartX = (W - totalOutWidth) / 2;
+  const outXs = OUTPUTS.map((_, i) => outStartX + i * (OUT_W + OUT_GAP));
 
   return (
     <div style={{ width: "100%", maxWidth: 1100, margin: "0 auto", userSelect: "none" }}>
@@ -86,7 +90,7 @@ export function SignalTower() {
         {/* ── S-CURVE LINES: core → outputs ── */}
         {OUTPUTS.map((o, i) => (
           <path key={`op${i}`}
-            d={sCurve(coreX, coreY + coreR, outXs[i], outY)}
+            d={sCurve(coreX, coreY + coreR, outXs[i] + OUT_W / 2, outY)}
             stroke={o.color} strokeWidth="2.5" strokeDasharray="6 4" opacity="0.65"
           />
         ))}
@@ -106,7 +110,7 @@ export function SignalTower() {
         {OUTPUTS.map((o, i) => (
           <AnimDot
             key={`od${i}`}
-            path={sCurve(coreX, coreY + coreR, outXs[i], outY)}
+            path={sCurve(coreX, coreY + coreR, outXs[i] + OUT_W / 2, outY)}
             dur={`${1.7 + i * 0.25}s`}
             delay={`${0.8 + i * 0.22}s`}
             color={o.color}
@@ -142,8 +146,8 @@ export function SignalTower() {
             </foreignObject>
             {/* Label */}
             <text x={srcXs[i]} y={srcY + 112}
-              textAnchor="middle" fontSize="22" fontWeight="800"
-              fill="#111111" fontFamily={F}>
+              textAnchor="middle" fontSize="20" fontWeight="800"
+              fill="#000000" fontFamily={F}>
               {s.label}
             </text>
           </g>
@@ -185,19 +189,19 @@ export function SignalTower() {
         {/* ── OUTPUT BOXES (210×110) ── */}
         {OUTPUTS.map((o, i) => (
           <g key={`ob${i}`}>
-            <rect x={outXs[i] - 105} y={outY} width={210} height={110} rx={12}
+            <rect x={outXs[i]} y={outY} width={OUT_W} height={110} rx={12}
               fill="white" stroke={o.color} strokeWidth="2.5"
               style={{ filter: "drop-shadow(0 4px 14px rgba(0,0,0,0.10))" }} />
             {/* Left color bar */}
-            <rect x={outXs[i] - 105} y={outY} width={5} height={110} rx={2} fill={o.color} />
+            <rect x={outXs[i]} y={outY} width={5} height={110} rx={2} fill={o.color} />
             {/* Title */}
-            <text x={outXs[i] - 105 + 16} y={outY + 34}
-              fontSize="20" fontWeight="800" fill={o.color} fontFamily={F}>
+            <text x={outXs[i] + 21} y={outY + 34}
+              fontSize="22" fontWeight="800" fill={o.color} fontFamily={F}>
               {o.label}
             </text>
             {/* Sub */}
-            <text x={outXs[i] - 105 + 16} y={outY + 62}
-              fontSize="16" fill="#222222" fontFamily={F}>
+            <text x={outXs[i] + 21} y={outY + 60}
+              fontSize="17" fill="#111111" fontFamily={F}>
               {o.sub}
             </text>
           </g>
@@ -205,7 +209,7 @@ export function SignalTower() {
 
         {/* Brand tagline */}
         <text x={W / 2} y={H - 18}
-          textAnchor="middle" fontSize="20" fill="#333333"
+          textAnchor="middle" fontSize="18" fill="#333333"
           fontFamily={F} fontWeight="500">
           Where Decisions Actually Happen.
         </text>
