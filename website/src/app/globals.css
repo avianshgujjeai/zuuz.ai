@@ -682,3 +682,34 @@ header nav a {
   font-weight: 500 !important;
   color: #222222 !important;
 }
+
+/* ═══════════════════════════════════════════════
+   ZUUZ DARK SECTION TEXT — PERMANENT FIX
+   Applies to every dark background section sitewide
+   ═══════════════════════════════════════════════ */
+/* Target dark navy backgrounds */
+[style*="000814"] *,
+[style*="background: #000"] *,
+[style*="background:#000"] * {
+  color: inherit;
+}
+/* Big stat numbers on dark backgrounds */
+[style*="000814"] p:not([style*="color"]),
+[style*="000814"] span:not([style*="color"]) {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+/* Override any inline grey colors on dark sections */
+[style*="000814"] [style*="color: #9C"],
+[style*="000814"] [style*="color:#9C"],
+[style*="000814"] [style*="color: #AA"],
+[style*="000814"] [style*="color:#AA"],
+[style*="000814"] [style*="color: rgba(255,255,255,0.4"],
+[style*="000814"] [style*="color: rgba(255,255,255,0.5"],
+[style*="000814"] [style*="color: rgba(255,255,255,0.6"] {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+/* Stats banner specific — force white */
+.stats-section *,
+.stats-banner * {
+  color: white !important;
+}
