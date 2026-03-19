@@ -549,9 +549,9 @@ export default function HomePage() {
               <Eyebrow light>Architecture</Eyebrow>
               <h2 style={{ color: "#fff", marginBottom: 18 }}>
                 Signal in. Decision out.{" "}
-                <span style={{ color: "#475467" }}>Audit logged.</span>
+                <span style={{ color: "rgba(255,255,255,0.65)" }}>Audit logged.</span>
               </h2>
-              <p style={{ fontSize: 17, color: "#98A2B3", lineHeight: 1.75, marginBottom: 28, fontFamily: "Montserrat, sans-serif" }}>
+              <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", lineHeight: 1.75, marginBottom: 28, fontFamily: "Montserrat, sans-serif" }}>
                 ZUUZ sits between your data and your systems of action. It assembles
                 context, routes through your approval logic, and writes back with full
                 identity and audit coverage.
@@ -565,7 +565,7 @@ export default function HomePage() {
                 ].map((item) => (
                   <div key={item} style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
                     <GreenCheck />
-                    <span style={{ fontSize: 14, color: "#98A2B3", fontFamily: "Montserrat, sans-serif" }}>{item}</span>
+                    <span style={{ fontSize: 14, color: "rgba(255,255,255,0.85)", fontFamily: "Montserrat, sans-serif" }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -599,7 +599,7 @@ export default function HomePage() {
           <div style={{ textAlign: "center", marginBottom: 48 }} className="reveal">
             <Eyebrow light>Product demo</Eyebrow>
             <h2 style={{ color: "#fff", marginBottom: 14 }}>See ZUUZ in action</h2>
-            <p style={{ fontSize: 17, color: "#98A2B3", maxWidth: 480, margin: "0 auto", fontFamily: "Montserrat, sans-serif" }}>
+            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", maxWidth: 480, margin: "0 auto", fontFamily: "Montserrat, sans-serif" }}>
               Real copilots. Real workflows. Actual enterprise scenarios.
             </p>
           </div>
@@ -848,10 +848,10 @@ export default function HomePage() {
             <div style={{ position: "relative", textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
               <h2 style={{ color: "#fff", marginBottom: 14 }}>
                 Bring your workflows.{" "}
-                <span style={{ color: "#475467" }}>We&apos;ll make them run themselves.</span>
+                <span style={{ color: "rgba(255,255,255,0.65)" }}>We&apos;ll make them run themselves.</span>
               </h2>
               <p style={{
-                fontSize: 17, color: "#98A2B3", lineHeight: 1.75, marginBottom: 40,
+                fontSize: 17, color: "rgba(255,255,255,0.85)", lineHeight: 1.75, marginBottom: 40,
                 fontFamily: "Montserrat, sans-serif",
               }}>
                 Book a 20-minute demo. Bring your messiest approval workflow —

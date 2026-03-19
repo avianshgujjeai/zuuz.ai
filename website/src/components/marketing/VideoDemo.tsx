@@ -63,7 +63,7 @@ export function VideoDemo() {
                 fontWeight: 700,
                 textTransform: "uppercase",
                 letterSpacing: "0.07em",
-                color: isActive ? t.catColor : "rgba(255,255,255,0.4)",
+                color: isActive ? t.catColor : "rgba(255,255,255,0.88)",
                 fontFamily: "Montserrat, sans-serif",
               }}>
                 {t.category}
@@ -71,7 +71,7 @@ export function VideoDemo() {
               <span style={{
                 fontSize: 13,
                 fontWeight: isActive ? 600 : 400,
-                color: isActive ? "#fff" : "rgba(255,255,255,0.55)",
+                color: isActive ? "#fff" : "rgba(255,255,255,0.88)",
                 fontFamily: "Montserrat, sans-serif",
               }}>
                 {t.label}
@@ -120,7 +120,7 @@ export function VideoDemo() {
             </svg>
             <span style={{
               fontSize: 11,
-              color: "rgba(255,255,255,0.5)",
+              color: "rgba(255,255,255,0.88)",
               fontFamily: "Montserrat, sans-serif",
               letterSpacing: "0.01em",
             }}>

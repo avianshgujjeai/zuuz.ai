@@ -150,7 +150,7 @@ export function VideoShowcase() {
                 borderRadius: 6,
                 padding: "4px 12px",
                 fontSize: 12,
-                color: "rgba(255,255,255,0.5)",
+                color: "rgba(255,255,255,0.88)",
                 fontFamily: "var(--font-body)",
                 textAlign: "center",
               }}

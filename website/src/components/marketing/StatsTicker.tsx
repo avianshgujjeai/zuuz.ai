@@ -94,7 +94,7 @@ function StatItem({ stat, globalStart }: { stat: StatDef; globalStart: boolean }
         style={{
           fontSize: 14,
           fontWeight: 600,
-          color: "rgba(255,255,255,0.5)",
+          color: "rgba(255,255,255,0.88)",
           letterSpacing: "0.01em",
           marginBottom: 4,
           fontFamily: "var(--font-body)",
@@ -102,7 +102,7 @@ function StatItem({ stat, globalStart }: { stat: StatDef; globalStart: boolean }
       >
         {stat.label}
       </p>
-      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-body)" }}>
+      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.88)", fontFamily: "var(--font-body)" }}>
         {stat.sublabel}
       </p>
     </div>
