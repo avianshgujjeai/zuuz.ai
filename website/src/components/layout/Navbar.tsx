@@ -135,12 +135,12 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
       border: "1px solid #E8E8EE",
       borderRadius: 14,
       boxShadow: "0 16px 48px rgba(0,0,0,0.11), 0 4px 16px rgba(0,0,0,0.06)",
-      padding: "18px 20px",
+      padding: "14px 18px",
       minWidth: totalItems > 5 ? 580 : 280,
       zIndex: 100,
       display: "grid",
       gridTemplateColumns: groups.length > 1 ? `repeat(${groups.length}, 1fr)` : "1fr",
-      gap: 24,
+      gap: 20,
     }}>
       {groups.map((g, gi) => (
         <div key={gi}>
@@ -150,10 +150,10 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
               fontWeight: 700,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
-              color: "#555555",
+              color: "#AAAAAA",
               fontFamily: F,
-              marginBottom: 10,
-              paddingBottom: 8,
+              marginBottom: 8,
+              paddingBottom: 6,
               borderBottom: "1px solid #F0F0F5",
             }}>{g.heading}</p>
           )}
@@ -164,7 +164,7 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
                 href={item.href}
                 style={{
                   display: "block",
-                  padding: "9px 10px",
+                  padding: "6px 8px",
                   borderRadius: 8,
                   textDecoration: "none",
                   transition: "background 0.15s ease",
