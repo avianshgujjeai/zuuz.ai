@@ -43,7 +43,7 @@ export function CTA({
             <h2 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl text-balance">
               {title}
             </h2>
-            <p className="mt-4 text-base text-slate-400 leading-relaxed text-balance">
+            <p className="mt-4 text-base text-slate-200 leading-relaxed text-balance">
               {description}
             </p>
             <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -55,7 +55,7 @@ export function CTA({
               <Button
                 variant="ghost"
                 size="lg"
-                className="text-slate-400 hover:text-white hover:bg-white/8"
+                className="text-slate-200 hover:text-white hover:bg-white/8"
                 asChild
               >
                 <Link href={secondaryHref}>{secondaryLabel}</Link>
