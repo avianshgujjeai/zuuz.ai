@@ -98,7 +98,7 @@ export function StatsBanner() {
               style={{
                 fontSize: 14,
                 fontWeight: 400,
-                color: "rgba(255, 255, 255, 0.75)",
+                color: "rgba(255, 255, 255, 0.80)",
                 fontFamily: F,
                 lineHeight: 1.5,
                 margin: 0,
