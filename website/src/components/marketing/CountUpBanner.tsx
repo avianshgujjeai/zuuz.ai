@@ -82,7 +82,7 @@ function StatCell({ stat, start, delay }: { stat: Stat; start: boolean; delay: n
         style={{
           fontSize: 13,
           fontWeight: 600,
-          color: "rgba(255,255,255,0.55)",
+          color: "rgba(255,255,255,0.88)",
           fontFamily: "var(--font-body)",
           marginBottom: stat.sublabel ? 4 : 0,
         }}
@@ -90,7 +90,7 @@ function StatCell({ stat, start, delay }: { stat: Stat; start: boolean; delay: n
         {stat.label}
       </p>
       {stat.sublabel && (
-        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-body)" }}>
+        <p style={{ fontSize: 11, color: "rgba(255,255,255,0.88)", fontFamily: "var(--font-body)" }}>
           {stat.sublabel}
         </p>
       )}
