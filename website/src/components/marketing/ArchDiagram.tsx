@@ -7,19 +7,9 @@ const STAGES = [
   { id:4, title:"4. Context Pack Ready",  desc:"Full context assembled: budget status, vendor history, contract terms, risk score." },
   { id:5, title:"5. Decision & Action",   desc:"CFO approves, ERP updated, email notifications sent, immutable audit trail logged." },
 ];
-const STAGE_POSITIONS = [
-  { left:"0%",  width:"20%" },
-  { left:"20%", width:"20%" },
-  { left:"40%", width:"20%" },
-  { left:"60%", width:"20%" },
-  { left:"80%", width:"20%" },
-];
-const IMG_SRC = "/images/arch-diagram.png";
 export function ArchDiagram() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [imgError, setImgError] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   useEffect(() => {
     if (paused) return;
@@ -28,7 +18,6 @@ export function ArchDiagram() {
     }, 2200);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [paused]);
-  const pos = STAGE_POSITIONS[active];
   return (
     <div style={{ fontFamily:"'Montserrat',sans-serif" }}>
       {/* Stage selector pills */}
@@ -48,99 +37,25 @@ export function ArchDiagram() {
         ))}
       </div>
       {/* Image + overlay container */}
-      <div style={{ position:"relative", borderRadius:16, overflow:"hidden", background:"#F5F6FF", minHeight:300 }}>
-        {imgError && (
-          <div style={{ padding:40, textAlign:"center", color:"#666" }}>
-            <p style={{ fontFamily:"'Montserrat',sans-serif", fontSize:14 }}>
-              Architecture diagram image not found at /images/arch-diagram.png
-            </p>
-            <p style={{ fontFamily:"'Montserrat',sans-serif", fontSize:12, color:"#888", marginTop:8 }}>
-              Please upload arch-diagram.png to website/public/images/
-            </p>
-          </div>
-        )}
-        {!imgError && (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img
-            src={IMG_SRC}
-            alt="ZUUZ Architecture Diagram"
-            onLoad={() => setImgLoaded(true)}
-            onError={() => setImgError(true)}
-            style={{ width:"100%", display:"block", borderRadius:16, opacity: 1 }}
-          />
-        )}
-        {imgLoaded && !imgError && (
-          <>
-            {/* LEFT overlay panel */}
-            <div style={{
-              position: "absolute",
-              top: 0, bottom: 0, left: 0,
-              width: pos.left,
-              background: "#F5F6FF",
-              zIndex: 2,
-              pointerEvents: "none",
-              transition: "width 0.55s cubic-bezier(0.4,0,0.2,1)",
-            }}/>
-            {/* RIGHT overlay panel */}
-            <div style={{
-              position: "absolute",
-              top: 0, bottom: 0, right: 0,
-              width: `calc(100% - ${pos.left} - ${pos.width})`,
-              background: "#F5F6FF",
-              zIndex: 2,
-              pointerEvents: "none",
-              transition: "width 0.55s cubic-bezier(0.4,0,0.2,1)",
-            }}/>
-            {/* Blue border on active column */}
-            <div style={{
-              position: "absolute",
-              top: 6, bottom: 6,
-              left: `calc(${pos.left} + 3px)`,
-              width: `calc(${pos.width} - 6px)`,
-              border: "3px solid #0018FF",
-              borderRadius: 10,
-              boxShadow: "0 0 0 3px rgba(0,24,255,0.25), inset 0 0 24px rgba(0,24,255,0.1)",
-              pointerEvents: "none",
-              transition: "left 0.55s cubic-bezier(0.4,0,0.2,1)",
-              animation: "archPulse 1.8s ease-in-out infinite",
-            }}/>
-            {/* Stage number badge */}
-            <div style={{
-              position: "absolute",
-              top: 14,
-              left: `calc(${pos.left} + 8px)`,
-              width: 36, height: 36,
-              borderRadius: "50%",
-              background: "#0018FF",
-              color: "white",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 15,
-              fontWeight: 800,
-              fontFamily: "'Montserrat', sans-serif",
-              pointerEvents: "none",
-              boxShadow: "0 2px 12px rgba(0,24,255,0.5)",
-              transition: "left 0.55s cubic-bezier(0.4,0,0.2,1)",
-            }}>
-              {STAGES[active].id}
-            </div>
-            {/* Progress bar */}
-            <div style={{
-              position: "absolute", bottom: 0, left: 0, right: 0,
-              height: 5, background: "rgba(0,0,0,0.25)",
-              borderRadius: "0 0 16px 16px",
-            }}>
-              <div style={{
-                height: "100%",
-                background: "#0018FF",
-                borderRadius: "0 0 0 16px",
-                width: `${((active + 1) / STAGES.length) * 100}%`,
-                transition: "width 0.55s ease",
-              }}/>
-            </div>
-          </>
-        )}
+      <div style={{
+        position: "relative",
+        borderRadius: "16px",
+        overflow: "hidden",
+        background: "#F5F6FF",
+        width: "100%",
+      }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/arch-diagram.png"
+          alt="ZUUZ Architecture Diagram"
+          style={{
+            width: "500%",
+            maxWidth: "none",
+            display: "block",
+            transform: `translateX(-${active * 20}%)`,
+            transition: "transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+        />
       </div>
       {/* Stage description */}
       <div style={{ marginTop:16, padding:"16px 20px", background:"#EEF2FF", borderRadius:12, border:"1px solid #C7D2FE", display:"flex", alignItems:"center", gap:14 }}>
@@ -160,12 +75,6 @@ export function ArchDiagram() {
           </p>
         </div>
       </div>
-      <style>{`
-        @keyframes archPulse {
-          0%,100% { border-color:#0018FF; box-shadow:0 0 0 3px rgba(0,24,255,0.25), inset 0 0 24px rgba(0,24,255,0.1); }
-          50%      { border-color:#4D7FFF; box-shadow:0 0 0 5px rgba(0,24,255,0.35), inset 0 0 32px rgba(0,24,255,0.18); }
-        }
-      `}</style>
     </div>
   );
 }
