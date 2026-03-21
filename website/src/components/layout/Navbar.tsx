@@ -135,20 +135,20 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
       border: "1px solid #E8E8EE",
       borderRadius: 14,
       boxShadow: "0 16px 48px rgba(0,0,0,0.11), 0 4px 16px rgba(0,0,0,0.06)",
-      padding: "14px 18px",
-      minWidth: totalItems > 5 ? 580 : 280,
+      padding: "12px 16px",
+      minWidth: totalItems > 5 ? 520 : 200,
       zIndex: 100,
       display: "grid",
       gridTemplateColumns: groups.length > 1 ? `repeat(${groups.length}, 1fr)` : "1fr",
-      gap: 20,
+      gap: 16,
     }}>
       {groups.map((g, gi) => (
         <div key={gi}>
           {g.heading && (
             <p style={{
-              fontSize: 10,
+              fontSize: 9,
               fontWeight: 700,
-              letterSpacing: "0.1em",
+              letterSpacing: "0.12em",
               textTransform: "uppercase",
               color: "#AAAAAA",
               fontFamily: F,
@@ -164,8 +164,8 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
                 href={item.href}
                 style={{
                   display: "block",
-                  padding: "6px 8px",
-                  borderRadius: 8,
+                  padding: "5px 8px",
+                  borderRadius: 6,
                   textDecoration: "none",
                   transition: "background 0.15s ease",
                 }}
@@ -173,7 +173,7 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
                 onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
               >
                 <p style={{
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: 600,
                   color: "#111111",
                   fontFamily: F,
@@ -185,7 +185,7 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
                 </p>
                 <p style={{
                   fontSize: 11,
-                  color: "#777777",
+                  color: "#666666",
                   fontFamily: F,
                   lineHeight: 1.5,
                   margin: 0,

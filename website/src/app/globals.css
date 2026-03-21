@@ -683,47 +683,29 @@ header nav a {
   color: #222222 !important;
 }
 
-/* ═══════════════════════════════════════════════
-   ZUUZ DARK SECTION TEXT — PERMANENT FIX
-   Applies to every dark background section sitewide
-   ═══════════════════════════════════════════════ */
-/* Target dark navy backgrounds */
-[style*="000814"] *,
-[style*="background: #000"] *,
-[style*="background:#000"] * {
-  color: inherit;
-}
-/* Big stat numbers on dark backgrounds */
-[style*="000814"] p:not([style*="color"]),
-[style*="000814"] span:not([style*="color"]) {
-  color: rgba(255, 255, 255, 0.85) !important;
-}
-/* Override any inline grey colors on dark sections */
-[style*="000814"] [style*="color: #9C"],
-[style*="000814"] [style*="color:#9C"],
-[style*="000814"] [style*="color: #AA"],
-[style*="000814"] [style*="color:#AA"],
-[style*="000814"] [style*="color: rgba(255,255,255,0.4"],
-[style*="000814"] [style*="color: rgba(255,255,255,0.5"],
-[style*="000814"] [style*="color: rgba(255,255,255,0.6"] {
+/* ═══════════════════════════════════════════
+   ZUUZ — FINAL DARK SECTION TEXT FIX
+   Uses !important to override all inline styles
+   ═══════════════════════════════════════════ */
+section[style*="000814"] p,
+section[style*="000814"] span,
+div[style*="000814"] p,
+div[style*="000814"] span {
   color: rgba(255, 255, 255, 0.88) !important;
 }
-/* Stats banner specific — force white */
-.stats-section *,
-.stats-banner * {
-  color: white !important;
+section[style*="000814"] h1,
+section[style*="000814"] h2,
+section[style*="000814"] h3,
+div[style*="000814"] h1,
+div[style*="000814"] h2,
+div[style*="000814"] h3 {
+  color: #ffffff !important;
 }
-
-/* ═══════════════════════════════════════
-   ZUUZ — DARK SECTION VISIBILITY (FINAL)
-   ═══════════════════════════════════════ */
-[style*="background: #000814"] p,
-[style*="background:#000814"] p { color: rgba(255,255,255,0.88) !important; }
-[style*="background: #000814"] h1,
-[style*="background: #000814"] h2,
-[style*="background: #000814"] h3,
-[style*="background:#000814"] h1,
-[style*="background:#000814"] h2,
-[style*="background:#000814"] h3 { color: #FFFFFF !important; }
-[style*="background: #000814"] span,
-[style*="background:#000814"] span { color: rgba(255,255,255,0.88) !important; }
+section[style*="0C111D"] p,
+div[style*="0C111D"] p {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+section[style*="0C111D"] h2,
+section[style*="0C111D"] span {
+  color: #ffffff !important;
+}
