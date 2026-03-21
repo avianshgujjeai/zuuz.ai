@@ -75,21 +75,3 @@ export function StatsBanner() {
     </section>
   );
 }
-```
-
----
-
-## CHANGE 3: ARCHDAGRAM — Fix overlay bleeding
-
-After reading ArchDiagram.tsx, find where the stage overlay panels are defined. They are dark-colored divs that show/hide to reveal only the active stage column on the image.
-
-**The exact problem**: The overlay panels use a dark background color (likely `#000814`, `#F5F6FF`, or similar) BUT they may not be inside the `overflow:hidden` container — or their background color is dark enough to visually merge with the page's dark sections, making people think text elsewhere is invisible.
-
-**Fix A**: Find EVERY overlay panel div (there should be 2 — one covering left columns, one covering right columns of the image). Their background color must EXACTLY match the section background: `"#F5F6FF"`. If they are currently any other color, change them to `"#F5F6FF"`.
-
-**Fix B**: Ensure the container that wraps BOTH the `<img>` AND the overlay panels has:
-```
-position: "relative"
-overflow: "hidden"  ← CRITICAL: clips overlays to image bounds
-borderRadius: "16px"
-isolation: "isolate"  ← ADD THIS: creates new stacking context
