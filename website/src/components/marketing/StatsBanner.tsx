@@ -39,7 +39,7 @@ function AnimatedNumber({
       ? display.toFixed(1)
       : Math.round(display).toLocaleString();
   return (
-    <span style={{ color: "#FFFFFF", fontFamily: F }}>
+    <span suppressHydrationWarning style={{ color: "#FFFFFF", fontFamily: F }}>
       {formatted}
       {suffix}
     </span>
@@ -127,7 +127,7 @@ export function StatsBanner() {
               style={{
                 fontSize: 13,
                 fontWeight: 400,
-                color: "rgba(255,255,255,0.72)",
+                color: "rgba(255,255,255,0.88)",
                 fontFamily: F,
                 margin: 0,
                 lineHeight: 1.5,

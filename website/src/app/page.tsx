@@ -549,7 +549,7 @@ export default function HomePage() {
               <Eyebrow light>Architecture</Eyebrow>
               <h2 style={{ color: "#fff", marginBottom: 18 }}>
                 Signal in. Decision out.{" "}
-                <span style={{ color: "rgba(255,255,255,0.65)" }}>Audit logged.</span>
+                <span style={{ color: "rgba(255,255,255,0.88)" }}>Audit logged.</span>
               </h2>
               <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", lineHeight: 1.75, marginBottom: 28, fontFamily: "Montserrat, sans-serif" }}>
                 ZUUZ sits between your data and your systems of action. It assembles
@@ -848,7 +848,7 @@ export default function HomePage() {
             <div style={{ position: "relative", textAlign: "center", maxWidth: 640, margin: "0 auto" }}>
               <h2 style={{ color: "#fff", marginBottom: 14 }}>
                 Bring your workflows.{" "}
-                <span style={{ color: "rgba(255,255,255,0.65)" }}>We&apos;ll make them run themselves.</span>
+                <span style={{ color: "rgba(255,255,255,0.88)" }}>We&apos;ll make them run themselves.</span>
               </h2>
               <p style={{
                 fontSize: 17, color: "rgba(255,255,255,0.85)", lineHeight: 1.75, marginBottom: 40,

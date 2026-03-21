@@ -156,7 +156,7 @@ export function VideoDemo() {
       <p style={{
         textAlign: "center",
         fontSize: 12,
-        color: "rgba(255,255,255,0.25)",
+        color: "rgba(255,255,255,0.75)",
         fontFamily: "Montserrat, sans-serif",
         marginTop: 12,
       }}>
