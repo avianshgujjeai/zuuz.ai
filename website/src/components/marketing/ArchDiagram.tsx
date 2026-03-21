@@ -66,7 +66,7 @@ export function ArchDiagram() {
             alt="ZUUZ Architecture Diagram"
             onLoad={() => setImgLoaded(true)}
             onError={() => setImgError(true)}
-            style={{ width:"100%", display:"block", borderRadius:16, opacity: imgLoaded ? 1 : 0, transition:"opacity 0.3s" }}
+            style={{ width:"100%", display:"block", borderRadius:16, opacity: 1 }}
           />
         )}
         {imgLoaded && !imgError && (
