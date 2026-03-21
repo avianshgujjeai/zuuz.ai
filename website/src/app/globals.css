@@ -684,28 +684,15 @@ header nav a {
 }
 
 /* ═══════════════════════════════════════════
-   ZUUZ — FINAL DARK SECTION TEXT FIX
-   Uses !important to override all inline styles
+   ZUUZ — STATS BANNER TEXT (scoped to class only)
+   Targets only the StatsBanner component
    ═══════════════════════════════════════════ */
-section[style*="000814"] p,
-section[style*="000814"] span,
-div[style*="000814"] p,
-div[style*="000814"] span {
+section.stats-banner p,
+section.stats-banner span {
   color: rgba(255, 255, 255, 0.88) !important;
 }
-section[style*="000814"] h1,
-section[style*="000814"] h2,
-section[style*="000814"] h3,
-div[style*="000814"] h1,
-div[style*="000814"] h2,
-div[style*="000814"] h3 {
-  color: #ffffff !important;
-}
-section[style*="0C111D"] p,
-div[style*="0C111D"] p {
-  color: rgba(255, 255, 255, 0.88) !important;
-}
-section[style*="0C111D"] h2,
-section[style*="0C111D"] span {
+section.stats-banner h1,
+section.stats-banner h2,
+section.stats-banner h3 {
   color: #ffffff !important;
 }
