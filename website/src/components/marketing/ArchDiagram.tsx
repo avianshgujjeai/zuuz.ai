@@ -37,23 +37,19 @@ export function ArchDiagram() {
         ))}
       </div>
       {/* Image + overlay container */}
-      <div style={{
-        position: "relative",
-        borderRadius: "16px",
-        overflow: "hidden",
-        background: "#F5F6FF",
-        width: "100%",
-      }}>
+      <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "#F5F6FF", width: "100%" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/arch-diagram.png"
           alt="ZUUZ Architecture Diagram"
           style={{
+            display: "block",
             width: "500%",
             maxWidth: "none",
-            display: "block",
             transform: `translateX(-${active * 20}%)`,
-            transition: "transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)",
+            transition: "transform 0.5s ease",
+            borderRadius: 0,
+            opacity: 1,
           }}
         />
       </div>
