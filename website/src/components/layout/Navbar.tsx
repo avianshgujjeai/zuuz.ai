@@ -135,12 +135,12 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
       border: "1px solid #E8E8EE",
       borderRadius: 14,
       boxShadow: "0 16px 48px rgba(0,0,0,0.11), 0 4px 16px rgba(0,0,0,0.06)",
-      padding: "12px 16px",
+      padding: "10px 12px",
       minWidth: totalItems > 5 ? 520 : 200,
       zIndex: 100,
       display: "grid",
       gridTemplateColumns: groups.length > 1 ? `repeat(${groups.length}, 1fr)` : "1fr",
-      gap: 16,
+      gap: 12,
     }}>
       {groups.map((g, gi) => (
         <div key={gi}>
@@ -148,12 +148,12 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
             <p style={{
               fontSize: 9,
               fontWeight: 700,
-              letterSpacing: "0.12em",
+              letterSpacing: "0.14em",
               textTransform: "uppercase",
               color: "#AAAAAA",
               fontFamily: F,
               marginBottom: 8,
-              paddingBottom: 6,
+              paddingBottom: 4,
               borderBottom: "1px solid #F0F0F5",
             }}>{g.heading}</p>
           )}
@@ -164,7 +164,7 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
                 href={item.href}
                 style={{
                   display: "block",
-                  padding: "5px 8px",
+                  padding: "3px 6px",
                   borderRadius: 6,
                   textDecoration: "none",
                   transition: "background 0.15s ease",
@@ -173,21 +173,21 @@ function DropdownPanel({ groups }: { groups: DropGroup[] }) {
                 onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
               >
                 <p style={{
-                  fontSize: 12,
+                  fontSize: 11,
                   fontWeight: 600,
                   color: "#111111",
                   fontFamily: F,
-                  marginBottom: 3,
+                  marginBottom: 1,
                   lineHeight: 1.3,
-                  margin: "0 0 3px",
+                  margin: "0 0 1px",
                 }}>
                   {item.label}
                 </p>
                 <p style={{
-                  fontSize: 11,
+                  fontSize: 10,
                   color: "#666666",
                   fontFamily: F,
-                  lineHeight: 1.5,
+                  lineHeight: 1.3,
                   margin: 0,
                 }}>
                   {item.desc}

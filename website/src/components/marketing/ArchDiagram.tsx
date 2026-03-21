@@ -71,21 +71,23 @@ export function ArchDiagram() {
         )}
         {imgLoaded && !imgError && (
           <>
-            {/* LEFT dark panel */}
+            {/* LEFT overlay panel */}
             <div style={{
               position: "absolute",
               top: 0, bottom: 0, left: 0,
               width: pos.left,
-              background: "rgba(0,0,0,0.72)",
+              background: "#F5F6FF",
+              zIndex: 2,
               pointerEvents: "none",
               transition: "width 0.55s cubic-bezier(0.4,0,0.2,1)",
             }}/>
-            {/* RIGHT dark panel */}
+            {/* RIGHT overlay panel */}
             <div style={{
               position: "absolute",
               top: 0, bottom: 0, right: 0,
               width: `calc(100% - ${pos.left} - ${pos.width})`,
-              background: "rgba(0,0,0,0.72)",
+              background: "#F5F6FF",
+              zIndex: 2,
               pointerEvents: "none",
               transition: "width 0.55s cubic-bezier(0.4,0,0.2,1)",
             }}/>
