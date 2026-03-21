@@ -37,21 +37,48 @@ export function ArchDiagram() {
         ))}
       </div>
       {/* Image + overlay container */}
-      <div style={{ position: "relative", borderRadius: "16px", overflow: "hidden", background: "#F5F6FF", width: "100%" }}>
+      <div style={{
+        position: "relative",
+        borderRadius: "16px",
+        overflow: "hidden",
+        isolation: "isolate",
+        background: "#F5F6FF",
+        width: "100%",
+      }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/arch-diagram.png"
           alt="ZUUZ Architecture Diagram"
           style={{
+            width: "100%",
             display: "block",
-            width: "500%",
-            maxWidth: "none",
-            transform: `translateX(-${active * 20}%)`,
-            transition: "transform 0.5s ease",
-            borderRadius: 0,
             opacity: 1,
           }}
         />
+        {/* Left overlay — hides stages to the left of active */}
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: `${active * 20}%`,
+          height: "100%",
+          background: "#F5F6FF",
+          transition: "width 0.4s ease",
+          zIndex: 2,
+          pointerEvents: "none",
+        }} />
+        {/* Right overlay — hides stages to the right of active */}
+        <div style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: `${(4 - active) * 20}%`,
+          height: "100%",
+          background: "#F5F6FF",
+          transition: "width 0.4s ease",
+          zIndex: 2,
+          pointerEvents: "none",
+        }} />
       </div>
       {/* Stage description */}
       <div style={{ marginTop:16, padding:"16px 20px", background:"#EEF2FF", borderRadius:12, border:"1px solid #C7D2FE", display:"flex", alignItems:"center", gap:14 }}>
