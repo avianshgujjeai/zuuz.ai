@@ -10,23 +10,59 @@ import { ChatBot } from "@/components/marketing/ChatBot";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.zuuz.ai"),
   title: {
-    default: "ZUUZ — The Execution Layer for Enterprise Work",
+    default: "ZUUZ | Agentic AI Platform for Enterprise Workflow Automation",
     template: "%s | ZUUZ",
   },
   description:
-    "ZUUZ connects email, documents, meetings, CRM, ERP, and ITSM. It assembles evidence, routes approvals through policy, and safely writes back to systems of record.",
+    "ZUUZ is the enterprise agentic AI execution layer — connecting 200+ systems, routing decisions through policy, and automating workflows for Sales, HR, IT, Finance, Legal, and Ops teams. SOC 2 Type I certified.",
+  keywords: [
+    "agentic AI platform",
+    "enterprise AI automation",
+    "AI workflow automation",
+    "enterprise copilot",
+    "AI agents for business",
+    "enterprise process automation",
+    "agentic AI execution layer",
+    "audit trail AI",
+    "policy-aware AI",
+  ],
   icons: {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
     siteName: "ZUUZ",
-    title: "ZUUZ — The Execution Layer for Enterprise Work",
+    title: "ZUUZ | Agentic AI Platform for Enterprise Workflow Automation",
     description:
-      "Persona Copilots, Execution Flows, and Evidence Search — one platform for enterprise operations.",
+      "Enterprise AI that gets work done — AI agents, execution flows, and evidence search for every operational team.",
+    url: "https://www.zuuz.ai",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "ZUUZ — Agentic AI Execution Layer for Enterprise",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@zuuz_ai",
+    title: "ZUUZ | Agentic AI for Enterprise",
+    description:
+      "Agentic AI execution layer — 200+ connectors, policy-enforced workflows, full audit trail.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large" },
+  },
+  alternates: {
+    canonical: "https://www.zuuz.ai",
   },
 };
 

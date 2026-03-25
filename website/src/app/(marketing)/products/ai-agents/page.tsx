@@ -11,9 +11,10 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { agents } from "@/content/agents";
 
 export const metadata: Metadata = {
-  title: "AI Agents — ZUUZ",
+  title: "Enterprise AI Agents — Persona Copilots for Every Team",
   description:
-    "Purpose-built AI agents that handle complete jobs across your enterprise tools. Not chatbots—agents that listen, decide, and act with human oversight.",
+    "ZUUZ Persona Copilots are purpose-built AI agents for Sales, HR, IT, Finance, Legal, and Ops — each one handles a complete job, not just a chat response.",
+  alternates: { canonical: "https://www.zuuz.ai/products/ai-agents" },
 };
 
 const howColumns = [

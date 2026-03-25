@@ -29,7 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { industry } = await params;
   const sol = getSolution(industry);
   if (!sol) return {};
-  return { title: sol.meta.title, description: sol.meta.description };
+  return {
+    title: sol.meta.title,
+    description: sol.meta.description,
+    alternates: { canonical: `https://www.zuuz.ai/solutions/${industry}` },
+  };
 }
 
 function getIcon(name: string): LucideIcon {

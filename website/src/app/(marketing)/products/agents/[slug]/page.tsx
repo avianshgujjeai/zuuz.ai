@@ -33,7 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const agent = getAgent(slug);
   if (!agent) return {};
-  return { title: agent.meta.title, description: agent.meta.description };
+  return {
+    title: agent.meta.title,
+    description: agent.meta.description,
+    alternates: { canonical: `https://www.zuuz.ai/products/agents/${slug}` },
+  };
 }
 
 export default async function AgentDetailPage({ params }: Props) {
