@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { MotionProvider } from "@/components/motion/motion-provider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/footer";
@@ -75,6 +76,86 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
           rel="stylesheet"
+        />
+        <Script
+          id="schema-org"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.zuuz.ai/#organization",
+                  "name": "ZUUZ",
+                  "url": "https://www.zuuz.ai",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.zuuz.ai/logo.png",
+                    "width": 200,
+                    "height": 60
+                  },
+                  "description": "ZUUZ is the enterprise agentic AI execution layer — connecting to 200+ systems, assembling full context, routing decisions through policy, and executing every action with identity verification and immutable audit trails.",
+                  "foundingDate": "2023",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "440 N Wolfe Rd",
+                    "addressLocality": "Sunnyvale",
+                    "addressRegion": "CA",
+                    "postalCode": "94085",
+                    "addressCountry": "US"
+                  },
+                  "sameAs": [
+                    "https://linkedin.com/company/zuuz-ai",
+                    "https://twitter.com/zuuz_ai"
+                  ],
+                  "contactPoint": {
+                    "@type": "ContactPoint",
+                    "contactType": "sales",
+                    "url": "https://www.zuuz.ai/about/contact"
+                  }
+                },
+                {
+                  "@type": "SoftwareApplication",
+                  "@id": "https://www.zuuz.ai/#product",
+                  "name": "ZUUZ",
+                  "applicationCategory": "BusinessApplication",
+                  "operatingSystem": "Web",
+                  "url": "https://www.zuuz.ai",
+                  "publisher": { "@id": "https://www.zuuz.ai/#organization" },
+                  "description": "Agentic AI execution layer for enterprise workflow automation. ZUUZ connects to 200+ enterprise systems, assembles context packs, routes decisions through approval policy, and executes actions with full audit trail coverage. SOC 2 Type I certified.",
+                  "featureList": [
+                    "Persona Copilots for Sales, HR, IT, Finance, Legal, Procurement, Support, Analytics",
+                    "Execution Flows — policy-enforced multi-step workflow automation",
+                    "Evidence Search — permission-safe cross-system enterprise search",
+                    "Context Pack assembly from 200+ connected systems",
+                    "Intelligent approval routing with configurable policy gates",
+                    "Immutable audit trail on every decision and action",
+                    "SOC 2 Type I certified",
+                    "SAML 2.0 / SSO enterprise identity federation",
+                    "Safe Write Back with identity-verified execution"
+                  ],
+                  "offers": {
+                    "@type": "Offer",
+                    "url": "https://www.zuuz.ai/about/contact"
+                  }
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.zuuz.ai/#website",
+                  "url": "https://www.zuuz.ai",
+                  "name": "ZUUZ",
+                  "description": "Agentic AI Platform for Enterprise Workflow Automation",
+                  "publisher": { "@id": "https://www.zuuz.ai/#organization" },
+                  "potentialAction": {
+                    "@type": "SearchAction",
+                    "target": "https://www.zuuz.ai/resources?q={search_term_string}",
+                    "query-input": "required name=search_term_string"
+                  }
+                }
+              ]
+            })
+          }}
         />
       </head>
       <body style={{ minHeight: "100vh", overflowX: "hidden" }}>

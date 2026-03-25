@@ -10,6 +10,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardTitle, CardDescription } from "@/components/ui/card";
+import Script from "next/script";
 import { CTA } from "@/components/ui/cta";
 import { FadeIn } from "@/components/ui/fade-in";
 
@@ -98,18 +99,34 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
-      <script
+      <Script
+        id="schema-article"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Article",
-            headline: post.title,
-            description: post.description,
-            datePublished: post.date,
-            author: { "@type": "Organization", name: "ZUUZ" },
-            publisher: { "@type": "Organization", name: "ZUUZ", url: "https://www.zuuz.ai" },
-            url: `https://www.zuuz.ai/resources/blog/${slug}`,
+            "headline": post.title,
+            "description": post.description,
+            "datePublished": post.date,
+            "dateModified": post.date,
+            "author": {
+              "@type": "Organization",
+              "name": "ZUUZ",
+              "url": "https://www.zuuz.ai"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "ZUUZ",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.zuuz.ai/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://www.zuuz.ai/resources/blog/${slug}`
+            }
           }),
         }}
       />

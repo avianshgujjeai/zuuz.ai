@@ -67,6 +67,11 @@ export default async function ContextPackPage({ params }: Props) {
                 ))}
               </ul>
 
+              <div className="mt-10 rounded-xl border border-border bg-card p-6">
+                <h2 className="text-base font-semibold text-foreground mb-3">{item.expandedContent.heading}</h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.expandedContent.body}</p>
+              </div>
+
               <div className="mt-8 rounded-xl border border-dashed border-border bg-muted/30 p-6 text-center">
                 <Download className="h-6 w-6 text-muted-foreground/40 mx-auto mb-2" />
                 <p className="text-sm text-muted-foreground mb-1">Sample PDF</p>

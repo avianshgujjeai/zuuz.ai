@@ -14,12 +14,12 @@ interface CTAProps {
 }
 
 export function CTA({
-  title = "CTA headline placeholder",
-  description = "1–2 sentence CTA description placeholder.",
-  primaryLabel = "Primary action",
+  title = "See ZUUZ in Action — Book a 20-Minute Demo",
+  description = "Bring your messiest approval workflow. We'll show you what ZUUZ changes in the first two weeks.",
+  primaryLabel = "Request a demo →",
   primaryHref = "/about/contact",
-  secondaryLabel = "Secondary action",
-  secondaryHref = "/about/contact",
+  secondaryLabel = "Explore the Platform",
+  secondaryHref = "/products/ai-agents",
   className,
 }: CTAProps) {
   return (

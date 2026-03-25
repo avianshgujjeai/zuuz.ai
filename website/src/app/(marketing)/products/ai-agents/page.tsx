@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Link from "next/link";
 import { ArrowRight, Ear, BrainCircuit, Zap, Clock } from "lucide-react";
 import { Container } from "@/components/ui/container";
@@ -156,6 +157,22 @@ export default function AIAgentsPage() {
         secondaryLabel="See Workflows"
         secondaryHref="/products/workflows"
       />
+      <Script id="schema-faq-agents" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are ZUUZ Persona Copilots?",
+            "acceptedAnswer": { "@type": "Answer", "text": "ZUUZ Persona Copilots are purpose-built AI agents for specific enterprise roles — Deal Desk, HR Ops, IT Service, Contract Review, AP/AR, Procurement, Customer Support, and Analytics. Unlike generic AI chatbots, each Persona Copilot handles a complete job end-to-end: assembling context, routing approvals, and writing back to systems of record." }
+          },
+          {
+            "@type": "Question",
+            "name": "How is an AI agent different from a chatbot?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A chatbot responds when asked. An AI agent acts autonomously — monitoring signals, assembling context, making policy-aware decisions, and executing tasks without requiring human attention for every step. ZUUZ AI agents are scoped to specific business functions and operate with full audit trail coverage." }
+          }
+        ]
+      })}} />
     </>
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import Link from "next/link";
 import { Lock, ShieldCheck, FileCheck, Zap } from "lucide-react";
 import { Container } from "@/components/ui/container";
@@ -148,6 +149,22 @@ export default function UnifiedSearchPage() {
         secondaryLabel="See Workflows"
         secondaryHref="/products/workflows"
       />
+      <Script id="schema-faq-search" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is enterprise AI search?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Enterprise AI search allows employees to ask questions in plain language and get answers drawn from all connected systems — ERP, CRM, documents, emails, and tickets — with permission-safe filtering so users only see data they're authorized to access. ZUUZ Evidence Search adds source citations and evidence links to every answer." }
+          },
+          {
+            "@type": "Question",
+            "name": "What makes ZUUZ Evidence Search different from other enterprise search tools?",
+            "acceptedAnswer": { "@type": "Answer", "text": "ZUUZ Evidence Search is permission-aware by design — every answer respects source-system access controls. It provides evidence-grounded responses with citations and source links, not just keyword results. It searches across 200+ connected enterprise systems simultaneously and can be used directly within approval workflows." }
+          }
+        ]
+      })}} />
     </>
   );
 }
