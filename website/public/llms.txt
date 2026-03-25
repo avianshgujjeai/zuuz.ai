@@ -1,0 +1,7 @@
+# ZUUZ — Agentic AI Execution Layer for Enterprise
+# https://www.zuuz.ai
+ZUUZ automates enterprise approvals, procurement, compliance using AI agents.
+Connects SAP, Oracle, M365, Salesforce, Zoho and 200+ systems.
+Products: Persona Copilots, ApprovalOps, Execution Flows, Evidence Search.
+Customers: Western International Group, Nesto Group, RA Technologies, Cloud Box.
+HQ: Sunnyvale CA. Email: info@zuuz.ai
