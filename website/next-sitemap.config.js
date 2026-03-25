@@ -1,39 +1,18 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://www.zuuz.ai',
-  generateRobotsTxt: false, // we have a static one
+  generateRobotsTxt: false,
   exclude: ['/api/*', '/app/*'],
-  changefreq: 'weekly',
+  changefreq: 'monthly',
   priority: 0.7,
-  sitemapSize: 5000,
-  additionalPaths: async (config) => [
-    await config.transform(config, '/'),
-    await config.transform(config, '/products/ai-agents'),
-    await config.transform(config, '/products/workflows'),
-    await config.transform(config, '/products/unified-search'),
-    await config.transform(config, '/solutions/it-services'),
-    await config.transform(config, '/solutions/financial-services'),
-    await config.transform(config, '/solutions/healthcare'),
-    await config.transform(config, '/solutions/distribution'),
-    await config.transform(config, '/solutions/manufacturing'),
-    await config.transform(config, '/solutions/professional-services'),
-    await config.transform(config, '/solutions/retail'),
-    await config.transform(config, '/solutions/insurance'),
-    await config.transform(config, '/products/agents/deal-desk'),
-    await config.transform(config, '/products/agents/hr-ops'),
-    await config.transform(config, '/products/agents/it-service'),
-    await config.transform(config, '/products/agents/contract-review'),
-    await config.transform(config, '/products/agents/ap-ar'),
-    await config.transform(config, '/products/agents/procurement'),
-    await config.transform(config, '/products/agents/support'),
-    await config.transform(config, '/products/agents/analytics'),
-    await config.transform(config, '/customers'),
-    await config.transform(config, '/resources'),
-    await config.transform(config, '/about/our-story'),
-    await config.transform(config, '/about/careers'),
-    await config.transform(config, '/about/trust-security'),
-    await config.transform(config, '/about/contact'),
-    await config.transform(config, '/privacy'),
-    await config.transform(config, '/terms'),
-  ],
+  transform: async (config, path) => {
+    // Homepage — highest priority
+    if (path === '/') return { loc: path, changefreq: 'weekly', priority: 1.0, lastmod: new Date().toISOString() }
+    // Core product and solution pages
+    if (path.startsWith('/products/') || path.startsWith('/solutions/')) return { loc: path, changefreq: 'weekly', priority: 0.9, lastmod: new Date().toISOString() }
+    // Blog and resources
+    if (path.startsWith('/resources/')) return { loc: path, changefreq: 'monthly', priority: 0.8, lastmod: new Date().toISOString() }
+    // Default
+    return { loc: path, changefreq: 'monthly', priority: 0.7, lastmod: new Date().toISOString() }
+  },
 }

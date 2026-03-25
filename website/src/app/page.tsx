@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Script from "next/script";
 import { SignalTower } from "@/components/marketing/SignalTower";
 import { ArchDiagram } from "@/components/marketing/ArchDiagram";
 import { LogoMarquee } from "@/components/marketing/LogoMarquee";
@@ -269,6 +270,66 @@ const INDUSTRIES = [
 export default function HomePage() {
   return (
     <>
+      <Script
+        id="schema-faq-home"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is ZUUZ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ZUUZ is an agentic AI execution layer for enterprise operations. It connects to 200+ enterprise systems — ERP, CRM, email, documents, ITSM, and more — assembles full context packs, routes decisions through organizational approval policy, and executes actions with every step identity-verified and audit-logged."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is a Context Pack in ZUUZ?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "A Context Pack is ZUUZ's proprietary method of assembling all relevant data for a decision — contract terms, budget figures, prior approvals, risk flags, email threads, and stakeholder history — into a single decision-ready brief before routing it for approval. This eliminates manual context gathering and speeds up decision cycles by up to 3x."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Intelligent Approval AI?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Intelligent Approval AI refers to AI systems that can route business decisions through the correct approval chain automatically — based on organizational policy, deal size, risk level, and stakeholder roles — without manual intervention. ZUUZ's Execution Flows implement intelligent approval routing across Sales, Finance, Procurement, HR, Legal, and IT operations."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does ZUUZ differ from Microsoft Copilot or ChatGPT?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Unlike general-purpose AI assistants, ZUUZ is purpose-built for enterprise execution. It doesn't just answer questions — it connects to your systems, assembles context, enforces your approval policies, writes back to systems of record, and logs every action with an immutable audit trail. Every action is identity-verified and permission-checked."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is ZUUZ SOC 2 certified?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. ZUUZ is SOC 2 Type I certified with independently audited security controls. It supports SAML 2.0 / SSO for enterprise identity federation, role-based access control, and can be deployed on-premises for organizations with strict data residency requirements."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What enterprise systems does ZUUZ connect to?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "ZUUZ connects to 200+ enterprise systems including SAP, Oracle, Salesforce, HubSpot, Zoho, Microsoft Teams, Slack, Jira, ServiceNow, Google Workspace, Microsoft 365, Workday, Zoom, Monday.com, Zapier, Airtable, Box, Dropbox, and more."
+                }
+              }
+            ]
+          })
+        }}
+      />
       {/* ═══ 1. HERO ════════════════════════════════════════ */}
       <section
         style={{
