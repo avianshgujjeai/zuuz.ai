@@ -12,9 +12,10 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { FlowAnimator } from "@/components/sections/flow-animator";
 
 export const metadata: Metadata = {
-  title: "Workflows — ZUUZ",
+  title: "AI Execution Flows — Policy-Enforced Enterprise Workflow Automation",
   description:
-    "Turn your existing processes into executable workflows. ZUUZ imports, maps, automates, and governs—without forcing you to rebuild.",
+    "ZUUZ Execution Flows automate multi-step enterprise workflows — enforcing policy, routing approvals, and writing back to your systems of record with full audit trails.",
+  alternates: { canonical: "https://www.zuuz.ai/products/workflows" },
 };
 
 const intakeSteps = [

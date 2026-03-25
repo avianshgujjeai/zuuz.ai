@@ -49,7 +49,7 @@ export const agents: Agent[] = [
     inputs: ["CRM (Salesforce, HubSpot)", "Email (Gmail, Outlook)", "Calendar", "Meeting transcripts", "Slack/Teams messages"],
     outputs: ["Updated deal records", "Follow-up drafts", "Risk alerts", "Pipeline reports", "QBR decks"],
     controls: ["Manager approval for stage changes", "Editable drafts before send", "Full audit trail per deal", "Role-based CRM field access"],
-    meta: { title: "Sales AI Agent — ZUUZ", description: "Automate pipeline hygiene, follow-ups, and CRM updates. Keep your forecast grounded in real activity." },
+    meta: { title: "AI Deal Desk Copilot — Faster Quote Cycles & Deal Approvals", description: "ZUUZ Deal Desk Copilot auto-assembles deal summaries, flags risks, and routes approvals — delivering 3x faster quote cycles for sales teams." },
   },
   {
     slug: "procurement",
@@ -78,7 +78,7 @@ export const agents: Agent[] = [
     inputs: ["ERP (SAP, Oracle, NetSuite)", "Intake forms", "Vendor databases", "Contract repositories", "Email"],
     outputs: ["Validated requests", "Vendor comparisons", "Purchase orders", "Budget reports", "SLA dashboards"],
     controls: ["Spend-tier approval gates", "Contract compliance checks", "Audit trail per purchase", "Role-based spending limits"],
-    meta: { title: "Procurement AI Agent — ZUUZ", description: "Automate procurement from intake to PO. Validate, compare, route, and generate—without the bottleneck." },
+    meta: { title: "AI Procurement Copilot — Vendor Evaluation & PO Tracking Automation", description: "ZUUZ Procurement Copilot evaluates vendors, tracks POs, and enforces policy gates — reducing procurement cycle time by 40%." },
   },
   {
     slug: "email",
@@ -195,7 +195,7 @@ export const agents: Agent[] = [
     inputs: ["HRIS (Workday, BambooHR, ADP)", "IT ticketing", "Email", "Slack/Teams", "Knowledge base"],
     outputs: ["Onboarding/offboarding checklists", "Policy answers", "Leave approvals", "Benefits guidance", "Compliance reports"],
     controls: ["Manager approval chains", "Policy version enforcement", "Sensitive data access controls", "Full audit trail for compliance"],
-    meta: { title: "HR AI Agent — ZUUZ", description: "Automate onboarding, policy Q&A, leave workflows, and more. Scale HR without scaling headcount." },
+    meta: { title: "AI HR Copilot — Onboarding, Policy & Offboarding Automation", description: "ZUUZ HR Ops Copilot handles onboarding workflows, policy queries, and offboarding — deflecting 80% of HR tickets automatically." },
   },
   {
     slug: "legal",
@@ -225,7 +225,7 @@ export const agents: Agent[] = [
     inputs: ["Contract repositories", "Playbook/clause library", "Email", "CLM systems", "E-signature platforms (DocuSign, Adobe Sign)"],
     outputs: ["Risk assessments", "Deviation reports", "Approval workflows", "Signature-ready documents", "Obligation trackers"],
     controls: ["Playbook-first enforcement", "Counsel approval gates", "Privileged information handling", "Immutable audit trail"],
-    meta: { title: "Legal AI Agent — ZUUZ", description: "Accelerate contract review cycles. Automate intake, playbook compliance, and approval routing." },
+    meta: { title: "AI Contract Review Copilot — Surface Terms, Flag Renewals, Route Approvals", description: "ZUUZ Contract Copilot surfaces contract terms, flags upcoming renewals, and routes for approval — 90% faster than manual contract review." },
   },
   {
     slug: "logistics",

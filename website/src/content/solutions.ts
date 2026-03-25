@@ -68,7 +68,7 @@ export const solutions: SolutionData[] = [
     contextPackChips: ["SOW clauses", "SLA impact", "Delivery risk", "Budget authorization", "Prior approvals", "Customer comms"],
     metrics: [],
     searchExamples: ["What's the SLA impact of this scope change?", "Who approved the last staffing request for Project Atlas?", "Find the SOW amendment for Acme Corp Q3"],
-    meta: { title: "ZUUZ for IT Services", description: "Turn approvals into delivery velocity. Change requests, exceptions, and follow-through in one governed system." },
+    meta: { title: "AI Workflow Automation for IT Services Teams", description: "ZUUZ automates IT approvals, change requests, incident triage, and vendor onboarding — every decision context-packed, policy-enforced, and audit-logged." },
   },
   {
     slug: "distribution",
@@ -100,7 +100,7 @@ export const solutions: SolutionData[] = [
     contextPackChips: ["Inventory position", "OTIF risk", "Customer priority", "Margin impact", "Prior exceptions", "Demand forecast"],
     metrics: [],
     searchExamples: ["What's the current stock level for SKU-4521?", "Show me price exceptions approved for Tier 1 customers this quarter", "Find delayed shipments for the East region"],
-    meta: { title: "ZUUZ for Distribution", description: "Move faster on POs, pricing exceptions, and fulfillment. Approvals with full context — inventory, margins, and compliance." },
+    meta: { title: "AI Order Management & Logistics Workflow Automation", description: "ZUUZ automates order management, supplier approvals, and logistics ops for distribution businesses — context-aware, policy-enforced." },
   },
   {
     slug: "financial-services",
@@ -124,7 +124,7 @@ export const solutions: SolutionData[] = [
       { value: "100%", label: "Audit coverage", source: "Based on PDF: ZUUZ For Finance" },
     ],
     searchExamples: ["What's our current exposure to vendor X?", "Find all policy exceptions approved this quarter", "Show me the compliance review status for the Q4 filing"],
-    meta: { title: "ZUUZ for Financial Services", description: "Compliance-first approvals and operations. Evidence-backed decisions with complete audit trails." },
+    meta: { title: "AI Compliance & Audit Workflow Automation for Financial Services", description: "ZUUZ enforces compliance workflows, automates audit trails, and routes risk decisions for financial services teams — SOC 2 Type I certified." },
   },
   {
     slug: "healthcare",
@@ -160,7 +160,7 @@ export const solutions: SolutionData[] = [
       { value: "90%", label: "Audit-readiness improvement", source: "Based on PDF: ZUUZ for Healthcare Operations" },
     ],
     searchExamples: ["What's the compliance status for supplier MedEquip Inc?", "Find the latest contract renewal for imaging services", "Show staffing exceptions approved in the last 30 days"],
-    meta: { title: "ZUUZ for Healthcare", description: "Medical procurement, vendor renewals, and staffing exceptions. Compliance built into every approval step." },
+    meta: { title: "Agentic AI for Healthcare Operations & Prior Authorization", description: "ZUUZ streamlines prior auth, care coordination workflows, and regulatory compliance for healthcare teams — with full audit coverage." },
   },
   {
     slug: "insurance",
@@ -180,7 +180,7 @@ export const solutions: SolutionData[] = [
     contextPackChips: ["FNOL details", "Coverage terms", "Prior claims", "Risk flags", "Adjuster notes", "Supporting documents"],
     metrics: [],
     searchExamples: ["What's the reserve status for claim #CL-78234?", "Find all fraud-flagged claims in the Southwest region", "Show me the coverage terms for policy #P-991024"],
-    meta: { title: "ZUUZ for Insurance", description: "Claims and policy exceptions routed with evidence. Faster resolution with complete audit trails." },
+    meta: { title: "AI Claims Processing & Underwriting Automation for Insurance", description: "ZUUZ automates claims processing, underwriting support workflows, and policy operations for insurance teams — audit-logged." },
   },
   {
     slug: "retail",
@@ -200,7 +200,7 @@ export const solutions: SolutionData[] = [
     contextPackChips: ["Margin impact", "Stock on hand", "Promo calendar", "Prior markdowns", "Vendor compliance", "Competitive pricing"],
     metrics: [],
     searchExamples: ["What's the sell-through rate for summer collection SKUs?", "Show me all vendor invoice exceptions above $5K this month", "Find the promo calendar conflict for the Labor Day campaign"],
-    meta: { title: "ZUUZ for Retail", description: "Price, promotions, and vendor approvals. Context-rich decisions that keep stores moving." },
+    meta: { title: "AI Inventory & Vendor Contract Automation for Retail", description: "ZUUZ automates inventory ops, vendor contracts, and returns workflows for retail operations teams." },
   },
   {
     slug: "logistics",
@@ -265,7 +265,7 @@ export const solutions: SolutionData[] = [
       { value: "4×", label: "Faster supplier cycles", source: "Based on PDF: ZUUZ for Manufacturing" },
     ],
     searchExamples: ["What's the OEE impact if we delay the MRO order?", "Find all supplier compliance expirations in the next 60 days", "Show me emergency procurement approvals for Line 3"],
-    meta: { title: "ZUUZ for Manufacturing", description: "Supplier onboarding, MRO spend, and urgent procurement. Compliance and audit at every step." },
+    meta: { title: "AI Quality Gates & Vendor Management for Manufacturing", description: "ZUUZ automates quality gates, production scheduling approvals, and vendor management for manufacturing operations." },
   },
 ];
 

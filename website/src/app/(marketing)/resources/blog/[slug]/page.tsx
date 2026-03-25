@@ -25,10 +25,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) return {};
-  return {
-    title: `${post.title} — ZUUZ Blog`,
+  const base: Metadata = {
+    title: post.title,
     description: post.description,
+    alternates: { canonical: `https://www.zuuz.ai/resources/blog/${slug}` },
+    openGraph: {
+      type: "article",
+      authors: ["ZUUZ"],
+      tags: post.tags,
+    },
   };
+  if (slug === "agentic-ai-explained") {
+    return {
+      ...base,
+      title: "Agentic AI Explained: What It Means for Enterprise Operations",
+      openGraph: {
+        ...base.openGraph,
+        type: "article",
+        publishedTime: "2026-02-15T00:00:00Z",
+        authors: ["ZUUZ"],
+        tags: ["Agentic AI", "Enterprise AI", "AI Automation"],
+      },
+    };
+  }
+  return base;
 }
 
 function readMdxBody(slug: string): string | null {
@@ -78,6 +98,21 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: post.title,
+            description: post.description,
+            datePublished: post.date,
+            author: { "@type": "Organization", name: "ZUUZ" },
+            publisher: { "@type": "Organization", name: "ZUUZ", url: "https://www.zuuz.ai" },
+            url: `https://www.zuuz.ai/resources/blog/${slug}`,
+          }),
+        }}
+      />
       <section className="relative overflow-hidden pt-12 pb-16 bg-hero-glow">
         <div className="absolute inset-0 bg-grid opacity-[0.3]" aria-hidden="true" />
         <Container className="relative">

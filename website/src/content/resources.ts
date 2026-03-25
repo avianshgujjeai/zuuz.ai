@@ -38,7 +38,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "agentic-ai-explained",
     title: "Agentic AI Explained: What It Means for Enterprise Operations",
-    description: "A clear breakdown of agentic AI — what it is, how it differs from copilots, and why enterprises care.",
+    description: "A clear breakdown of agentic AI — what it is, how it differs from copilots, why large language models make it possible now, and what enterprises should look for in an agentic AI platform.",
     date: "2026-02-15",
     tags: ["Agentic AI", "Enterprise AI"],
     readingTime: "7 min",

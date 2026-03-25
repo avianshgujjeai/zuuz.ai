@@ -12,9 +12,10 @@ import { FadeIn } from "@/components/ui/fade-in";
 import { EvidenceAnswerMock } from "@/components/sections/evidence-answer-mock";
 
 export const metadata: Metadata = {
-  title: "Unified Search — ZUUZ",
+  title: "Enterprise AI Search — Permission-Safe Evidence Search Across All Systems",
   description:
-    "One search across emails, docs, chats, tickets, and business records. Permission-aware results, source citations, and direct actions.",
+    "ZUUZ Evidence Search lets you ask questions in plain language and get permission-safe, evidence-grounded answers with citations and source links across 200+ enterprise systems.",
+  alternates: { canonical: "https://www.zuuz.ai/products/unified-search" },
 };
 
 const permissionFeatures = [
