@@ -59,31 +59,42 @@ export default function CustomersPage() {
           </div>
         </div>
       </section>
-      {/* STRATEGIC PARTNER */}
+      {/* TESTIMONIALS */}
       <section style={{padding:"72px 0",background:"#fff"}}>
         <div style={{maxWidth:1200,margin:"0 auto",padding:"0 24px"}}>
-          <div style={{textAlign:"center",marginBottom:40}}>
-            <p style={{fontSize:11,fontWeight:700,letterSpacing:"0.11em",textTransform:"uppercase",color:B,fontFamily:F,marginBottom:14}}>Strategic Partnership</p>
-            <h2 style={{marginBottom:14,fontFamily:F}}>Expanding across the US market</h2>
+          <div style={{textAlign:"center",marginBottom:48}}>
+            <p style={{fontSize:11,fontWeight:700,letterSpacing:"0.11em",textTransform:"uppercase",color:B,fontFamily:F,marginBottom:14}}>What Customers Say</p>
+            <h2 style={{fontFamily:F}}>In their own words.</h2>
           </div>
-          <div style={{maxWidth:680,margin:"0 auto",background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:20,padding:"48px 40px",textAlign:"center"}}>
-            <div style={{display:"inline-flex",alignItems:"center",gap:8,padding:"6px 16px",borderRadius:999,background:"#ECFDF5",border:"1px solid #A7F3D0",marginBottom:28}}>
-              <span style={{width:8,height:8,borderRadius:"50%",background:"#10B981",display:"inline-block"}}/>
-              <span style={{fontSize:11,fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",color:"#059669",fontFamily:F}}>Strategic Partner · Central USA</span>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:24}}>
+            <div style={{background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:16,padding:"36px 32px"}}>
+              <p style={{fontSize:17,lineHeight:1.75,color:"#111111",fontFamily:F,marginBottom:28}}>&ldquo;ZUUZ cut our contract review cycle by 60%. What used to take days of back-and-forth across email threads now routes, gets approved, and closes inside the same afternoon. The audit trail alone made our compliance team stop asking for manual reports.&rdquo;</p>
+              <div>
+                <p style={{fontSize:14,fontWeight:700,color:"#111111",fontFamily:F,marginBottom:2}}>CEO, Cloud Box Technologies LLC</p>
+                <p style={{fontSize:13,color:"#666666",fontFamily:F}}>IT Services &amp; Cloud · UAE</p>
+              </div>
             </div>
-            {/* Logo ONLY — no text name */}
-            <div style={{display:"flex",justifyContent:"center",marginBottom:28}}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logos/one-plus-one-tech.png" alt="One Plus One Tech"
-                style={{maxWidth:280,maxHeight:100,objectFit:"contain",display:"block"}}
-                onError={e=>{(e.currentTarget as HTMLImageElement).style.display="none"}}/>
+            <div style={{background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:16,padding:"36px 32px"}}>
+              <p style={{fontSize:17,lineHeight:1.75,color:"#111111",fontFamily:F,marginBottom:28}}>&ldquo;We&apos;re a high-volume retail operation — hundreds of purchase approvals a week across multiple categories. ZUUZ gave us 100% compliance coverage without adding headcount. Every approval now runs through the right policy with the right budget context attached.&rdquo;</p>
+              <div>
+                <p style={{fontSize:14,fontWeight:700,color:"#111111",fontFamily:F,marginBottom:2}}>Finance Manager, Nesto Group</p>
+                <p style={{fontSize:13,color:"#666666",fontFamily:F}}>Retail &amp; Distribution · UAE</p>
+              </div>
             </div>
-            <p style={{fontSize:16,color:"#333333",lineHeight:1.78,fontFamily:F,maxWidth:480,margin:"0 auto 24px"}}>
-              Delivering ZUUZ&apos;s agentic AI execution platform to enterprise accounts in the Central
-              United States, bringing intelligent workflow automation to mid-market and enterprise operations teams.
-            </p>
-            <p style={{fontSize:14,color:"#555555",fontFamily:F,marginBottom:24}}>📍 Central United States</p>
-            <Link href="/about/contact" style={{display:"inline-flex",alignItems:"center",padding:"12px 28px",background:"white",color:"#000000",border:"1.5px solid #CCCCCC",borderRadius:10,fontSize:14,fontWeight:600,fontFamily:F,textDecoration:"none"}}>Contact us about partnerships →</Link>
+            <div style={{background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:16,padding:"36px 32px"}}>
+              <p style={{fontSize:17,lineHeight:1.75,color:"#111111",fontFamily:F,marginBottom:28}}>&ldquo;Our procurement team was spending more time chasing approvals than sourcing. ZUUZ connected our SAP instance and M365 environment, automated the routing, and we saw 70% faster cycle times within the first quarter. The ops team didn&apos;t need retraining — it just worked inside the tools they already used.&rdquo;</p>
+              <div>
+                <p style={{fontSize:14,fontWeight:700,color:"#111111",fontFamily:F,marginBottom:2}}>CTO, Western International Group</p>
+                <p style={{fontSize:13,color:"#666666",fontFamily:F}}>Distribution &amp; Trading · UAE</p>
+              </div>
+            </div>
+            <div style={{background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:16,padding:"36px 32px"}}>
+              <p style={{fontSize:17,lineHeight:1.75,color:"#111111",fontFamily:F,marginBottom:28}}>&ldquo;Our sales reps were losing 4 to 6 hours a week just chasing deal desk approvals and contract status. ZUUZ automated the entire loop — from quote to signed approval — and that time came back immediately. It&apos;s the highest-ROI tool we deployed last year, and it took less than a week to go live.&rdquo;</p>
+              <div>
+                <p style={{fontSize:14,fontWeight:700,color:"#111111",fontFamily:F,marginBottom:2}}>COO, RA Technologies LLC</p>
+                <p style={{fontSize:13,color:"#666666",fontFamily:F}}>IT Services · USA</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
