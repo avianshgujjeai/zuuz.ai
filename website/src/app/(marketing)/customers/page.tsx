@@ -63,38 +63,57 @@ export default function CustomersPage() {
       <section style={{padding:"72px 0",background:"#fff"}}>
         <div style={{maxWidth:1200,margin:"0 auto",padding:"0 24px"}}>
           <div style={{textAlign:"center",marginBottom:48}}>
-            <p style={{fontSize:11,fontWeight:700,letterSpacing:"0.11em",textTransform:"uppercase",color:B,fontFamily:F,marginBottom:14}}>What Customers Say</p>
-            <h2 style={{fontFamily:F}}>In their own words.</h2>
+            <p style={{fontSize:11,fontWeight:700,letterSpacing:"0.11em",textTransform:"uppercase",color:"#0018FF",fontFamily:"'Montserrat',sans-serif",marginBottom:14}}>What Our Customers Say</p>
+            <h2 style={{fontFamily:"'Montserrat',sans-serif",marginBottom:14}}>Real outcomes. Real teams.</h2>
           </div>
           <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:24}}>
-            <div style={{background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:16,padding:"36px 32px"}}>
-              <p style={{fontSize:17,lineHeight:1.75,color:"#111111",fontFamily:F,marginBottom:28}}>&ldquo;ZUUZ cut our contract review cycle by 60%. What used to take days of back-and-forth across email threads now routes, gets approved, and closes inside the same afternoon. The audit trail alone made our compliance team stop asking for manual reports.&rdquo;</p>
-              <div>
-                <p style={{fontSize:14,fontWeight:700,color:"#111111",fontFamily:F,marginBottom:2}}>CEO, Cloud Box Technologies LLC</p>
-                <p style={{fontSize:13,color:"#666666",fontFamily:F}}>IT Services &amp; Cloud · UAE</p>
+            {[
+              {
+                quote:"Before ZUUZ, our procurement team was collecting supplier quotes manually and routing everything through email. Approvals happened informally — someone would log into SAP with different IDs just to generate a purchase order. Now every user logs into ZUUZ, sees the full context — multiple vendor codes, pricing, payment terms, quality history, budget alignment — and makes the right decision. Finance has complete visibility, every approval is logged, and SAP is updated automatically. We finally have a system that tells us why we chose a supplier, not just that we did.",
+                name:"Finance Manager",
+                company:"Nesto Group",
+                industry:"Retail & Distribution · UAE",
+                logo:"/logos/nesto-group.png",
+              },
+              {
+                quote:"Our sales approval process used to take three to five days. The salesperson closes the deal, uploads to CRM, then accounts checks Zoho Books, tracks everything in Excel, then sales director calls around to check for pending projects or support cases, then it goes to the CEO. Now when anyone logs into ZUUZ, all that context is already assembled — open projects, pending cases, financial history, contract details. Accounts approves in minutes. Sales director sees everything without calling anyone. CEO sees exactly who approved what and why. The same process now completes in two to four hours.",
+                name:"CEO",
+                company:"Cloud Box Technologies LLC",
+                industry:"IT Services & Cloud · UAE",
+                logo:"/logos/cloud-box.png",
+              },
+              {
+                quote:"We had the same challenge — approvals living in email, data dumped into the CRM just to have a record. Nobody had real context when they needed to make a decision. ZUUZ changed that. Every approval now starts with a full picture, and every decision is logged with the evidence behind it. Our team moves faster and our records are finally trustworthy.",
+                name:"COO",
+                company:"RA Technologies LLC",
+                industry:"Cybersecurity & IT Services · USA",
+                logo:"/logos/ra-technologies.png",
+              },
+              {
+                quote:"Vendor onboarding used to be a slow, manual chain — our vendor specialist collected documents, emailed them to finance and compliance, waited for replies, then manually uploaded everything to SAP. With ZUUZ, when the email arrives, the documents are verified automatically, ZUUZ generates a recommendation using unified search, and the specialist sends a structured briefing to both compliance and finance in one action. Once they approve, it goes into the system with full audit trail. What used to take days now happens in hours. Our VP of Sales is particularly happy — faster vendor onboarding means faster deals.",
+                name:"VP of Sales",
+                company:"Western International Group",
+                industry:"Distribution & Trading · UAE",
+                logo:"/logos/western-international.png",
+              },
+            ].map(t=>(
+              <div key={t.company} style={{background:"#F5F6FF",borderRadius:20,padding:"36px 32px",display:"flex",flexDirection:"column",justifyContent:"space-between",gap:24,border:"1px solid #E0E4F0"}}>
+                <div>
+                  <svg width="36" height="28" viewBox="0 0 36 28" fill="none" style={{marginBottom:20,flexShrink:0}}>
+                    <path d="M0 28V16.8C0 12.32 1.12 8.49 3.36 5.32 5.65 2.15 9.05 0.28 13.44 0L15.12 3.08C11.76 3.83 9.24 5.32 7.56 7.56 5.97 9.71 5.23 12.04 5.32 14.56H11.2V28H0ZM20.88 28V16.8C20.88 12.32 22 8.49 24.24 5.32 26.53 2.15 29.93 0.28 34.32 0L36 3.08C32.64 3.83 30.12 5.32 28.44 7.56 26.85 9.71 26.11 12.04 26.2 14.56H32.08V28H20.88Z" fill="#0018FF" opacity="0.12"/>
+                  </svg>
+                  <p style={{fontSize:15,lineHeight:1.85,color:"#1a1a2e",fontFamily:"'Montserrat',sans-serif",fontWeight:500}}>{t.quote}</p>
+                </div>
+                <div style={{display:"flex",alignItems:"center",gap:16,paddingTop:20,borderTop:"1px solid #D8DCF0"}}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={t.logo} alt={t.company} style={{maxWidth:90,maxHeight:36,objectFit:"contain",flexShrink:0}} onError={e=>{(e.currentTarget as HTMLImageElement).style.display="none"}}/>
+                  <div>
+                    <p style={{fontSize:14,fontWeight:700,color:"#000",fontFamily:"'Montserrat',sans-serif",marginBottom:2}}>{t.name}, {t.company}</p>
+                    <p style={{fontSize:12,color:"#666",fontFamily:"'Montserrat',sans-serif"}}>{t.industry}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div style={{background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:16,padding:"36px 32px"}}>
-              <p style={{fontSize:17,lineHeight:1.75,color:"#111111",fontFamily:F,marginBottom:28}}>&ldquo;We&apos;re a high-volume retail operation — hundreds of purchase approvals a week across multiple categories. ZUUZ gave us 100% compliance coverage without adding headcount. Every approval now runs through the right policy with the right budget context attached.&rdquo;</p>
-              <div>
-                <p style={{fontSize:14,fontWeight:700,color:"#111111",fontFamily:F,marginBottom:2}}>Finance Manager, Nesto Group</p>
-                <p style={{fontSize:13,color:"#666666",fontFamily:F}}>Retail &amp; Distribution · UAE</p>
-              </div>
-            </div>
-            <div style={{background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:16,padding:"36px 32px"}}>
-              <p style={{fontSize:17,lineHeight:1.75,color:"#111111",fontFamily:F,marginBottom:28}}>&ldquo;Our procurement team was spending more time chasing approvals than sourcing. ZUUZ connected our SAP instance and M365 environment, automated the routing, and we saw 70% faster cycle times within the first quarter. The ops team didn&apos;t need retraining — it just worked inside the tools they already used.&rdquo;</p>
-              <div>
-                <p style={{fontSize:14,fontWeight:700,color:"#111111",fontFamily:F,marginBottom:2}}>CTO, Western International Group</p>
-                <p style={{fontSize:13,color:"#666666",fontFamily:F}}>Distribution &amp; Trading · UAE</p>
-              </div>
-            </div>
-            <div style={{background:"#F8F9FF",border:"1px solid #E0E4F8",borderRadius:16,padding:"36px 32px"}}>
-              <p style={{fontSize:17,lineHeight:1.75,color:"#111111",fontFamily:F,marginBottom:28}}>&ldquo;Our sales reps were losing 4 to 6 hours a week just chasing deal desk approvals and contract status. ZUUZ automated the entire loop — from quote to signed approval — and that time came back immediately. It&apos;s the highest-ROI tool we deployed last year, and it took less than a week to go live.&rdquo;</p>
-              <div>
-                <p style={{fontSize:14,fontWeight:700,color:"#111111",fontFamily:F,marginBottom:2}}>COO, RA Technologies LLC</p>
-                <p style={{fontSize:13,color:"#666666",fontFamily:F}}>IT Services · USA</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
