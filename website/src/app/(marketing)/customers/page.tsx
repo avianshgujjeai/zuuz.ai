@@ -1,14 +1,135 @@
 "use client";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+
 const B = "#0018FF";
 const F = "'Montserrat',sans-serif";
+
 const CUSTOMERS = [
   {name:"Western International Group",logo:"/logos/western-international.png",industry:"Distribution & Trading",region:"UAE",stat:"70%",statLabel:"faster procurement cycles",systems:"SAP + M365"},
   {name:"Nesto Group",logo:"/logos/nesto-group.png",industry:"Retail & Distribution",region:"UAE",stat:"100%",statLabel:"approval compliance coverage",systems:"SAP + M365"},
   {name:"RA Technologies LLC",logo:"/logos/ra-technologies.png",industry:"IT Services",region:"USA",stat:"4–6 hrs",statLabel:"saved per sales rep weekly",systems:"Zoho + M365"},
   {name:"Cloud Box Technologies",logo:"/logos/cloud-box.png",industry:"IT Services & Cloud",region:"UAE",stat:"60%",statLabel:"reduction in contract review time",systems:"Zoho + M365"},
 ];
+
+const TESTIMONIALS = [
+  {
+    company: "Nesto Group",
+    logo: "/logos/nesto-group.png",
+    industry: "Retail",
+    useCase: "Procurement approvals",
+    headline: "Procurement decisions with complete supplier context",
+    quote: "ZUUZ helped us replace fragmented email-based procurement approvals with a structured workflow where teams can review supplier options, budget fit, payment terms, and decision history in one place — with audit-backed updates to systems of record.",
+  },
+  {
+    company: "Cloud Box Technologies",
+    logo: "/logos/cloud-box.png",
+    industry: "IT Services",
+    useCase: "Sales & contract approvals",
+    headline: "Faster contract approvals with complete business visibility",
+    quote: "ZUUZ gave every approver the full context behind each deal — from finance to customer history to project and support status — helping us reduce approval cycles from days to just a few hours.",
+  },
+  {
+    company: "RA Technologies",
+    logo: "/logos/ra-technologies.png",
+    industry: "Cybersecurity / IT",
+    useCase: "Internal business approvals",
+    headline: "Structured approvals instead of manual email dependency",
+    quote: "ZUUZ brought our approval process into a single governed system, replacing manual email-driven workflows with better visibility, faster decisions, and stronger control.",
+  },
+  {
+    company: "Western International",
+    logo: "/logos/western-international.png",
+    industry: "Distribution & Retail",
+    useCase: "Vendor onboarding",
+    headline: "Smarter vendor onboarding with less manual work",
+    quote: "ZUUZ streamlined our vendor onboarding by validating documents, organizing recommendations, and helping teams move from email-heavy coordination to faster and more controlled approvals.",
+  },
+];
+
+function TestimonialCard({
+  t,
+  index,
+  visible,
+}: {
+  t: (typeof TESTIMONIALS)[0];
+  index: number;
+  visible: boolean;
+}) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: "#fff",
+        border: `1px solid ${hovered ? "#C7CFFF" : "#E5E7EB"}`,
+        borderRadius: 16,
+        padding: "32px 28px",
+        display: "flex",
+        flexDirection: "column",
+        boxShadow: hovered
+          ? "0 12px 40px rgba(0,24,255,0.07)"
+          : "0 1px 4px rgba(0,0,0,0.04)",
+        transition: "box-shadow 0.25s ease, border-color 0.25s ease, transform 0.3s ease, opacity 0.4s ease",
+        transform: visible ? (hovered ? "translateY(-4px)" : "translateY(0)") : "translateY(20px)",
+        opacity: visible ? 1 : 0,
+        transitionDelay: visible ? `${index * 90}ms` : "0ms",
+        cursor: "default",
+      }}
+    >
+      {/* Industry + Use Case tags */}
+      <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:20}}>
+        <span style={{fontSize:10,fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",color:B,background:"#EEF2FF",padding:"4px 10px",borderRadius:5,fontFamily:F}}>
+          {t.industry}
+        </span>
+        <span style={{fontSize:10,fontWeight:600,letterSpacing:"0.07em",textTransform:"uppercase",color:"#666",background:"#F3F4F6",padding:"4px 10px",borderRadius:5,fontFamily:F}}>
+          {t.useCase}
+        </span>
+      </div>
+      {/* Headline */}
+      <p style={{fontSize:16,fontWeight:700,color:"#0A0A14",lineHeight:1.45,fontFamily:F,marginBottom:14}}>
+        {t.headline}
+      </p>
+      {/* Quote */}
+      <p style={{fontSize:14,lineHeight:1.85,color:"#4B5563",fontFamily:F,fontStyle:"italic",flexGrow:1,marginBottom:24}}>
+        &ldquo;{t.quote}&rdquo;
+      </p>
+      {/* Footer */}
+      <div style={{borderTop:"1px solid #F0F1F5",paddingTop:20,display:"flex",alignItems:"center",gap:14}}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={t.logo}
+          alt={t.company}
+          style={{maxWidth:80,maxHeight:32,objectFit:"contain",flexShrink:0}}
+          onError={e=>{(e.currentTarget as HTMLImageElement).style.display="none"}}
+        />
+        <span style={{fontSize:13,fontWeight:700,color:"#111",fontFamily:F}}>{t.company}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function CustomersPage() {
+  const testimonialsRef = useRef<HTMLDivElement>(null);
+  const [testimonialsVisible, setTestimonialsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = testimonialsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTestimonialsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main style={{fontFamily:F}}>
       {/* HERO */}
@@ -22,6 +143,7 @@ export default function CustomersPage() {
           </p>
         </div>
       </section>
+
       {/* DEPLOYED AT */}
       <section style={{padding:"72px 0",background:"#fff"}}>
         <div style={{maxWidth:1200,margin:"0 auto",padding:"0 24px"}}>
@@ -39,6 +161,7 @@ export default function CustomersPage() {
           </div>
         </div>
       </section>
+
       {/* RESULTS */}
       <section style={{padding:"72px 0",background:"#F5F6FF"}}>
         <div style={{maxWidth:1200,margin:"0 auto",padding:"0 24px"}}>
@@ -59,64 +182,35 @@ export default function CustomersPage() {
           </div>
         </div>
       </section>
-      {/* TESTIMONIALS */}
-      <section style={{padding:"72px 0",background:"#fff"}}>
+
+      {/* CUSTOMER SUCCESS */}
+      <section style={{padding:"88px 0",background:"#FAFAFA"}}>
         <div style={{maxWidth:1200,margin:"0 auto",padding:"0 24px"}}>
-          <div style={{textAlign:"center",marginBottom:48}}>
-            <p style={{fontSize:11,fontWeight:700,letterSpacing:"0.11em",textTransform:"uppercase",color:"#0018FF",fontFamily:"'Montserrat',sans-serif",marginBottom:14}}>What Our Customers Say</p>
-            <h2 style={{fontFamily:"'Montserrat',sans-serif",marginBottom:14}}>Real outcomes. Real teams.</h2>
+          {/* Section header — left-aligned for enterprise feel */}
+          <div style={{maxWidth:600,marginBottom:56}}>
+            <p style={{fontSize:11,fontWeight:700,letterSpacing:"0.11em",textTransform:"uppercase",color:B,fontFamily:F,marginBottom:12}}>
+              Customer Success
+            </p>
+            <h2 style={{fontFamily:F,marginBottom:16,color:"#0A0A14"}}>
+              From manual workflows to faster, context-aware decisions.
+            </h2>
+            <p style={{fontSize:16,lineHeight:1.78,color:"#555",fontFamily:F}}>
+              See how ZUUZ helps enterprises move from manual, email-driven approvals and fragmented
+              workflows to faster, context-aware decisions with audit-backed execution.
+            </p>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:24}}>
-            {[
-              {
-                quote:"Before ZUUZ, our procurement team was collecting supplier quotes manually and routing everything through email. Approvals happened informally — someone would log into SAP with different IDs just to generate a purchase order. Now every user logs into ZUUZ, sees the full context — multiple vendor codes, pricing, payment terms, quality history, budget alignment — and makes the right decision. Finance has complete visibility, every approval is logged, and SAP is updated automatically. We finally have a system that tells us why we chose a supplier, not just that we did.",
-                name:"Finance Manager",
-                company:"Nesto Group",
-                industry:"Retail & Distribution · UAE",
-                logo:"/logos/nesto-group.png",
-              },
-              {
-                quote:"Our sales approval process used to take three to five days. The salesperson closes the deal, uploads to CRM, then accounts checks Zoho Books, tracks everything in Excel, then sales director calls around to check for pending projects or support cases, then it goes to the CEO. Now when anyone logs into ZUUZ, all that context is already assembled — open projects, pending cases, financial history, contract details. Accounts approves in minutes. Sales director sees everything without calling anyone. CEO sees exactly who approved what and why. The same process now completes in two to four hours.",
-                name:"CEO",
-                company:"Cloud Box Technologies LLC",
-                industry:"IT Services & Cloud · UAE",
-                logo:"/logos/cloud-box.png",
-              },
-              {
-                quote:"We had the same challenge — approvals living in email, data dumped into the CRM just to have a record. Nobody had real context when they needed to make a decision. ZUUZ changed that. Every approval now starts with a full picture, and every decision is logged with the evidence behind it. Our team moves faster and our records are finally trustworthy.",
-                name:"COO",
-                company:"RA Technologies LLC",
-                industry:"Cybersecurity & IT Services · USA",
-                logo:"/logos/ra-technologies.png",
-              },
-              {
-                quote:"Vendor onboarding used to be a slow, manual chain — our vendor specialist collected documents, emailed them to finance and compliance, waited for replies, then manually uploaded everything to SAP. With ZUUZ, when the email arrives, the documents are verified automatically, ZUUZ generates a recommendation using unified search, and the specialist sends a structured briefing to both compliance and finance in one action. Once they approve, it goes into the system with full audit trail. What used to take days now happens in hours. Our VP of Sales is particularly happy — faster vendor onboarding means faster deals.",
-                name:"VP of Sales",
-                company:"Western International Group",
-                industry:"Distribution & Trading · UAE",
-                logo:"/logos/western-international.png",
-              },
-            ].map(t=>(
-              <div key={t.company} style={{background:"#F5F6FF",borderRadius:20,padding:"36px 32px",display:"flex",flexDirection:"column",justifyContent:"space-between",gap:24,border:"1px solid #E0E4F0"}}>
-                <div>
-                  <svg width="36" height="28" viewBox="0 0 36 28" fill="none" style={{marginBottom:20,flexShrink:0}}>
-                    <path d="M0 28V16.8C0 12.32 1.12 8.49 3.36 5.32 5.65 2.15 9.05 0.28 13.44 0L15.12 3.08C11.76 3.83 9.24 5.32 7.56 7.56 5.97 9.71 5.23 12.04 5.32 14.56H11.2V28H0ZM20.88 28V16.8C20.88 12.32 22 8.49 24.24 5.32 26.53 2.15 29.93 0.28 34.32 0L36 3.08C32.64 3.83 30.12 5.32 28.44 7.56 26.85 9.71 26.11 12.04 26.2 14.56H32.08V28H20.88Z" fill="#0018FF" opacity="0.12"/>
-                  </svg>
-                  <p style={{fontSize:15,lineHeight:1.85,color:"#1a1a2e",fontFamily:"'Montserrat',sans-serif",fontWeight:500}}>{t.quote}</p>
-                </div>
-                <div style={{display:"flex",alignItems:"center",gap:16,paddingTop:20,borderTop:"1px solid #D8DCF0"}}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={t.logo} alt={t.company} style={{maxWidth:90,maxHeight:36,objectFit:"contain",flexShrink:0}} onError={e=>{(e.currentTarget as HTMLImageElement).style.display="none"}}/>
-                  <div>
-                    <p style={{fontSize:14,fontWeight:700,color:"#000",fontFamily:"'Montserrat',sans-serif",marginBottom:2}}>{t.name}, {t.company}</p>
-                    <p style={{fontSize:12,color:"#666",fontFamily:"'Montserrat',sans-serif"}}>{t.industry}</p>
-                  </div>
-                </div>
-              </div>
+          {/* Cards grid — auto-responsive: 2-col on desktop, 1-col on tablet/mobile */}
+          <div
+            ref={testimonialsRef}
+            style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(380px,1fr))",gap:24}}
+          >
+            {TESTIMONIALS.map((t, i) => (
+              <TestimonialCard key={t.company} t={t} index={i} visible={testimonialsVisible} />
             ))}
           </div>
         </div>
       </section>
+
       {/* DARK CTA */}
       <section style={{padding:"72px 0 80px"}}>
         <div style={{maxWidth:1200,margin:"0 auto",padding:"0 24px"}}>
