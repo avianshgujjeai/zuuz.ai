@@ -16,8 +16,8 @@ interface CTAProps {
 export function CTA({
   title = "See ZUUZ in Action — Book a 20-Minute Demo",
   description = "Bring your messiest approval workflow. We'll show you what ZUUZ changes in the first two weeks.",
-  primaryLabel = "Request a demo →",
-  primaryHref = "/about/contact",
+  primaryLabel = "Request Trial →",
+  primaryHref = "https://cal.com/avinashgujje/30min",
   secondaryLabel = "Explore the Platform",
   secondaryHref = "/products/ai-agents",
   className,

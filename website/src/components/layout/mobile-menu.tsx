@@ -150,8 +150,8 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             </Link>
           </Button>
           <Button size="sm" className="w-full" asChild>
-            <Link href="/about/contact" onClick={onClose}>
-              Request demo
+            <Link href="https://cal.com/avinashgujje/30min" onClick={onClose}>
+              Request Trial
             </Link>
           </Button>
         </div>

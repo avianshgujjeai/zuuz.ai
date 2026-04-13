@@ -72,7 +72,7 @@ export default async function AgentDetailPage({ params }: Props) {
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground leading-relaxed">{agent.oneLiner}</p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="/about/contact">Request a demo</Link>
+                <Link href="https://cal.com/avinashgujje/30min">Request Trial →</Link>
               </Button>
               <div className="flex items-center gap-2 rounded-lg border border-border bg-card px-4 py-2.5">
                 <Clock className="h-4 w-4 text-primary" />
@@ -236,7 +236,7 @@ export default async function AgentDetailPage({ params }: Props) {
       <CTA
         title={`See the ${agent.title} in action on your workflows`}
         description="Bring your messiest process. We'll show you what changes in the first two weeks."
-        primaryLabel="Request a demo"
+        primaryLabel="Request Trial →"
         primaryHref="/about/contact"
         secondaryLabel="Browse all agents"
         secondaryHref="/products/ai-agents"

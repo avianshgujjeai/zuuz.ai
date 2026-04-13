@@ -388,15 +388,15 @@ export default function HomePage() {
                     letterSpacing: "0.1em", color: "#667085", fontFamily: "Montserrat, sans-serif",
                   }}
                 >
-                  Agentic AI Execution Layer for your Business
+                  AI Agents for Enterprise Productivity
                 </span>
               </div>
 
               {/* H1 */}
               <h1 style={{ marginBottom: 20 }}>
-                AI That Gets Business
+                AI Powered Enterprise
                 <br />
-                <span className="gradient-text">Work Done.</span>
+                <span className="gradient-text">Workflow Reimagined.</span>
               </h1>
 
               {/* Sub */}
@@ -425,8 +425,8 @@ export default function HomePage() {
                   animation: "fadeUp 0.7s 0.5s both",
                 }}
               >
-                <Btn variant="primary" size="lg" href="/about/contact">
-                  Request a demo
+                <Btn variant="primary" size="lg" href="https://cal.com/avinashgujje/30min">
+                  Request Trial →
                 </Btn>
                 <Btn variant="secondary" size="lg" href="/products/ai-agents">
                   See it in action
@@ -919,8 +919,8 @@ export default function HomePage() {
                 we&apos;ll show you what changes in the first two weeks.
               </p>
               <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
-                <Btn variant="primary" size="lg" href="/about/contact">
-                  Request a demo →
+                <Btn variant="primary" size="lg" href="https://cal.com/avinashgujje/30min">
+                  Request Trial →
                 </Btn>
                 <Btn variant="dark-outline" size="lg" href="/products/ai-agents">
                   See Persona Copilots
