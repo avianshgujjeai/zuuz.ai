@@ -8,6 +8,7 @@ import { RevealInit } from "@/components/ui/RevealInit";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { ChatBot } from "@/components/marketing/ChatBot";
+import { TrialPopup } from "@/components/marketing/TrialPopup";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -167,6 +168,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </MotionProvider>
         <ChatBot />
+        <TrialPopup />
         <GoogleAnalytics />
         <Analytics />
       </body>

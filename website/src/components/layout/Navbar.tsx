@@ -316,20 +316,7 @@ export function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="navbar-ctas" style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-            <Link href="/about/contact" style={{
-              padding: "8px 18px",
-              background: "transparent",
-              color: "#475569",
-              border: "1px solid #DDD",
-              borderRadius: 10,
-              fontSize: 13,
-              fontWeight: 600,
-              fontFamily: F,
-              textDecoration: "none",
-            }}>
-              Sign in
-            </Link>
-            <Link href="/about/contact" style={{
+            <Link href="/request-trial" style={{
               padding: "9px 20px",
               background: BLUE,
               color: "#FFFFFF",
@@ -341,7 +328,7 @@ export function Navbar() {
               textDecoration: "none",
               boxShadow: "0 2px 8px rgba(0,24,255,0.25)",
             }}>
-              Request demo →
+              Request Trial →
             </Link>
           </div>
 
@@ -451,7 +438,7 @@ export function Navbar() {
             </div>
           ))}
           <div style={{ marginTop: 24 }}>
-            <Link href="/about/contact" style={{
+            <Link href="/request-trial" style={{
               display: "flex",
               justifyContent: "center",
               padding: "14px",
@@ -463,7 +450,7 @@ export function Navbar() {
               fontFamily: F,
               textDecoration: "none",
             }}>
-              Request a demo →
+              Request Trial →
             </Link>
           </div>
         </div>
