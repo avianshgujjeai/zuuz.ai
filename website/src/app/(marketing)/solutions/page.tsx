@@ -87,7 +87,7 @@ export default function SolutionsPage() {
                 ZUUZ connects to your systems, assembles the Context Pack, routes approvals safely, and writes back only when identity, permissions, and audit trail are verified.
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-                <Link href="/about/contact" style={{
+                <Link href="https://cal.com/avinashgujje/30min" style={{
                   display: "inline-flex",
                   alignItems: "center",
                   padding: "12px 28px",
@@ -100,7 +100,7 @@ export default function SolutionsPage() {
                   textDecoration: "none",
                   boxShadow: "0 2px 8px rgba(0,24,255,0.25)",
                 }}>
-                  Request a demo →
+                  Request Trial →
                 </Link>
                 <Link href="#industries" style={{
                   display: "inline-flex",
@@ -254,7 +254,7 @@ export default function SolutionsPage() {
       <CTA
         title="Book a 20-minute demo"
         description="See how ZUUZ brings AI Agents, ApprovalOps workflows, and Unified Search to your industry — with evidence and audit trails built in."
-        primaryLabel="Request a demo"
+        primaryLabel="Request Trial →"
         primaryHref="/about/contact"
         secondaryLabel="Talk to an expert"
         secondaryHref="/about/contact"

@@ -50,7 +50,7 @@ export default function UnifiedSearchPage() {
             </p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="/about/contact">Request a demo</Link>
+                <Link href="https://cal.com/avinashgujje/30min">Request Trial →</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="#search-demo">See example queries</Link>
@@ -144,7 +144,7 @@ export default function UnifiedSearchPage() {
       <CTA
         title="Stop searching across ten tabs. Start getting answers with proof."
         description="See how ZUUZ unifies your enterprise knowledge and turns search into action—with permissions and evidence built in."
-        primaryLabel="Request a demo"
+        primaryLabel="Request Trial →"
         primaryHref="/about/contact"
         secondaryLabel="See Workflows"
         secondaryHref="/products/workflows"
