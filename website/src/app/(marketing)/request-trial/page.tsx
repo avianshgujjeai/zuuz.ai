@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import type { Metadata } from "next";
 
 const CAL_URL = "https://cal.com/avinashgujje/30min";
 const F = "'Montserrat',sans-serif";

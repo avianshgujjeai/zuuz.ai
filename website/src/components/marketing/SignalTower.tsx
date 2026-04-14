@@ -13,10 +13,10 @@ const SOURCES = [
 ];
 
 const OUTPUTS = [
-  { label: "AI Agents",       sub: "Task execution",      color: BLUE      },
-  { label: "Unified Search",  sub: "Cross-system search", color: "#0891B2" },
-  { label: "Workflows",       sub: "Process automation",  color: "#7C3AED" },
-  { label: "Safe Write Back", sub: "Audit-logged exec.",  color: "#059669" },
+  { label: "Full Context",     sub: "Before every approval",    color: BLUE      },
+  { label: "Approval Routing", sub: "Right person, right time", color: "#0891B2" },
+  { label: "Audit Record",     sub: "Every decision logged",    color: "#7C3AED" },
+  { label: "System Sync",      sub: "Automatic write-back",     color: "#059669" },
 ];
 
 function sCurve(x1: number, y1: number, x2: number, y2: number): string {

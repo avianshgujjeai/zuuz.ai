@@ -1,72 +1,40 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 
 const F = "'Montserrat', sans-serif";
 
-const STATS = [
-  { end: 2.4,  dec: 1, suffix: "M+", label: "Emails Processed",         desc: "across enterprise inboxes"       },
-  { end: 840,  dec: 0, suffix: "K+", label: "Documents Reviewed",        desc: "contracts, SOWs, invoices"       },
-  { end: 320,  dec: 0, suffix: "K+", label: "Meeting Outcomes Captured", desc: "decisions logged automatically"  },
-  { end: 1.1,  dec: 1, suffix: "M+", label: "Workflows Executed",        desc: "with policy gates & audit trail" },
-  { end: 4.8,  dec: 1, suffix: "M+", label: "Audit Log Entries",         desc: "immutable, timestamped"          },
-  { end: 2.4,  dec: 1, suffix: "s",  label: "Avg Processing Time",       desc: "signal to executed action"       },
+const PROOF = [
+  { n: "70%",      label: "Faster approval cycles",     desc: "Procurement and commercial approvals that took 3–5 days now close in hours." },
+  { n: "8–12 hrs", label: "Saved per manager weekly",   desc: "Management time no longer spent chasing status updates and missing sign-offs." },
+  { n: "4 hrs",    label: "Vendor onboarding",          desc: "End-to-end from request to sign-off, with full context and audit trail." },
+  { n: "200+",     label: "Systems connected",          desc: "Salesforce, SAP, Workday, ServiceNow — no rip and replace required." },
+  { n: "Weeks",    label: "Time to go live",            desc: "No IT project. No migration. Deployed on your real workflows, not a demo environment." },
+  { n: "SOC 2",    label: "Type I Certified",           desc: "Enterprise security baseline with identity-verified execution and immutable logs." },
 ];
 
 export function StatsBanner() {
-  const ref = useRef<HTMLElement>(null);
-  const [counts, setCounts]   = useState<number[]>(STATS.map(() => 0));
-  const [started, setStarted] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        setStarted(true);
-        io.disconnect();
-      }
-    }, { threshold: 0.15 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    const dur   = 2200;
-    const start = performance.now();
-    const tick  = (now: number) => {
-      const t    = Math.min((now - start) / dur, 1);
-      const ease = 1 - Math.pow(1 - t, 3);
-      setCounts(STATS.map(s => parseFloat((s.end * ease).toFixed(s.dec))));
-      if (t < 1) requestAnimationFrame(tick);
-      else setCounts(STATS.map(s => s.end));
-    };
-    requestAnimationFrame(tick);
-  }, [started]);
-
   return (
-    <section ref={ref} style={{ background: "#000814", padding: "80px 0", width: "100%" }}>
+    <section style={{ background: "#000814", padding: "80px 0", width: "100%" }}>
       <div style={{
         maxWidth: 1200, margin: "0 auto", padding: "0 24px",
         display: "grid", gridTemplateColumns: "repeat(3,1fr)",
       }}>
-        {STATS.map((s, i) => (
+        {PROOF.map((s, i) => (
           <div key={s.label} style={{
             padding: "44px 32px",
             borderRight: i % 3 !== 2 ? "1px solid rgba(255,255,255,0.10)" : "none",
             borderBottom: i < 3      ? "1px solid rgba(255,255,255,0.10)" : "none",
           }}>
-            <p suppressHydrationWarning style={{
-              fontFamily: F, fontSize: "clamp(36px,4vw,52px)", fontWeight: 800,
+            <p style={{
+              fontFamily: F, fontSize: "clamp(34px,3.5vw,50px)", fontWeight: 800,
               color: "#FFFFFF", letterSpacing: "-0.03em", lineHeight: 1,
               margin: "0 0 10px 0",
             }}>
-              {counts[i].toFixed(s.dec)}{s.suffix}
+              {s.n}
             </p>
-            <p style={{ fontFamily: F, fontSize: 17, fontWeight: 700, color: "#FFFFFF", margin: "0 0 6px 0", lineHeight: 1.3 }}>
+            <p style={{ fontFamily: F, fontSize: 16, fontWeight: 700, color: "#FFFFFF", margin: "0 0 8px 0", lineHeight: 1.3 }}>
               {s.label}
             </p>
-            <p style={{ fontFamily: F, fontSize: 13, color: "rgba(255,255,255,0.82)", margin: 0, lineHeight: 1.5 }}>
+            <p style={{ fontFamily: F, fontSize: 13, color: "rgba(255,255,255,0.60)", margin: 0, lineHeight: 1.55 }}>
               {s.desc}
             </p>
           </div>
