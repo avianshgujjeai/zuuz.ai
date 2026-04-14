@@ -185,6 +185,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           src="https://t.contentsquare.net/uxa/c0b6676b98fe6.js"
           strategy="afterInteractive"
         />
+        {/* Ahrefs Analytics */}
+        <Script
+          id="ahrefs-analytics"
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="qqBEI7JMX7FDL70pdhT3Dw"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
