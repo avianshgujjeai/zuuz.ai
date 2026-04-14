@@ -7,6 +7,7 @@ import { SignalTower } from "@/components/marketing/SignalTower";
 import { ArchDiagram } from "@/components/marketing/ArchDiagram";
 import { LogoMarquee } from "@/components/marketing/LogoMarquee";
 import { StatsBanner } from "@/components/marketing/StatsBanner";
+import { CustomerBanner } from "@/components/marketing/CustomerBanner";
 import { VideoDemo } from "@/components/marketing/VideoDemo";
 import { Btn } from "@/components/ui/Btn";
 
@@ -467,6 +468,8 @@ export default function HomePage() {
               <SignalTower />
             </div>
           </div>
+
+          <CustomerBanner />
 
           {/* Logo Marquee */}
           <div style={{ borderTop: "1px solid #F2F4F7" }}>
