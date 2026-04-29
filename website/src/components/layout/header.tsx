@@ -126,7 +126,7 @@ export function Header() {
               <Link href="/about/contact">Sign in</Link>
             </Button>
             <Button size="sm" className="hidden sm:inline-flex hover:shadow-[0_0_20px_rgba(0,24,255,0.3)] transition-shadow duration-300" asChild>
-              <Link href="https://cal.com/avinashgujje/30min">Request Trial</Link>
+              <Link href="https://cal.com/avinashgujje/30min">Book a Demo</Link>
             </Button>
             <button
               className={cn(

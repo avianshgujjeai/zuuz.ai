@@ -221,7 +221,7 @@ export default function CustomersPage() {
                 See ZUUZ running on your own workflows — not a canned demo.
               </p>
             </div>
-            <Link href="https://cal.com/avinashgujje/30min" style={{display:"inline-flex",alignItems:"center",padding:"14px 32px",background:B,color:"#FFFFFF",borderRadius:10,fontSize:15,fontWeight:700,fontFamily:F,textDecoration:"none",flexShrink:0}}>Request Trial →</Link>
+            <Link href="https://cal.com/avinashgujje/30min" style={{display:"inline-flex",alignItems:"center",padding:"14px 32px",background:B,color:"#FFFFFF",borderRadius:10,fontSize:15,fontWeight:700,fontFamily:F,textDecoration:"none",flexShrink:0}}>Book a Demo →</Link>
           </div>
         </div>
       </section>

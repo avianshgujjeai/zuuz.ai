@@ -54,7 +54,7 @@ export default function AIAgentsPage() {
             </p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="https://cal.com/avinashgujje/30min">Request Trial →</Link>
+                <Link href="https://cal.com/avinashgujje/30min">Book a Demo →</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="#agent-grid">Browse all agents</Link>
@@ -152,7 +152,7 @@ export default function AIAgentsPage() {
       <CTA
         title="Put agents to work on the tasks your teams shouldn't be doing manually"
         description="See ZUUZ agents in action on your own workflows. Bring your messiest process—we'll show you what changes."
-        primaryLabel="Request Trial →"
+        primaryLabel="Book a Demo →"
         primaryHref="/about/contact"
         secondaryLabel="See Workflows"
         secondaryHref="/products/workflows"

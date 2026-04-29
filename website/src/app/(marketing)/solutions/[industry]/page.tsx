@@ -68,7 +68,7 @@ export default async function IndustryPage({ params }: Props) {
             <p className="mt-4 max-w-2xl text-lg text-muted-foreground leading-relaxed">{sol.heroDescription}</p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="https://cal.com/avinashgujje/30min">Request Trial →</Link>
+                <Link href="https://cal.com/avinashgujje/30min">Book a Demo →</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="#use-cases">See use cases</Link>
@@ -247,7 +247,7 @@ export default async function IndustryPage({ params }: Props) {
       <CTA
         title={`See ZUUZ for ${sol.industry} in action`}
         description="Book a 20-minute demo. Bring your messiest approval workflow — we'll show you what changes."
-        primaryLabel="Request Trial →"
+        primaryLabel="Book a Demo →"
         primaryHref="/about/contact"
         secondaryLabel="Talk to an expert"
         secondaryHref="/about/contact"

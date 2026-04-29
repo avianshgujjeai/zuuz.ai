@@ -105,7 +105,7 @@ export default function AboutPage() {
           <p style={{fontSize:"clamp(26px,4vw,46px)",fontWeight:800,color:"#FFFFFF",lineHeight:1.1,letterSpacing:"-0.022em",fontFamily:F,marginBottom:6}}>Forged by Insight.</p>
           <p style={{fontSize:"clamp(26px,4vw,46px)",fontWeight:800,color:B,lineHeight:1.1,letterSpacing:"-0.022em",fontFamily:F,marginBottom:36}}>Driven by Precision.</p>
           <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
-            <Link href="https://cal.com/avinashgujje/30min" style={{display:"inline-flex",alignItems:"center",padding:"13px 28px",background:B,color:"#FFFFFF",borderRadius:10,fontSize:15,fontWeight:600,fontFamily:F,textDecoration:"none"}}>Request Trial →</Link>
+            <Link href="https://cal.com/avinashgujje/30min" style={{display:"inline-flex",alignItems:"center",padding:"13px 28px",background:B,color:"#FFFFFF",borderRadius:10,fontSize:15,fontWeight:600,fontFamily:F,textDecoration:"none"}}>Book a Demo →</Link>
             <Link href="/solutions" style={{display:"inline-flex",alignItems:"center",padding:"12px 26px",background:"transparent",color:"rgba(255,255,255,0.88)",border:"1.5px solid rgba(255,255,255,0.88)",borderRadius:10,fontSize:15,fontWeight:600,fontFamily:F,textDecoration:"none"}}>Explore solutions</Link>
           </div>
         </div>

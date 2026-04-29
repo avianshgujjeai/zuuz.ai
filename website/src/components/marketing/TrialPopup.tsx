@@ -81,7 +81,7 @@ export function TrialPopup() {
         ) : (
           <>
             <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: B, marginBottom: 8 }}>
-              Start Your Trial
+              Book a Demo
             </p>
             <h3 style={{ fontSize: 22, fontWeight: 800, color: "#000", marginBottom: 6, lineHeight: 1.2 }}>
               See ZUUZ on your workflows

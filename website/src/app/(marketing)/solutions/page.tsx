@@ -100,7 +100,7 @@ export default function SolutionsPage() {
                   textDecoration: "none",
                   boxShadow: "0 2px 8px rgba(0,24,255,0.25)",
                 }}>
-                  Request Trial →
+                  Book a Demo →
                 </Link>
                 <Link href="#industries" style={{
                   display: "inline-flex",
@@ -254,7 +254,7 @@ export default function SolutionsPage() {
       <CTA
         title="Book a 20-minute demo"
         description="See how ZUUZ brings AI Agents, ApprovalOps workflows, and Unified Search to your industry — with evidence and audit trails built in."
-        primaryLabel="Request Trial →"
+        primaryLabel="Book a Demo →"
         primaryHref="/about/contact"
         secondaryLabel="Talk to an expert"
         secondaryHref="/about/contact"

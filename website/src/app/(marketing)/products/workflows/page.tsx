@@ -52,7 +52,7 @@ export default function WorkflowsPage() {
             </p>
             <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row">
               <Button size="lg" asChild>
-                <Link href="https://cal.com/avinashgujje/30min">Request Trial →</Link>
+                <Link href="https://cal.com/avinashgujje/30min">Book a Demo →</Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="#flow-demo">See workflow intake</Link>
@@ -132,7 +132,7 @@ export default function WorkflowsPage() {
       <CTA
         title="Bring your messiest process. We'll map it in a week."
         description="No rip-and-replace. No six-month implementation. Just your existing workflows, running faster and governed better."
-        primaryLabel="Request Trial →"
+        primaryLabel="Book a Demo →"
         primaryHref="/about/contact"
         secondaryLabel="See AI Agents"
         secondaryHref="/products/ai-agents"
