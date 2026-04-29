@@ -14,21 +14,22 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.zuuz.ai"),
   title: {
-    default: "ZUUZ | Agentic AI Platform for Enterprise Workflow Automation",
+    default: "ZUUZ — Decision Intelligence for Enterprise Operations",
     template: "%s | ZUUZ",
   },
   description:
-    "ZUUZ is the enterprise agentic AI execution layer — connecting 200+ systems, routing decisions through policy, and automating workflows for Sales, HR, IT, Finance, Legal, and Ops teams. SOC 2 Type I certified.",
+    "ZUUZ gives enterprise teams the full context before they approve, commit, or execute. Reduce approval cycle time by 70%, eliminate coordination waste, and maintain a complete audit trail across 200+ connected systems. SOC 2 Type I certified.",
   keywords: [
-    "agentic AI platform",
-    "enterprise AI automation",
-    "AI workflow automation",
-    "enterprise copilot",
-    "AI agents for business",
-    "enterprise process automation",
-    "agentic AI execution layer",
-    "audit trail AI",
-    "policy-aware AI",
+    "enterprise approval automation",
+    "approval workflow software",
+    "decision context platform",
+    "vendor onboarding automation",
+    "procurement approval software",
+    "enterprise audit trail",
+    "workflow execution platform",
+    "approval cycle time reduction",
+    "enterprise operations software",
+    "decision intelligence",
   ],
   icons: {
     icon: "/favicon.ico",
@@ -37,25 +38,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "ZUUZ",
-    title: "ZUUZ | Agentic AI Platform for Enterprise Workflow Automation",
+    title: "ZUUZ — Decision Intelligence for Enterprise Operations",
     description:
-      "Enterprise AI that gets work done — AI agents, execution flows, and evidence search for every operational team.",
+      "Full context before every approval. Automatic audit trail on every decision. ZUUZ connects 200+ enterprise systems and handles the full approval cycle without replacing anything.",
     url: "https://www.zuuz.ai",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "ZUUZ — Agentic AI Execution Layer for Enterprise",
+        alt: "ZUUZ — Decision Intelligence for Enterprise Operations",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     site: "@zuuz_ai",
-    title: "ZUUZ | Agentic AI for Enterprise",
+    title: "ZUUZ — Decision Intelligence for Enterprise",
     description:
-      "Agentic AI execution layer — 200+ connectors, policy-enforced workflows, full audit trail.",
+      "Full context before every approval. Automatic audit trail. 200+ connected systems. SOC 2 Type I certified.",
     images: ["/og-image.png"],
   },
   robots: {
