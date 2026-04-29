@@ -316,7 +316,7 @@ export function Navbar() {
 
           {/* Desktop CTAs */}
           <div className="navbar-ctas" style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
-            <Link href="/request-trial" style={{
+            <Link href="/demo" style={{
               padding: "9px 20px",
               background: BLUE,
               color: "#FFFFFF",
@@ -438,7 +438,7 @@ export function Navbar() {
             </div>
           ))}
           <div style={{ marginTop: 24 }}>
-            <Link href="/request-trial" style={{
+            <Link href="/demo" style={{
               display: "flex",
               justifyContent: "center",
               padding: "14px",

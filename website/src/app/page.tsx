@@ -44,7 +44,7 @@ export default function HomePage() {
 
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 32 }}>
                 <a
-                  href="/request-trial"
+                  href="/demo"
                   style={{ display: "inline-flex", alignItems: "center", padding: "14px 28px", background: B, color: "#fff", borderRadius: 8, fontSize: 15, fontWeight: 700, fontFamily: F, textDecoration: "none" }}
                 >
                   Book a walkthrough →
@@ -292,7 +292,7 @@ export default function HomePage() {
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginBottom: 24 }}>
             <a
-              href="/request-trial"
+              href="/demo"
               style={{ display: "inline-flex", alignItems: "center", padding: "15px 32px", background: B, color: "#fff", borderRadius: 8, fontSize: 16, fontWeight: 700, fontFamily: F, textDecoration: "none" }}
             >
               Book a walkthrough →
