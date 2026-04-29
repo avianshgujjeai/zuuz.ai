@@ -47,7 +47,7 @@ export default function HomePage() {
                   href="/demo"
                   style={{ display: "inline-flex", alignItems: "center", padding: "14px 28px", background: B, color: "#fff", borderRadius: 8, fontSize: 15, fontWeight: 700, fontFamily: F, textDecoration: "none" }}
                 >
-                  Book a walkthrough →
+                  Book a Demo →
                 </a>
                 <Link
                   href="/customers"
@@ -295,7 +295,7 @@ export default function HomePage() {
               href="/demo"
               style={{ display: "inline-flex", alignItems: "center", padding: "15px 32px", background: B, color: "#fff", borderRadius: 8, fontSize: 16, fontWeight: 700, fontFamily: F, textDecoration: "none" }}
             >
-              Book a walkthrough →
+              Book a Demo →
             </a>
             <Link
               href="/customers"

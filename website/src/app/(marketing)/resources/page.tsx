@@ -44,7 +44,7 @@ export default function ResourcesPage() {
       <CTA
         title="Ready to see ZUUZ in action?"
         description="Book a demo and bring your messiest workflow. We'll show you what changes in the first two weeks."
-        primaryLabel="Request Trial →"
+        primaryLabel="Book a Demo →"
         primaryHref="https://cal.com/avinashgujje/30min"
         secondaryLabel="Talk to an expert"
         secondaryHref="/about/contact"

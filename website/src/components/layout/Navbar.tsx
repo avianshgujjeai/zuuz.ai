@@ -328,7 +328,7 @@ export function Navbar() {
               textDecoration: "none",
               boxShadow: "0 2px 8px rgba(0,24,255,0.25)",
             }}>
-              Request Trial →
+              Book a Demo →
             </Link>
           </div>
 
@@ -450,7 +450,7 @@ export function Navbar() {
               fontFamily: F,
               textDecoration: "none",
             }}>
-              Request Trial →
+              Book a Demo →
             </Link>
           </div>
         </div>

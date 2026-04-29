@@ -138,7 +138,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 {cs.heroSub}
               </p>
               <Btn href="https://cal.com/avinashgujje/30min" size="lg">
-                Request Trial →
+                Book a Demo →
               </Btn>
             </div>
 
@@ -516,7 +516,7 @@ export default async function CaseStudyPage({ params }: Props) {
             </p>
             <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
               <Btn variant="primary" size="lg" href="https://cal.com/avinashgujje/30min">
-                Request Trial →
+                Book a Demo →
               </Btn>
               <Btn variant="dark-outline" size="lg" href="/customers">
                 View all case studies
